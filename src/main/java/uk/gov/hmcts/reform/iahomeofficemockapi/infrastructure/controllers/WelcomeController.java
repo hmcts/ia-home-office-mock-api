@@ -1,4 +1,4 @@
-package uk.gov.hmcts.reform.demo.controllers;
+package uk.gov.hmcts.reform.iahomeofficemockapi.infrastructure.controllers;
 
 import static org.springframework.http.ResponseEntity.ok;
 

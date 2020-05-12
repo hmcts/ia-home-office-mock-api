@@ -1,10 +1,10 @@
-package uk.gov.hmcts.reform.demo.controllerts;
+package uk.gov.hmcts.reform.iahomeofficemockapi.infrastructure.controller;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
-import uk.gov.hmcts.reform.demo.controllers.WelcomeController;
+import uk.gov.hmcts.reform.iahomeofficemockapi.infrastructure.controllers.WelcomeController;
 
 public class GetWelcomeTest {
 
