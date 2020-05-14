@@ -15,7 +15,7 @@ import javax.validation.constraints.*;
  * Consumer reference; reference provided to Home Office, to be used in subsequent calls to update the same item.
  */
 @ApiModel(description = "Consumer reference; reference provided to Home Office, to be used in subsequent calls to update the same item.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-05-12T20:08:37.834+01:00[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-05-14T11:29:42.760+01:00[Europe/London]")
 
 public class ConsumerRef   {
   @JsonProperty("consumer")

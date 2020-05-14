@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
  * Reference and consumer name
  */
 @ApiModel(description = "Reference and consumer name")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-05-12T20:08:37.834+01:00[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-05-14T11:29:42.760+01:00[Europe/London]")
 
 public class InstructMessageConsumerReference   {
   @JsonProperty("consumer")

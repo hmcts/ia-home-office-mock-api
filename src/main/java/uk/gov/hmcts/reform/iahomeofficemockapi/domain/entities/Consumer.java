@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
  * Consumer of the service.
  */
 @ApiModel(description = "Consumer of the service.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-05-12T20:08:37.834+01:00[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-05-14T11:29:42.760+01:00[Europe/London]")
 
 public class Consumer   {
   /**

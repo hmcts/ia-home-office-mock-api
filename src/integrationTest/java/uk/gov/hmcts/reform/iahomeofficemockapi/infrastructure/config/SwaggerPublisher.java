@@ -13,13 +13,14 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.web.SpringJUnitWebConfig;
 import org.springframework.test.web.servlet.MockMvc;
+import uk.gov.hmcts.reform.iahomeofficemockapi.infrastructure.api.invoker.OpenAPI2SpringBoot;
 
 /**
  * Built-in feature which saves service's swagger specs in temporary directory.
  * Each travis run on master should automatically save and upload (if updated) documentation.
  */
 @SpringJUnitWebConfig
-@SpringBootTest
+@SpringBootTest(classes = OpenAPI2SpringBoot.class)
 @AutoConfigureMockMvc
 class SwaggerPublisher {
 

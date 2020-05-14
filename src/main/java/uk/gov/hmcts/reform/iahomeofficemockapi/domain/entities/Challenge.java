@@ -18,7 +18,7 @@ import javax.validation.constraints.*;
  * Details of a challenge (initially, all appeal related).
  */
 @ApiModel(description = "Details of a challenge (initially, all appeal related).")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-05-12T20:08:37.834+01:00[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-05-14T11:29:42.760+01:00[Europe/London]")
 
 public class Challenge   {
   /**

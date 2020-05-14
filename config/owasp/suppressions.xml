@@ -26,4 +26,22 @@
     <cve>CVE-2020-9488</cve>
   </suppress>
 
+
+  <suppress>
+    <notes><![CDATA[
+    Suppressing as checkstyle is not run for Mock generated code
+   file name: checkstyle-8.27.jar
+   ]]></notes>
+    <packageUrl regex="true">^pkg:maven/com\.puppycrawl\.tools/checkstyle@.*$</packageUrl>
+    <cve>CVE-2019-10782</cve>
+  </suppress>
+  <suppress>
+    <notes><![CDATA[
+    Suppressing all vulnerabilities as it is for Mock generated code
+   file name: openapi-generator-4.2.3.jar: gradle-wrapper.jar
+   ]]></notes>
+    <sha1>0f6f1fa2b59ae770ca14f975726bed8d6620ed9b</sha1>
+    <cpe>cpe:/a:gradle:gradle</cpe>
+  </suppress>
+
 </suppressions>
