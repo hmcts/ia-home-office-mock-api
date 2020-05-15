@@ -25,8 +25,6 @@
     <cpe>cpe:/a:apache:log4j:2.12.1</cpe>
     <cve>CVE-2020-9488</cve>
   </suppress>
-
-
   <suppress>
     <notes><![CDATA[
     Suppressing as checkstyle is not run for Mock generated code
@@ -37,6 +35,7 @@
   </suppress>
   <suppress>
     <notes><![CDATA[
+    Suppressing all vulnerabilities as it is for Mock generated code
    file name: handlebars-4.1.2.jar: handlebars-v4.0.4.js
    ]]></notes>
     <packageUrl regex="true">^pkg:javascript/handlebars@.*$</packageUrl>
@@ -46,6 +45,7 @@
   </suppress>
   <suppress>
     <notes><![CDATA[
+    Suppressing all vulnerabilities as it is for Mock generated code
    file name: json-schema-validator-2.2.8.jar
    ]]></notes>
     <packageUrl regex="true">^pkg:maven/com\.github\.java\-json\-tools/json\-schema\-validator@.*$</packageUrl>
@@ -53,6 +53,7 @@
   </suppress>
   <suppress>
     <notes><![CDATA[
+    Suppressing all vulnerabilities as it is for Mock generated code
    file name: openapi-generator-4.2.3.jar: app.js
    ]]></notes>
     <sha1>cb94710bddfa06a8bed038b317b22a80a7aa5e48</sha1>
@@ -60,6 +61,7 @@
   </suppress>
   <suppress>
     <notes><![CDATA[
+    Suppressing all vulnerabilities as it is for Mock generated code
    file name: openapi-generator-4.2.3.jar: jquery-1.8.3.min.js
    ]]></notes>
     <packageUrl regex="true">^pkg:javascript/jquery@.*$</packageUrl>

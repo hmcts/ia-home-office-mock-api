@@ -157,7 +157,8 @@ sonarqube {
     property "sonar.coverage.jacoco.xmlReportPaths", "${jacocoTestReport.reports.xml.destination.path}"
     property "sonar.exclusions", "src/main/java/uk/gov/hmcts/reform/iahomeofficemockapi/infrastructure/config/**," +
             "src/main/java/uk/gov/hmcts/reform/iahomeofficemockapi/generated/infrastructure/api/**," +
-            "src/main/java/uk/gov/hmcts/reform/iahomeofficemockapi/generated/domain/entities/**"
+            "src/main/java/uk/gov/hmcts/reform/iahomeofficemockapi/generated/domain/entities/**," +
+            "src/main/java/org/openapitools/configuration/**"
   }
 }
 
