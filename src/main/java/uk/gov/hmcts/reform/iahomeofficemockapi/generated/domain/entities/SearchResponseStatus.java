@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
 /**
  * SearchResponseStatus
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-05-15T16:17:05.272+01:00[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-05-15T16:51:58.701+01:00[Europe/London]")
 
 public class SearchResponseStatus   {
   @JsonProperty("person")

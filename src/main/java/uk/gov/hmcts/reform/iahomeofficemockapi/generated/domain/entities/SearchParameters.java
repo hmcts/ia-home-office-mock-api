@@ -17,7 +17,7 @@ import javax.validation.constraints.*;
  * Parameters passed in to enable searching for applications. Currently supports only one type/value pair but the interface is designed to support multiple in future.
  */
 @ApiModel(description = "Parameters passed in to enable searching for applications. Currently supports only one type/value pair but the interface is designed to support multiple in future.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-05-15T16:17:05.272+01:00[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-05-15T16:51:58.701+01:00[Europe/London]")
 
 public class SearchParameters   {
   @JsonProperty("messageHeader")

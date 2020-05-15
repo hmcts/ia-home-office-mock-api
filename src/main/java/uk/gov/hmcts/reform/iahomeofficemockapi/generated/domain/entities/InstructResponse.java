@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
  * Response round-tripping request message header.
  */
 @ApiModel(description = "Response round-tripping request message header.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-05-15T16:17:05.272+01:00[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-05-15T16:51:58.701+01:00[Europe/London]")
 
 public class InstructResponse   {
   @JsonProperty("messageHeader")
