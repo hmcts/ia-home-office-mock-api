@@ -37,11 +37,43 @@
   </suppress>
   <suppress>
     <notes><![CDATA[
+   file name: handlebars-4.1.2.jar: handlebars-v4.0.4.js
+   ]]></notes>
+    <packageUrl regex="true">^pkg:javascript/handlebars@.*$</packageUrl>
+    <vulnerabilityName>A prototype pollution vulnerability in handlebars is exploitable if an attacker can control the template</vulnerabilityName>
+    <vulnerabilityName>Disallow calling helperMissing and blockHelperMissing directly</vulnerabilityName>
+    <vulnerabilityName>Prototype pollution</vulnerabilityName>
+  </suppress>
+  <suppress>
+    <notes><![CDATA[
+   file name: json-schema-validator-2.2.8.jar
+   ]]></notes>
+    <packageUrl regex="true">^pkg:maven/com\.github\.java\-json\-tools/json\-schema\-validator@.*$</packageUrl>
+    <cpe>cpe:/a:data_tools_project:data_tools</cpe>
+  </suppress>
+  <suppress>
+    <notes><![CDATA[
+   file name: openapi-generator-4.2.3.jar: app.js
+   ]]></notes>
+    <sha1>cb94710bddfa06a8bed038b317b22a80a7aa5e48</sha1>
+    <cve>CVE-2019-11358</cve>
+  </suppress>
+  <suppress>
+    <notes><![CDATA[
+   file name: openapi-generator-4.2.3.jar: jquery-1.8.3.min.js
+   ]]></notes>
+    <packageUrl regex="true">^pkg:javascript/jquery@.*$</packageUrl>
+    <cve>CVE-2012-6708</cve>
+    <cve>CVE-2015-9251</cve>
+    <cve>CVE-2019-11358</cve>
+    <vulnerabilityName>Regex in its jQuery.htmlPrefilter  sometimes may introduce XSS</vulnerabilityName>
+  </suppress>
+  <suppress>
+    <notes><![CDATA[
     Suppressing all vulnerabilities as it is for Mock generated code
    file name: openapi-generator-4.2.3.jar: gradle-wrapper.jar
    ]]></notes>
     <sha1>0f6f1fa2b59ae770ca14f975726bed8d6620ed9b</sha1>
     <cpe>cpe:/a:gradle:gradle</cpe>
   </suppress>
-
 </suppressions>

@@ -58,9 +58,9 @@ openApiGenerate {
   generatorName = "spring"
   inputSpec = "$projectDir/appealsAPIv1c.yaml".toString()
   outputDir = apiGenerateBuildDir
-  apiPackage = "uk.gov.hmcts.reform.iahomeofficemockapi.infrastructure.api"
-  invokerPackage = "uk.gov.hmcts.reform.iahomeofficemockapi.infrastructure.api.invoker"
-  modelPackage = "uk.gov.hmcts.reform.iahomeofficemockapi.domain.entities"
+  apiPackage = "uk.gov.hmcts.reform.iahomeofficemockapi.generated.infrastructure.api"
+  invokerPackage = "uk.gov.hmcts.reform.iahomeofficemockapi.generated.infrastructure.api.invoker"
+  modelPackage = "uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities"
   configOptions = [
           dateLibrary: "java8",
           dateLibrary: "java8",
@@ -73,7 +73,7 @@ task copyApiDocs(type: Copy) {
   def srcPath = "$apiGenerateBuildDir/src/main/java"
   def targetPath = "$rootDir/src/main/java"
 
-  // copy docs
+  // copy generated classes
   from(srcPath)
   into(targetPath)
 }
@@ -156,8 +156,8 @@ sonarqube {
     property "sonar.projectKey", "IAHOMEOFFICEMOCKAPI"
     property "sonar.coverage.jacoco.xmlReportPaths", "${jacocoTestReport.reports.xml.destination.path}"
     property "sonar.exclusions", "src/main/java/uk/gov/hmcts/reform/iahomeofficemockapi/infrastructure/config/**," +
-            "src/main/java/uk/gov/hmcts/reform/iahomeofficemockapi/infrastructure/api/**," +
-            "src/main/java/uk/gov/hmcts/reform/iahomeofficemockapi/domain/entities/**"
+            "src/main/java/uk/gov/hmcts/reform/iahomeofficemockapi/generated/infrastructure/api/**," +
+            "src/main/java/uk/gov/hmcts/reform/iahomeofficemockapi/generated/domain/entities/**"
   }
 }
 
@@ -179,6 +179,8 @@ dependencyCheck {
   // range of 0-10 fails the build, anything greater and it doesn't fail the build
   failBuildOnCVSS = System.getProperty('dependencyCheck.failBuild') == 'true' ? 0 : 11
   suppressionFile = 'config/owasp/suppressions.xml'
+  configurations.collect { it.name }.findAll {
+    it.startsWith('org.openapitools.configuration') ||  it.startsWith('uk.gov.hmcts.reform.iahomeofficemockapi.generated')}
 
   analyzers {
     // Disable scanning of .NET related binaries
@@ -264,7 +266,7 @@ dependencies {
   smokeTestImplementation sourceSets.main.runtimeClasspath
 }
 
-mainClassName = 'uk.gov.hmcts.reform.iahomeofficemockapi.infrastructure.api.invoker.OpenAPI2SpringBoot'
+mainClassName = 'uk.gov.hmcts.reform.iahomeofficemockapi.generated.infrastructure.api.invoker.OpenAPI2SpringBoot'
 def jarName = 'ia-home-office-mock-api.jar'
 
 bootJar {
