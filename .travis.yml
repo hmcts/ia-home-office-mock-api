@@ -23,6 +23,10 @@ script:
   - ./gradlew test
   - ./gradlew integration
 
+ignore:
+  - "*/org/openapitools/configuration"
+  - "*generated*"
+
 after_success:
   - ./gradlew jacocoTestReport
   - bash <(curl -s https://codecov.io/bash)
