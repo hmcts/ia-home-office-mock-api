@@ -18,7 +18,7 @@ import javax.validation.constraints.*;
  * Response containing details of the application search.
  */
 @ApiModel(description = "Response containing details of the application search.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-05-15T16:51:58.701+01:00[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-05-26T15:41:16.451+01:00[Europe/London]")
 
 public class SearchResponse   {
   @JsonProperty("messageHeader")

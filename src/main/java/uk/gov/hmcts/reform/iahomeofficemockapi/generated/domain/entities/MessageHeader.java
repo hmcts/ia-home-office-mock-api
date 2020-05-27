@@ -15,7 +15,7 @@ import javax.validation.constraints.*;
  * Message parameters (not business oriented).
  */
 @ApiModel(description = "Message parameters (not business oriented).")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-05-15T16:51:58.701+01:00[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-05-26T15:41:16.451+01:00[Europe/London]")
 
 public class MessageHeader   {
   @JsonProperty("eventDateTime")
