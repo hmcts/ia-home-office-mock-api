@@ -86,7 +86,6 @@ tasks.withType(Copy) {
 tasks.withType(JavaCompile) {
   options.compilerArgs << "-Xlint:unchecked" << "-Werror"
   options.encoding = 'UTF-8'
-  dependsOn tasks.copyApiDocs
 }
 
 tasks.withType(Test) {
