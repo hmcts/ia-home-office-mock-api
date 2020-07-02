@@ -13,7 +13,7 @@ import javax.validation.constraints.*;
 /**
  * SearchParametersSearchParams
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-06-01T12:35:49.130+01:00[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-07-01T14:15:45.837+01:00[Europe/London]")
 
 public class SearchParametersSearchParams   {
   /**
@@ -85,7 +85,7 @@ public class SearchParametersSearchParams   {
    * Unique reference
    * @return spValue
   */
-  @ApiModelProperty(example = "UAN (nnnn-nnnn-nnnn-nnnn) or CID (case ID, ex. 001234567)", required = true, value = "Unique reference")
+  @ApiModelProperty(example = "UAN (nnnn-nnnn-nnnn-nnnn) or CID (case ID, e.g. 001234567)", required = true, value = "Unique reference")
   @NotNull
 
 @Size(max=30) 

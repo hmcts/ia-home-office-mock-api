@@ -10,28 +10,28 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * Role sub-type of the individual in this application. **Note:** may not be available for legacy CID cases
+ * Role of the individual in this application
  */
-@ApiModel(description = "Role sub-type of the individual in this application. **Note:** may not be available for legacy CID cases")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-06-30T12:19:19.760+01:00[Europe/London]")
+@ApiModel(description = "Role of the individual in this application")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-07-01T14:15:45.837+01:00[Europe/London]")
 
-public class SearchResponseDecisionStatusRoleSubType   {
+public class SearchResponseApplicationStatusRoleType   {
   @JsonProperty("code")
   private String code;
 
   @JsonProperty("description")
   private String description;
 
-  public SearchResponseDecisionStatusRoleSubType code(String code) {
+  public SearchResponseApplicationStatusRoleType code(String code) {
     this.code = code;
     return this;
   }
 
   /**
-   * Code for the role sub-type
+   * Code for the role type
    * @return code
   */
-  @ApiModelProperty(example = "SPOUSE. Could be MAIN if the role type is APPLICANT", value = "Code for the role sub-type")
+  @ApiModelProperty(example = "DEPENDANT", value = "Code for the role type")
 
 
   public String getCode() {
@@ -42,16 +42,16 @@ public class SearchResponseDecisionStatusRoleSubType   {
     this.code = code;
   }
 
-  public SearchResponseDecisionStatusRoleSubType description(String description) {
+  public SearchResponseApplicationStatusRoleType description(String description) {
     this.description = description;
     return this;
   }
 
   /**
-   * Description of the role sub-type
+   * Description of the role type
    * @return description
   */
-  @ApiModelProperty(example = "Spouse", value = "Description of the role sub-type")
+  @ApiModelProperty(example = "Dependant", value = "Description of the role type")
 
 
   public String getDescription() {
@@ -71,9 +71,9 @@ public class SearchResponseDecisionStatusRoleSubType   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SearchResponseDecisionStatusRoleSubType searchResponseDecisionStatusRoleSubType = (SearchResponseDecisionStatusRoleSubType) o;
-    return Objects.equals(this.code, searchResponseDecisionStatusRoleSubType.code) &&
-        Objects.equals(this.description, searchResponseDecisionStatusRoleSubType.description);
+    SearchResponseApplicationStatusRoleType searchResponseApplicationStatusRoleType = (SearchResponseApplicationStatusRoleType) o;
+    return Objects.equals(this.code, searchResponseApplicationStatusRoleType.code) &&
+        Objects.equals(this.description, searchResponseApplicationStatusRoleType.description);
   }
 
   @Override
@@ -84,7 +84,7 @@ public class SearchResponseDecisionStatusRoleSubType   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SearchResponseDecisionStatusRoleSubType {\n");
+    sb.append("class SearchResponseApplicationStatusRoleType {\n");
     
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");

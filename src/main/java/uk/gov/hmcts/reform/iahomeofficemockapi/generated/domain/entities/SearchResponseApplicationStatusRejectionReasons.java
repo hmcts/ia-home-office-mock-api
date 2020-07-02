@@ -10,15 +10,15 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * SearchResponseDecisionStatusRejectionReasons
+ * SearchResponseApplicationStatusRejectionReasons
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-06-30T12:19:19.760+01:00[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-07-01T14:15:45.837+01:00[Europe/London]")
 
-public class SearchResponseDecisionStatusRejectionReasons   {
+public class SearchResponseApplicationStatusRejectionReasons   {
   @JsonProperty("reason")
   private String reason;
 
-  public SearchResponseDecisionStatusRejectionReasons reason(String reason) {
+  public SearchResponseApplicationStatusRejectionReasons reason(String reason) {
     this.reason = reason;
     return this;
   }
@@ -47,8 +47,8 @@ public class SearchResponseDecisionStatusRejectionReasons   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SearchResponseDecisionStatusRejectionReasons searchResponseDecisionStatusRejectionReasons = (SearchResponseDecisionStatusRejectionReasons) o;
-    return Objects.equals(this.reason, searchResponseDecisionStatusRejectionReasons.reason);
+    SearchResponseApplicationStatusRejectionReasons searchResponseApplicationStatusRejectionReasons = (SearchResponseApplicationStatusRejectionReasons) o;
+    return Objects.equals(this.reason, searchResponseApplicationStatusRejectionReasons.reason);
   }
 
   @Override
@@ -59,7 +59,7 @@ public class SearchResponseDecisionStatusRejectionReasons   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SearchResponseDecisionStatusRejectionReasons {\n");
+    sb.append("class SearchResponseApplicationStatusRejectionReasons {\n");
     
     sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
     sb.append("}");

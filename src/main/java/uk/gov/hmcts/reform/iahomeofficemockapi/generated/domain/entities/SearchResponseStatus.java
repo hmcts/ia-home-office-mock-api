@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.Person;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchResponseDecisionStatus;
+import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchResponseApplicationStatus;
 import org.openapitools.jackson.nullable.JsonNullable;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
@@ -14,14 +14,14 @@ import javax.validation.constraints.*;
 /**
  * SearchResponseStatus
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-06-01T12:35:49.130+01:00[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-07-01T14:15:45.837+01:00[Europe/London]")
 
 public class SearchResponseStatus   {
   @JsonProperty("person")
   private Person person;
 
-  @JsonProperty("decisionStatus")
-  private SearchResponseDecisionStatus decisionStatus;
+  @JsonProperty("applicationStatus")
+  private SearchResponseApplicationStatus applicationStatus;
 
   public SearchResponseStatus person(Person person) {
     this.person = person;
@@ -44,25 +44,25 @@ public class SearchResponseStatus   {
     this.person = person;
   }
 
-  public SearchResponseStatus decisionStatus(SearchResponseDecisionStatus decisionStatus) {
-    this.decisionStatus = decisionStatus;
+  public SearchResponseStatus applicationStatus(SearchResponseApplicationStatus applicationStatus) {
+    this.applicationStatus = applicationStatus;
     return this;
   }
 
   /**
-   * Get decisionStatus
-   * @return decisionStatus
+   * Get applicationStatus
+   * @return applicationStatus
   */
   @ApiModelProperty(value = "")
 
   @Valid
 
-  public SearchResponseDecisionStatus getDecisionStatus() {
-    return decisionStatus;
+  public SearchResponseApplicationStatus getApplicationStatus() {
+    return applicationStatus;
   }
 
-  public void setDecisionStatus(SearchResponseDecisionStatus decisionStatus) {
-    this.decisionStatus = decisionStatus;
+  public void setApplicationStatus(SearchResponseApplicationStatus applicationStatus) {
+    this.applicationStatus = applicationStatus;
   }
 
 
@@ -76,12 +76,12 @@ public class SearchResponseStatus   {
     }
     SearchResponseStatus searchResponseStatus = (SearchResponseStatus) o;
     return Objects.equals(this.person, searchResponseStatus.person) &&
-        Objects.equals(this.decisionStatus, searchResponseStatus.decisionStatus);
+        Objects.equals(this.applicationStatus, searchResponseStatus.applicationStatus);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(person, decisionStatus);
+    return Objects.hash(person, applicationStatus);
   }
 
   @Override
@@ -90,7 +90,7 @@ public class SearchResponseStatus   {
     sb.append("class SearchResponseStatus {\n");
     
     sb.append("    person: ").append(toIndentedString(person)).append("\n");
-    sb.append("    decisionStatus: ").append(toIndentedString(decisionStatus)).append("\n");
+    sb.append("    applicationStatus: ").append(toIndentedString(applicationStatus)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -3,31 +3,36 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.infrastructure.api;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
-import java.util.Optional;
-import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchErrorResponse;
+import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchParameters;
+import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchResponse;
+import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.context.request.NativeWebRequest;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchErrorResponse;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchParameters;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchResponse;
+import org.springframework.web.multipart.MultipartFile;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-06-01T12:35:49.130+01:00[Europe/London]")
+import javax.validation.Valid;
+import javax.validation.constraints.*;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-07-01T14:15:45.837+01:00[Europe/London]")
+
 @Validated
 @Api(value = "applicationStatus", description = "the applicationStatus API")
 public interface ApplicationStatusApi {
@@ -40,24 +45,24 @@ public interface ApplicationStatusApi {
     /**
      * POST /applicationStatus/getBySearchParameters : Finds applications by search parameters (initially one).
      *
-     * @param searchParameters (required)
+     * @param searchParameters  (required)
      * @return OK (status code 200)
-     * or Invalid status value (status code 400)
+     *         or Invalid status value (status code 400)
      */
-    @ApiOperation(value = "Finds applications by search parameters (initially one).", nickname = "applicationStatusGetBySearchParametersPost", notes = "", response = SearchResponse.class, tags = {})
-    @ApiResponses(value = {
+    @ApiOperation(value = "Finds applications by search parameters (initially one).", nickname = "applicationStatusGetBySearchParametersPost", notes = "", response = SearchResponse.class, tags={  })
+    @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "OK", response = SearchResponse.class),
-        @ApiResponse(code = 400, message = "Invalid status value", response = SearchErrorResponse.class)})
+        @ApiResponse(code = 400, message = "Invalid status value", response = SearchErrorResponse.class) })
     @RequestMapping(value = "/applicationStatus/getBySearchParameters",
-        produces = {"application/json"},
-        consumes = {"application/json"},
+        produces = { "application/json" }, 
+        consumes = { "application/json" },
         method = RequestMethod.POST)
-    default ResponseEntity<SearchResponse> applicationStatusGetBySearchParametersPost(@ApiParam(value = "", required = true) @Valid @RequestBody SearchParameters searchParameters) {
+    default ResponseEntity<SearchResponse> applicationStatusGetBySearchParametersPost(@ApiParam(value = "" ,required=true )  @Valid @RequestBody SearchParameters searchParameters) {
         getRequest().ifPresent(request -> {
-            for (MediaType mediaType : MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
                     log.info("/applicationStatus/getBySearchParameters request->return mock response");
-                    String exampleString = "{ \"messageHeader\" : { \"eventDateTime\" : \"2017-07-21T17:32:28Z\", \"correlationId\" : \"ABC2344BCED2234EA\", \"consumer\" : { \"code\" : \"HMCTS\", \"description\" : \"HM Courts and Tribunal Service\" } }, \"messageType\" : \"MessageType.RESPONSE_RIGHT_OF_APPEAL_DETAILS\", \"status\" : [ { \"person\" : { \"gender\" : { \"code\" : \"M (denoting male)\", \"description\" : \"Male\" }, \"nationality\" : { \"code\" : \"CAN (denoting Canada)\", \"description\" : \"Canada\" }, \"dayOfBirth\" : 21, \"givenName\" : \"Capability\", \"familyName\" : \"Smith\", \"fullName\" : \"Capability Smith\", \"monthOfBirth\" : 0, \"yearOfBirth\" : 1970 }, \"decisionStatus\" : { \"applicationType\" : { \"code\" : \"ASYLUM\", \"description\" : \"Asylum and Protection\" }, \"rejectionReasons\" : [ { \"reason\" : \"Application not completed properly\" }, { \"reason\" : \"Application not completed properly\" } ], \"decisionCommunication\" : { \"sentDate\" : \"2017-07-21T17:32:28Z\", \"description\" : \"E-mail\", \"type\" : \"EMAIL\" }, \"claimReasonType\" : { \"code\" : \"HUMANRIGHTS\", \"description\" : \"Human Rights\" }, \"roleSubType\" : { \"code\" : \"SPOUSE. Could be MAIN if the role type is APPLICANT\", \"description\" : \"Spouse\" }, \"decisionType\" : { \"code\" : \"REJECTION\", \"description\" : \"Rejected\" }, \"appealable\" : true, \"roleType\" : { \"code\" : \"DEPENDANT\", \"description\" : \"Dependant\" }, \"decisionDate\" : \"2017-07-21T17:32:28Z\" } }, { \"person\" : { \"gender\" : { \"code\" : \"M (denoting male)\", \"description\" : \"Male\" }, \"nationality\" : { \"code\" : \"CAN (denoting Canada)\", \"description\" : \"Canada\" }, \"dayOfBirth\" : 21, \"givenName\" : \"Capability\", \"familyName\" : \"Smith\", \"fullName\" : \"Capability Smith\", \"monthOfBirth\" : 0, \"yearOfBirth\" : 1970 }, \"decisionStatus\" : { \"applicationType\" : { \"code\" : \"ASYLUM\", \"description\" : \"Asylum and Protection\" }, \"rejectionReasons\" : [ { \"reason\" : \"Application not completed properly\" }, { \"reason\" : \"Application not completed properly\" } ], \"decisionCommunication\" : { \"sentDate\" : \"2017-07-21T17:32:28Z\", \"description\" : \"E-mail\", \"type\" : \"EMAIL\" }, \"claimReasonType\" : { \"code\" : \"HUMANRIGHTS\", \"description\" : \"Human Rights\" }, \"roleSubType\" : { \"code\" : \"SPOUSE. Could be MAIN if the role type is APPLICANT\", \"description\" : \"Spouse\" }, \"decisionType\" : { \"code\" : \"REJECTION\", \"description\" : \"Rejected\" }, \"appealable\" : true, \"roleType\" : { \"code\" : \"DEPENDANT\", \"description\" : \"Dependant\" }, \"decisionDate\" : \"2017-07-21T17:32:28Z\" } } ] }";
+                    String exampleString = "{ \"messageHeader\" : { \"eventDateTime\" : \"2017-07-21T17:32:28Z\", \"correlationId\" : \"ABC2344BCED2234EA\", \"consumer\" : { \"code\" : \"HMCTS\", \"description\" : \"HM Courts and Tribunal Service\" } }, \"messageType\" : \"RESPONSE_RIGHT_OF_APPEAL_DETAILS\", \"status\" : [ { \"applicationStatus\" : { \"applicationType\" : { \"code\" : \"ASYLUM\", \"description\" : \"Asylum and Protection\" }, \"metadata\" : [ { \"valueBoolean\" : true, \"code\" : \"APPEALABLE or DISPATCH_DATE\", \"valueString\" : \"Some extra decision data\", \"valueDateTime\" : \"2017-07-21T17:32:28Z\" }, { \"valueBoolean\" : true, \"code\" : \"APPEALABLE or DISPATCH_DATE\", \"valueString\" : \"Some extra decision data\", \"valueDateTime\" : \"2017-07-21T17:32:28Z\" } ], \"rejectionReasons\" : [ { \"reason\" : \"Application not completed properly\" }, { \"reason\" : \"Application not completed properly\" } ], \"decisionCommunication\" : { \"sentDate\" : \"2017-07-21T17:32:28Z\", \"dispatchDate\" : \"2017-07-21T17:32:28Z\", \"description\" : \"E-mail\", \"type\" : \"EMAIL\" }, \"claimReasonType\" : { \"code\" : \"HUMANRIGHTS\", \"description\" : \"Human Rights\" }, \"documentReference\" : \"1234-1234-5678-5678/00\", \"roleSubType\" : { \"code\" : \"SPOUSE. Could be MAIN if the role type is APPLICANT\", \"description\" : \"Spouse\" }, \"decisionType\" : { \"code\" : \"REJECTION\", \"description\" : \"Rejected\" }, \"roleType\" : { \"code\" : \"DEPENDANT\", \"description\" : \"Dependant\" }, \"decisionDate\" : \"2017-07-21T17:32:28Z\" }, \"person\" : { \"gender\" : { \"code\" : \"M (denoting male)\", \"description\" : \"Male\" }, \"nationality\" : { \"code\" : \"CAN (denoting Canada)\", \"description\" : \"Canada\" }, \"dayOfBirth\" : 21, \"givenName\" : \"Capability\", \"familyName\" : \"Smith\", \"fullName\" : \"Capability Smith\", \"monthOfBirth\" : 0, \"yearOfBirth\" : 1970 } }, { \"applicationStatus\" : { \"applicationType\" : { \"code\" : \"ASYLUM\", \"description\" : \"Asylum and Protection\" }, \"metadata\" : [ { \"valueBoolean\" : true, \"code\" : \"APPEALABLE or DISPATCH_DATE\", \"valueString\" : \"Some extra decision data\", \"valueDateTime\" : \"2017-07-21T17:32:28Z\" }, { \"valueBoolean\" : true, \"code\" : \"APPEALABLE or DISPATCH_DATE\", \"valueString\" : \"Some extra decision data\", \"valueDateTime\" : \"2017-07-21T17:32:28Z\" } ], \"rejectionReasons\" : [ { \"reason\" : \"Application not completed properly\" }, { \"reason\" : \"Application not completed properly\" } ], \"decisionCommunication\" : { \"sentDate\" : \"2017-07-21T17:32:28Z\", \"dispatchDate\" : \"2017-07-21T17:32:28Z\", \"description\" : \"E-mail\", \"type\" : \"EMAIL\" }, \"claimReasonType\" : { \"code\" : \"HUMANRIGHTS\", \"description\" : \"Human Rights\" }, \"documentReference\" : \"1234-1234-5678-5678/00\", \"roleSubType\" : { \"code\" : \"SPOUSE. Could be MAIN if the role type is APPLICANT\", \"description\" : \"Spouse\" }, \"decisionType\" : { \"code\" : \"REJECTION\", \"description\" : \"Rejected\" }, \"roleType\" : { \"code\" : \"DEPENDANT\", \"description\" : \"Dependant\" }, \"decisionDate\" : \"2017-07-21T17:32:28Z\" }, \"person\" : { \"gender\" : { \"code\" : \"M (denoting male)\", \"description\" : \"Male\" }, \"nationality\" : { \"code\" : \"CAN (denoting Canada)\", \"description\" : \"Canada\" }, \"dayOfBirth\" : 21, \"givenName\" : \"Capability\", \"familyName\" : \"Smith\", \"fullName\" : \"Capability Smith\", \"monthOfBirth\" : 0, \"yearOfBirth\" : 1970 } } ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }

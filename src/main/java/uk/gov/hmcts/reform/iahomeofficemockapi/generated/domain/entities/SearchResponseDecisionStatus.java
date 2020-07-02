@@ -23,7 +23,7 @@ import javax.validation.constraints.*;
  * Current status of the individual&#39;s application
  */
 @ApiModel(description = "Current status of the individual's application")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-06-01T12:35:49.130+01:00[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-06-30T12:19:19.760+01:00[Europe/London]")
 
 public class SearchResponseDecisionStatus   {
   @JsonProperty("roleType")

@@ -8,19 +8,19 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.time.OffsetDateTime;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.Challenge;
+import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.ConsumerRef;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.CourtOutcome;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.Hearing;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.InstructMessageConsumerReference;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.MessageHeader;
 import org.openapitools.jackson.nullable.JsonNullable;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * ### Message instructing Home Office about an event, or action to perform.  #### Mandatory items for all messages  messageHeader, messageType, hoReference, and consumerReference  #### Optional items  note  #### Message Types and Mandatory Elements  REQUEST_CHALLENGE_END: endReason, endChallengeDate  REQUEST_EVIDENCE_BUNDLE: challenge,  deadlineDate  REQUEST_REVIEW: deadlineDate (a review has its own deadline)  HEARING: hearing  HEARING_BUNDLE_READY: hearing (passing just hmctsHearingRef)  COURT_OUTCOME: courtOutcome  DEFAULT: No additional mandatory elements; generic item that is not a bundle/review request 
+ * ### Message instructing Home Office about an event, or action to perform.  #### Mandatory items for all messages  messageHeader, messageType, hoReference, and consumerReference  #### Optional items  note  #### Message Types and Mandatory Elements  REQUEST_CHALLENGE_END: endReason, endChallengeDate  REQUEST_EVIDENCE_BUNDLE: challenge, deadlineDate  REQUEST_REVIEW: deadlineDate (a review has its own deadline)  HEARING: hearing  HEARING_BUNDLE_READY: hearing (passing just hmctsHearingRef and hearingType)  COURT_OUTCOME: courtOutcome  PERMISSION_TO_APPEAL: courtType  DEFAULT: No additional mandatory elements; generic item that is not a bundle/review request 
  */
-@ApiModel(description = "### Message instructing Home Office about an event, or action to perform.  #### Mandatory items for all messages  messageHeader, messageType, hoReference, and consumerReference  #### Optional items  note  #### Message Types and Mandatory Elements  REQUEST_CHALLENGE_END: endReason, endChallengeDate  REQUEST_EVIDENCE_BUNDLE: challenge,  deadlineDate  REQUEST_REVIEW: deadlineDate (a review has its own deadline)  HEARING: hearing  HEARING_BUNDLE_READY: hearing (passing just hmctsHearingRef)  COURT_OUTCOME: courtOutcome  DEFAULT: No additional mandatory elements; generic item that is not a bundle/review request ")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-06-01T12:35:49.130+01:00[Europe/London]")
+@ApiModel(description = "### Message instructing Home Office about an event, or action to perform.  #### Mandatory items for all messages  messageHeader, messageType, hoReference, and consumerReference  #### Optional items  note  #### Message Types and Mandatory Elements  REQUEST_CHALLENGE_END: endReason, endChallengeDate  REQUEST_EVIDENCE_BUNDLE: challenge, deadlineDate  REQUEST_REVIEW: deadlineDate (a review has its own deadline)  HEARING: hearing  HEARING_BUNDLE_READY: hearing (passing just hmctsHearingRef and hearingType)  COURT_OUTCOME: courtOutcome  PERMISSION_TO_APPEAL: courtType  DEFAULT: No additional mandatory elements; generic item that is not a bundle/review request ")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-07-01T14:15:45.837+01:00[Europe/London]")
 
 public class InstructMessage   {
   @JsonProperty("messageHeader")
@@ -41,6 +41,8 @@ public class InstructMessage   {
     HEARING_BUNDLE_READY("HEARING_BUNDLE_READY"),
     
     COURT_OUTCOME("COURT_OUTCOME"),
+    
+    PERMISSION_TO_APPEAL("PERMISSION_TO_APPEAL"),
     
     DEFAULT("DEFAULT");
 
@@ -78,7 +80,7 @@ public class InstructMessage   {
   private String hoReference;
 
   @JsonProperty("consumerReference")
-  private InstructMessageConsumerReference consumerReference;
+  private ConsumerRef consumerReference;
 
   /**
    * Code indicating reason for ending a challenge. *Mandatory if messageType is REQUEST_CHALLENGE_END*
@@ -90,7 +92,9 @@ public class InstructMessage   {
     
     WITHDRAWN("WITHDRAWN"),
     
-    NOT_VALID("NOT_VALID");
+    NOT_VALID("NOT_VALID"),
+    
+    INCORRECT_DETAILS("INCORRECT_DETAILS");
 
     private String value;
 
@@ -127,6 +131,48 @@ public class InstructMessage   {
 
   @JsonProperty("deadlineDate")
   private OffsetDateTime deadlineDate;
+
+  /**
+   * Court type. *Mandatory if messageType is PERMISSION_TO_APPEAL*
+   */
+  public enum CourtTypeEnum {
+    FIRST_TIER("FIRST_TIER"),
+    
+    UPPER_TRIBUNAL("UPPER_TRIBUNAL"),
+    
+    COURT_OF_APPEAL("COURT_OF_APPEAL"),
+    
+    SUPREME_COURT("SUPREME_COURT");
+
+    private String value;
+
+    CourtTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static CourtTypeEnum fromValue(String value) {
+      for (CourtTypeEnum b : CourtTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  @JsonProperty("courtType")
+  private CourtTypeEnum courtType;
 
   @JsonProperty("challenge")
   private Challenge challenge;
@@ -192,7 +238,7 @@ public class InstructMessage   {
    * Home Office reference (UAN or CID case ID)
    * @return hoReference
   */
-  @ApiModelProperty(example = "nnnn-nnnn-nnnn-nnnn (UAN) or CID (case ID, ex. 001234567)", required = true, value = "Home Office reference (UAN or CID case ID)")
+  @ApiModelProperty(example = "nnnn-nnnn-nnnn-nnnn (UAN) or CID (case ID, e.g. 001234567)", required = true, value = "Home Office reference (UAN or CID case ID)")
   @NotNull
 
 
@@ -204,7 +250,7 @@ public class InstructMessage   {
     this.hoReference = hoReference;
   }
 
-  public InstructMessage consumerReference(InstructMessageConsumerReference consumerReference) {
+  public InstructMessage consumerReference(ConsumerRef consumerReference) {
     this.consumerReference = consumerReference;
     return this;
   }
@@ -218,11 +264,11 @@ public class InstructMessage   {
 
   @Valid
 
-  public InstructMessageConsumerReference getConsumerReference() {
+  public ConsumerRef getConsumerReference() {
     return consumerReference;
   }
 
-  public void setConsumerReference(InstructMessageConsumerReference consumerReference) {
+  public void setConsumerReference(ConsumerRef consumerReference) {
     this.consumerReference = consumerReference;
   }
 
@@ -286,6 +332,26 @@ public class InstructMessage   {
 
   public void setDeadlineDate(OffsetDateTime deadlineDate) {
     this.deadlineDate = deadlineDate;
+  }
+
+  public InstructMessage courtType(CourtTypeEnum courtType) {
+    this.courtType = courtType;
+    return this;
+  }
+
+  /**
+   * Court type. *Mandatory if messageType is PERMISSION_TO_APPEAL*
+   * @return courtType
+  */
+  @ApiModelProperty(value = "Court type. *Mandatory if messageType is PERMISSION_TO_APPEAL*")
+
+
+  public CourtTypeEnum getCourtType() {
+    return courtType;
+  }
+
+  public void setCourtType(CourtTypeEnum courtType) {
+    this.courtType = courtType;
   }
 
   public InstructMessage challenge(Challenge challenge) {
@@ -388,6 +454,7 @@ public class InstructMessage   {
         Objects.equals(this.endReason, instructMessage.endReason) &&
         Objects.equals(this.endChallengeDate, instructMessage.endChallengeDate) &&
         Objects.equals(this.deadlineDate, instructMessage.deadlineDate) &&
+        Objects.equals(this.courtType, instructMessage.courtType) &&
         Objects.equals(this.challenge, instructMessage.challenge) &&
         Objects.equals(this.hearing, instructMessage.hearing) &&
         Objects.equals(this.courtOutcome, instructMessage.courtOutcome) &&
@@ -396,7 +463,7 @@ public class InstructMessage   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(messageHeader, messageType, hoReference, consumerReference, endReason, endChallengeDate, deadlineDate, challenge, hearing, courtOutcome, note);
+    return Objects.hash(messageHeader, messageType, hoReference, consumerReference, endReason, endChallengeDate, deadlineDate, courtType, challenge, hearing, courtOutcome, note);
   }
 
   @Override
@@ -411,6 +478,7 @@ public class InstructMessage   {
     sb.append("    endReason: ").append(toIndentedString(endReason)).append("\n");
     sb.append("    endChallengeDate: ").append(toIndentedString(endChallengeDate)).append("\n");
     sb.append("    deadlineDate: ").append(toIndentedString(deadlineDate)).append("\n");
+    sb.append("    courtType: ").append(toIndentedString(courtType)).append("\n");
     sb.append("    challenge: ").append(toIndentedString(challenge)).append("\n");
     sb.append("    hearing: ").append(toIndentedString(hearing)).append("\n");
     sb.append("    courtOutcome: ").append(toIndentedString(courtOutcome)).append("\n");

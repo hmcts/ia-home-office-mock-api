@@ -13,16 +13,16 @@ import javax.validation.constraints.*;
  * Role sub-type of the individual in this application. **Note:** may not be available for legacy CID cases
  */
 @ApiModel(description = "Role sub-type of the individual in this application. **Note:** may not be available for legacy CID cases")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-06-30T12:19:19.760+01:00[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-07-01T14:15:45.837+01:00[Europe/London]")
 
-public class SearchResponseDecisionStatusRoleSubType   {
+public class SearchResponseApplicationStatusRoleSubType   {
   @JsonProperty("code")
   private String code;
 
   @JsonProperty("description")
   private String description;
 
-  public SearchResponseDecisionStatusRoleSubType code(String code) {
+  public SearchResponseApplicationStatusRoleSubType code(String code) {
     this.code = code;
     return this;
   }
@@ -42,7 +42,7 @@ public class SearchResponseDecisionStatusRoleSubType   {
     this.code = code;
   }
 
-  public SearchResponseDecisionStatusRoleSubType description(String description) {
+  public SearchResponseApplicationStatusRoleSubType description(String description) {
     this.description = description;
     return this;
   }
@@ -71,9 +71,9 @@ public class SearchResponseDecisionStatusRoleSubType   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SearchResponseDecisionStatusRoleSubType searchResponseDecisionStatusRoleSubType = (SearchResponseDecisionStatusRoleSubType) o;
-    return Objects.equals(this.code, searchResponseDecisionStatusRoleSubType.code) &&
-        Objects.equals(this.description, searchResponseDecisionStatusRoleSubType.description);
+    SearchResponseApplicationStatusRoleSubType searchResponseApplicationStatusRoleSubType = (SearchResponseApplicationStatusRoleSubType) o;
+    return Objects.equals(this.code, searchResponseApplicationStatusRoleSubType.code) &&
+        Objects.equals(this.description, searchResponseApplicationStatusRoleSubType.description);
   }
 
   @Override
@@ -84,7 +84,7 @@ public class SearchResponseDecisionStatusRoleSubType   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SearchResponseDecisionStatusRoleSubType {\n");
+    sb.append("class SearchResponseApplicationStatusRoleSubType {\n");
     
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");

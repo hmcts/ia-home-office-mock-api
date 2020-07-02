@@ -14,10 +14,10 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * Parameters passed in to enable searching for applications. Currently supports only one type/value pair but the interface is designed to support multiple in future.
+ * Parameters passed in to enable searching for applications. Currently supports only one type/value pair but the interface is designed to support multiple in future.    As a side effect this service will send a notification to the Event Publisher to inform them that a request for a possible appeal has been made.
  */
-@ApiModel(description = "Parameters passed in to enable searching for applications. Currently supports only one type/value pair but the interface is designed to support multiple in future.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-06-01T12:35:49.130+01:00[Europe/London]")
+@ApiModel(description = "Parameters passed in to enable searching for applications. Currently supports only one type/value pair but the interface is designed to support multiple in future.    As a side effect this service will send a notification to the Event Publisher to inform them that a request for a possible appeal has been made.")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-07-01T14:15:45.837+01:00[Europe/London]")
 
 public class SearchParameters   {
   @JsonProperty("messageHeader")

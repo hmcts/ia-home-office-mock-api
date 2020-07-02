@@ -18,7 +18,7 @@ import javax.validation.constraints.*;
  * Response containing details of the application search.
  */
 @ApiModel(description = "Response containing details of the application search.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-06-01T12:35:49.130+01:00[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-07-01T14:15:45.837+01:00[Europe/London]")
 
 public class SearchResponse   {
   @JsonProperty("messageHeader")
@@ -28,7 +28,7 @@ public class SearchResponse   {
    * Identifies the type of message
    */
   public enum MessageTypeEnum {
-    MESSAGETYPE_RESPONSE_RIGHT_OF_APPEAL_DETAILS("MessageType.RESPONSE_RIGHT_OF_APPEAL_DETAILS");
+    RESPONSE_RIGHT_OF_APPEAL_DETAILS("RESPONSE_RIGHT_OF_APPEAL_DETAILS");
 
     private String value;
 
@@ -94,7 +94,7 @@ public class SearchResponse   {
    * Identifies the type of message
    * @return messageType
   */
-  @ApiModelProperty(example = "MessageType.RESPONSE_RIGHT_OF_APPEAL_DETAILS", value = "Identifies the type of message")
+  @ApiModelProperty(example = "RESPONSE_RIGHT_OF_APPEAL_DETAILS", value = "Identifies the type of message")
 
 
   public MessageTypeEnum getMessageType() {
@@ -119,10 +119,10 @@ public class SearchResponse   {
   }
 
   /**
-   * An array of persons and application (decision) status; generally, the status will be the same for all persons but this format provides flexibility
+   * An array of persons and application status; generally, the status will be the same for all persons but this format provides flexibility
    * @return status
   */
-  @ApiModelProperty(value = "An array of persons and application (decision) status; generally, the status will be the same for all persons but this format provides flexibility")
+  @ApiModelProperty(value = "An array of persons and application status; generally, the status will be the same for all persons but this format provides flexibility")
 
   @Valid
 

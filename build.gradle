@@ -56,7 +56,7 @@ def apiGenerateBuildDir = "$buildDir/apidocs".toString()
 
 openApiGenerate {
   generatorName = "spring"
-  inputSpec = "$projectDir/appealsAPIv1c.yaml".toString()
+  inputSpec = "$projectDir/appealsAPIv1d.yaml".toString()
   outputDir = apiGenerateBuildDir
   apiPackage = "uk.gov.hmcts.reform.iahomeofficemockapi.generated.infrastructure.api"
   invokerPackage = "uk.gov.hmcts.reform.iahomeofficemockapi.generated.infrastructure.api.invoker"

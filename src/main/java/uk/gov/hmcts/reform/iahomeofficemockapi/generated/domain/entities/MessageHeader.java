@@ -15,7 +15,7 @@ import javax.validation.constraints.*;
  * Message parameters (not business oriented).
  */
 @ApiModel(description = "Message parameters (not business oriented).")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-06-01T12:35:49.130+01:00[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-07-01T14:15:45.837+01:00[Europe/London]")
 
 public class MessageHeader   {
   @JsonProperty("eventDateTime")
@@ -55,10 +55,10 @@ public class MessageHeader   {
   }
 
   /**
-   * ID allowing correlation between service consumer and API log files
+   * ID allowing correlation between service consumer and API log files. Expected to be unique, for example, a UUID
    * @return correlationId
   */
-  @ApiModelProperty(example = "ABC2344BCED2234EA", required = true, value = "ID allowing correlation between service consumer and API log files")
+  @ApiModelProperty(example = "ABC2344BCED2234EA", required = true, value = "ID allowing correlation between service consumer and API log files. Expected to be unique, for example, a UUID")
   @NotNull
 
 

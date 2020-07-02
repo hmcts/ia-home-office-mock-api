@@ -17,7 +17,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import javax.servlet.ServletContext;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-06-01T12:35:49.130+01:00[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-07-01T14:15:45.837+01:00[Europe/London]")
 
 @Configuration
 @EnableSwagger2
@@ -26,11 +26,11 @@ public class OpenAPIDocumentationConfig {
     ApiInfo apiInfo() {
         return new ApiInfoBuilder()
             .title("Appeals interface")
-            .description("This is a specification for appeal/challenge to be consumed by HMCTS (in the first instance).  **Note:** Several elements have been removed in Version 1c, with the agreement of the Home Office business on 25/02/2020, following discussion and agreement with HMCTS on 20/02/2020. Please compare this version with Version 1b for the differences. ")
+            .description("This is a specification for appeal/challenge to be consumed by HMCTS (in the first instance). ")
             .license("Apache 2.0")
             .licenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html")
             .termsOfServiceUrl("")
-            .version("1c-Draft")
+            .version("1d Draft")
             .contact(new Contact("","", ""))
             .build();
     }

@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.ErrorResponse1100;
+import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.ErrorResponse;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.MessageHeader;
 import org.openapitools.jackson.nullable.JsonNullable;
 import javax.validation.Valid;
@@ -14,14 +14,14 @@ import javax.validation.constraints.*;
 /**
  * InstructErrorResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-06-01T12:35:49.130+01:00[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-07-01T14:15:45.837+01:00[Europe/London]")
 
 public class InstructErrorResponse   {
   @JsonProperty("messageHeader")
   private MessageHeader messageHeader;
 
   @JsonProperty("errorDetail")
-  private ErrorResponse1100 errorDetail;
+  private ErrorResponse errorDetail;
 
   public InstructErrorResponse messageHeader(MessageHeader messageHeader) {
     this.messageHeader = messageHeader;
@@ -44,7 +44,7 @@ public class InstructErrorResponse   {
     this.messageHeader = messageHeader;
   }
 
-  public InstructErrorResponse errorDetail(ErrorResponse1100 errorDetail) {
+  public InstructErrorResponse errorDetail(ErrorResponse errorDetail) {
     this.errorDetail = errorDetail;
     return this;
   }
@@ -57,11 +57,11 @@ public class InstructErrorResponse   {
 
   @Valid
 
-  public ErrorResponse1100 getErrorDetail() {
+  public ErrorResponse getErrorDetail() {
     return errorDetail;
   }
 
-  public void setErrorDetail(ErrorResponse1100 errorDetail) {
+  public void setErrorDetail(ErrorResponse errorDetail) {
     this.errorDetail = errorDetail;
   }
 
