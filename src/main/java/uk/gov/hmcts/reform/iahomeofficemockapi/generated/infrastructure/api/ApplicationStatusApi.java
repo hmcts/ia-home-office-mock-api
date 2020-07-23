@@ -109,12 +109,12 @@ public interface ApplicationStatusApi {
                         "          }\n" +
                         "        ],\n" +
                         "        \"roleSubType\": {\n" +
-                        "          \"code\": \"MAIN\",\n" +
-                        "          \"description\": \"Main\"\n" +
+                        "          \"code\": \"SPOUSE\",\n" +
+                        "          \"description\": \"Spouse\"\n" +
                         "        },\n" +
                         "        \"roleType\": {\n" +
-                        "          \"code\": \"MAIN\",\n" +
-                        "          \"description\": \"Main\"\n" +
+                        "          \"code\": \"DEPENDANT\",\n" +
+                        "          \"description\": \"Dependent\"\n" +
                         "        }\n" +
                         "      },\n" +
                         "      \"person\": {\n" +
@@ -159,7 +159,7 @@ public interface ApplicationStatusApi {
                         "        \"metadata\": [\n" +
                         "          {\n" +
                         "            \"code\": \"DISPATCH_DATE\",\n" +
-                        "            \"valueBoolean\": true,\n" +
+                        "            \"valueBoolean\": false,\n" +
                         "            \"valueDateTime\": \"2020-07-21T17:32:28Z\",\n" +
                         "            \"valueString\": \"Some extra decision data\"\n" +
                         "          },\n" +
@@ -196,7 +196,7 @@ public interface ApplicationStatusApi {
                         "          \"description\": \"Male\"\n" +
                         "        },\n" +
                         "        \"givenName\": \"Capability\",\n" +
-                        "        \"monthOfBirth\": 0,\n" +
+                        "        \"monthOfBirth\": 3,\n" +
                         "        \"nationality\": {\n" +
                         "          \"code\": \"CAN\",\n" +
                         "          \"description\": \"Canada\"\n" +
