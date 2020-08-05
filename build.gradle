@@ -218,7 +218,8 @@ def versions = [
   reformLogging   : '5.1.1',
   springBoot      : springBoot.class.package.implementationVersion,
   springfoxSwagger: '2.9.2',
-  openapiGenerator: '4.2.3'
+  openapiGenerator: '4.2.3',
+  serenity        : '2.0.91'
 ]
 
 ext.libraries = [
@@ -254,11 +255,12 @@ dependencies {
   implementation group:'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.9.5'
   implementation group: 'org.openapitools', name: 'jackson-databind-nullable', version: '0.1.0'
   implementation group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
+  implementation group: 'io.rest-assured', name: 'rest-assured', version: '3.3.0'
 
   implementation "org.openapitools:openapi-generator-gradle-plugin:4.2.3"
 
   testImplementation libraries.junit5
-  testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', {
+  implementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', {
     exclude group: 'junit', module: 'junit'
     exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
   }
