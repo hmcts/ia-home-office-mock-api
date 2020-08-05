@@ -7,7 +7,7 @@ import java.util.Optional;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-07-01T14:15:45.837+01:00[Europe/London]")
 
 @Controller
-@RequestMapping("${openapi.appealsInterface.base-path:/v1}")
+@RequestMapping("${openapi.appealsInterface.base-path:/ichallenge}")
 public class ApplicationStatusApiController implements ApplicationStatusApi {
 
     private final NativeWebRequest request;

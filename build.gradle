@@ -218,8 +218,7 @@ def versions = [
   reformLogging   : '5.1.1',
   springBoot      : springBoot.class.package.implementationVersion,
   springfoxSwagger: '2.9.2',
-  openapiGenerator: '4.2.3',
-  serenity        : '2.0.91'
+  openapiGenerator: '4.2.3'
 ]
 
 ext.libraries = [

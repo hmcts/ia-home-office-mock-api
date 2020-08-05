@@ -36,7 +36,7 @@ public class OpenAPIDocumentationConfig {
     }
 
     @Bean
-    public Docket customImplementation(ServletContext servletContext, @Value("${openapi.appealsInterface.base-path:/v1}") String basePath) {
+    public Docket customImplementation(ServletContext servletContext, @Value("${openapi.appealsInterface.base-path:/ichallenge}") String basePath) {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                     .apis(RequestHandlerSelectors.basePackage("uk.gov.hmcts.reform.iahomeofficemockapi.generated.infrastructure.api"))
