@@ -19,7 +19,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.util.ResourceUtils;
@@ -48,9 +47,8 @@ public interface ApplicationStatusApi {
     /**
      * POST /applicationStatus/getBySearchParameters : Finds applications by search parameters (initially one).
      *
-     * @param searchParameters  (required)
-     * @return OK (status code 200)
-     *         or Invalid status value (status code 400)
+     * @param searchParameters (required)
+     * @return OK (status code 200) or Invalid status value (status code 400)
      */
     @ApiOperation(value = "Finds applications by search parameters (initially one).", nickname = "applicationStatusGetBySearchParametersPost", notes = "", response = SearchResponse.class, tags = {})
     @ApiResponses(value = {
@@ -65,44 +63,37 @@ public interface ApplicationStatusApi {
         @ApiParam(value = "", required = true) @Valid @RequestBody SearchParameters searchParameters) {
 
         final Optional<NativeWebRequest> nativeWebRequest = getRequest();
-        if (nativeWebRequest.isPresent()) {
 
-            final NativeWebRequest request = nativeWebRequest.get();
+        log.info("/applicationStatus/getBySearchParameters nativeWebRequest->return mock response");
 
-            for (MediaType mediaType : MediaType.parseMediaTypes(request.getHeader("Accept"))) {
-                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+        final NativeWebRequest request = nativeWebRequest.get();
 
-                    log.info("/applicationStatus/getBySearchParameters nativeWebRequest->return mock response");
+        log.info("/applicationStatus/getBySearchParameters nativeWebRequest->return mock response");
 
-                    final String documentReference = searchParameters.getSearchParams().get(0).getSpValue();
+        final String documentReference = searchParameters.getSearchParams().get(0).getSpValue();
 
-                    if (documentReference.equalsIgnoreCase("1212/009900362015")
-                        || documentReference.equalsIgnoreCase("2/032323")) {
-                        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-                    }
-
-                    String responseJson = null;
-                    try {
-                        responseJson = getResponseJson(documentReference);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-
-                    String exampleString = "";
-                    ApiUtil.setExampleResponse(request, "application/json", responseJson);
-                    break;
-                }
-            }
+        if (documentReference.equalsIgnoreCase("1212/009900362015")
+            || documentReference.equalsIgnoreCase("2/032323")) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+
+        String responseJson = null;
+        try {
+            responseJson = getResponseJson(documentReference);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        String exampleString = "";
+        ApiUtil.setExampleResponse(request, "application/json", responseJson);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     /**
      * POST /token : returns JWT access_token for given client_id and client_secret..
      *
-     * @param searchParameters  (required)
-     * @return OK (status code 200)
-     *         or Invalid status value (status code 400)
+     * @param searchParameters (required)
+     * @return OK (status code 200) or Invalid status value (status code 400)
      */
     @ApiOperation(value = "get acces token.", nickname = "tokenPost", notes = "", response = String.class, tags = {})
     @ApiResponses(value = {
@@ -164,5 +155,4 @@ public interface ApplicationStatusApi {
 
         return new String(Files.readAllBytes(hoSearchResponseResourceFile.toPath()));
     }
-
 }

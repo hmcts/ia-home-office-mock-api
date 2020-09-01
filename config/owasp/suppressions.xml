@@ -104,4 +104,11 @@
         ]]></notes>
     <cve>CVE-2017-18640</cve>
   </suppress>
+  <suppress>
+    <notes><![CDATA[
+        Suppressing all vulnerabilities as it is for Mock generated code
+        file name: jackson-datatype-jsr310-2.9.5.jar
+        ]]></notes>
+    <cve>CVE-2020-24616</cve>
+  </suppress>
 </suppressions>
