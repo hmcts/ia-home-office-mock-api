@@ -255,7 +255,7 @@ dependencies {
   implementation group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
   implementation group: 'io.rest-assured', name: 'rest-assured', version: '3.3.0'
 
-  implementation "org.openapitools:openapi-generator-gradle-plugin:4.2.3"
+  implementation "org.openapitools:openapi-generator-gradle-plugin:5.0.0"
 
   testImplementation libraries.junit5
   implementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', {
