@@ -136,6 +136,15 @@ public interface ApplicationStatusApi {
             case "1212-0099-0062-8083":
                 responseJsonFile = "ho-api_get-by-serach-params_200_valid-response-8083.json";
                 break;
+            case "1234-1111-5678-1111":
+                responseJsonFile = "ho_api_get_by_search_params_200_main_applicant_dob_match_3980.json";
+                break;
+            case "1234-1111-5678-2222":
+                responseJsonFile = "ho_api_get_by_search_params_200_main_applicant_name_and_dob_match_3980.json";
+                break;
+            case "1234-1111-5678-3333":
+                responseJsonFile = "ho_api_get_by_search_params_200_main_applicant_name_match_3980.json";
+                break;
             case "020639760": // CID reference response
                 responseJsonFile = "ho-api_get-by-serach-params_200_valid-response-020639760.json";
                 break;
