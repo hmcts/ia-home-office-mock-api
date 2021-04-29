@@ -1,0 +1,35 @@
+version: 2
+updates:
+- package-ecosystem: gradle
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: org.springframework.boot
+    versions:
+    - 2.4.2
+    - 2.4.3
+    - 2.4.4
+  - dependency-name: org.openapi.generator
+    versions:
+    - 5.0.0
+    - 5.0.1
+  - dependency-name: org.springframework.cloud:spring-cloud-starter-netflix-hystrix
+    versions:
+    - 2.2.6.RELEASE
+    - 2.2.7.RELEASE
+  - dependency-name: com.fasterxml.jackson.datatype:jackson-datatype-jsr310
+    versions:
+    - 2.12.1
+    - 2.12.2
+  - dependency-name: org.openapitools:openapi-generator-gradle-plugin
+    versions:
+    - 5.0.0
+    - 5.0.1
+  - dependency-name: org.apache.logging.log4j:log4j-api
+    versions:
+    - 2.14.0
+  - dependency-name: org.apache.logging.log4j:log4j-to-slf4j
+    versions:
+    - 2.14.0
