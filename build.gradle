@@ -246,7 +246,7 @@ dependencies {
   compile group: 'com.sun.xml.bind', name: 'jaxb-osgi', version: '2.3.3'
   // CVE-2020-9488
   implementation group: 'org.apache.logging.log4j', name: 'log4j-to-slf4j', version: '2.13.2'
-  implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.13.2'
+  implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.14.1'
 
   implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: versions.springfoxSwagger
   implementation group: 'javax.xml.bind', name:'jaxb-api', version:'2.2.11'
