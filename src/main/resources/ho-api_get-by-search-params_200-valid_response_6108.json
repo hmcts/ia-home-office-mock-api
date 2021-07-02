@@ -1,0 +1,154 @@
+{
+  "messageHeader": {
+    "eventDateTime": "2021-07-30T11:54:40+01:00",
+    "correlationId": "57c75a6a-2a33-45f3-a783-c7e86d1b003a",
+    "consumer": {
+      "code": "HMCTS",
+      "description": "HM Courts and Tribunal Service"
+    }
+  },
+  "messageType": "RESPONSE_RIGHT_OF_APPEAL_DETAILS",
+  "status": [
+    {
+      "person": {
+        "givenName": "PbsDepPartnerTest",
+        "familyName": "EndtoEndPhaseTwo",
+        "fullName": "PbsDepPartnerTest EndtoEndPhaseTwo",
+        "gender": {
+          "code": "F",
+          "description": "Female"
+        },
+        "dayOfBirth": 1,
+        "monthOfBirth": 1,
+        "yearOfBirth": 1986,
+        "nationality": {
+          "code": "IND",
+          "description": "India"
+        }
+      },
+      "applicationStatus": {
+        "documentReference": "1212-0007-0002-6108/00",
+        "roleType": {
+          "code": "APPLICANT",
+          "description": "Applicant"
+        },
+        "roleSubType": {
+          "code": "SPOUSE",
+          "description": "Spouse"
+        },
+        "applicationType": {
+          "code": "PBS_LTR_DEP_JOINER_APP_STAN",
+          "description": "PBS - LTR Dependant Joiner - Standard"
+        },
+        "claimReasonType": null,
+        "decisionType": {
+          "code": "REFUSE",
+          "description": "Decision on the application"
+        },
+        "decisionDate": "2021-07-27T15:05:45Z",
+        "decisionCommunication": {
+          "type": "EMAIL",
+          "description": "Validation Rejection IC_email_only",
+          "sentDate": "2021-07-27T03:06:57+0100",
+          "dispatchDate": "2021-07-27T15:07:02.892"
+        },
+        "rejectionReasons": [
+          {
+            "reason": "REFUSE"
+          }
+        ],
+        "metadata": null
+      }
+    },
+    {
+      "person": {
+        "givenName": "PbsDepChildTest",
+        "familyName": "EndtoEndPhaseTwo",
+        "fullName": "PbsDepChildTest EndtoEndPhaseTwo",
+        "gender": {
+          "code": "M",
+          "description": "Male"
+        },
+        "dayOfBirth": 1,
+        "monthOfBirth": 1,
+        "yearOfBirth": 2016,
+        "nationality": {
+          "code": "IND",
+          "description": "India"
+        }
+      },
+      "applicationStatus": {
+        "documentReference": "1212-0007-0002-6108/01",
+        "roleType": {
+          "code": "DEPENDANT",
+          "description": "Dependant"
+        },
+        "roleSubType": {
+          "code": "CHILD_UNDER_18",
+          "description": "Child Under 18"
+        },
+        "applicationType": {
+          "code": "PBS_LTR_DEP_JOINER_APP_STAN",
+          "description": "PBS - LTR Dependant Joiner - Standard"
+        },
+        "claimReasonType": null,
+        "decisionType": {
+          "code": "REFUSE",
+          "description": "Decision on the application"
+        },
+        "decisionDate": "2021-07-27T15:05:45Z",
+        "decisionCommunication": {
+          "type": "EMAIL",
+          "description": "Validation Rejection IC_email_only",
+          "sentDate": "2021-07-27T03:06:58+0100",
+          "dispatchDate": "2021-07-27T15:07:03.044"
+        },
+        "rejectionReasons": [
+          {
+            "reason": "REFUSE"
+          }
+        ],
+        "metadata": null
+      }
+    },
+    {
+      "person": {
+        "givenName": "TierOneInv",
+        "familyName": "HMCTSONE",
+        "fullName": "TierOneInv HMCTSONE",
+        "gender": {
+          "code": "M",
+          "description": "Male"
+        },
+        "dayOfBirth": 9,
+        "monthOfBirth": 6,
+        "yearOfBirth": 1990,
+        "nationality": {
+          "code": "NGA",
+          "description": "Nigeria"
+        }
+      },
+      "applicationStatus": {
+        "documentReference": null,
+        "roleType": {
+          "code": "SPONSOR",
+          "description": "Sponsor"
+        },
+        "roleSubType": {
+          "code": "PERSON",
+          "description": "Person"
+        },
+        "applicationType": {
+          "code": "PBS_LTR_DEP_JOINER_APP_STAN",
+          "description": "PBS - LTR Dependant Joiner - Standard"
+        },
+        "claimReasonType": null,
+        "decisionType": null,
+        "decisionDate": null,
+        "decisionCommunication": null,
+        "rejectionReasons": null,
+        "metadata": null
+      }
+    }
+  ]
+}

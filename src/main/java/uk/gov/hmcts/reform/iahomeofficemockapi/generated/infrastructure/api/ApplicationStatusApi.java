@@ -130,6 +130,9 @@ public interface ApplicationStatusApi {
         String responseJsonFile;
 
         switch (homeOfficeReference) {
+            case "1212-0007-0002-6108":
+                responseJsonFile = "ho-api_get-by-search-params_200-valid_response_6108.json";
+                break;
             case "1212-0099-0061-7075": // Valid UAN reference
                 responseJsonFile = "ho-api_get-by-search-params_200-valid_response_7075.json";
                 break;

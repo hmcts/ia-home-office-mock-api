@@ -194,10 +194,15 @@ dependencyManagement {
     dependencySet(group: 'com.google.guava', version: '30.0-jre') {
       entry 'guava'
     }
-    dependencySet(group: 'org.apache.tomcat.embed', version: '9.0.43') {
+    dependencySet(group: 'org.apache.tomcat.embed', version: '9.0.50') {
       entry 'tomcat-embed-core'
       entry 'tomcat-embed-el'
       entry 'tomcat-embed-websocket'
+    }
+
+    //CVE-2021-27568
+    dependencySet(group: 'net.minidev', version: '2.3.1') {
+      entry 'json-smart'
     }
   }
 }
