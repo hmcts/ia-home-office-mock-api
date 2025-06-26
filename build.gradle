@@ -139,7 +139,7 @@ processFunctionalTestResources {
 
 checkstyle {
   maxWarnings = 100000
-  toolVersion = '8.40'
+  toolVersion = '8.45.1'
   getConfigDirectory().set(new File(rootDir, 'config/checkstyle'))
 }
 
