@@ -273,7 +273,7 @@ dependencies {
 
   implementation group: 'com.github.hmcts.java-logging', name: 'logging', version: versions.reformLogging
   implementation group: 'com.github.hmcts.java-logging', name: 'logging-appinsights', version: versions.reformLogging
-  implementation(group: 'org.springframework.cloud', name: 'spring-cloud-starter-bootstrap' , version: '3.1.7') {
+  implementation(group: 'org.springframework.cloud', name: 'spring-cloud-starter-bootstrap' , version: '3.1.9') {
     exclude group: "org.bouncycastle", module: "bcprov-jdk15on"
   }
   implementation group: 'org.bouncycastle', name: 'bcprov-jdk18on', version: '1.74'
@@ -305,7 +305,7 @@ dependencies {
     exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
   }
 
-  testImplementation(group: 'org.springframework.cloud', name: 'spring-cloud-contract-wiremock', version: '3.1.6') {
+  testImplementation(group: 'org.springframework.cloud', name: 'spring-cloud-contract-wiremock', version: '3.1.10') {
     exclude group: "com.github.tomakehurst", module: "wiremock-standalone"
   }
   testImplementation group: 'org.apiguardian', name: 'apiguardian-api', version: '1.1.2'
