@@ -1,8 +1,7 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi;
 
-import io.restassured.RestAssured;
-import io.restassured.response.Response;
-import net.serenitybdd.rest.SerenityRest;
+import static org.hamcrest.Matchers.is;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -12,10 +11,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.infrastructure.api.invoker.OpenAPI2SpringBoot;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.Matchers.is;
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
+import net.serenitybdd.rest.SerenityRest;
+import uk.gov.hmcts.reform.iahomeofficemockapi.generated.infrastructure.api.invoker.OpenAPI2SpringBoot;
 
 @SpringBootTest(classes = {
     OpenAPI2SpringBoot.class
