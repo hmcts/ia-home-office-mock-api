@@ -1,15 +1,20 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.v3.oas.annotations.media.Schema;
-
-import javax.validation.Valid;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.ErrorResponse;
+import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.MessageHeader;
+import org.openapitools.jackson.nullable.JsonNullable;
+import javax.validation.Valid;
+import javax.validation.constraints.*;
 
 /**
  * InstructErrorResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-07-01T14:15:45.837+01:00[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-11T18:43:20.015892Z[Europe/London]")
 
 public class InstructErrorResponse   {
   @JsonProperty("messageHeader")
@@ -27,7 +32,7 @@ public class InstructErrorResponse   {
    * Get messageHeader
    * @return messageHeader
   */
-  @Schema()
+  @ApiModelProperty(value = "")
 
   @Valid
 
@@ -48,7 +53,7 @@ public class InstructErrorResponse   {
    * Get errorDetail
    * @return errorDetail
   */
-  @Schema()
+  @ApiModelProperty(value = "")
 
   @Valid
 
@@ -83,7 +88,7 @@ public class InstructErrorResponse   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InstructErrorResponse {\n");
-
+    
     sb.append("    messageHeader: ").append(toIndentedString(messageHeader)).append("\n");
     sb.append("    errorDetail: ").append(toIndentedString(errorDetail)).append("\n");
     sb.append("}");

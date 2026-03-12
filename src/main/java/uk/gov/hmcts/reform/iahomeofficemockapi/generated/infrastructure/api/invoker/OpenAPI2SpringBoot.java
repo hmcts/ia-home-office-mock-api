@@ -12,13 +12,7 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {
-    "uk.gov.hmcts.reform.iahomeofficemockapi.generated.infrastructure.api.invoker",
-    "uk.gov.hmcts.reform.iahomeofficemockapi.generated.infrastructure.api",
-    "uk.gov.hmcts.reform.iahomeofficemockapi.infrastructure.controllers",
-    "org.openapitools.configuration",
-
-})
+@ComponentScan(basePackages = {"uk.gov.hmcts.reform.iahomeofficemockapi.generated.infrastructure.api.invoker", "uk.gov.hmcts.reform.iahomeofficemockapi.generated.infrastructure.api" , "org.openapitools.configuration"})
 public class OpenAPI2SpringBoot implements CommandLineRunner {
 
     @Override

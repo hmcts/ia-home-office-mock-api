@@ -1,16 +1,20 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.v3.oas.annotations.media.Schema;
-
-import javax.validation.Valid;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.MessageHeader;
+import org.openapitools.jackson.nullable.JsonNullable;
+import javax.validation.Valid;
+import javax.validation.constraints.*;
 
 /**
  * Response round-tripping request message header.
  */
-@Schema(description = "Response round-tripping request message header.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-07-01T14:15:45.837+01:00[Europe/London]")
+@ApiModel(description = "Response round-tripping request message header.")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-11T18:43:20.015892Z[Europe/London]")
 
 public class InstructResponse   {
   @JsonProperty("messageHeader")
@@ -25,7 +29,7 @@ public class InstructResponse   {
    * Get messageHeader
    * @return messageHeader
   */
-  @Schema()
+  @ApiModelProperty(value = "")
 
   @Valid
 
@@ -59,7 +63,7 @@ public class InstructResponse   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InstructResponse {\n");
-
+    
     sb.append("    messageHeader: ").append(toIndentedString(messageHeader)).append("\n");
     sb.append("}");
     return sb.toString();

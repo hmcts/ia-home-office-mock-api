@@ -1,16 +1,21 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.v3.oas.annotations.media.Schema;
-
-import javax.validation.Valid;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.PersonGender;
+import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.PersonNationality;
+import org.openapitools.jackson.nullable.JsonNullable;
+import javax.validation.Valid;
+import javax.validation.constraints.*;
 
 /**
  * An individual fufilling a role on the application.
  */
-@Schema(description = "An individual fufilling a role on the application.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-07-01T14:15:45.837+01:00[Europe/London]")
+@ApiModel(description = "An individual fufilling a role on the application.")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-11T18:43:20.015892Z[Europe/London]")
 
 public class Person   {
   @JsonProperty("givenName")
@@ -46,7 +51,7 @@ public class Person   {
    * Person's given names. Assumed to be a concatenated list of names
    * @return givenName
   */
-  @Schema(example = "Capability", description = "Person's given names. Assumed to be a concatenated list of names")
+  @ApiModelProperty(example = "Capability", value = "Person's given names. Assumed to be a concatenated list of names")
 
 
   public String getGivenName() {
@@ -66,7 +71,7 @@ public class Person   {
    * Person's family names. Assumed to be a concatenated list of names
    * @return familyName
   */
-  @Schema(example = "Smith", description = "Person's family names. Assumed to be a concatenated list of names")
+  @ApiModelProperty(example = "Smith", value = "Person's family names. Assumed to be a concatenated list of names")
 
 
   public String getFamilyName() {
@@ -86,7 +91,7 @@ public class Person   {
    * Person's full name
    * @return fullName
   */
-  @Schema(example = "Capability Smith", description = "Person's full name")
+  @ApiModelProperty(example = "Capability Smith", value = "Person's full name")
 
 
   public String getFullName() {
@@ -106,7 +111,7 @@ public class Person   {
    * Get gender
    * @return gender
   */
-  @Schema()
+  @ApiModelProperty(value = "")
 
   @Valid
 
@@ -127,7 +132,7 @@ public class Person   {
    * Day of month the person was born on, from 1-31. No leading zeroes
    * @return dayOfBirth
   */
-  @Schema(example = "21", description = "Day of month the person was born on, from 1-31. No leading zeroes")
+  @ApiModelProperty(example = "21", value = "Day of month the person was born on, from 1-31. No leading zeroes")
 
 
   public Integer getDayOfBirth() {
@@ -147,7 +152,7 @@ public class Person   {
    * Month of year (Gregorian calendar) the person was born in, from 1-12. No leading zeroes
    * @return monthOfBirth
   */
-  @Schema(description= "Month of year (Gregorian calendar) the person was born in, from 1-12. No leading zeroes")
+  @ApiModelProperty(value = "Month of year (Gregorian calendar) the person was born in, from 1-12. No leading zeroes")
 
 
   public Integer getMonthOfBirth() {
@@ -167,7 +172,7 @@ public class Person   {
    * Year the person was born in (4 digits)
    * @return yearOfBirth
   */
-  @Schema(example = "1970", description = "Year the person was born in (4 digits)")
+  @ApiModelProperty(example = "1970", value = "Year the person was born in (4 digits)")
 
 
   public Integer getYearOfBirth() {
@@ -187,7 +192,7 @@ public class Person   {
    * Get nationality
    * @return nationality
   */
-  @Schema()
+  @ApiModelProperty(value = "")
 
   @Valid
 
@@ -228,7 +233,7 @@ public class Person   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Person {\n");
-
+    
     sb.append("    givenName: ").append(toIndentedString(givenName)).append("\n");
     sb.append("    familyName: ").append(toIndentedString(familyName)).append("\n");
     sb.append("    fullName: ").append(toIndentedString(fullName)).append("\n");

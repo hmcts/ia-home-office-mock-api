@@ -1,19 +1,21 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.v3.oas.annotations.media.Schema;
-
-import javax.validation.Valid;
-import java.time.OffsetDateTime;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.time.OffsetDateTime;
+import org.openapitools.jackson.nullable.JsonNullable;
+import javax.validation.Valid;
+import javax.validation.constraints.*;
 
 /**
  * Communication of the decision
  */
-@Schema(description = "Communication of the decision")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-07-01T14:15:45.837+01:00[Europe/London]")
+@ApiModel(description = "Communication of the decision")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-11T18:43:20.015892Z[Europe/London]")
 
 public class SearchResponseApplicationStatusDecisionCommunication   {
   /**
@@ -21,7 +23,7 @@ public class SearchResponseApplicationStatusDecisionCommunication   {
    */
   public enum TypeEnum {
     EMAIL("EMAIL"),
-
+    
     POST("POST");
 
     private String value;
@@ -72,7 +74,7 @@ public class SearchResponseApplicationStatusDecisionCommunication   {
    * Type of communication
    * @return type
   */
-  @Schema(example = "EMAIL", description = "Type of communication")
+  @ApiModelProperty(example = "EMAIL", value = "Type of communication")
 
 
   public TypeEnum getType() {
@@ -92,7 +94,7 @@ public class SearchResponseApplicationStatusDecisionCommunication   {
    * Description of the communication type
    * @return description
   */
-  @Schema(example = "E-mail", description = "Description of the communication type")
+  @ApiModelProperty(example = "E-mail", value = "Description of the communication type")
 
 
   public String getDescription() {
@@ -112,7 +114,7 @@ public class SearchResponseApplicationStatusDecisionCommunication   {
    * Date (and time, if available) the communication was requested to be sent. This is effectively the decision date. See description of decisionDate for details of how it will be displayed. This is assumed to be in UTC
    * @return sentDate
   */
-  @Schema(example = "2017-07-21T17:32:28Z", description = "Date (and time, if available) the communication was requested to be sent. This is effectively the decision date. See description of decisionDate for details of how it will be displayed. This is assumed to be in UTC")
+  @ApiModelProperty(example = "2017-07-21T17:32:28Z", value = "Date (and time, if available) the communication was requested to be sent. This is effectively the decision date. See description of decisionDate for details of how it will be displayed. This is assumed to be in UTC")
 
   @Valid
 
@@ -133,7 +135,7 @@ public class SearchResponseApplicationStatusDecisionCommunication   {
    * Date (and time, if available) the communication was actually dispatched. See description of decisionDate for details of how it will be displayed. This is assumed to be in UTC
    * @return dispatchDate
   */
-  @Schema(example = "2017-07-21T17:32:28Z", description = "Date (and time, if available) the communication was actually dispatched. See description of decisionDate for details of how it will be displayed. This is assumed to be in UTC")
+  @ApiModelProperty(example = "2017-07-21T17:32:28Z", value = "Date (and time, if available) the communication was actually dispatched. See description of decisionDate for details of how it will be displayed. This is assumed to be in UTC")
 
   @Valid
 
@@ -170,7 +172,7 @@ public class SearchResponseApplicationStatusDecisionCommunication   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SearchResponseApplicationStatusDecisionCommunication {\n");
-
+    
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    sentDate: ").append(toIndentedString(sentDate)).append("\n");

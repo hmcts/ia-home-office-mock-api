@@ -1,20 +1,23 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
+import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.v3.oas.annotations.media.Schema;
-
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.MessageHeader;
+import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchParametersSearchParams;
+import org.openapitools.jackson.nullable.JsonNullable;
+import javax.validation.Valid;
+import javax.validation.constraints.*;
 
 /**
  * Parameters passed in to enable searching for applications. Currently supports only one type/value pair but the interface is designed to support multiple in future.    As a side effect this service will send a notification to the Event Publisher to inform them that a request for a possible appeal has been made.
  */
-@Schema(description = "Parameters passed in to enable searching for applications. Currently supports only one type/value pair but the interface is designed to support multiple in future.    As a side effect this service will send a notification to the Event Publisher to inform them that a request for a possible appeal has been made.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-07-01T14:15:45.837+01:00[Europe/London]")
+@ApiModel(description = "Parameters passed in to enable searching for applications. Currently supports only one type/value pair but the interface is designed to support multiple in future.    As a side effect this service will send a notification to the Event Publisher to inform them that a request for a possible appeal has been made.")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-11T18:43:20.015892Z[Europe/London]")
 
 public class SearchParameters   {
   @JsonProperty("messageHeader")
@@ -33,7 +36,7 @@ public class SearchParameters   {
    * Get messageHeader
    * @return messageHeader
   */
-  @Schema(required = true)
+  @ApiModelProperty(required = true, value = "")
   @NotNull
 
   @Valid
@@ -60,11 +63,11 @@ public class SearchParameters   {
    * Get searchParams
    * @return searchParams
   */
-  @Schema(required = true)
+  @ApiModelProperty(required = true, value = "")
   @NotNull
 
   @Valid
-@Size(min=1)
+@Size(min=1) 
   public List<SearchParametersSearchParams> getSearchParams() {
     return searchParams;
   }
@@ -96,7 +99,7 @@ public class SearchParameters   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SearchParameters {\n");
-
+    
     sb.append("    messageHeader: ").append(toIndentedString(messageHeader)).append("\n");
     sb.append("    searchParams: ").append(toIndentedString(searchParams)).append("\n");
     sb.append("}");

@@ -1,15 +1,19 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.v3.oas.annotations.media.Schema;
-
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.jackson.nullable.JsonNullable;
+import javax.validation.Valid;
+import javax.validation.constraints.*;
 
 /**
  * Type of decision made on the application
  */
-@Schema(description = "Type of decision made on the application")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-07-01T14:15:45.837+01:00[Europe/London]")
+@ApiModel(description = "Type of decision made on the application")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-11T18:43:20.015892Z[Europe/London]")
 
 public class SearchResponseApplicationStatusDecisionType   {
   @JsonProperty("code")
@@ -27,7 +31,7 @@ public class SearchResponseApplicationStatusDecisionType   {
    * Code for the decision type
    * @return code
   */
-  @Schema(example = "REJECTION", description = "Code for the decision type")
+  @ApiModelProperty(example = "REJECTION", value = "Code for the decision type")
 
 
   public String getCode() {
@@ -47,7 +51,7 @@ public class SearchResponseApplicationStatusDecisionType   {
    * Description of the decision type
    * @return description
   */
-  @Schema(example = "Rejected", description = "Description of the decision type")
+  @ApiModelProperty(example = "Rejected", value = "Description of the decision type")
 
 
   public String getDescription() {
@@ -81,7 +85,7 @@ public class SearchResponseApplicationStatusDecisionType   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SearchResponseApplicationStatusDecisionType {\n");
-
+    
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("}");

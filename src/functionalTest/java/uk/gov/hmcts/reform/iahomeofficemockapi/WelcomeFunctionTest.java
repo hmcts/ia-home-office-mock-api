@@ -2,6 +2,9 @@ package uk.gov.hmcts.reform.iahomeofficemockapi;
 
 import static org.hamcrest.Matchers.is;
 
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
+import net.serenitybdd.rest.SerenityRest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -11,10 +14,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
-
-import io.restassured.RestAssured;
-import io.restassured.response.Response;
-import net.serenitybdd.rest.SerenityRest;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.infrastructure.api.invoker.OpenAPI2SpringBoot;
 
 @SpringBootTest(classes = {
@@ -42,7 +41,7 @@ public class WelcomeFunctionTest {
             .given()
             .relaxedHTTPSValidation()
             .when()
-            .get("/");
+            .get("/Welcome");
 
         response1
             .then()

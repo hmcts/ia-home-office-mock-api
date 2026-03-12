@@ -1,16 +1,19 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.v3.oas.annotations.media.Schema;
-
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.jackson.nullable.JsonNullable;
+import javax.validation.Valid;
+import javax.validation.constraints.*;
 
 /**
  * ErrorResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-07-01T14:15:45.837+01:00[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-11T18:43:20.015892Z[Europe/London]")
 
 public class ErrorResponse   {
   @JsonProperty("success")
@@ -24,19 +27,19 @@ public class ErrorResponse   {
    */
   public enum ErrorCodeEnum {
     _1010("1010"),
-
+    
     _1020("1020"),
-
+    
     _1030("1030"),
-
+    
     _1040("1040"),
-
+    
     _1060("1060"),
-
+    
     _1070("1070"),
-
+    
     _2000("2000"),
-
+    
     _2010("2010");
 
     private String value;
@@ -78,7 +81,7 @@ public class ErrorResponse   {
    * Get success
    * @return success
   */
-  @Schema(example = "false")
+  @ApiModelProperty(example = "false", value = "")
 
 
   public Boolean getSuccess() {
@@ -98,7 +101,7 @@ public class ErrorResponse   {
    * Error message text
    * @return messageText
   */
-  @Schema(example = "Invalid reference format. Format should be either nnnn-nnnn-nnnn-nnnn or 0(0) followed by digits (total length 9 or 10)", description = "Error message text")
+  @ApiModelProperty(example = "Invalid reference format. Format should be either nnnn-nnnn-nnnn-nnnn or 0(0) followed by digits (total length 9 or 10)", value = "Error message text")
 
 
   public String getMessageText() {
@@ -118,7 +121,7 @@ public class ErrorResponse   {
    * Error code (non-HTTP)    1010 - No event history details    1020 - No service delivery details    1030 - No valid service delivery details    1040 - Method argument not valid    1060 - Message format invalid    1070 - Internal system error    2000 - Call to CSDP unavailable    2010 - Call to AWS SQS unavailable
    * @return errorCode
   */
-  @Schema(description = "Error code (non-HTTP)    1010 - No event history details    1020 - No service delivery details    1030 - No valid service delivery details    1040 - Method argument not valid    1060 - Message format invalid    1070 - Internal system error    2000 - Call to CSDP unavailable    2010 - Call to AWS SQS unavailable")
+  @ApiModelProperty(value = "Error code (non-HTTP)    1010 - No event history details    1020 - No service delivery details    1030 - No valid service delivery details    1040 - Method argument not valid    1060 - Message format invalid    1070 - Internal system error    2000 - Call to CSDP unavailable    2010 - Call to AWS SQS unavailable")
 
 
   public ErrorCodeEnum getErrorCode() {
@@ -153,7 +156,7 @@ public class ErrorResponse   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ErrorResponse {\n");
-
+    
     sb.append("    success: ").append(toIndentedString(success)).append("\n");
     sb.append("    messageText: ").append(toIndentedString(messageText)).append("\n");
     sb.append("    errorCode: ").append(toIndentedString(errorCode)).append("\n");

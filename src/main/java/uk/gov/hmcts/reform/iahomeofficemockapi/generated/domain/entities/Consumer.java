@@ -1,18 +1,20 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.v3.oas.annotations.media.Schema;
-
-import javax.validation.constraints.NotNull;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.jackson.nullable.JsonNullable;
+import javax.validation.Valid;
+import javax.validation.constraints.*;
 
 /**
  * Consumer of the service.
  */
-@Schema(description = "Consumer of the service.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-07-01T14:15:45.837+01:00[Europe/London]")
+@ApiModel(description = "Consumer of the service.")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-11T18:43:20.015892Z[Europe/London]")
 
 public class Consumer   {
   /**
@@ -63,7 +65,7 @@ public class Consumer   {
    * Short code for the consumer
    * @return code
   */
-  @Schema(required = true, description = "Short code for the consumer")
+  @ApiModelProperty(required = true, value = "Short code for the consumer")
   @NotNull
 
 
@@ -84,7 +86,7 @@ public class Consumer   {
    * Description of the consumer (for legibility reasons)
    * @return description
   */
-  @Schema(example = "HM Courts and Tribunal Service", description = "Description of the consumer (for legibility reasons)")
+  @ApiModelProperty(example = "HM Courts and Tribunal Service", value = "Description of the consumer (for legibility reasons)")
 
 
   public String getDescription() {
@@ -118,7 +120,7 @@ public class Consumer   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Consumer {\n");
-
+    
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("}");

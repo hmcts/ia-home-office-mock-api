@@ -1,19 +1,21 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.v3.oas.annotations.media.Schema;
-
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.Consumer;
+import org.openapitools.jackson.nullable.JsonNullable;
+import javax.validation.Valid;
+import javax.validation.constraints.*;
 
 /**
  * Consumer reference; reference provided to Home Office, to be used in subsequent calls to update the same item.
  */
-@Schema(description = "Consumer reference; reference provided to Home Office, to be used in subsequent calls to update the same item.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-07-01T14:15:45.837+01:00[Europe/London]")
+@ApiModel(description = "Consumer reference; reference provided to Home Office, to be used in subsequent calls to update the same item.")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-11T18:43:20.015892Z[Europe/London]")
 
 public class ConsumerRef   {
   @JsonProperty("consumer")
@@ -70,7 +72,7 @@ public class ConsumerRef   {
    * Get consumer
    * @return consumer
   */
-  @Schema(required = true)
+  @ApiModelProperty(required = true, value = "")
   @NotNull
 
   @Valid
@@ -92,7 +94,7 @@ public class ConsumerRef   {
    * Short code for the reference
    * @return code
   */
-  @Schema(required = true, description = "Short code for the reference")
+  @ApiModelProperty(required = true, value = "Short code for the reference")
   @NotNull
 
 
@@ -113,7 +115,7 @@ public class ConsumerRef   {
    * Get description
    * @return description
   */
-  @Schema(example = "HMCTS challenge reference")
+  @ApiModelProperty(example = "HMCTS challenge reference", value = "")
 
 
   public String getDescription() {
@@ -133,7 +135,7 @@ public class ConsumerRef   {
    * Value for the reference
    * @return value
   */
-  @Schema(example = "xxxyyyynnn-nnn", required = true, description = "Value for the reference")
+  @ApiModelProperty(example = "xxxyyyynnn-nnn", required = true, value = "Value for the reference")
   @NotNull
 
 
@@ -170,7 +172,7 @@ public class ConsumerRef   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConsumerRef {\n");
-
+    
     sb.append("    consumer: ").append(toIndentedString(consumer)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");

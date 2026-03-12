@@ -1,18 +1,20 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.v3.oas.annotations.media.Schema;
-
-import javax.validation.constraints.NotNull;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.jackson.nullable.JsonNullable;
+import javax.validation.Valid;
+import javax.validation.constraints.*;
 
 /**
  * Court type and outcome of the appeal.
  */
-@Schema(description = "Court type and outcome of the appeal.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-07-01T14:15:45.837+01:00[Europe/London]")
+@ApiModel(description = "Court type and outcome of the appeal.")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-11T18:43:20.015892Z[Europe/London]")
 
 public class CourtOutcome   {
   /**
@@ -20,9 +22,9 @@ public class CourtOutcome   {
    */
   public enum CourtTypeEnum {
     FIRST_TIER("FIRST_TIER"),
-
+    
     FTPA("FTPA"),
-
+    
     UTPA("UTPA");
 
     private String value;
@@ -60,15 +62,15 @@ public class CourtOutcome   {
    */
   public enum OutcomeEnum {
     ALLOWED("ALLOWED"),
-
+    
     DISMISSED("DISMISSED"),
-
+    
     GRANTED("GRANTED"),
-
+    
     REFUSED("REFUSED"),
-
+    
     REHEARD("REHEARD"),
-
+    
     REMADE("REMADE");
 
     private String value;
@@ -110,7 +112,7 @@ public class CourtOutcome   {
    * Court (tribunal) type
    * @return courtType
   */
-  @Schema(required = true, description = "Court (tribunal) type")
+  @ApiModelProperty(required = true, value = "Court (tribunal) type")
   @NotNull
 
 
@@ -131,7 +133,7 @@ public class CourtOutcome   {
    * Appeal outcome
    * @return outcome
   */
-  @Schema(required = true, description = "Appeal outcome")
+  @ApiModelProperty(required = true, value = "Appeal outcome")
   @NotNull
 
 
@@ -166,7 +168,7 @@ public class CourtOutcome   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CourtOutcome {\n");
-
+    
     sb.append("    courtType: ").append(toIndentedString(courtType)).append("\n");
     sb.append("    outcome: ").append(toIndentedString(outcome)).append("\n");
     sb.append("}");

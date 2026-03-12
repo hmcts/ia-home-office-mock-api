@@ -1,15 +1,19 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.v3.oas.annotations.media.Schema;
-
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.jackson.nullable.JsonNullable;
+import javax.validation.Valid;
+import javax.validation.constraints.*;
 
 /**
  * Role sub-type of the individual in this application. **Note:** may not be available for legacy CID cases
  */
-@Schema(description = "Role sub-type of the individual in this application. **Note:** may not be available for legacy CID cases")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-07-01T14:15:45.837+01:00[Europe/London]")
+@ApiModel(description = "Role sub-type of the individual in this application. **Note:** may not be available for legacy CID cases")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-11T18:43:20.015892Z[Europe/London]")
 
 public class SearchResponseApplicationStatusRoleSubType   {
   @JsonProperty("code")
@@ -27,7 +31,7 @@ public class SearchResponseApplicationStatusRoleSubType   {
    * Code for the role sub-type
    * @return code
   */
-  @Schema(example = "SPOUSE. Could be MAIN if the role type is APPLICANT", description = "Code for the role sub-type")
+  @ApiModelProperty(example = "SPOUSE. Could be MAIN if the role type is APPLICANT", value = "Code for the role sub-type")
 
 
   public String getCode() {
@@ -47,7 +51,7 @@ public class SearchResponseApplicationStatusRoleSubType   {
    * Description of the role sub-type
    * @return description
   */
-  @Schema(example = "Spouse", description = "Description of the role sub-type")
+  @ApiModelProperty(example = "Spouse", value = "Description of the role sub-type")
 
 
   public String getDescription() {
@@ -81,7 +85,7 @@ public class SearchResponseApplicationStatusRoleSubType   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SearchResponseApplicationStatusRoleSubType {\n");
-
+    
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("}");

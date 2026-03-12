@@ -21,3 +21,5 @@ bin/functionalTest/
 *.ipr
 
 .DS_Store
+
+.vscode/
