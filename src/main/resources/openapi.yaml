@@ -12,7 +12,7 @@ externalDocs:
   description: Find out more about Swagger
   url: http://swagger.io
 servers:
-- url: https://somehost.example.com/v1
+- url: https://somehost.example.com
 tags:
 - description: Appeals interface
   name: Appeals
@@ -32,7 +32,7 @@ paths:
         required: true
         schema:
           example: null
-          pattern: "^(\\d{4}-\\d{4}-\\d{4}-\\d{4})|(GWF\\d{9})$"
+          pattern: "^(\\d{4}-\\d{4}-\\d{4}-\\d{4}|GWF\\d{9})$"
           type: string
         style: simple
       responses:
@@ -51,7 +51,7 @@ paths:
       summary: Gets the appellants' details of an application for immigration or asylum
         from the Home Office.
       x-accepts: application/json
-  /applicationStatus/getBySearchParameters:
+  /v1/applicationStatus/getBySearchParameters:
     post:
       requestBody:
         content:
@@ -75,7 +75,7 @@ paths:
       summary: Finds applications by search parameters (initially one).
       x-contentType: application/json
       x-accepts: application/json
-  /applicationInstruct/setInstruct:
+  /v1/applicationInstruct/setInstruct:
     post:
       requestBody:
         content:

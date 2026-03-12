@@ -5,6 +5,9 @@
  */
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.infrastructure.api;
 
+import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.InstructErrorResponse;
+import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.InstructMessage;
+import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.InstructResponse;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchErrorResponse;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchParameters;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchResponse;
@@ -31,24 +34,62 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-12T18:03:21.228960Z[Europe/London]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-12T18:32:14.905283Z[Europe/London]")
 @Validated
-@Tag(name = "applicationStatus", description = "the applicationStatus API")
-public interface ApplicationStatusApi {
+@Tag(name = "v1", description = "the v1 API")
+public interface V1Api {
 
     default Optional<NativeWebRequest> getRequest() {
         return Optional.empty();
     }
 
     /**
-     * POST /applicationStatus/getBySearchParameters : Finds applications by search parameters (initially one).
+     * POST /v1/applicationInstruct/setInstruct : Instructs Home Office downstream systems. Note: Use of the term &#39;instruct&#39; avoids any confusion with existing business terms, such as &#39;notification&#39; and &#39;direction&#39;, which are not overly descriptive to the Home Office.
+     *
+     * @param instructMessage  (required)
+     * @return OK (status code 200)
+     *         or Invalid status value (status code 400)
+     */
+    @Operation(
+        operationId = "v1ApplicationInstructSetInstructPost",
+        summary = "Instructs Home Office downstream systems. Note: Use of the term 'instruct' avoids any confusion with existing business terms, such as 'notification' and 'direction', which are not overly descriptive to the Home Office.",
+        responses = {
+            @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation =  InstructResponse.class))),
+            @ApiResponse(responseCode = "400", description = "Invalid status value", content = @Content(mediaType = "application/json", schema = @Schema(implementation =  InstructErrorResponse.class)))
+        }
+    )
+    @RequestMapping(
+        method = RequestMethod.POST,
+        value = "/v1/applicationInstruct/setInstruct",
+        produces = { "application/json" },
+        consumes = { "application/json" }
+    )
+    default ResponseEntity<InstructResponse> v1ApplicationInstructSetInstructPost(
+        @Parameter(name = "InstructMessage", description = "", required = true, schema = @Schema(description = "")) @Valid @RequestBody InstructMessage instructMessage
+    ) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"messageHeader\" : { \"eventDateTime\" : \"2017-07-21T17:32:28Z\", \"correlationId\" : \"ABC2344BCED2234EA\", \"consumer\" : { \"code\" : \"HMCTS\", \"description\" : \"HM Courts and Tribunal Service\" } } }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
+    /**
+     * POST /v1/applicationStatus/getBySearchParameters : Finds applications by search parameters (initially one).
      *
      * @param searchParameters  (required)
      * @return OK (status code 200)
      *         or Invalid status value (status code 400)
      */
     @Operation(
-        operationId = "applicationStatusGetBySearchParametersPost",
+        operationId = "v1ApplicationStatusGetBySearchParametersPost",
         summary = "Finds applications by search parameters (initially one).",
         responses = {
             @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation =  SearchResponse.class))),
@@ -57,11 +98,11 @@ public interface ApplicationStatusApi {
     )
     @RequestMapping(
         method = RequestMethod.POST,
-        value = "/applicationStatus/getBySearchParameters",
+        value = "/v1/applicationStatus/getBySearchParameters",
         produces = { "application/json" },
         consumes = { "application/json" }
     )
-    default ResponseEntity<SearchResponse> applicationStatusGetBySearchParametersPost(
+    default ResponseEntity<SearchResponse> v1ApplicationStatusGetBySearchParametersPost(
         @Parameter(name = "SearchParameters", description = "", required = true, schema = @Schema(description = "")) @Valid @RequestBody SearchParameters searchParameters
     ) {
         getRequest().ifPresent(request -> {

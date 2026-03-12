@@ -19,7 +19,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "SearchResponse_applicationStatus_claimReasonType", description = "Type of reason for claim on application. **Note:** may not be available for any cases")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-12T18:03:21.228960Z[Europe/London]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-12T18:32:14.905283Z[Europe/London]")
 public class SearchResponseApplicationStatusClaimReasonType   {
 
   @JsonProperty("code")

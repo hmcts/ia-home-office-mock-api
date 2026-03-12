@@ -7,15 +7,15 @@ import org.springframework.web.context.request.NativeWebRequest;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-12T18:03:21.228960Z[Europe/London]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-12T18:32:14.905283Z[Europe/London]")
 @Controller
-@RequestMapping("${openapi.appealsInterface.base-path:/v1}")
-public class ApplicationStatusApiController implements ApplicationStatusApi {
+@RequestMapping("${openapi.appealsInterface.base-path:}")
+public class V1ApiController implements V1Api {
 
     private final NativeWebRequest request;
 
     @Autowired
-    public ApplicationStatusApiController(NativeWebRequest request) {
+    public V1ApiController(NativeWebRequest request) {
         this.request = request;
     }
 

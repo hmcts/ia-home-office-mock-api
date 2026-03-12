@@ -9,7 +9,7 @@ info:
     name: "Apache 2.0"
     url: "http://www.apache.org/licenses/LICENSE-2.0.html"
 servers:
-  - url: https://somehost.example.com/v1
+  - url: https://somehost.example.com
 tags:
   - name: "Appeals"
     description: "Appeals interface"
@@ -25,7 +25,7 @@ paths:
           required: true
           schema:
             type: string
-            pattern: '^(\d{4}-\d{4}-\d{4}-\d{4})|(GWF\d{9})$'
+            pattern: '^(\d{4}-\d{4}-\d{4}-\d{4}|GWF\d{9})$'
       responses:
         "200":
           description: OK
@@ -39,7 +39,7 @@ paths:
             application/json:
                 schema:
                   $ref: "#/components/schemas/SearchErrorResponse"
-  /applicationStatus/getBySearchParameters:
+  /v1/applicationStatus/getBySearchParameters:
     post:
       summary: "Finds applications by search parameters (initially one)."
       requestBody:
@@ -65,7 +65,7 @@ paths:
             application/json:
                 schema:
                   $ref: "#/components/schemas/SearchErrorResponse"
-  /applicationInstruct/setInstruct:
+  /v1/applicationInstruct/setInstruct:
     post:
       summary: "Instructs Home Office downstream systems. Note: Use of the term 'instruct' avoids any confusion with existing business terms, such as 'notification' and 'direction', which are not overly descriptive to the Home Office."
       requestBody:

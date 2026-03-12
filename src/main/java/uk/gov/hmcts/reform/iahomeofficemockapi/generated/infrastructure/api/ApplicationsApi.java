@@ -30,7 +30,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-12T18:03:21.228960Z[Europe/London]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-12T18:32:14.905283Z[Europe/London]")
 @Validated
 @Tag(name = "applications", description = "the applications API")
 public interface ApplicationsApi {
@@ -61,7 +61,7 @@ public interface ApplicationsApi {
         produces = { "application/json" }
     )
     default ResponseEntity<SearchResponse> applicationsV1IdGet(
-        @Pattern(regexp = "^(\\d{4}-\\d{4}-\\d{4}-\\d{4})|(GWF\\d{9})$") @Parameter(name = "id", description = "Application ID", required = true, schema = @Schema(description = "")) @PathVariable("id") String id
+        @Pattern(regexp = "^(\\d{4}-\\d{4}-\\d{4}-\\d{4}|GWF\\d{9})$") @Parameter(name = "id", description = "Application ID", required = true, schema = @Schema(description = "")) @PathVariable("id") String id
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
