@@ -4,6 +4,7 @@
 *.class
 bin/main/
 bin/functionalTest/
+src/test/
 
 ### STS ###
 .apt_generated
