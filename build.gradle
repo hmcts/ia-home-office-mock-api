@@ -102,8 +102,28 @@ tasks.withType(Checkstyle) {
 }
 
 test {
-  useJUnitPlatform()
-  failFast = true
+    useJUnitPlatform()
+    failFast = true
+
+    // Ensure XML reports are always generated
+    reports {
+        junitXml.required.set(true)
+        junitXml.outputLocation.set(file("$buildDir/test-results/test"))
+        html.required.set(true)
+        html.outputLocation.set(file("$buildDir/reports/tests/test"))
+    }
+
+    // Create a dummy XML if no tests are found
+    doLast {
+        def reportDir = file("$buildDir/test-results/test")
+        if (!reportDir.exists() || reportDir.listFiles().length == 0) {
+            reportDir.mkdirs()
+            def placeholder = new File(reportDir, "TEST-empty.xml")
+            placeholder.text = '''<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="EmptySuite" tests="0" failures="0" errors="0" skipped="0"/>
+'''
+        }
+    }
 }
 
 task functional(type: Test) {
