@@ -1,22 +1,28 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
+import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.ErrorResponse;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.MessageHeader;
 import org.openapitools.jackson.nullable.JsonNullable;
+import java.time.OffsetDateTime;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
+import io.swagger.v3.oas.annotations.media.Schema;
+
+
+import java.util.*;
+import javax.annotation.Generated;
 
 /**
  * InstructErrorResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-11T18:43:20.015892Z[Europe/London]")
 
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-12T18:03:21.228960Z[Europe/London]")
 public class InstructErrorResponse   {
+
   @JsonProperty("messageHeader")
   private MessageHeader messageHeader;
 
@@ -32,10 +38,8 @@ public class InstructErrorResponse   {
    * Get messageHeader
    * @return messageHeader
   */
-  @ApiModelProperty(value = "")
-
-  @Valid
-
+  @Valid 
+  @Schema(name = "messageHeader", required = false)
   public MessageHeader getMessageHeader() {
     return messageHeader;
   }
@@ -53,10 +57,8 @@ public class InstructErrorResponse   {
    * Get errorDetail
    * @return errorDetail
   */
-  @ApiModelProperty(value = "")
-
-  @Valid
-
+  @Valid 
+  @Schema(name = "errorDetail", required = false)
   public ErrorResponse getErrorDetail() {
     return errorDetail;
   }
@@ -65,9 +67,8 @@ public class InstructErrorResponse   {
     this.errorDetail = errorDetail;
   }
 
-
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -88,7 +89,6 @@ public class InstructErrorResponse   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InstructErrorResponse {\n");
-    
     sb.append("    messageHeader: ").append(toIndentedString(messageHeader)).append("\n");
     sb.append("    errorDetail: ").append(toIndentedString(errorDetail)).append("\n");
     sb.append("}");
@@ -99,7 +99,7 @@ public class InstructErrorResponse   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

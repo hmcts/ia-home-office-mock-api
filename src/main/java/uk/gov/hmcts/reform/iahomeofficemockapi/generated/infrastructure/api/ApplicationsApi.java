@@ -6,7 +6,6 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.infrastructure.api;
 
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchErrorResponse;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchParameters;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -33,36 +32,36 @@ import javax.annotation.Generated;
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-12T18:03:21.228960Z[Europe/London]")
 @Validated
-@Tag(name = "applicationStatus", description = "the applicationStatus API")
-public interface ApplicationStatusApi {
+@Tag(name = "applications", description = "the applications API")
+public interface ApplicationsApi {
 
     default Optional<NativeWebRequest> getRequest() {
         return Optional.empty();
     }
 
     /**
-     * POST /applicationStatus/getBySearchParameters : Finds applications by search parameters (initially one).
+     * GET /applications/v1/{id} : Gets the appellants&#39; details of an application for immigration or asylum from the Home Office.
+     * This resource represents the people involved in an application for immigration or asylum from the Home Office.  The application number is identified by the &#x60;id&#x60; passed in, which is a UAN (16 digits in four blocks of four separated by dashes) or a GWF (beginning wth the letters **GWF** followed by nine digits).
      *
-     * @param searchParameters  (required)
+     * @param id Application ID (required)
      * @return OK (status code 200)
-     *         or Invalid status value (status code 400)
+     *         or Really bad request, man; like, just awful (status code 400)
      */
     @Operation(
-        operationId = "applicationStatusGetBySearchParametersPost",
-        summary = "Finds applications by search parameters (initially one).",
+        operationId = "applicationsV1IdGet",
+        summary = "Gets the appellants' details of an application for immigration or asylum from the Home Office.",
         responses = {
             @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation =  SearchResponse.class))),
-            @ApiResponse(responseCode = "400", description = "Invalid status value", content = @Content(mediaType = "application/json", schema = @Schema(implementation =  SearchErrorResponse.class)))
+            @ApiResponse(responseCode = "400", description = "Really bad request, man; like, just awful", content = @Content(mediaType = "application/json", schema = @Schema(implementation =  SearchErrorResponse.class)))
         }
     )
     @RequestMapping(
-        method = RequestMethod.POST,
-        value = "/applicationStatus/getBySearchParameters",
-        produces = { "application/json" },
-        consumes = { "application/json" }
+        method = RequestMethod.GET,
+        value = "/applications/v1/{id}",
+        produces = { "application/json" }
     )
-    default ResponseEntity<SearchResponse> applicationStatusGetBySearchParametersPost(
-        @Parameter(name = "SearchParameters", description = "", required = true, schema = @Schema(description = "")) @Valid @RequestBody SearchParameters searchParameters
+    default ResponseEntity<SearchResponse> applicationsV1IdGet(
+        @Pattern(regexp = "^(\\d{4}-\\d{4}-\\d{4}-\\d{4})|(GWF\\d{9})$") @Parameter(name = "id", description = "Application ID", required = true, schema = @Schema(description = "")) @PathVariable("id") String id
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {

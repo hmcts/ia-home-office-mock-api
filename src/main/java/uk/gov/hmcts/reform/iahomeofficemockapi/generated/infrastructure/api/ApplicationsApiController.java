@@ -10,12 +10,12 @@ import javax.annotation.Generated;
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-12T18:03:21.228960Z[Europe/London]")
 @Controller
 @RequestMapping("${openapi.appealsInterface.base-path:/v1}")
-public class ApplicationStatusApiController implements ApplicationStatusApi {
+public class ApplicationsApiController implements ApplicationsApi {
 
     private final NativeWebRequest request;
 
     @Autowired
-    public ApplicationStatusApiController(NativeWebRequest request) {
+    public ApplicationsApiController(NativeWebRequest request) {
         this.request = request;
     }
 

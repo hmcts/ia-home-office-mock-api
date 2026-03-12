@@ -1,22 +1,28 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
+import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
+import java.time.OffsetDateTime;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
+import io.swagger.v3.oas.annotations.media.Schema;
+
+
+import java.util.*;
+import javax.annotation.Generated;
 
 /**
  * Court type and outcome of the appeal.
  */
-@ApiModel(description = "Court type and outcome of the appeal.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-11T18:43:20.015892Z[Europe/London]")
 
+@Schema(name = "CourtOutcome", description = "Court type and outcome of the appeal.")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-12T18:03:21.228960Z[Europe/London]")
 public class CourtOutcome   {
+
   /**
    * Court (tribunal) type
    */
@@ -112,10 +118,8 @@ public class CourtOutcome   {
    * Court (tribunal) type
    * @return courtType
   */
-  @ApiModelProperty(required = true, value = "Court (tribunal) type")
-  @NotNull
-
-
+  @NotNull 
+  @Schema(name = "courtType", description = "Court (tribunal) type", required = true)
   public CourtTypeEnum getCourtType() {
     return courtType;
   }
@@ -133,10 +137,8 @@ public class CourtOutcome   {
    * Appeal outcome
    * @return outcome
   */
-  @ApiModelProperty(required = true, value = "Appeal outcome")
-  @NotNull
-
-
+  @NotNull 
+  @Schema(name = "outcome", description = "Appeal outcome", required = true)
   public OutcomeEnum getOutcome() {
     return outcome;
   }
@@ -145,9 +147,8 @@ public class CourtOutcome   {
     this.outcome = outcome;
   }
 
-
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -168,7 +169,6 @@ public class CourtOutcome   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CourtOutcome {\n");
-    
     sb.append("    courtType: ").append(toIndentedString(courtType)).append("\n");
     sb.append("    outcome: ").append(toIndentedString(outcome)).append("\n");
     sb.append("}");
@@ -179,7 +179,7 @@ public class CourtOutcome   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

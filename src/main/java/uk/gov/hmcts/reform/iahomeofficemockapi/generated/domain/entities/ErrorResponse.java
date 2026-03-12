@@ -1,21 +1,27 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
+import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
+import java.time.OffsetDateTime;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
+import io.swagger.v3.oas.annotations.media.Schema;
+
+
+import java.util.*;
+import javax.annotation.Generated;
 
 /**
  * ErrorResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-11T18:43:20.015892Z[Europe/London]")
 
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-12T18:03:21.228960Z[Europe/London]")
 public class ErrorResponse   {
+
   @JsonProperty("success")
   private Boolean success;
 
@@ -81,9 +87,8 @@ public class ErrorResponse   {
    * Get success
    * @return success
   */
-  @ApiModelProperty(example = "false", value = "")
-
-
+  
+  @Schema(name = "success", example = "false", required = false)
   public Boolean getSuccess() {
     return success;
   }
@@ -101,9 +106,8 @@ public class ErrorResponse   {
    * Error message text
    * @return messageText
   */
-  @ApiModelProperty(example = "Invalid reference format. Format should be either nnnn-nnnn-nnnn-nnnn or 0(0) followed by digits (total length 9 or 10)", value = "Error message text")
-
-
+  
+  @Schema(name = "messageText", example = "Invalid reference format. Format should be either nnnn-nnnn-nnnn-nnnn or 0(0) followed by digits (total length 9 or 10)", description = "Error message text", required = false)
   public String getMessageText() {
     return messageText;
   }
@@ -121,9 +125,8 @@ public class ErrorResponse   {
    * Error code (non-HTTP)    1010 - No event history details    1020 - No service delivery details    1030 - No valid service delivery details    1040 - Method argument not valid    1060 - Message format invalid    1070 - Internal system error    2000 - Call to CSDP unavailable    2010 - Call to AWS SQS unavailable
    * @return errorCode
   */
-  @ApiModelProperty(value = "Error code (non-HTTP)    1010 - No event history details    1020 - No service delivery details    1030 - No valid service delivery details    1040 - Method argument not valid    1060 - Message format invalid    1070 - Internal system error    2000 - Call to CSDP unavailable    2010 - Call to AWS SQS unavailable")
-
-
+  
+  @Schema(name = "errorCode", description = "Error code (non-HTTP)    1010 - No event history details    1020 - No service delivery details    1030 - No valid service delivery details    1040 - Method argument not valid    1060 - Message format invalid    1070 - Internal system error    2000 - Call to CSDP unavailable    2010 - Call to AWS SQS unavailable", required = false)
   public ErrorCodeEnum getErrorCode() {
     return errorCode;
   }
@@ -132,9 +135,8 @@ public class ErrorResponse   {
     this.errorCode = errorCode;
   }
 
-
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -156,7 +158,6 @@ public class ErrorResponse   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ErrorResponse {\n");
-    
     sb.append("    success: ").append(toIndentedString(success)).append("\n");
     sb.append("    messageText: ").append(toIndentedString(messageText)).append("\n");
     sb.append("    errorCode: ").append(toIndentedString(errorCode)).append("\n");
@@ -168,7 +169,7 @@ public class ErrorResponse   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

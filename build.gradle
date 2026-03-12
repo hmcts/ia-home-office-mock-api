@@ -9,7 +9,7 @@ plugins {
   id 'com.github.ben-manes.versions' version '0.28.0'
   id 'org.sonarqube' version '4.3.0.3225'
   id 'maven-publish'
-  id "org.openapi.generator" version "4.3.0"
+  id "org.openapi.generator" version "5.4.0"
 }
 
 apply plugin: 'java'
@@ -79,9 +79,15 @@ task copyApiDocs(type: Copy) {
   into(targetPath)
 }
 
-tasks.withType(Copy) {
-  dependsOn tasks.openApiGenerate
+task copyOpenApiYaml(type: Copy) {
+  // copy original YAML file so that Spring can load it
+  from("$apiGenerateBuildDir/src/main/resources/openapi.yaml")
+  into("$projectDir/src/main/resources/")
 }
+
+copyApiDocs.dependsOn copyOpenApiYaml
+copyApiDocs.dependsOn tasks.openApiGenerate
+copyOpenApiYaml.dependsOn tasks.openApiGenerate
 
 
 tasks.withType(JavaCompile) {
@@ -98,7 +104,7 @@ tasks.withType(Test) {
 }
 
 tasks.withType(Checkstyle) {
-    exclude '**/generated/**'
+    exclude '**/generated/**', '**/openapitools/**'
 }
 
 test {

@@ -1,25 +1,31 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
+import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.MessageHeader;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchParametersSearchParams;
 import org.openapitools.jackson.nullable.JsonNullable;
+import java.time.OffsetDateTime;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
+import io.swagger.v3.oas.annotations.media.Schema;
+
+
+import java.util.*;
+import javax.annotation.Generated;
 
 /**
- * Parameters passed in to enable searching for applications. Currently supports only one type/value pair but the interface is designed to support multiple in future.    As a side effect this service will send a notification to the Event Publisher to inform them that a request for a possible appeal has been made.
+ * Parameters passed in to enable searching for applications. Currently supports only one type/value pair but the interface is designed to support multiple in future.  As a side effect this service will send a notification to the Event Publisher to inform them that a request for a possible appeal has been made.
  */
-@ApiModel(description = "Parameters passed in to enable searching for applications. Currently supports only one type/value pair but the interface is designed to support multiple in future.    As a side effect this service will send a notification to the Event Publisher to inform them that a request for a possible appeal has been made.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-11T18:43:20.015892Z[Europe/London]")
 
+@Schema(name = "SearchParameters", description = "Parameters passed in to enable searching for applications. Currently supports only one type/value pair but the interface is designed to support multiple in future.  As a side effect this service will send a notification to the Event Publisher to inform them that a request for a possible appeal has been made.")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-12T18:03:21.228960Z[Europe/London]")
 public class SearchParameters   {
+
   @JsonProperty("messageHeader")
   private MessageHeader messageHeader;
 
@@ -36,11 +42,8 @@ public class SearchParameters   {
    * Get messageHeader
    * @return messageHeader
   */
-  @ApiModelProperty(required = true, value = "")
-  @NotNull
-
-  @Valid
-
+  @NotNull @Valid 
+  @Schema(name = "messageHeader", required = true)
   public MessageHeader getMessageHeader() {
     return messageHeader;
   }
@@ -63,11 +66,8 @@ public class SearchParameters   {
    * Get searchParams
    * @return searchParams
   */
-  @ApiModelProperty(required = true, value = "")
-  @NotNull
-
-  @Valid
-@Size(min=1) 
+  @NotNull @Valid @Size(min = 1) 
+  @Schema(name = "searchParams", required = true)
   public List<SearchParametersSearchParams> getSearchParams() {
     return searchParams;
   }
@@ -76,9 +76,8 @@ public class SearchParameters   {
     this.searchParams = searchParams;
   }
 
-
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -99,7 +98,6 @@ public class SearchParameters   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SearchParameters {\n");
-    
     sb.append("    messageHeader: ").append(toIndentedString(messageHeader)).append("\n");
     sb.append("    searchParams: ").append(toIndentedString(searchParams)).append("\n");
     sb.append("}");
@@ -110,7 +108,7 @@ public class SearchParameters   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

@@ -1,23 +1,29 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
+import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.Consumer;
 import org.openapitools.jackson.nullable.JsonNullable;
+import java.time.OffsetDateTime;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
+import io.swagger.v3.oas.annotations.media.Schema;
+
+
+import java.util.*;
+import javax.annotation.Generated;
 
 /**
  * Consumer reference; reference provided to Home Office, to be used in subsequent calls to update the same item.
  */
-@ApiModel(description = "Consumer reference; reference provided to Home Office, to be used in subsequent calls to update the same item.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-11T18:43:20.015892Z[Europe/London]")
 
+@Schema(name = "ConsumerRef", description = "Consumer reference; reference provided to Home Office, to be used in subsequent calls to update the same item.")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-12T18:03:21.228960Z[Europe/London]")
 public class ConsumerRef   {
+
   @JsonProperty("consumer")
   private Consumer consumer;
 
@@ -72,11 +78,8 @@ public class ConsumerRef   {
    * Get consumer
    * @return consumer
   */
-  @ApiModelProperty(required = true, value = "")
-  @NotNull
-
-  @Valid
-
+  @NotNull @Valid 
+  @Schema(name = "consumer", required = true)
   public Consumer getConsumer() {
     return consumer;
   }
@@ -94,10 +97,8 @@ public class ConsumerRef   {
    * Short code for the reference
    * @return code
   */
-  @ApiModelProperty(required = true, value = "Short code for the reference")
-  @NotNull
-
-
+  @NotNull 
+  @Schema(name = "code", description = "Short code for the reference", required = true)
   public CodeEnum getCode() {
     return code;
   }
@@ -115,9 +116,8 @@ public class ConsumerRef   {
    * Get description
    * @return description
   */
-  @ApiModelProperty(example = "HMCTS challenge reference", value = "")
-
-
+  
+  @Schema(name = "description", example = "HMCTS challenge reference", required = false)
   public String getDescription() {
     return description;
   }
@@ -135,10 +135,8 @@ public class ConsumerRef   {
    * Value for the reference
    * @return value
   */
-  @ApiModelProperty(example = "xxxyyyynnn-nnn", required = true, value = "Value for the reference")
-  @NotNull
-
-
+  @NotNull 
+  @Schema(name = "value", example = "xxxyyyynnn-nnn", description = "Value for the reference", required = true)
   public String getValue() {
     return value;
   }
@@ -147,9 +145,8 @@ public class ConsumerRef   {
     this.value = value;
   }
 
-
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -172,7 +169,6 @@ public class ConsumerRef   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConsumerRef {\n");
-    
     sb.append("    consumer: ").append(toIndentedString(consumer)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
@@ -185,7 +181,7 @@ public class ConsumerRef   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

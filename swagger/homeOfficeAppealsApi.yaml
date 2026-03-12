@@ -14,6 +14,31 @@ tags:
   - name: "Appeals"
     description: "Appeals interface"
 paths:
+  /applications/v1/{id}:
+    get:
+      summary: Gets the appellants' details of an application for immigration or asylum from the Home Office.
+      description: This resource represents the people involved in an application for immigration or asylum from the Home Office.  The application number is identified by the `id` passed in, which is a UAN (16 digits in four blocks of four separated by dashes) or a GWF (beginning wth the letters **GWF** followed by nine digits).
+      parameters:
+        - name: id
+          in: path
+          description: Application ID
+          required: true
+          schema:
+            type: string
+            pattern: '^(\d{4}-\d{4}-\d{4}-\d{4})|(GWF\d{9})$'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SearchResponse"
+        "400":
+          description: Really bad request, man; like, just awful
+          content:
+            application/json:
+                schema:
+                  $ref: "#/components/schemas/SearchErrorResponse"
   /applicationStatus/getBySearchParameters:
     post:
       summary: "Finds applications by search parameters (initially one)."
@@ -65,9 +90,7 @@ paths:
 components:
   schemas:
     SearchParameters:
-      description: "Parameters passed in to enable searching for applications. Currently supports only one type/value pair but the interface is designed to support multiple in future.
-      \n\n
-      As a side effect this service will send a notification to the Event Publisher to inform them that a request for a possible appeal has been made."
+      description: "Parameters passed in to enable searching for applications. Currently supports only one type/value pair but the interface is designed to support multiple in future.\n\nAs a side effect this service will send a notification to the Event Publisher to inform them that a request for a possible appeal has been made."
       properties:
         messageHeader:
           $ref: "#/components/schemas/MessageHeader"

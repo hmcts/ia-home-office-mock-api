@@ -1,21 +1,27 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
+import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
+import java.time.OffsetDateTime;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
+import io.swagger.v3.oas.annotations.media.Schema;
+
+
+import java.util.*;
+import javax.annotation.Generated;
 
 /**
  * Role sub-type of the individual in this application. **Note:** may not be available for legacy CID cases
  */
-@ApiModel(description = "Role sub-type of the individual in this application. **Note:** may not be available for legacy CID cases")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-11T18:43:20.015892Z[Europe/London]")
 
+@Schema(name = "SearchResponse_applicationStatus_roleSubType", description = "Role sub-type of the individual in this application. **Note:** may not be available for legacy CID cases")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-12T18:03:21.228960Z[Europe/London]")
 public class SearchResponseApplicationStatusRoleSubType   {
+
   @JsonProperty("code")
   private String code;
 
@@ -31,9 +37,8 @@ public class SearchResponseApplicationStatusRoleSubType   {
    * Code for the role sub-type
    * @return code
   */
-  @ApiModelProperty(example = "SPOUSE. Could be MAIN if the role type is APPLICANT", value = "Code for the role sub-type")
-
-
+  
+  @Schema(name = "code", example = "SPOUSE. Could be MAIN if the role type is APPLICANT", description = "Code for the role sub-type", required = false)
   public String getCode() {
     return code;
   }
@@ -51,9 +56,8 @@ public class SearchResponseApplicationStatusRoleSubType   {
    * Description of the role sub-type
    * @return description
   */
-  @ApiModelProperty(example = "Spouse", value = "Description of the role sub-type")
-
-
+  
+  @Schema(name = "description", example = "Spouse", description = "Description of the role sub-type", required = false)
   public String getDescription() {
     return description;
   }
@@ -62,9 +66,8 @@ public class SearchResponseApplicationStatusRoleSubType   {
     this.description = description;
   }
 
-
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -85,7 +88,6 @@ public class SearchResponseApplicationStatusRoleSubType   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SearchResponseApplicationStatusRoleSubType {\n");
-    
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("}");
@@ -96,7 +98,7 @@ public class SearchResponseApplicationStatusRoleSubType   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

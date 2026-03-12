@@ -1,22 +1,28 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
+import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.MessageHeader;
 import org.openapitools.jackson.nullable.JsonNullable;
+import java.time.OffsetDateTime;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
+import io.swagger.v3.oas.annotations.media.Schema;
+
+
+import java.util.*;
+import javax.annotation.Generated;
 
 /**
  * Response round-tripping request message header.
  */
-@ApiModel(description = "Response round-tripping request message header.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-11T18:43:20.015892Z[Europe/London]")
 
+@Schema(name = "InstructResponse", description = "Response round-tripping request message header.")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-12T18:03:21.228960Z[Europe/London]")
 public class InstructResponse   {
+
   @JsonProperty("messageHeader")
   private MessageHeader messageHeader;
 
@@ -29,10 +35,8 @@ public class InstructResponse   {
    * Get messageHeader
    * @return messageHeader
   */
-  @ApiModelProperty(value = "")
-
-  @Valid
-
+  @Valid 
+  @Schema(name = "messageHeader", required = false)
   public MessageHeader getMessageHeader() {
     return messageHeader;
   }
@@ -41,9 +45,8 @@ public class InstructResponse   {
     this.messageHeader = messageHeader;
   }
 
-
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -63,7 +66,6 @@ public class InstructResponse   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InstructResponse {\n");
-    
     sb.append("    messageHeader: ").append(toIndentedString(messageHeader)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -73,7 +75,7 @@ public class InstructResponse   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

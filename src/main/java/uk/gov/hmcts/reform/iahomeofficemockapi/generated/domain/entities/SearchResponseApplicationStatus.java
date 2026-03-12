@@ -1,13 +1,13 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
+import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.format.annotation.DateTimeFormat;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchResponseApplicationStatusApplicationType;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchResponseApplicationStatusClaimReasonType;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchResponseApplicationStatusDecisionCommunication;
@@ -17,16 +17,23 @@ import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchR
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchResponseApplicationStatusRoleSubType;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchResponseApplicationStatusRoleType;
 import org.openapitools.jackson.nullable.JsonNullable;
+import java.time.OffsetDateTime;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
+import io.swagger.v3.oas.annotations.media.Schema;
+
+
+import java.util.*;
+import javax.annotation.Generated;
 
 /**
  * Current status of the individual&#39;s application
  */
-@ApiModel(description = "Current status of the individual's application")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-11T18:43:20.015892Z[Europe/London]")
 
+@Schema(name = "SearchResponse_applicationStatus", description = "Current status of the individual's application")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-12T18:03:21.228960Z[Europe/London]")
 public class SearchResponseApplicationStatus   {
+
   @JsonProperty("documentReference")
   private String documentReference;
 
@@ -46,6 +53,7 @@ public class SearchResponseApplicationStatus   {
   private SearchResponseApplicationStatusDecisionType decisionType;
 
   @JsonProperty("decisionDate")
+  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private OffsetDateTime decisionDate;
 
   @JsonProperty("decisionCommunication")
@@ -68,9 +76,8 @@ public class SearchResponseApplicationStatus   {
    * The UAN or Case ID (CID) passed to the Home Office in the original request. (Allows for the UAN/nn value - nn denoting an individual within a group UAN - to be returned to HMCTS, should this value be available.)
    * @return documentReference
   */
-  @ApiModelProperty(example = "1234-1234-5678-5678/00", value = "The UAN or Case ID (CID) passed to the Home Office in the original request. (Allows for the UAN/nn value - nn denoting an individual within a group UAN - to be returned to HMCTS, should this value be available.)")
-
-
+  
+  @Schema(name = "documentReference", example = "1234-1234-5678-5678/00", description = "The UAN or Case ID (CID) passed to the Home Office in the original request. (Allows for the UAN/nn value - nn denoting an individual within a group UAN - to be returned to HMCTS, should this value be available.)", required = false)
   public String getDocumentReference() {
     return documentReference;
   }
@@ -88,10 +95,8 @@ public class SearchResponseApplicationStatus   {
    * Get roleType
    * @return roleType
   */
-  @ApiModelProperty(value = "")
-
-  @Valid
-
+  @Valid 
+  @Schema(name = "roleType", required = false)
   public SearchResponseApplicationStatusRoleType getRoleType() {
     return roleType;
   }
@@ -109,10 +114,8 @@ public class SearchResponseApplicationStatus   {
    * Get roleSubType
    * @return roleSubType
   */
-  @ApiModelProperty(value = "")
-
-  @Valid
-
+  @Valid 
+  @Schema(name = "roleSubType", required = false)
   public SearchResponseApplicationStatusRoleSubType getRoleSubType() {
     return roleSubType;
   }
@@ -130,10 +133,8 @@ public class SearchResponseApplicationStatus   {
    * Get applicationType
    * @return applicationType
   */
-  @ApiModelProperty(value = "")
-
-  @Valid
-
+  @Valid 
+  @Schema(name = "applicationType", required = false)
   public SearchResponseApplicationStatusApplicationType getApplicationType() {
     return applicationType;
   }
@@ -151,10 +152,8 @@ public class SearchResponseApplicationStatus   {
    * Get claimReasonType
    * @return claimReasonType
   */
-  @ApiModelProperty(value = "")
-
-  @Valid
-
+  @Valid 
+  @Schema(name = "claimReasonType", required = false)
   public SearchResponseApplicationStatusClaimReasonType getClaimReasonType() {
     return claimReasonType;
   }
@@ -172,10 +171,8 @@ public class SearchResponseApplicationStatus   {
    * Get decisionType
    * @return decisionType
   */
-  @ApiModelProperty(value = "")
-
-  @Valid
-
+  @Valid 
+  @Schema(name = "decisionType", required = false)
   public SearchResponseApplicationStatusDecisionType getDecisionType() {
     return decisionType;
   }
@@ -193,10 +190,8 @@ public class SearchResponseApplicationStatus   {
    * Date (and time, if available) of decision made on the application, in the standard format yyyy-mm-dd (with the HH:mm:ss if the time is available - this won't be displayed if it isn't). All dates/times are assumed to be in UTC
    * @return decisionDate
   */
-  @ApiModelProperty(example = "2017-07-21T17:32:28Z", value = "Date (and time, if available) of decision made on the application, in the standard format yyyy-mm-dd (with the HH:mm:ss if the time is available - this won't be displayed if it isn't). All dates/times are assumed to be in UTC")
-
-  @Valid
-
+  @Valid 
+  @Schema(name = "decisionDate", example = "2017-07-21T17:32:28Z", description = "Date (and time, if available) of decision made on the application, in the standard format yyyy-mm-dd (with the HH:mm:ss if the time is available - this won't be displayed if it isn't). All dates/times are assumed to be in UTC", required = false)
   public OffsetDateTime getDecisionDate() {
     return decisionDate;
   }
@@ -214,10 +209,8 @@ public class SearchResponseApplicationStatus   {
    * Get decisionCommunication
    * @return decisionCommunication
   */
-  @ApiModelProperty(value = "")
-
-  @Valid
-
+  @Valid 
+  @Schema(name = "decisionCommunication", required = false)
   public SearchResponseApplicationStatusDecisionCommunication getDecisionCommunication() {
     return decisionCommunication;
   }
@@ -243,10 +236,8 @@ public class SearchResponseApplicationStatus   {
    * Rejection reasons
    * @return rejectionReasons
   */
-  @ApiModelProperty(value = "Rejection reasons")
-
-  @Valid
-
+  @Valid 
+  @Schema(name = "rejectionReasons", description = "Rejection reasons", required = false)
   public List<SearchResponseApplicationStatusRejectionReasons> getRejectionReasons() {
     return rejectionReasons;
   }
@@ -272,10 +263,8 @@ public class SearchResponseApplicationStatus   {
    * Additional attributes (metadata) of the application 
    * @return metadata
   */
-  @ApiModelProperty(value = "Additional attributes (metadata) of the application ")
-
-  @Valid
-
+  @Valid 
+  @Schema(name = "metadata", description = "Additional attributes (metadata) of the application ", required = false)
   public List<SearchResponseApplicationStatusMetadata> getMetadata() {
     return metadata;
   }
@@ -284,9 +273,8 @@ public class SearchResponseApplicationStatus   {
     this.metadata = metadata;
   }
 
-
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -315,7 +303,6 @@ public class SearchResponseApplicationStatus   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SearchResponseApplicationStatus {\n");
-    
     sb.append("    documentReference: ").append(toIndentedString(documentReference)).append("\n");
     sb.append("    roleType: ").append(toIndentedString(roleType)).append("\n");
     sb.append("    roleSubType: ").append(toIndentedString(roleSubType)).append("\n");
@@ -334,7 +321,7 @@ public class SearchResponseApplicationStatus   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }
