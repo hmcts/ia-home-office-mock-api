@@ -24,7 +24,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "SearchResponse", description = "Response containing details of the application search.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-13T15:56:59.887283Z[Europe/London]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-13T17:34:45.614564Z[Europe/London]")
 public class SearchResponse   {
 
   @JsonProperty("messageHeader")

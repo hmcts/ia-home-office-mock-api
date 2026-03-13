@@ -6,6 +6,7 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.infrastructure.api;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.HomeOfficeConsumer;
 import java.time.OffsetDateTime;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchErrorResponse;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchResponse;
@@ -33,7 +34,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-13T15:56:59.887283Z[Europe/London]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-13T17:34:45.614564Z[Europe/London]")
 @Validated
 @Tag(name = "applications", description = "the applications API")
 public interface ApplicationsApi {
@@ -77,7 +78,7 @@ public interface ApplicationsApi {
     default ResponseEntity<SearchResponse> applicationsV1IdGet(
         @Pattern(regexp = "^(\\d{4}-\\d{4}-\\d{4}-\\d{4}|GWF\\d{9})$") @Parameter(name = "id", description = "Application ID", required = true, schema = @Schema(description = "")) @PathVariable("id") String id,
         @Parameter(name = "Home-Office-Correlation-ID", description = "", required = true, schema = @Schema(description = "")) @RequestHeader(value = "Home-Office-Correlation-ID", required = true) UUID homeOfficeCorrelationID,
-        @Parameter(name = "Home-Office-Consumer", description = "", required = true, schema = @Schema(description = "", allowableValues = { "HMCTS" })) @RequestHeader(value = "Home-Office-Consumer", required = true) String homeOfficeConsumer,
+        @Parameter(name = "Home-Office-Consumer", description = "", required = true, schema = @Schema(description = "", allowableValues = { "HMCTS" })) @RequestHeader(value = "Home-Office-Consumer", required = true) HomeOfficeConsumer homeOfficeConsumer,
         @Parameter(name = "Home-Office-Event-DateTime", description = "", required = true, schema = @Schema(description = "")) @RequestHeader(value = "Home-Office-Event-DateTime", required = true) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) OffsetDateTime homeOfficeEventDateTime
     ) {
         getRequest().ifPresent(request -> {

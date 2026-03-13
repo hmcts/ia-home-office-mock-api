@@ -49,10 +49,7 @@ paths:
         name: Home-Office-Consumer
         required: true
         schema:
-          enum:
-          - HMCTS
-          example: null
-          type: string
+          $ref: "#/components/schemas/HomeOfficeConsumer"
         style: simple
       - explode: false
         in: header
@@ -158,6 +155,11 @@ paths:
       x-accepts: application/json
 components:
   schemas:
+    HomeOfficeConsumer:
+      enum:
+      - HMCTS
+      example: null
+      type: string
     SearchParameters:
       description: |-
         Parameters passed in to enable searching for applications. Currently supports only one type/value pair but the interface is designed to support multiple in future.

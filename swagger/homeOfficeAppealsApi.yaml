@@ -35,9 +35,7 @@ paths:
         - in: header
           name: Home-Office-Consumer
           schema:
-            type: string
-            enum:
-              - "HMCTS"
+            $ref: '#/components/schemas/HomeOfficeConsumer'
           required: true
         - in: header
           name: Home-Office-Event-DateTime
@@ -132,6 +130,10 @@ paths:
                   $ref: "#/components/schemas/InstructErrorResponse"
 components:
   schemas:
+    HomeOfficeConsumer:
+      type: string
+      enum:
+        - HMCTS
     SearchParameters:
       description: "Parameters passed in to enable searching for applications. Currently supports only one type/value pair but the interface is designed to support multiple in future.\n\nAs a side effect this service will send a notification to the Event Publisher to inform them that a request for a possible appeal has been made."
       properties:
