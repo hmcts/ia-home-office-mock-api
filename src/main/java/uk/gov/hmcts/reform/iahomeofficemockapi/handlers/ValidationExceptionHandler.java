@@ -33,6 +33,16 @@ public class ValidationExceptionHandler {
         return ResponseEntity.badRequest().body(errorResponse);
     }
 
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<SearchErrorResponse> handleIllegalArgument(
+            IllegalArgumentException ex) {
+
+        ErrorCode errorCode = ErrorCode.INVALID_MESSAGE_HEADERS;
+        SearchErrorResponse errorResponse = getErrorResponse(ex, errorCode);
+        
+        return ResponseEntity.badRequest().body(errorResponse);
+    }
+
     private SearchErrorResponse getErrorResponse(Exception ex, ErrorCode errorCode) {
         ErrorResponse errorDetail = new ErrorResponse();
         errorDetail.setSuccess(ErrorResponse.SuccessEnum.fromValue(errorCode.getSuccess()));

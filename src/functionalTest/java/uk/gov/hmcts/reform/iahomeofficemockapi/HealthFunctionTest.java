@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.infrastructure.api.invoker.OpenAPI2SpringBoot;
 
@@ -26,6 +25,9 @@ import uk.gov.hmcts.reform.iahomeofficemockapi.generated.infrastructure.api.invo
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class HealthFunctionTest {
 
+    private static final String MEDIA_TYPE_APPLICATION_SPRING_BOOT_ACTUATOR = 
+            "application/vnd.spring-boot.actuator.v3+json";
+
     @Value("${targetInstance}") private String targetInstance;
 
     @BeforeEach
@@ -35,7 +37,7 @@ public class HealthFunctionTest {
     }
 
     @Test
-    public void should_allow_unauthenticated_requests_to_welcome_message_and_return_200_response_code()
+    public void should_allow_unauthenticated_requests_to_health_check_and_return_200_response_code()
         throws Exception {
 
         final Response response = SerenityRest
@@ -48,7 +50,7 @@ public class HealthFunctionTest {
         response
             .then()
             .statusCode(HttpStatus.OK.value())
-            .contentType(MediaType.APPLICATION_JSON_VALUE);
+            .contentType(MEDIA_TYPE_APPLICATION_SPRING_BOOT_ACTUATOR);
     }
 
     private static boolean allStatusesUp(String json) throws Exception {
