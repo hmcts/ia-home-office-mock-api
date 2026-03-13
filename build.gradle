@@ -57,13 +57,15 @@ def apiGenerateBuildDir = "$buildDir/apidocs".toString()
 
 openApiGenerate {
   generatorName = "spring"
+
   inputSpec = "$projectDir/swagger/homeOfficeAppealsApi.yaml".toString()
   outputDir = apiGenerateBuildDir
+
   apiPackage = "uk.gov.hmcts.reform.iahomeofficemockapi.generated.infrastructure.api"
   invokerPackage = "uk.gov.hmcts.reform.iahomeofficemockapi.generated.infrastructure.api.invoker"
   modelPackage = "uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities"
+
   configOptions = [
-          dateLibrary: "java8",
           dateLibrary: "java8",
           serializationLibrary: "jackson"
   ]
@@ -104,7 +106,7 @@ tasks.withType(Test) {
 }
 
 tasks.withType(Checkstyle) {
-    exclude '**/generated/**', '**/openapitools/**'
+    exclude '**/generated/**', '**/openapitools/**', '**/ErrorCode.java', '**/Application.java'
 }
 
 test {
@@ -350,7 +352,7 @@ dependencies {
   smokeTestImplementation sourceSets.main.runtimeClasspath
 }
 
-mainClassName = 'uk.gov.hmcts.reform.iahomeofficemockapi.generated.infrastructure.api.invoker.OpenAPI2SpringBoot'
+mainClassName = 'uk.gov.hmcts.reform.iahomeofficemockapi.Application'
 def jarName = 'ia-home-office-mock-api.jar'
 
 bootJar {

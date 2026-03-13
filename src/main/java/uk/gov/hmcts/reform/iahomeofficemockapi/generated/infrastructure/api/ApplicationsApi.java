@@ -5,8 +5,11 @@
  */
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.infrastructure.api;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import java.time.OffsetDateTime;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchErrorResponse;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchResponse;
+import java.util.UUID;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
@@ -30,7 +33,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-12T18:32:14.905283Z[Europe/London]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-13T15:56:59.887283Z[Europe/London]")
 @Validated
 @Tag(name = "applications", description = "the applications API")
 public interface ApplicationsApi {
@@ -44,15 +47,26 @@ public interface ApplicationsApi {
      * This resource represents the people involved in an application for immigration or asylum from the Home Office.  The application number is identified by the &#x60;id&#x60; passed in, which is a UAN (16 digits in four blocks of four separated by dashes) or a GWF (beginning wth the letters **GWF** followed by nine digits).
      *
      * @param id Application ID (required)
-     * @return OK (status code 200)
-     *         or Really bad request, man; like, just awful (status code 400)
+     * @param homeOfficeCorrelationID  (required)
+     * @param homeOfficeConsumer  (required)
+     * @param homeOfficeEventDateTime  (required)
+     * @return OK (response returned) (status code 200)
+     *         or Bad request (missing or invalid application ID, HTTP headers etc.) (status code 400)
+     *         or Not authenticated (missing or invalid credentials) (status code 401)
+     *         or Not authorised (insufficient permissions to retrieve this resource) (status code 403)
+     *         or Not found (no application with that ID exists on the server) (status code 404)
+     *         or Internal server error (status code 5XX)
      */
     @Operation(
         operationId = "applicationsV1IdGet",
         summary = "Gets the appellants' details of an application for immigration or asylum from the Home Office.",
         responses = {
-            @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation =  SearchResponse.class))),
-            @ApiResponse(responseCode = "400", description = "Really bad request, man; like, just awful", content = @Content(mediaType = "application/json", schema = @Schema(implementation =  SearchErrorResponse.class)))
+            @ApiResponse(responseCode = "200", description = "OK (response returned)", content = @Content(mediaType = "application/json", schema = @Schema(implementation =  SearchResponse.class))),
+            @ApiResponse(responseCode = "400", description = "Bad request (missing or invalid application ID, HTTP headers etc.)", content = @Content(mediaType = "application/json", schema = @Schema(implementation =  SearchErrorResponse.class))),
+            @ApiResponse(responseCode = "401", description = "Not authenticated (missing or invalid credentials)", content = @Content(mediaType = "application/json", schema = @Schema(implementation =  SearchErrorResponse.class))),
+            @ApiResponse(responseCode = "403", description = "Not authorised (insufficient permissions to retrieve this resource)", content = @Content(mediaType = "application/json", schema = @Schema(implementation =  SearchErrorResponse.class))),
+            @ApiResponse(responseCode = "404", description = "Not found (no application with that ID exists on the server)", content = @Content(mediaType = "application/json", schema = @Schema(implementation =  SearchErrorResponse.class))),
+            @ApiResponse(responseCode = "5XX", description = "Internal server error", content = @Content(mediaType = "application/json", schema = @Schema(implementation =  SearchErrorResponse.class)))
         }
     )
     @RequestMapping(
@@ -61,7 +75,10 @@ public interface ApplicationsApi {
         produces = { "application/json" }
     )
     default ResponseEntity<SearchResponse> applicationsV1IdGet(
-        @Pattern(regexp = "^(\\d{4}-\\d{4}-\\d{4}-\\d{4}|GWF\\d{9})$") @Parameter(name = "id", description = "Application ID", required = true, schema = @Schema(description = "")) @PathVariable("id") String id
+        @Pattern(regexp = "^(\\d{4}-\\d{4}-\\d{4}-\\d{4}|GWF\\d{9})$") @Parameter(name = "id", description = "Application ID", required = true, schema = @Schema(description = "")) @PathVariable("id") String id,
+        @Parameter(name = "Home-Office-Correlation-ID", description = "", required = true, schema = @Schema(description = "")) @RequestHeader(value = "Home-Office-Correlation-ID", required = true) UUID homeOfficeCorrelationID,
+        @Parameter(name = "Home-Office-Consumer", description = "", required = true, schema = @Schema(description = "", allowableValues = { "HMCTS" })) @RequestHeader(value = "Home-Office-Consumer", required = true) String homeOfficeConsumer,
+        @Parameter(name = "Home-Office-Event-DateTime", description = "", required = true, schema = @Schema(description = "")) @RequestHeader(value = "Home-Office-Event-DateTime", required = true) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) OffsetDateTime homeOfficeEventDateTime
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {

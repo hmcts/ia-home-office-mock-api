@@ -19,29 +19,72 @@ paths:
       summary: Gets the appellants' details of an application for immigration or asylum from the Home Office.
       description: This resource represents the people involved in an application for immigration or asylum from the Home Office.  The application number is identified by the `id` passed in, which is a UAN (16 digits in four blocks of four separated by dashes) or a GWF (beginning wth the letters **GWF** followed by nine digits).
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: Application ID
           required: true
           schema:
             type: string
             pattern: '^(\d{4}-\d{4}-\d{4}-\d{4}|GWF\d{9})$'
+        - in: header
+          name: Home-Office-Correlation-ID
+          schema:
+            type: string
+            format: uuid
+          required: true
+        - in: header
+          name: Home-Office-Consumer
+          schema:
+            type: string
+            enum:
+              - "HMCTS"
+          required: true
+        - in: header
+          name: Home-Office-Event-DateTime
+          schema:
+            type: string
+            format: date-time
+          required: true
       responses:
         "200":
-          description: OK
+          description: OK (response returned)
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/SearchResponse"
         "400":
-          description: Really bad request, man; like, just awful
+          description: Bad request (missing or invalid application ID, HTTP headers etc.)
+          content:
+            application/json:
+                schema:
+                  $ref: "#/components/schemas/SearchErrorResponse"
+        "401":
+          description: Not authenticated (missing or invalid credentials)
+          content:
+            application/json:
+                schema:
+                  $ref: "#/components/schemas/SearchErrorResponse"
+        "403":
+          description: Not authorised (insufficient permissions to retrieve this resource)
+          content:
+            application/json:
+                schema:
+                  $ref: "#/components/schemas/SearchErrorResponse"
+        "404":
+          description: Not found (no application with that ID exists on the server)
+          content:
+            application/json:
+                schema:
+                  $ref: "#/components/schemas/SearchErrorResponse"
+        "5XX":
+          description: Internal server error
           content:
             application/json:
                 schema:
                   $ref: "#/components/schemas/SearchErrorResponse"
   /v1/applicationStatus/getBySearchParameters:
     post:
-      summary: "Finds applications by search parameters (initially one)."
+      summary: "Finds applications by search parameters (initially one).  This API is now deprecated.  Please use /applications for appeal validation and /applicationInstruct/setInstruct for appeal submission instead."
       requestBody:
         required: true
         content:
@@ -602,22 +645,27 @@ components:
       type: "object"
       properties:
         success:
-          type: boolean
-          example: false
+          type: string
+          enum:
+            - "true"
+            - "false"
+          example: "false"
         messageText:
           description: "Error message text"
-          type: "string"
+          type: string
           example: "Invalid reference format. Format should be either nnnn-nnnn-nnnn-nnnn or 0(0) followed by digits (total length 9 or 10)"
         errorCode:
           description: "Error code (non-HTTP) \n\n
-          1010 - No event history details \n\n
-          1020 - No service delivery details \n\n
-          1030 - No valid service delivery details \n\n
+          1010 - A UAN/Case Reference has a Service Delivery with no DECIDE_APPLICATION_OUTCOME event history\n\n
+          1020 - Cannot build Search Response - no service delivery details found for UAN: \n\n
+          1030 - A UAN/Case Reference does not refer to a valid application or reconsideration\n\n
           1040 - Method argument not valid \n\n
-          1060 - Message format invalid \n\n
+          1060 - A UAN/Case Reference is submitted in the incorrect format.\n\n
           1070 - Internal system error \n\n
-          2000 - Call to CSDP unavailable \n\n
-          2010 - Call to AWS SQS unavailable"
+          1080 - This Consumer is not authorised to access this endpoint\n\n
+          1090 - The header value is incorrect\n\n
+          2000 - A Downstream system is unavailable (CSDP)\n\n
+          2010 - A Downstream system is unavailable (AWS-SQS)"
           type: "string"
           enum:
             - "1010"
@@ -626,6 +674,8 @@ components:
             - "1040"
             - "1060"
             - "1070"
+            - "1080"
+            - "1090"
             - "2000"
             - "2010"         
 externalDocs:

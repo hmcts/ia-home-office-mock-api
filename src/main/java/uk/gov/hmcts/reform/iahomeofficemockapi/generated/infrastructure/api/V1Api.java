@@ -34,7 +34,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-12T18:32:14.905283Z[Europe/London]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-13T15:56:59.887283Z[Europe/London]")
 @Validated
 @Tag(name = "v1", description = "the v1 API")
 public interface V1Api {
@@ -82,7 +82,7 @@ public interface V1Api {
 
 
     /**
-     * POST /v1/applicationStatus/getBySearchParameters : Finds applications by search parameters (initially one).
+     * POST /v1/applicationStatus/getBySearchParameters : Finds applications by search parameters (initially one).  This API is now deprecated.  Please use /applications for appeal validation and /applicationInstruct/setInstruct for appeal submission instead.
      *
      * @param searchParameters  (required)
      * @return OK (status code 200)
@@ -90,7 +90,7 @@ public interface V1Api {
      */
     @Operation(
         operationId = "v1ApplicationStatusGetBySearchParametersPost",
-        summary = "Finds applications by search parameters (initially one).",
+        summary = "Finds applications by search parameters (initially one).  This API is now deprecated.  Please use /applications for appeal validation and /applicationInstruct/setInstruct for appeal submission instead.",
         responses = {
             @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation =  SearchResponse.class))),
             @ApiResponse(responseCode = "400", description = "Invalid status value", content = @Content(mediaType = "application/json", schema = @Schema(implementation =  SearchErrorResponse.class)))

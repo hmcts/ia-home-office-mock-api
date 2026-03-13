@@ -21,7 +21,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "SearchResponse_applicationStatus_metadata", description = "Metadata item, comprising an item code and one (usually) or more data values that are typed")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-12T18:32:14.905283Z[Europe/London]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-13T15:56:59.887283Z[Europe/London]")
 public class SearchResponseApplicationStatusMetadata   {
 
   @JsonProperty("code")

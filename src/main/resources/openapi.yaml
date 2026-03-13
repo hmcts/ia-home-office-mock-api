@@ -35,19 +35,72 @@ paths:
           pattern: "^(\\d{4}-\\d{4}-\\d{4}-\\d{4}|GWF\\d{9})$"
           type: string
         style: simple
+      - explode: false
+        in: header
+        name: Home-Office-Correlation-ID
+        required: true
+        schema:
+          example: null
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: header
+        name: Home-Office-Consumer
+        required: true
+        schema:
+          enum:
+          - HMCTS
+          example: null
+          type: string
+        style: simple
+      - explode: false
+        in: header
+        name: Home-Office-Event-DateTime
+        required: true
+        schema:
+          example: null
+          format: date-time
+          type: string
+        style: simple
       responses:
         "200":
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/SearchResponse"
-          description: OK
+          description: OK (response returned)
         "400":
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/SearchErrorResponse"
-          description: "Really bad request, man; like, just awful"
+          description: "Bad request (missing or invalid application ID, HTTP headers\
+            \ etc.)"
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SearchErrorResponse"
+          description: Not authenticated (missing or invalid credentials)
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SearchErrorResponse"
+          description: Not authorised (insufficient permissions to retrieve this resource)
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SearchErrorResponse"
+          description: Not found (no application with that ID exists on the server)
+        "5XX":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SearchErrorResponse"
+          description: Internal server error
       summary: Gets the appellants' details of an application for immigration or asylum
         from the Home Office.
       x-accepts: application/json
@@ -72,7 +125,9 @@ paths:
               schema:
                 $ref: "#/components/schemas/SearchErrorResponse"
           description: Invalid status value
-      summary: Finds applications by search parameters (initially one).
+      summary: Finds applications by search parameters (initially one).  This API
+        is now deprecated.  Please use /applications for appeal validation and /applicationInstruct/setInstruct
+        for appeal submission instead.
       x-contentType: application/json
       x-accepts: application/json
   /v1/applicationInstruct/setInstruct:
@@ -726,19 +781,27 @@ components:
       example: null
       properties:
         success:
-          example: false
-          type: boolean
+          enum:
+          - "true"
+          - "false"
+          example: "false"
+          type: string
         messageText:
           description: Error message text
           example: Invalid reference format. Format should be either nnnn-nnnn-nnnn-nnnn
             or 0(0) followed by digits (total length 9 or 10)
           type: string
         errorCode:
-          description: "Error code (non-HTTP) \n\n 1010 - No event history details\
-            \ \n\n 1020 - No service delivery details \n\n 1030 - No valid service\
-            \ delivery details \n\n 1040 - Method argument not valid \n\n 1060 - Message\
-            \ format invalid \n\n 1070 - Internal system error \n\n 2000 - Call to\
-            \ CSDP unavailable \n\n 2010 - Call to AWS SQS unavailable"
+          description: "Error code (non-HTTP) \n\n 1010 - A UAN/Case Reference has\
+            \ a Service Delivery with no DECIDE_APPLICATION_OUTCOME event history\n\
+            \n 1020 - Cannot build Search Response - no service delivery details found\
+            \ for UAN: \n\n 1030 - A UAN/Case Reference does not refer to a valid\
+            \ application or reconsideration\n\n 1040 - Method argument not valid\
+            \ \n\n 1060 - A UAN/Case Reference is submitted in the incorrect format.\n\
+            \n 1070 - Internal system error \n\n 1080 - This Consumer is not authorised\
+            \ to access this endpoint\n\n 1090 - The header value is incorrect\n\n\
+            \ 2000 - A Downstream system is unavailable (CSDP)\n\n 2010 - A Downstream\
+            \ system is unavailable (AWS-SQS)"
           enum:
           - "1010"
           - "1020"
@@ -746,6 +809,8 @@ components:
           - "1040"
           - "1060"
           - "1070"
+          - "1080"
+          - "1090"
           - "2000"
           - "2010"
           example: null

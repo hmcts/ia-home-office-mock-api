@@ -19,17 +19,52 @@ import javax.annotation.Generated;
  * ErrorResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-12T18:32:14.905283Z[Europe/London]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-13T15:56:59.887283Z[Europe/London]")
 public class ErrorResponse   {
 
+  /**
+   * Gets or Sets success
+   */
+  public enum SuccessEnum {
+    TRUE("true"),
+    
+    FALSE("false");
+
+    private String value;
+
+    SuccessEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static SuccessEnum fromValue(String value) {
+      for (SuccessEnum b : SuccessEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
   @JsonProperty("success")
-  private Boolean success;
+  private SuccessEnum success;
 
   @JsonProperty("messageText")
   private String messageText;
 
   /**
-   * Error code (non-HTTP)    1010 - No event history details    1020 - No service delivery details    1030 - No valid service delivery details    1040 - Method argument not valid    1060 - Message format invalid    1070 - Internal system error    2000 - Call to CSDP unavailable    2010 - Call to AWS SQS unavailable
+   * Error code (non-HTTP)    1010 - A UAN/Case Reference has a Service Delivery with no DECIDE_APPLICATION_OUTCOME event history   1020 - Cannot build Search Response - no service delivery details found for UAN:    1030 - A UAN/Case Reference does not refer to a valid application or reconsideration   1040 - Method argument not valid    1060 - A UAN/Case Reference is submitted in the incorrect format.   1070 - Internal system error    1080 - This Consumer is not authorised to access this endpoint   1090 - The header value is incorrect   2000 - A Downstream system is unavailable (CSDP)   2010 - A Downstream system is unavailable (AWS-SQS)
    */
   public enum ErrorCodeEnum {
     _1010("1010"),
@@ -43,6 +78,10 @@ public class ErrorResponse   {
     _1060("1060"),
     
     _1070("1070"),
+    
+    _1080("1080"),
+    
+    _1090("1090"),
     
     _2000("2000"),
     
@@ -78,7 +117,7 @@ public class ErrorResponse   {
   @JsonProperty("errorCode")
   private ErrorCodeEnum errorCode;
 
-  public ErrorResponse success(Boolean success) {
+  public ErrorResponse success(SuccessEnum success) {
     this.success = success;
     return this;
   }
@@ -89,11 +128,11 @@ public class ErrorResponse   {
   */
   
   @Schema(name = "success", example = "false", required = false)
-  public Boolean getSuccess() {
+  public SuccessEnum getSuccess() {
     return success;
   }
 
-  public void setSuccess(Boolean success) {
+  public void setSuccess(SuccessEnum success) {
     this.success = success;
   }
 
@@ -122,11 +161,11 @@ public class ErrorResponse   {
   }
 
   /**
-   * Error code (non-HTTP)    1010 - No event history details    1020 - No service delivery details    1030 - No valid service delivery details    1040 - Method argument not valid    1060 - Message format invalid    1070 - Internal system error    2000 - Call to CSDP unavailable    2010 - Call to AWS SQS unavailable
+   * Error code (non-HTTP)    1010 - A UAN/Case Reference has a Service Delivery with no DECIDE_APPLICATION_OUTCOME event history   1020 - Cannot build Search Response - no service delivery details found for UAN:    1030 - A UAN/Case Reference does not refer to a valid application or reconsideration   1040 - Method argument not valid    1060 - A UAN/Case Reference is submitted in the incorrect format.   1070 - Internal system error    1080 - This Consumer is not authorised to access this endpoint   1090 - The header value is incorrect   2000 - A Downstream system is unavailable (CSDP)   2010 - A Downstream system is unavailable (AWS-SQS)
    * @return errorCode
   */
   
-  @Schema(name = "errorCode", description = "Error code (non-HTTP)    1010 - No event history details    1020 - No service delivery details    1030 - No valid service delivery details    1040 - Method argument not valid    1060 - Message format invalid    1070 - Internal system error    2000 - Call to CSDP unavailable    2010 - Call to AWS SQS unavailable", required = false)
+  @Schema(name = "errorCode", description = "Error code (non-HTTP)    1010 - A UAN/Case Reference has a Service Delivery with no DECIDE_APPLICATION_OUTCOME event history   1020 - Cannot build Search Response - no service delivery details found for UAN:    1030 - A UAN/Case Reference does not refer to a valid application or reconsideration   1040 - Method argument not valid    1060 - A UAN/Case Reference is submitted in the incorrect format.   1070 - Internal system error    1080 - This Consumer is not authorised to access this endpoint   1090 - The header value is incorrect   2000 - A Downstream system is unavailable (CSDP)   2010 - A Downstream system is unavailable (AWS-SQS)", required = false)
   public ErrorCodeEnum getErrorCode() {
     return errorCode;
   }
