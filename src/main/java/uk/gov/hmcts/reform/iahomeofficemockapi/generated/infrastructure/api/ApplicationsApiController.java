@@ -7,7 +7,7 @@ import org.springframework.web.context.request.NativeWebRequest;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-13T17:34:45.614564Z[Europe/London]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-16T15:17:31.480240Z[Europe/London]")
 @Controller
 @RequestMapping("${openapi.appealsInterface.base-path:}")
 public class ApplicationsApiController implements ApplicationsApi {

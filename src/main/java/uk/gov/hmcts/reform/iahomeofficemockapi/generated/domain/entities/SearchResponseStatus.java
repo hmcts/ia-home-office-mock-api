@@ -20,7 +20,7 @@ import javax.annotation.Generated;
  * SearchResponseStatus
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-13T17:34:45.614564Z[Europe/London]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-16T15:17:31.480240Z[Europe/London]")
 public class SearchResponseStatus   {
 
   @JsonProperty("person")

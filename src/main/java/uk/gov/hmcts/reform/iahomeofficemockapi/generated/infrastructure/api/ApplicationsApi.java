@@ -5,11 +5,11 @@
  */
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.infrastructure.api;
 
+import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.Application;
 import org.springframework.format.annotation.DateTimeFormat;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.HomeOfficeConsumer;
 import java.time.OffsetDateTime;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchErrorResponse;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchResponse;
 import java.util.UUID;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -34,7 +34,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-13T17:34:45.614564Z[Europe/London]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-16T15:17:31.480240Z[Europe/London]")
 @Validated
 @Tag(name = "applications", description = "the applications API")
 public interface ApplicationsApi {
@@ -62,7 +62,7 @@ public interface ApplicationsApi {
         operationId = "applicationsV1IdGet",
         summary = "Gets the appellants' details of an application for immigration or asylum from the Home Office.",
         responses = {
-            @ApiResponse(responseCode = "200", description = "OK (response returned)", content = @Content(mediaType = "application/json", schema = @Schema(implementation =  SearchResponse.class))),
+            @ApiResponse(responseCode = "200", description = "OK (response returned)", content = @Content(mediaType = "application/json", schema = @Schema(implementation =  Application.class))),
             @ApiResponse(responseCode = "400", description = "Bad request (missing or invalid application ID, HTTP headers etc.)", content = @Content(mediaType = "application/json", schema = @Schema(implementation =  SearchErrorResponse.class))),
             @ApiResponse(responseCode = "401", description = "Not authenticated (missing or invalid credentials)", content = @Content(mediaType = "application/json", schema = @Schema(implementation =  SearchErrorResponse.class))),
             @ApiResponse(responseCode = "403", description = "Not authorised (insufficient permissions to retrieve this resource)", content = @Content(mediaType = "application/json", schema = @Schema(implementation =  SearchErrorResponse.class))),
@@ -75,7 +75,7 @@ public interface ApplicationsApi {
         value = "/applications/v1/{id}",
         produces = { "application/json" }
     )
-    default ResponseEntity<SearchResponse> applicationsV1IdGet(
+    default ResponseEntity<Application> applicationsV1IdGet(
         @Pattern(regexp = "^(\\d{4}-\\d{4}-\\d{4}-\\d{4}|GWF\\d{9})$") @Parameter(name = "id", description = "Application ID", required = true, schema = @Schema(description = "")) @PathVariable("id") String id,
         @Parameter(name = "Home-Office-Correlation-ID", description = "", required = true, schema = @Schema(description = "")) @RequestHeader(value = "Home-Office-Correlation-ID", required = true) UUID homeOfficeCorrelationID,
         @Parameter(name = "Home-Office-Consumer", description = "", required = true, schema = @Schema(description = "", allowableValues = { "HMCTS" })) @RequestHeader(value = "Home-Office-Consumer", required = true) HomeOfficeConsumer homeOfficeConsumer,
@@ -84,7 +84,7 @@ public interface ApplicationsApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"messageHeader\" : { \"eventDateTime\" : \"2017-07-21T17:32:28Z\", \"correlationId\" : \"ABC2344BCED2234EA\", \"consumer\" : { \"code\" : \"HMCTS\", \"description\" : \"HM Courts and Tribunal Service\" } }, \"messageType\" : \"RESPONSE_RIGHT_OF_APPEAL_DETAILS\", \"status\" : [ { \"applicationStatus\" : { \"applicationType\" : { \"code\" : \"ASYLUM\", \"description\" : \"Asylum and Protection\" }, \"metadata\" : [ { \"valueBoolean\" : true, \"code\" : \"APPEALABLE or DISPATCH_DATE\", \"valueString\" : \"Some extra decision data\", \"valueDateTime\" : \"2017-07-21T17:32:28Z\" }, { \"valueBoolean\" : true, \"code\" : \"APPEALABLE or DISPATCH_DATE\", \"valueString\" : \"Some extra decision data\", \"valueDateTime\" : \"2017-07-21T17:32:28Z\" } ], \"rejectionReasons\" : [ { \"reason\" : \"Application not completed properly\" }, { \"reason\" : \"Application not completed properly\" } ], \"decisionCommunication\" : { \"sentDate\" : \"2017-07-21T17:32:28Z\", \"dispatchDate\" : \"2017-07-21T17:32:28Z\", \"description\" : \"E-mail\", \"type\" : \"EMAIL\" }, \"claimReasonType\" : { \"code\" : \"HUMANRIGHTS\", \"description\" : \"Human Rights\" }, \"documentReference\" : \"1234-1234-5678-5678/00\", \"roleSubType\" : { \"code\" : \"SPOUSE. Could be MAIN if the role type is APPLICANT\", \"description\" : \"Spouse\" }, \"decisionType\" : { \"code\" : \"REJECTION\", \"description\" : \"Rejected\" }, \"roleType\" : { \"code\" : \"DEPENDANT\", \"description\" : \"Dependant\" }, \"decisionDate\" : \"2017-07-21T17:32:28Z\" }, \"person\" : { \"gender\" : { \"code\" : \"M (denoting male)\", \"description\" : \"Male\" }, \"nationality\" : { \"code\" : \"CAN (denoting Canada)\", \"description\" : \"Canada\" }, \"dayOfBirth\" : 21, \"givenName\" : \"Capability\", \"familyName\" : \"Smith\", \"fullName\" : \"Capability Smith\", \"monthOfBirth\" : 0, \"yearOfBirth\" : 1970 } }, { \"applicationStatus\" : { \"applicationType\" : { \"code\" : \"ASYLUM\", \"description\" : \"Asylum and Protection\" }, \"metadata\" : [ { \"valueBoolean\" : true, \"code\" : \"APPEALABLE or DISPATCH_DATE\", \"valueString\" : \"Some extra decision data\", \"valueDateTime\" : \"2017-07-21T17:32:28Z\" }, { \"valueBoolean\" : true, \"code\" : \"APPEALABLE or DISPATCH_DATE\", \"valueString\" : \"Some extra decision data\", \"valueDateTime\" : \"2017-07-21T17:32:28Z\" } ], \"rejectionReasons\" : [ { \"reason\" : \"Application not completed properly\" }, { \"reason\" : \"Application not completed properly\" } ], \"decisionCommunication\" : { \"sentDate\" : \"2017-07-21T17:32:28Z\", \"dispatchDate\" : \"2017-07-21T17:32:28Z\", \"description\" : \"E-mail\", \"type\" : \"EMAIL\" }, \"claimReasonType\" : { \"code\" : \"HUMANRIGHTS\", \"description\" : \"Human Rights\" }, \"documentReference\" : \"1234-1234-5678-5678/00\", \"roleSubType\" : { \"code\" : \"SPOUSE. Could be MAIN if the role type is APPLICANT\", \"description\" : \"Spouse\" }, \"decisionType\" : { \"code\" : \"REJECTION\", \"description\" : \"Rejected\" }, \"roleType\" : { \"code\" : \"DEPENDANT\", \"description\" : \"Dependant\" }, \"decisionDate\" : \"2017-07-21T17:32:28Z\" }, \"person\" : { \"gender\" : { \"code\" : \"M (denoting male)\", \"description\" : \"Male\" }, \"nationality\" : { \"code\" : \"CAN (denoting Canada)\", \"description\" : \"Canada\" }, \"dayOfBirth\" : 21, \"givenName\" : \"Capability\", \"familyName\" : \"Smith\", \"fullName\" : \"Capability Smith\", \"monthOfBirth\" : 0, \"yearOfBirth\" : 1970 } } ] }";
+                    String exampleString = "{ \"hoClaimDate\" : \"2017-07-18\", \"uan\" : \"1342-5786-9120-3564\", \"hoDecisionLetterDate\" : \"2017-07-20\", \"appellants\" : [ { \"pp\" : \"01\", \"hoFeeWaiver\" : true, \"nationality\" : \"GER\", \"roa\" : true, \"familyName\" : \"Wimp\", \"givenNames\" : \"Horace\", \"dateOfBirth\" : \"2017-07-21\", \"asylumSupport\" : false, \"language\" : \"eng\", \"interpreterNeeded\" : false }, { \"pp\" : \"01\", \"hoFeeWaiver\" : true, \"nationality\" : \"GER\", \"roa\" : true, \"familyName\" : \"Wimp\", \"givenNames\" : \"Horace\", \"dateOfBirth\" : \"2017-07-21\", \"asylumSupport\" : false, \"language\" : \"eng\", \"interpreterNeeded\" : false } ], \"hoDecisionDate\" : \"2017-07-19\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }

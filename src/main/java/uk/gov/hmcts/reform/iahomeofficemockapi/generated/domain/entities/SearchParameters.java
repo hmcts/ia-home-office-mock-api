@@ -23,7 +23,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "SearchParameters", description = "Parameters passed in to enable searching for applications. Currently supports only one type/value pair but the interface is designed to support multiple in future.  As a side effect this service will send a notification to the Event Publisher to inform them that a request for a possible appeal has been made.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-13T17:34:45.614564Z[Europe/London]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-16T15:17:31.480240Z[Europe/London]")
 public class SearchParameters   {
 
   @JsonProperty("messageHeader")

@@ -49,7 +49,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/SearchResponse"
+                $ref: "#/components/schemas/Application"
         "400":
           description: Bad request (missing or invalid application ID, HTTP headers etc.)
           content:
@@ -162,6 +162,78 @@ components:
       required:
         - "messageHeader"
         - "searchParams"
+    Application:
+      description: "Details of the application, including appellants' biographic information."
+      type: object
+      properties:
+        uan:
+          type: string
+          pattern: ^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}$
+          example: 1342-5786-9120-3564
+        hoClaimDate:
+          type: string
+          pattern: ^(19[0-9]{2}|[2-9][0-9]{3})-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$
+          example: "2017-07-18"
+        hoDecisionDate:
+          type: string
+          pattern: ^(19[0-9]{2}|[2-9][0-9]{3})-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$
+          example: "2017-07-19"
+        hoDecisionLetterDate:
+          type: string
+          pattern: ^(19[0-9]{2}|[2-9][0-9]{3})-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$
+          example: "2017-07-20"
+        appellants:
+          type: array
+          items:
+            $ref: "#/components/schemas/Appellant"
+      required:
+        - hoClaimDate
+        - hoDecisionDate
+        - hoDecisionLetterDate
+        - appellants
+    Appellant:
+      type: object
+      properties:
+        pp:
+          type: string
+          pattern: ^[0-9]{2}$
+          example: "01"
+        familyName:
+          type: string
+          example: Wimp
+        givenNames:
+          type: string
+          example: Horace
+        dateOfBirth:
+          type: string
+          pattern: ^(19[0-9]{2}|[2-9][0-9]{3})-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$
+          example: "2017-07-21"
+        nationality:
+          type: string
+          pattern: ^[A-Z]{3}$
+          example: GER
+        roa:
+          type: boolean
+          example: true
+        asylumSupport:
+          type: boolean
+          example: false
+        hoFeeWaiver:
+          type: boolean
+          example: true
+        language:
+          type: string
+          pattern: ^[a-z]{3}$
+          example: eng
+        interpreterNeeded:
+          type: boolean
+          example: false
+      required:
+        - familyName
+        - givenNames
+        - dateOfBirth
+        - nationality
+        - language
     SearchResponse:
       description: "Response containing details of the application search."
       type: "object"
