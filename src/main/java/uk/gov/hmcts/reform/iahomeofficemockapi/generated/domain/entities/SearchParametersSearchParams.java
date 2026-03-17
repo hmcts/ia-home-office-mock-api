@@ -1,27 +1,20 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
-import java.net.URI;
-import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
-import org.openapitools.jackson.nullable.JsonNullable;
-import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
-
-import java.util.*;
-import javax.annotation.Generated;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import java.util.Objects;
 
 /**
  * SearchParametersSearchParams
  */
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-07-01T14:15:45.837+01:00[Europe/London]")
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-16T15:17:31.480240Z[Europe/London]")
 public class SearchParametersSearchParams   {
-
   /**
    * Reference type
    */
@@ -70,8 +63,10 @@ public class SearchParametersSearchParams   {
    * Reference type
    * @return spType
   */
-  @NotNull 
-  @Schema(name = "spType", example = "DOCUMENT_REFERENCE", description = "Reference type", required = true)
+  @Schema(example = "DOCUMENT_REFERENCE", required = true, description = "Reference type")
+  @NotNull
+
+
   public SpTypeEnum getSpType() {
     return spType;
   }
@@ -89,8 +84,10 @@ public class SearchParametersSearchParams   {
    * Unique reference
    * @return spValue
   */
-  @NotNull @Size(max = 30) 
-  @Schema(name = "spValue", example = "UAN (nnnn-nnnn-nnnn-nnnn) or CID (case ID, e.g. 001234567)", description = "Unique reference", required = true)
+  @Schema(example = "UAN (nnnn-nnnn-nnnn-nnnn) or CID (case ID, e.g. 001234567)", required = true, description = "Unique reference")
+  @NotNull
+
+@Size(max=30)
   public String getSpValue() {
     return spValue;
   }
@@ -99,8 +96,9 @@ public class SearchParametersSearchParams   {
     this.spValue = spValue;
   }
 
+
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -121,6 +119,7 @@ public class SearchParametersSearchParams   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SearchParametersSearchParams {\n");
+
     sb.append("    spType: ").append(toIndentedString(spType)).append("\n");
     sb.append("    spValue: ").append(toIndentedString(spValue)).append("\n");
     sb.append("}");
@@ -131,7 +130,7 @@ public class SearchParametersSearchParams   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

@@ -13,9 +13,9 @@ import java.util.Objects;
  * Communication of the decision
  */
 @Schema(description = "Communication of the decision")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-07-01T14:15:45.837+01:00[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-06-30T12:19:19.760+01:00[Europe/London]")
 
-public class SearchResponseApplicationStatusDecisionCommunication   {
+public class SearchResponseDecisionStatusDecisionCommunication   {
   /**
    * Type of communication
    */
@@ -60,10 +60,7 @@ public class SearchResponseApplicationStatusDecisionCommunication   {
   @JsonProperty("sentDate")
   private OffsetDateTime sentDate;
 
-  @JsonProperty("dispatchDate")
-  private OffsetDateTime dispatchDate;
-
-  public SearchResponseApplicationStatusDecisionCommunication type(TypeEnum type) {
+  public SearchResponseDecisionStatusDecisionCommunication type(TypeEnum type) {
     this.type = type;
     return this;
   }
@@ -83,7 +80,7 @@ public class SearchResponseApplicationStatusDecisionCommunication   {
     this.type = type;
   }
 
-  public SearchResponseApplicationStatusDecisionCommunication description(String description) {
+  public SearchResponseDecisionStatusDecisionCommunication description(String description) {
     this.description = description;
     return this;
   }
@@ -103,16 +100,16 @@ public class SearchResponseApplicationStatusDecisionCommunication   {
     this.description = description;
   }
 
-  public SearchResponseApplicationStatusDecisionCommunication sentDate(OffsetDateTime sentDate) {
+  public SearchResponseDecisionStatusDecisionCommunication sentDate(OffsetDateTime sentDate) {
     this.sentDate = sentDate;
     return this;
   }
 
   /**
-   * Date (and time, if available) the communication was requested to be sent. This is effectively the decision date. See description of decisionDate for details of how it will be displayed. This is assumed to be in UTC
+   * Date (and time, if available) the communication was sent. This is effectively the decision date. See description of decisionDate for details of how it will be displayed. This is assumed to be in UTC
    * @return sentDate
   */
-  @Schema(example = "2017-07-21T17:32:28Z", description = "Date (and time, if available) the communication was requested to be sent. This is effectively the decision date. See description of decisionDate for details of how it will be displayed. This is assumed to be in UTC")
+  @Schema(example = "2017-07-21T17:32:28Z", description = "Date (and time, if available) the communication was sent. This is effectively the decision date. See description of decisionDate for details of how it will be displayed. This is assumed to be in UTC")
 
   @Valid
 
@@ -124,27 +121,6 @@ public class SearchResponseApplicationStatusDecisionCommunication   {
     this.sentDate = sentDate;
   }
 
-  public SearchResponseApplicationStatusDecisionCommunication dispatchDate(OffsetDateTime dispatchDate) {
-    this.dispatchDate = dispatchDate;
-    return this;
-  }
-
-  /**
-   * Date (and time, if available) the communication was actually dispatched. See description of decisionDate for details of how it will be displayed. This is assumed to be in UTC
-   * @return dispatchDate
-  */
-  @Schema(example = "2017-07-21T17:32:28Z", description = "Date (and time, if available) the communication was actually dispatched. See description of decisionDate for details of how it will be displayed. This is assumed to be in UTC")
-
-  @Valid
-
-  public OffsetDateTime getDispatchDate() {
-    return dispatchDate;
-  }
-
-  public void setDispatchDate(OffsetDateTime dispatchDate) {
-    this.dispatchDate = dispatchDate;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -154,27 +130,25 @@ public class SearchResponseApplicationStatusDecisionCommunication   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SearchResponseApplicationStatusDecisionCommunication searchResponseApplicationStatusDecisionCommunication = (SearchResponseApplicationStatusDecisionCommunication) o;
-    return Objects.equals(this.type, searchResponseApplicationStatusDecisionCommunication.type) &&
-        Objects.equals(this.description, searchResponseApplicationStatusDecisionCommunication.description) &&
-        Objects.equals(this.sentDate, searchResponseApplicationStatusDecisionCommunication.sentDate) &&
-        Objects.equals(this.dispatchDate, searchResponseApplicationStatusDecisionCommunication.dispatchDate);
+    SearchResponseDecisionStatusDecisionCommunication searchResponseDecisionStatusDecisionCommunication = (SearchResponseDecisionStatusDecisionCommunication) o;
+    return Objects.equals(this.type, searchResponseDecisionStatusDecisionCommunication.type) &&
+        Objects.equals(this.description, searchResponseDecisionStatusDecisionCommunication.description) &&
+        Objects.equals(this.sentDate, searchResponseDecisionStatusDecisionCommunication.sentDate);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, description, sentDate, dispatchDate);
+    return Objects.hash(type, description, sentDate);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SearchResponseApplicationStatusDecisionCommunication {\n");
+    sb.append("class SearchResponseDecisionStatusDecisionCommunication {\n");
 
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    sentDate: ").append(toIndentedString(sentDate)).append("\n");
-    sb.append("    dispatchDate: ").append(toIndentedString(dispatchDate)).append("\n");
     sb.append("}");
     return sb.toString();
   }

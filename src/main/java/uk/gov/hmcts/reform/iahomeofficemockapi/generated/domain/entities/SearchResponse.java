@@ -1,32 +1,22 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
-import java.net.URI;
-import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.util.ArrayList;
-import java.util.List;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.MessageHeader;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchResponseStatus;
-import org.openapitools.jackson.nullable.JsonNullable;
-import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
-
-import java.util.*;
-import javax.annotation.Generated;
+import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * Response containing details of the application search.
  */
+@Schema(description = "Response containing details of the application search.")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-07-01T14:15:45.837+01:00[Europe/London]")
 
-@Schema(name = "SearchResponse", description = "Response containing details of the application search.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-16T15:17:31.480240Z[Europe/London]")
 public class SearchResponse   {
-
   @JsonProperty("messageHeader")
   private MessageHeader messageHeader;
 
@@ -79,8 +69,10 @@ public class SearchResponse   {
    * Get messageHeader
    * @return messageHeader
   */
-  @Valid 
-  @Schema(name = "messageHeader", required = false)
+  @Schema()
+
+  @Valid
+
   public MessageHeader getMessageHeader() {
     return messageHeader;
   }
@@ -98,8 +90,9 @@ public class SearchResponse   {
    * Identifies the type of message
    * @return messageType
   */
-  
-  @Schema(name = "messageType", example = "RESPONSE_RIGHT_OF_APPEAL_DETAILS", description = "Identifies the type of message", required = false)
+  @Schema(example = "RESPONSE_RIGHT_OF_APPEAL_DETAILS", description = "Identifies the type of message")
+
+
   public MessageTypeEnum getMessageType() {
     return messageType;
   }
@@ -125,8 +118,10 @@ public class SearchResponse   {
    * An array of persons and application status; generally, the status will be the same for all persons but this format provides flexibility
    * @return status
   */
-  @Valid 
-  @Schema(name = "status", description = "An array of persons and application status; generally, the status will be the same for all persons but this format provides flexibility", required = false)
+  @Schema(description= "An array of persons and application status; generally, the status will be the same for all persons but this format provides flexibility")
+
+  @Valid
+
   public List<SearchResponseStatus> getStatus() {
     return status;
   }
@@ -135,8 +130,9 @@ public class SearchResponse   {
     this.status = status;
   }
 
+
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -158,6 +154,7 @@ public class SearchResponse   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SearchResponse {\n");
+
     sb.append("    messageHeader: ").append(toIndentedString(messageHeader)).append("\n");
     sb.append("    messageType: ").append(toIndentedString(messageType)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
@@ -169,7 +166,7 @@ public class SearchResponse   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

@@ -1,28 +1,17 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
-import java.net.URI;
-import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.Person;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchResponseApplicationStatus;
-import org.openapitools.jackson.nullable.JsonNullable;
-import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
-
-import java.util.*;
-import javax.annotation.Generated;
+import javax.validation.Valid;
+import java.util.Objects;
 
 /**
  * SearchResponseStatus
  */
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-07-01T14:15:45.837+01:00[Europe/London]")
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-16T15:17:31.480240Z[Europe/London]")
 public class SearchResponseStatus   {
-
   @JsonProperty("person")
   private Person person;
 
@@ -38,8 +27,10 @@ public class SearchResponseStatus   {
    * Get person
    * @return person
   */
-  @Valid 
-  @Schema(name = "person", required = false)
+  @Schema()
+
+  @Valid
+
   public Person getPerson() {
     return person;
   }
@@ -57,8 +48,10 @@ public class SearchResponseStatus   {
    * Get applicationStatus
    * @return applicationStatus
   */
-  @Valid 
-  @Schema(name = "applicationStatus", required = false)
+  @Schema()
+
+  @Valid
+
   public SearchResponseApplicationStatus getApplicationStatus() {
     return applicationStatus;
   }
@@ -67,8 +60,9 @@ public class SearchResponseStatus   {
     this.applicationStatus = applicationStatus;
   }
 
+
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -89,6 +83,7 @@ public class SearchResponseStatus   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SearchResponseStatus {\n");
+
     sb.append("    person: ").append(toIndentedString(person)).append("\n");
     sb.append("    applicationStatus: ").append(toIndentedString(applicationStatus)).append("\n");
     sb.append("}");
@@ -99,7 +94,7 @@ public class SearchResponseStatus   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }
