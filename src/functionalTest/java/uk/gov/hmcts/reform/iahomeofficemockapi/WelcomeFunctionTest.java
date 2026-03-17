@@ -1,9 +1,5 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import net.serenitybdd.rest.SerenityRest;
@@ -14,8 +10,12 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.infrastructure.api.invoker.OpenAPI2SpringBoot;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.Matchers.is;
 
 @SpringBootTest(classes = {
     OpenAPI2SpringBoot.class
@@ -23,10 +23,7 @@ import uk.gov.hmcts.reform.iahomeofficemockapi.generated.infrastructure.api.invo
 @ActiveProfiles("functional")
 @AutoConfigureMockMvc(addFilters = false)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class HealthFunctionTest {
-
-    private static final String MEDIA_TYPE_APPLICATION_SPRING_BOOT_ACTUATOR = 
-            "application/vnd.spring-boot.actuator.v3+json";
+public class WelcomeFunctionTest {
 
     @Value("${targetInstance}") private String targetInstance;
 
@@ -37,30 +34,21 @@ public class HealthFunctionTest {
     }
 
     @Test
-    public void should_allow_unauthenticated_requests_to_health_check_and_return_200_response_code()
-        throws Exception {
+    public void should_allow_unauthenticated_requests_to_welcome_message_and_return_200_response_code() {
 
-        final Response response = SerenityRest
+        final String expected = "Welcome to Home Office API";
+
+        final Response response1 = SerenityRest
             .given()
             .relaxedHTTPSValidation()
             .when()
-            .get("/health");
+            .get("/");
 
-        assertThat(allStatusesUp(response.getBody().asString()));
-        response
+        response1
             .then()
             .statusCode(HttpStatus.OK.value())
-            .contentType(MEDIA_TYPE_APPLICATION_SPRING_BOOT_ACTUATOR);
+            .contentType(MediaType.TEXT_PLAIN_VALUE + ";charset=UTF-8")
+            .body(is(expected));
     }
 
-    private static boolean allStatusesUp(String json) throws Exception {
-
-        ObjectMapper mapper = new ObjectMapper();
-        JsonNode root = mapper.readTree(json);
-
-        return "UP".equals(root.path("status").asText())
-            && "UP".equals(root.path("components").path("diskSpace").path("status").asText())
-            && "UP".equals(root.path("components").path("ping").path("status").asText())
-            && "UP".equals(root.path("components").path("refreshScope").path("status").asText());
-    }
 }

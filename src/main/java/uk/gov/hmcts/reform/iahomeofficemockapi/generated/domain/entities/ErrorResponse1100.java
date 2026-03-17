@@ -8,11 +8,11 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
- * ErrorResponse
+ * ErrorResponse1100
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-07-01T14:15:45.837+01:00[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-06-30T12:19:19.760+01:00[Europe/London]")
 
-public class ErrorResponse   {
+public class ErrorResponse1100   {
   @JsonProperty("success")
   private Boolean success;
 
@@ -20,24 +20,10 @@ public class ErrorResponse   {
   private String messageText;
 
   /**
-   * Error code (non-HTTP)    1010 - No event history details    1020 - No service delivery details    1030 - No valid service delivery details    1040 - Method argument not valid    1060 - Message format invalid    1070 - Internal system error    2000 - Call to CSDP unavailable    2010 - Call to AWS SQS unavailable
+   * Error code (non-HTTP)
    */
   public enum ErrorCodeEnum {
-    _1010("1010"),
-
-    _1020("1020"),
-
-    _1030("1030"),
-
-    _1040("1040"),
-
-    _1060("1060"),
-
-    _1070("1070"),
-
-    _2000("2000"),
-
-    _2010("2010");
+    _1100("1100");
 
     private String value;
 
@@ -69,7 +55,7 @@ public class ErrorResponse   {
   @JsonProperty("errorCode")
   private ErrorCodeEnum errorCode;
 
-  public ErrorResponse success(Boolean success) {
+  public ErrorResponse1100 success(Boolean success) {
     this.success = success;
     return this;
   }
@@ -78,7 +64,7 @@ public class ErrorResponse   {
    * Get success
    * @return success
   */
-  @Schema(example = "false")
+  @Schema()
 
 
   public Boolean getSuccess() {
@@ -89,7 +75,7 @@ public class ErrorResponse   {
     this.success = success;
   }
 
-  public ErrorResponse messageText(String messageText) {
+  public ErrorResponse1100 messageText(String messageText) {
     this.messageText = messageText;
     return this;
   }
@@ -109,16 +95,16 @@ public class ErrorResponse   {
     this.messageText = messageText;
   }
 
-  public ErrorResponse errorCode(ErrorCodeEnum errorCode) {
+  public ErrorResponse1100 errorCode(ErrorCodeEnum errorCode) {
     this.errorCode = errorCode;
     return this;
   }
 
   /**
-   * Error code (non-HTTP)    1010 - No event history details    1020 - No service delivery details    1030 - No valid service delivery details    1040 - Method argument not valid    1060 - Message format invalid    1070 - Internal system error    2000 - Call to CSDP unavailable    2010 - Call to AWS SQS unavailable
+   * Error code (non-HTTP)
    * @return errorCode
   */
-  @Schema(description = "Error code (non-HTTP)    1010 - No event history details    1020 - No service delivery details    1030 - No valid service delivery details    1040 - Method argument not valid    1060 - Message format invalid    1070 - Internal system error    2000 - Call to CSDP unavailable    2010 - Call to AWS SQS unavailable")
+  @Schema(description = "Error code (non-HTTP)")
 
 
   public ErrorCodeEnum getErrorCode() {
@@ -138,10 +124,10 @@ public class ErrorResponse   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ErrorResponse errorResponse = (ErrorResponse) o;
-    return Objects.equals(this.success, errorResponse.success) &&
-        Objects.equals(this.messageText, errorResponse.messageText) &&
-        Objects.equals(this.errorCode, errorResponse.errorCode);
+    ErrorResponse1100 errorResponse1100 = (ErrorResponse1100) o;
+    return Objects.equals(this.success, errorResponse1100.success) &&
+        Objects.equals(this.messageText, errorResponse1100.messageText) &&
+        Objects.equals(this.errorCode, errorResponse1100.errorCode);
   }
 
   @Override
@@ -152,7 +138,7 @@ public class ErrorResponse   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ErrorResponse {\n");
+    sb.append("class ErrorResponse1100 {\n");
 
     sb.append("    success: ").append(toIndentedString(success)).append("\n");
     sb.append("    messageText: ").append(toIndentedString(messageText)).append("\n");
