@@ -1,28 +1,20 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
-import java.net.URI;
-import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
-import org.openapitools.jackson.nullable.JsonNullable;
-import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
-
-import java.util.*;
-import javax.annotation.Generated;
+import javax.validation.constraints.NotNull;
+import java.util.Objects;
 
 /**
  * Consumer of the service.
  */
+@Schema(description = "Consumer of the service.")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-07-01T14:15:45.837+01:00[Europe/London]")
 
-@Schema(name = "Consumer", description = "Consumer of the service.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-16T15:17:31.480240Z[Europe/London]")
 public class Consumer   {
-
   /**
    * Short code for the consumer
    */
@@ -71,8 +63,10 @@ public class Consumer   {
    * Short code for the consumer
    * @return code
   */
-  @NotNull 
-  @Schema(name = "code", description = "Short code for the consumer", required = true)
+  @Schema(required = true, description = "Short code for the consumer")
+  @NotNull
+
+
   public CodeEnum getCode() {
     return code;
   }
@@ -90,8 +84,9 @@ public class Consumer   {
    * Description of the consumer (for legibility reasons)
    * @return description
   */
-  
-  @Schema(name = "description", example = "HM Courts and Tribunal Service", description = "Description of the consumer (for legibility reasons)", required = false)
+  @Schema(example = "HM Courts and Tribunal Service", description = "Description of the consumer (for legibility reasons)")
+
+
   public String getDescription() {
     return description;
   }
@@ -100,8 +95,9 @@ public class Consumer   {
     this.description = description;
   }
 
+
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -122,6 +118,7 @@ public class Consumer   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Consumer {\n");
+
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("}");
@@ -132,7 +129,7 @@ public class Consumer   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

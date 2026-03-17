@@ -9,16 +9,16 @@ import java.util.Objects;
  * Type of reason for claim on application. **Note:** may not be available for any cases
  */
 @Schema(description = "Type of reason for claim on application. **Note:** may not be available for any cases")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-07-01T14:15:45.837+01:00[Europe/London]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-06-30T12:19:19.760+01:00[Europe/London]")
 
-public class SearchResponseApplicationStatusClaimReasonType   {
+public class SearchResponseDecisionStatusClaimReasonType   {
   @JsonProperty("code")
   private String code;
 
   @JsonProperty("description")
   private String description;
 
-  public SearchResponseApplicationStatusClaimReasonType code(String code) {
+  public SearchResponseDecisionStatusClaimReasonType code(String code) {
     this.code = code;
     return this;
   }
@@ -38,7 +38,7 @@ public class SearchResponseApplicationStatusClaimReasonType   {
     this.code = code;
   }
 
-  public SearchResponseApplicationStatusClaimReasonType description(String description) {
+  public SearchResponseDecisionStatusClaimReasonType description(String description) {
     this.description = description;
     return this;
   }
@@ -67,9 +67,9 @@ public class SearchResponseApplicationStatusClaimReasonType   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SearchResponseApplicationStatusClaimReasonType searchResponseApplicationStatusClaimReasonType = (SearchResponseApplicationStatusClaimReasonType) o;
-    return Objects.equals(this.code, searchResponseApplicationStatusClaimReasonType.code) &&
-        Objects.equals(this.description, searchResponseApplicationStatusClaimReasonType.description);
+    SearchResponseDecisionStatusClaimReasonType searchResponseDecisionStatusClaimReasonType = (SearchResponseDecisionStatusClaimReasonType) o;
+    return Objects.equals(this.code, searchResponseDecisionStatusClaimReasonType.code) &&
+        Objects.equals(this.description, searchResponseDecisionStatusClaimReasonType.description);
   }
 
   @Override
@@ -80,7 +80,7 @@ public class SearchResponseApplicationStatusClaimReasonType   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SearchResponseApplicationStatusClaimReasonType {\n");
+    sb.append("class SearchResponseDecisionStatusClaimReasonType {\n");
 
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");

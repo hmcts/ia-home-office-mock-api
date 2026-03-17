@@ -6,28 +6,28 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
- * Type of reason for claim on application. **Note:** may not be available for any cases
+ * Role of the individual in this application
  */
-@Schema(description = "Type of reason for claim on application. **Note:** may not be available for any cases")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-07-01T14:15:45.837+01:00[Europe/London]")
+@Schema(description = "Role of the individual in this application")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-06-30T12:19:19.760+01:00[Europe/London]")
 
-public class SearchResponseApplicationStatusClaimReasonType   {
+public class SearchResponseDecisionStatusRoleType   {
   @JsonProperty("code")
   private String code;
 
   @JsonProperty("description")
   private String description;
 
-  public SearchResponseApplicationStatusClaimReasonType code(String code) {
+  public SearchResponseDecisionStatusRoleType code(String code) {
     this.code = code;
     return this;
   }
 
   /**
-   * Code for the claim reason type
+   * Code for the role type
    * @return code
   */
-  @Schema(example = "HUMANRIGHTS", description = "Code for the claim reason type")
+  @Schema(example = "DEPENDANT", description = "Code for the role type")
 
 
   public String getCode() {
@@ -38,16 +38,16 @@ public class SearchResponseApplicationStatusClaimReasonType   {
     this.code = code;
   }
 
-  public SearchResponseApplicationStatusClaimReasonType description(String description) {
+  public SearchResponseDecisionStatusRoleType description(String description) {
     this.description = description;
     return this;
   }
 
   /**
-   * Description of the claim reason type
+   * Description of the role type
    * @return description
   */
-  @Schema(example = "Human Rights", description = "Description of the claim reason type")
+  @Schema(example = "Dependant", description = "Description of the role type")
 
 
   public String getDescription() {
@@ -67,9 +67,9 @@ public class SearchResponseApplicationStatusClaimReasonType   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SearchResponseApplicationStatusClaimReasonType searchResponseApplicationStatusClaimReasonType = (SearchResponseApplicationStatusClaimReasonType) o;
-    return Objects.equals(this.code, searchResponseApplicationStatusClaimReasonType.code) &&
-        Objects.equals(this.description, searchResponseApplicationStatusClaimReasonType.description);
+    SearchResponseDecisionStatusRoleType searchResponseDecisionStatusRoleType = (SearchResponseDecisionStatusRoleType) o;
+    return Objects.equals(this.code, searchResponseDecisionStatusRoleType.code) &&
+        Objects.equals(this.description, searchResponseDecisionStatusRoleType.description);
   }
 
   @Override
@@ -80,7 +80,7 @@ public class SearchResponseApplicationStatusClaimReasonType   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SearchResponseApplicationStatusClaimReasonType {\n");
+    sb.append("class SearchResponseDecisionStatusRoleType {\n");
 
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");

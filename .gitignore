@@ -2,8 +2,7 @@
 /build/
 !gradle/wrapper/gradle-wrapper.jar
 *.class
-bin/main/
-bin/functionalTest/
+bin/main/application.yaml
 
 ### STS ###
 .apt_generated
@@ -21,5 +20,3 @@ bin/functionalTest/
 *.ipr
 
 .DS_Store
-
-.vscode/
