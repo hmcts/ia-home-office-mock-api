@@ -1,36 +1,45 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
+import java.net.URI;
+import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.v3.oas.annotations.media.Schema;
-
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+import org.springframework.format.annotation.DateTimeFormat;
+import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.Person;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.time.OffsetDateTime;
+import javax.validation.Valid;
+import javax.validation.constraints.*;
+import io.swagger.v3.oas.annotations.media.Schema;
+
+
+import java.util.*;
+import javax.annotation.Generated;
 
 /**
  * Details of a challenge (initially, all appeal related).
  */
-@Schema(description = "Details of a challenge (initially, all appeal related).")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-07-01T14:15:45.837+01:00[Europe/London]")
 
+@Schema(name = "Challenge", description = "Details of a challenge (initially, all appeal related).")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-16T15:17:31.480240Z[Europe/London]")
 public class Challenge   {
+
   /**
    * The type of appeal
    */
   public enum AppealTypeEnum {
     PROTECTION("PROTECTION"),
-
+    
     REVOCATION_OF_PROTECTION("REVOCATION_OF_PROTECTION"),
-
+    
     DEPRIVATION_OF_CITIZENSHIP("DEPRIVATION_OF_CITIZENSHIP"),
-
+    
     HUMAN_RIGHTS("HUMAN_RIGHTS"),
-
+    
     EEA("EEA");
 
     private String value;
@@ -100,7 +109,8 @@ public class Challenge   {
   private AppealTierTypeEnum appealTierType;
 
   @JsonProperty("challengeSubmissionDate")
-  private String challengeSubmissionDate;
+  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+  private OffsetDateTime challengeSubmissionDate;
 
   @JsonProperty("applicants")
   @Valid
@@ -115,10 +125,8 @@ public class Challenge   {
    * The type of appeal
    * @return appealType
   */
-  @Schema(required = true, description = "The type of appeal")
-  @NotNull
-
-
+  @NotNull 
+  @Schema(name = "appealType", description = "The type of appeal", required = true)
   public AppealTypeEnum getAppealType() {
     return appealType;
   }
@@ -136,10 +144,8 @@ public class Challenge   {
    * The type of appeal tier
    * @return appealTierType
   */
-  @Schema(required = true, description = "The type of appeal tier")
-  @NotNull
-
-
+  @NotNull 
+  @Schema(name = "appealTierType", description = "The type of appeal tier", required = true)
   public AppealTierTypeEnum getAppealTierType() {
     return appealTierType;
   }
@@ -148,7 +154,7 @@ public class Challenge   {
     this.appealTierType = appealTierType;
   }
 
-  public Challenge challengeSubmissionDate(String challengeSubmissionDate) {
+  public Challenge challengeSubmissionDate(OffsetDateTime challengeSubmissionDate) {
     this.challengeSubmissionDate = challengeSubmissionDate;
     return this;
   }
@@ -157,16 +163,13 @@ public class Challenge   {
    * Date (and time, if available) of challenge submission, in the standard format yyyy-mm-dd (with HH:mm:ss if the time is available, otherwise not). Date/time is assumed to be in UTC
    * @return challengeSubmissionDate
   */
-  @Schema(example = "2017-07-21T17:32:28Z", required = true, description = "Date (and time, if available) of challenge submission, in the standard format yyyy-mm-dd (with HH:mm:ss if the time is available, otherwise not). Date/time is assumed to be in UTC")
-  @NotNull
-
-  @Valid
-
-  public String getChallengeSubmissionDate() {
+  @NotNull @Valid 
+  @Schema(name = "challengeSubmissionDate", example = "2017-07-21T17:32:28Z", description = "Date (and time, if available) of challenge submission, in the standard format yyyy-mm-dd (with HH:mm:ss if the time is available, otherwise not). Date/time is assumed to be in UTC", required = true)
+  public OffsetDateTime getChallengeSubmissionDate() {
     return challengeSubmissionDate;
   }
 
-  public void setChallengeSubmissionDate(String challengeSubmissionDate) {
+  public void setChallengeSubmissionDate(OffsetDateTime challengeSubmissionDate) {
     this.challengeSubmissionDate = challengeSubmissionDate;
   }
 
@@ -184,11 +187,8 @@ public class Challenge   {
    * List of applicants (will initially be just one)
    * @return applicants
   */
-  @Schema(required = true, description = "List of applicants (will initially be just one)")
-  @NotNull
-
-  @Valid
-@Size(min=1)
+  @NotNull @Valid @Size(min = 1) 
+  @Schema(name = "applicants", description = "List of applicants (will initially be just one)", required = true)
   public List<Person> getApplicants() {
     return applicants;
   }
@@ -197,9 +197,8 @@ public class Challenge   {
     this.applicants = applicants;
   }
 
-
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -222,7 +221,6 @@ public class Challenge   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Challenge {\n");
-
     sb.append("    appealType: ").append(toIndentedString(appealType)).append("\n");
     sb.append("    appealTierType: ").append(toIndentedString(appealTierType)).append("\n");
     sb.append("    challengeSubmissionDate: ").append(toIndentedString(challengeSubmissionDate)).append("\n");
@@ -235,7 +233,7 @@ public class Challenge   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

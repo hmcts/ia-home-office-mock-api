@@ -1,18 +1,29 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
+import java.net.URI;
+import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.PersonGender;
+import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.PersonNationality;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.time.OffsetDateTime;
+import javax.validation.Valid;
+import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
-import javax.validation.Valid;
-import java.util.Objects;
+
+import java.util.*;
+import javax.annotation.Generated;
 
 /**
  * An individual fufilling a role on the application.
  */
-@Schema(description = "An individual fufilling a role on the application.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-07-01T14:15:45.837+01:00[Europe/London]")
 
+@Schema(name = "Person", description = "An individual fufilling a role on the application.")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-16T15:17:31.480240Z[Europe/London]")
 public class Person   {
+
   @JsonProperty("givenName")
   private String givenName;
 
@@ -46,9 +57,8 @@ public class Person   {
    * Person's given names. Assumed to be a concatenated list of names
    * @return givenName
   */
-  @Schema(example = "Capability", description = "Person's given names. Assumed to be a concatenated list of names")
-
-
+  
+  @Schema(name = "givenName", example = "Capability", description = "Person's given names. Assumed to be a concatenated list of names", required = false)
   public String getGivenName() {
     return givenName;
   }
@@ -66,9 +76,8 @@ public class Person   {
    * Person's family names. Assumed to be a concatenated list of names
    * @return familyName
   */
-  @Schema(example = "Smith", description = "Person's family names. Assumed to be a concatenated list of names")
-
-
+  
+  @Schema(name = "familyName", example = "Smith", description = "Person's family names. Assumed to be a concatenated list of names", required = false)
   public String getFamilyName() {
     return familyName;
   }
@@ -86,9 +95,8 @@ public class Person   {
    * Person's full name
    * @return fullName
   */
-  @Schema(example = "Capability Smith", description = "Person's full name")
-
-
+  
+  @Schema(name = "fullName", example = "Capability Smith", description = "Person's full name", required = false)
   public String getFullName() {
     return fullName;
   }
@@ -106,10 +114,8 @@ public class Person   {
    * Get gender
    * @return gender
   */
-  @Schema()
-
-  @Valid
-
+  @Valid 
+  @Schema(name = "gender", required = false)
   public PersonGender getGender() {
     return gender;
   }
@@ -127,9 +133,8 @@ public class Person   {
    * Day of month the person was born on, from 1-31. No leading zeroes
    * @return dayOfBirth
   */
-  @Schema(example = "21", description = "Day of month the person was born on, from 1-31. No leading zeroes")
-
-
+  
+  @Schema(name = "dayOfBirth", example = "21", description = "Day of month the person was born on, from 1-31. No leading zeroes", required = false)
   public Integer getDayOfBirth() {
     return dayOfBirth;
   }
@@ -147,9 +152,8 @@ public class Person   {
    * Month of year (Gregorian calendar) the person was born in, from 1-12. No leading zeroes
    * @return monthOfBirth
   */
-  @Schema(description= "Month of year (Gregorian calendar) the person was born in, from 1-12. No leading zeroes")
-
-
+  
+  @Schema(name = "monthOfBirth", description = "Month of year (Gregorian calendar) the person was born in, from 1-12. No leading zeroes", required = false)
   public Integer getMonthOfBirth() {
     return monthOfBirth;
   }
@@ -167,9 +171,8 @@ public class Person   {
    * Year the person was born in (4 digits)
    * @return yearOfBirth
   */
-  @Schema(example = "1970", description = "Year the person was born in (4 digits)")
-
-
+  
+  @Schema(name = "yearOfBirth", example = "1970", description = "Year the person was born in (4 digits)", required = false)
   public Integer getYearOfBirth() {
     return yearOfBirth;
   }
@@ -187,10 +190,8 @@ public class Person   {
    * Get nationality
    * @return nationality
   */
-  @Schema()
-
-  @Valid
-
+  @Valid 
+  @Schema(name = "nationality", required = false)
   public PersonNationality getNationality() {
     return nationality;
   }
@@ -199,9 +200,8 @@ public class Person   {
     this.nationality = nationality;
   }
 
-
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -228,7 +228,6 @@ public class Person   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Person {\n");
-
     sb.append("    givenName: ").append(toIndentedString(givenName)).append("\n");
     sb.append("    familyName: ").append(toIndentedString(familyName)).append("\n");
     sb.append("    fullName: ").append(toIndentedString(fullName)).append("\n");
@@ -245,7 +244,7 @@ public class Person   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }
