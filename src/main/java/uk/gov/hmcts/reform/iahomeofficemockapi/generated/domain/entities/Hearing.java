@@ -1,22 +1,30 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
+import java.net.URI;
+import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import java.time.LocalDate;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.time.OffsetDateTime;
+import javax.validation.Valid;
+import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import java.time.LocalDate;
-import java.util.Objects;
+
+import java.util.*;
+import javax.annotation.Generated;
 
 /**
  * Details of a hearing.
  */
-@Schema(description = "Details of a hearing.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-07-01T14:15:45.837+01:00[Europe/London]")
 
+@Schema(name = "Hearing", description = "Details of a hearing.")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-16T15:17:31.480240Z[Europe/London]")
 public class Hearing   {
+
   @JsonProperty("hmctsHearingRef")
   private String hmctsHearingRef;
 
@@ -24,6 +32,7 @@ public class Hearing   {
   private String hearingLocation;
 
   @JsonProperty("hearingDate")
+  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
   private LocalDate hearingDate;
 
   @JsonProperty("hearingTime")
@@ -34,7 +43,7 @@ public class Hearing   {
    */
   public enum HearingTypeEnum {
     PAPER("PAPER"),
-
+    
     ORAL("ORAL");
 
     private String value;
@@ -82,10 +91,8 @@ public class Hearing   {
    * HMCTS reference for a hearing. (Allows for multiple hearings though usually it's just one.)
    * @return hmctsHearingRef
   */
-  @Schema(required = true, description = "HMCTS reference for a hearing. (Allows for multiple hearings though usually it's just one.)")
-  @NotNull
-
-
+  @NotNull 
+  @Schema(name = "hmctsHearingRef", description = "HMCTS reference for a hearing. (Allows for multiple hearings though usually it's just one.)", required = true)
   public String getHmctsHearingRef() {
     return hmctsHearingRef;
   }
@@ -103,9 +110,8 @@ public class Hearing   {
    * Venue where the hearing is to take place
    * @return hearingLocation
   */
-  @Schema(example = "Royal Courts of Justice, London", description = "Venue where the hearing is to take place")
-
-
+  
+  @Schema(name = "hearingLocation", example = "Royal Courts of Justice, London", description = "Venue where the hearing is to take place", required = false)
   public String getHearingLocation() {
     return hearingLocation;
   }
@@ -123,10 +129,8 @@ public class Hearing   {
    * Date of the hearing, in the standard format yyyy-mm-dd
    * @return hearingDate
   */
-  @Schema(example = "Fri Jul 21 01:00:00 BST 2017", description = "Date of the hearing, in the standard format yyyy-mm-dd")
-
-  @Valid
-
+  @Valid 
+  @Schema(name = "hearingDate", example = "Fri Jul 21 01:00:00 BST 2017", description = "Date of the hearing, in the standard format yyyy-mm-dd", required = false)
   public LocalDate getHearingDate() {
     return hearingDate;
   }
@@ -144,9 +148,8 @@ public class Hearing   {
    * Time of the hearing, in the standard format HH:mm:ss. Time is assumed to be in UTC
    * @return hearingTime
   */
-  @Schema(example = "10:30:00Z", description = "Time of the hearing, in the standard format HH:mm:ss. Time is assumed to be in UTC")
-
-
+  
+  @Schema(name = "hearingTime", example = "10:30:00Z", description = "Time of the hearing, in the standard format HH:mm:ss. Time is assumed to be in UTC", required = false)
   public String getHearingTime() {
     return hearingTime;
   }
@@ -164,10 +167,8 @@ public class Hearing   {
    * Type of hearing
    * @return hearingType
   */
-  @Schema(required = true, description = "Type of hearing")
-  @NotNull
-
-
+  @NotNull 
+  @Schema(name = "hearingType", description = "Type of hearing", required = true)
   public HearingTypeEnum getHearingType() {
     return hearingType;
   }
@@ -185,9 +186,8 @@ public class Hearing   {
    * Number of witnesses to be called to provide evidence at the hearing
    * @return witnessQty
   */
-  @Schema(description = "Number of witnesses to be called to provide evidence at the hearing")
-
-
+  
+  @Schema(name = "witnessQty", description = "Number of witnesses to be called to provide evidence at the hearing", required = false)
   public Integer getWitnessQty() {
     return witnessQty;
   }
@@ -205,9 +205,8 @@ public class Hearing   {
    * Names of witnesses. Recorded as notes in HMCTS, so cannot be a list of names
    * @return witnessNames
   */
-  @Schema(example = "John Smyth, Jennie Walker", description = "Names of witnesses. Recorded as notes in HMCTS, so cannot be a list of names")
-
-
+  
+  @Schema(name = "witnessNames", example = "John Smyth, Jennie Walker", description = "Names of witnesses. Recorded as notes in HMCTS, so cannot be a list of names", required = false)
   public String getWitnessNames() {
     return witnessNames;
   }
@@ -216,9 +215,8 @@ public class Hearing   {
     this.witnessNames = witnessNames;
   }
 
-
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -244,7 +242,6 @@ public class Hearing   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Hearing {\n");
-
     sb.append("    hmctsHearingRef: ").append(toIndentedString(hmctsHearingRef)).append("\n");
     sb.append("    hearingLocation: ").append(toIndentedString(hearingLocation)).append("\n");
     sb.append("    hearingDate: ").append(toIndentedString(hearingDate)).append("\n");
@@ -260,7 +257,7 @@ public class Hearing   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

@@ -23,6 +23,42 @@ Run the normal build after this step.
 ./gradlew clean build
 ```
 
+To see all available endpoints locally, first build and run the `jar`:
+
+```
+./gradlew clean bootJar
+java -jar build/libs/ia-home-office-mock-api.jar
+```
+
+which should start the application listening on `localhost:8098`.  Then (in a different terminal):
+
+```
+curl -s http://localhost:8098/mappings \
+  | jq -r '.contexts."application-1".mappings.dispatcherServlets.dispatcherServlet[]
+           | select(.details != null)
+           | .details.requestMappingConditions.patterns[]
+           as $pattern
+           | "\($pattern) -> \(.handler // "unknown")"'
+```
+
+to see a list of endpoints and their respective handlers.  To filter out the Swagger endpoints:
+
+```
+curl -s http://localhost:8098/mappings \
+  | jq -r '.contexts."application-1".mappings.dispatcherServlets.dispatcherServlet[]
+           | select(.details != null)
+           | .details.requestMappingConditions.patterns[]
+           as $pattern
+           | select(
+               ($pattern | startswith("/actuator") | not)
+               and ($pattern | startswith("/v3/") | not)
+               and ($pattern != "/swagger-ui.html")
+             )
+           | "\($pattern) -> \(.handler // "unknown")"'
+```
+
+You're welcome.
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
