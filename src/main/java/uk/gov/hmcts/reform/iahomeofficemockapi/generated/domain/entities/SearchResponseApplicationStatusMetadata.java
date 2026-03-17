@@ -1,20 +1,29 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
+import java.net.URI;
+import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import java.time.OffsetDateTime;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.time.OffsetDateTime;
+import javax.validation.Valid;
+import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import java.time.OffsetDateTime;
-import java.util.Objects;
+
+import java.util.*;
+import javax.annotation.Generated;
 
 /**
  * Metadata item, comprising an item code and one (usually) or more data values that are typed
  */
-@Schema(description = "Metadata item, comprising an item code and one (usually) or more data values that are typed")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-07-01T14:15:45.837+01:00[Europe/London]")
 
+@Schema(name = "SearchResponse_applicationStatus_metadata", description = "Metadata item, comprising an item code and one (usually) or more data values that are typed")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-16T15:17:31.480240Z[Europe/London]")
 public class SearchResponseApplicationStatusMetadata   {
+
   @JsonProperty("code")
   private String code;
 
@@ -22,6 +31,7 @@ public class SearchResponseApplicationStatusMetadata   {
   private Boolean valueBoolean;
 
   @JsonProperty("valueDateTime")
+  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private OffsetDateTime valueDateTime;
 
   @JsonProperty("valueString")
@@ -36,10 +46,8 @@ public class SearchResponseApplicationStatusMetadata   {
    * Metadata item code
    * @return code
   */
-  @Schema(example = "APPEALABLE or DISPATCH_DATE", required = true, description = "Metadata item code")
-  @NotNull
-
-
+  @NotNull 
+  @Schema(name = "code", example = "APPEALABLE or DISPATCH_DATE", description = "Metadata item code", required = true)
   public String getCode() {
     return code;
   }
@@ -57,9 +65,8 @@ public class SearchResponseApplicationStatusMetadata   {
    * Boolean metadata value
    * @return valueBoolean
   */
-  @Schema(example = "true", description = "Boolean metadata value")
-
-
+  
+  @Schema(name = "valueBoolean", example = "true", description = "Boolean metadata value", required = false)
   public Boolean getValueBoolean() {
     return valueBoolean;
   }
@@ -77,10 +84,8 @@ public class SearchResponseApplicationStatusMetadata   {
    * Date (and time) metadata value, in the standard format yyyy-mm-dd (with the HH:mm:ss if the time is available - this won't be displayed if it isn't). This is assumed to be in UTC
    * @return valueDateTime
   */
-  @Schema(example = "2017-07-21T17:32:28Z", description = "Date (and time) metadata value, in the standard format yyyy-mm-dd (with the HH:mm:ss if the time is available - this won't be displayed if it isn't). This is assumed to be in UTC")
-
-  @Valid
-
+  @Valid 
+  @Schema(name = "valueDateTime", example = "2017-07-21T17:32:28Z", description = "Date (and time) metadata value, in the standard format yyyy-mm-dd (with the HH:mm:ss if the time is available - this won't be displayed if it isn't). This is assumed to be in UTC", required = false)
   public OffsetDateTime getValueDateTime() {
     return valueDateTime;
   }
@@ -98,9 +103,8 @@ public class SearchResponseApplicationStatusMetadata   {
    * String metadata value
    * @return valueString
   */
-  @Schema(example = "Some extra decision data", description = "String metadata value")
-
-
+  
+  @Schema(name = "valueString", example = "Some extra decision data", description = "String metadata value", required = false)
   public String getValueString() {
     return valueString;
   }
@@ -109,9 +113,8 @@ public class SearchResponseApplicationStatusMetadata   {
     this.valueString = valueString;
   }
 
-
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -134,7 +137,6 @@ public class SearchResponseApplicationStatusMetadata   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SearchResponseApplicationStatusMetadata {\n");
-
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    valueBoolean: ").append(toIndentedString(valueBoolean)).append("\n");
     sb.append("    valueDateTime: ").append(toIndentedString(valueDateTime)).append("\n");
@@ -147,7 +149,7 @@ public class SearchResponseApplicationStatusMetadata   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

@@ -1,21 +1,32 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
+import java.net.URI;
+import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import java.time.OffsetDateTime;
+import org.springframework.format.annotation.DateTimeFormat;
+import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.Consumer;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.time.OffsetDateTime;
+import javax.validation.Valid;
+import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import java.time.OffsetDateTime;
-import java.util.Objects;
+
+import java.util.*;
+import javax.annotation.Generated;
 
 /**
  * Message parameters (not business oriented).
  */
-@Schema(description = "Message parameters (not business oriented).")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-07-01T14:15:45.837+01:00[Europe/London]")
 
+@Schema(name = "MessageHeader", description = "Message parameters (not business oriented).")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-16T15:17:31.480240Z[Europe/London]")
 public class MessageHeader   {
+
   @JsonProperty("eventDateTime")
+  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private OffsetDateTime eventDateTime;
 
   @JsonProperty("correlationId")
@@ -33,11 +44,8 @@ public class MessageHeader   {
    * UTC timestamp for debugging purposes
    * @return eventDateTime
   */
-  @Schema(example = "2017-07-21T17:32:28Z", required = true, description = "UTC timestamp for debugging purposes")
-  @NotNull
-
-  @Valid
-
+  @NotNull @Valid 
+  @Schema(name = "eventDateTime", example = "2017-07-21T17:32:28Z", description = "UTC timestamp for debugging purposes", required = true)
   public OffsetDateTime getEventDateTime() {
     return eventDateTime;
   }
@@ -55,10 +63,8 @@ public class MessageHeader   {
    * ID allowing correlation between service consumer and API log files. Expected to be unique, for example, a UUID
    * @return correlationId
   */
-  @Schema(example = "ABC2344BCED2234EA", required = true, description = "ID allowing correlation between service consumer and API log files. Expected to be unique, for example, a UUID")
-  @NotNull
-
-
+  @NotNull 
+  @Schema(name = "correlationId", example = "ABC2344BCED2234EA", description = "ID allowing correlation between service consumer and API log files. Expected to be unique, for example, a UUID", required = true)
   public String getCorrelationId() {
     return correlationId;
   }
@@ -76,11 +82,8 @@ public class MessageHeader   {
    * Get consumer
    * @return consumer
   */
-  @Schema(required = true, description = "")
-  @NotNull
-
-  @Valid
-
+  @NotNull @Valid 
+  @Schema(name = "consumer", required = true)
   public Consumer getConsumer() {
     return consumer;
   }
@@ -89,9 +92,8 @@ public class MessageHeader   {
     this.consumer = consumer;
   }
 
-
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -113,7 +115,6 @@ public class MessageHeader   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class MessageHeader {\n");
-
     sb.append("    eventDateTime: ").append(toIndentedString(eventDateTime)).append("\n");
     sb.append("    correlationId: ").append(toIndentedString(correlationId)).append("\n");
     sb.append("    consumer: ").append(toIndentedString(consumer)).append("\n");
@@ -125,7 +126,7 @@ public class MessageHeader   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

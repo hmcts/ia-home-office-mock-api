@@ -1,16 +1,26 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
+import java.net.URI;
+import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.time.OffsetDateTime;
+import javax.validation.Valid;
+import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
-import java.util.Objects;
+
+import java.util.*;
+import javax.annotation.Generated;
 
 /**
  * SearchResponseApplicationStatusRejectionReasons
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-07-01T14:15:45.837+01:00[Europe/London]")
 
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-16T15:17:31.480240Z[Europe/London]")
 public class SearchResponseApplicationStatusRejectionReasons   {
+
   @JsonProperty("reason")
   private String reason;
 
@@ -23,9 +33,8 @@ public class SearchResponseApplicationStatusRejectionReasons   {
    * Reason for application rejection
    * @return reason
   */
-  @Schema(example = "Application not completed properly", description = "Reason for application rejection")
-
-
+  
+  @Schema(name = "reason", example = "Application not completed properly", description = "Reason for application rejection", required = false)
   public String getReason() {
     return reason;
   }
@@ -34,9 +43,8 @@ public class SearchResponseApplicationStatusRejectionReasons   {
     this.reason = reason;
   }
 
-
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -56,7 +64,6 @@ public class SearchResponseApplicationStatusRejectionReasons   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SearchResponseApplicationStatusRejectionReasons {\n");
-
     sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -66,7 +73,7 @@ public class SearchResponseApplicationStatusRejectionReasons   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

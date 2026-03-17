@@ -1,0 +1,1265 @@
+openapi: 3.0.0
+info:
+  description: |
+    This is a specification for appeal/challenge to be consumed by HMCTS (in the first instance).
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Appeals interface
+  version: 1d Draft
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+- url: https://somehost.example.com
+tags:
+- description: Appeals interface
+  name: Appeals
+paths:
+  /applications/v1/{id}:
+    get:
+      description: "This resource represents the people involved in an application\
+        \ for immigration or asylum from the Home Office.  The application number\
+        \ is identified by the `id` passed in, which is a UAN (16 digits in four blocks\
+        \ of four separated by dashes) or a GWF (beginning wth the letters **GWF**\
+        \ followed by nine digits)."
+      parameters:
+      - description: Application ID
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          example: null
+          pattern: "^(\\d{4}-\\d{4}-\\d{4}-\\d{4}|GWF\\d{9})$"
+          type: string
+        style: simple
+      - explode: false
+        in: header
+        name: Home-Office-Correlation-ID
+        required: true
+        schema:
+          example: null
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: header
+        name: Home-Office-Consumer
+        required: true
+        schema:
+          $ref: "#/components/schemas/HomeOfficeConsumer"
+        style: simple
+      - explode: false
+        in: header
+        name: Home-Office-Event-DateTime
+        required: true
+        schema:
+          example: null
+          format: date-time
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Application"
+          description: OK (response returned)
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SearchErrorResponse"
+          description: "Bad request (missing or invalid application ID, HTTP headers\
+            \ etc.)"
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SearchErrorResponse"
+          description: Not authenticated (missing or invalid credentials)
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SearchErrorResponse"
+          description: Not authorised (insufficient permissions to retrieve this resource)
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SearchErrorResponse"
+          description: Not found (no application with that ID exists on the server)
+        "5XX":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SearchErrorResponse"
+          description: Internal server error
+      summary: Gets the appellants' details of an application for immigration or asylum
+        from the Home Office.
+      x-accepts: application/json
+  /v1/applicationStatus/getBySearchParameters:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SearchParameters"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SearchResponse"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SearchErrorResponse"
+          description: Invalid status value
+      summary: Finds applications by search parameters (initially one).  This API
+        is now deprecated.  Please use /applications for appeal validation and /applicationInstruct/setInstruct
+        for appeal submission instead.
+      x-contentType: application/json
+      x-accepts: application/json
+  /v1/applicationInstruct/setInstruct:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InstructMessage"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InstructResponse"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InstructErrorResponse"
+          description: Invalid status value
+      summary: "Instructs Home Office downstream systems. Note: Use of the term 'instruct'\
+        \ avoids any confusion with existing business terms, such as 'notification'\
+        \ and 'direction', which are not overly descriptive to the Home Office."
+      x-contentType: application/json
+      x-accepts: application/json
+components:
+  schemas:
+    HomeOfficeConsumer:
+      enum:
+      - HMCTS
+      example: null
+      type: string
+    SearchParameters:
+      description: |-
+        Parameters passed in to enable searching for applications. Currently supports only one type/value pair but the interface is designed to support multiple in future.
+
+        As a side effect this service will send a notification to the Event Publisher to inform them that a request for a possible appeal has been made.
+      example:
+        messageHeader:
+          eventDateTime: 2017-07-21T17:32:28Z
+          correlationId: ABC2344BCED2234EA
+          consumer:
+            code: HMCTS
+            description: HM Courts and Tribunal Service
+        searchParams:
+        - spValue: "UAN (nnnn-nnnn-nnnn-nnnn) or CID (case ID, e.g. 001234567)"
+          spType: DOCUMENT_REFERENCE
+        - spValue: "UAN (nnnn-nnnn-nnnn-nnnn) or CID (case ID, e.g. 001234567)"
+          spType: DOCUMENT_REFERENCE
+      properties:
+        messageHeader:
+          $ref: "#/components/schemas/MessageHeader"
+        searchParams:
+          example: null
+          items:
+            $ref: "#/components/schemas/SearchParameters_searchParams"
+          minItems: 1
+          type: array
+      required:
+      - messageHeader
+      - searchParams
+    Application:
+      description: "Details of the application, including appellants' biographic information."
+      example:
+        hoClaimDate: 2017-07-18
+        uan: 1342-5786-9120-3564
+        hoDecisionLetterDate: 2017-07-20
+        appellants:
+        - pp: "01"
+          hoFeeWaiver: true
+          nationality: GER
+          roa: true
+          familyName: Wimp
+          givenNames: Horace
+          dateOfBirth: 2017-07-21
+          asylumSupport: false
+          language: eng
+          interpreterNeeded: false
+        - pp: "01"
+          hoFeeWaiver: true
+          nationality: GER
+          roa: true
+          familyName: Wimp
+          givenNames: Horace
+          dateOfBirth: 2017-07-21
+          asylumSupport: false
+          language: eng
+          interpreterNeeded: false
+        hoDecisionDate: 2017-07-19
+      properties:
+        uan:
+          example: 1342-5786-9120-3564
+          pattern: "^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}$"
+          type: string
+        hoClaimDate:
+          example: 2017-07-18
+          pattern: "^(19[0-9]{2}|[2-9][0-9]{3})-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$"
+          type: string
+        hoDecisionDate:
+          example: 2017-07-19
+          pattern: "^(19[0-9]{2}|[2-9][0-9]{3})-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$"
+          type: string
+        hoDecisionLetterDate:
+          example: 2017-07-20
+          pattern: "^(19[0-9]{2}|[2-9][0-9]{3})-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$"
+          type: string
+        appellants:
+          example: null
+          items:
+            $ref: "#/components/schemas/Appellant"
+          type: array
+      required:
+      - appellants
+      - hoClaimDate
+      - hoDecisionDate
+      - hoDecisionLetterDate
+      type: object
+    Appellant:
+      example:
+        pp: "01"
+        hoFeeWaiver: true
+        nationality: GER
+        roa: true
+        familyName: Wimp
+        givenNames: Horace
+        dateOfBirth: 2017-07-21
+        asylumSupport: false
+        language: eng
+        interpreterNeeded: false
+      properties:
+        pp:
+          example: "01"
+          pattern: "^[0-9]{2}$"
+          type: string
+        familyName:
+          example: Wimp
+          type: string
+        givenNames:
+          example: Horace
+          type: string
+        dateOfBirth:
+          example: 2017-07-21
+          pattern: "^(19[0-9]{2}|[2-9][0-9]{3})-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$"
+          type: string
+        nationality:
+          example: GER
+          pattern: "^[A-Z]{3}$"
+          type: string
+        roa:
+          example: true
+          type: boolean
+        asylumSupport:
+          example: false
+          type: boolean
+        hoFeeWaiver:
+          example: true
+          type: boolean
+        language:
+          example: eng
+          pattern: "^[a-z]{3}$"
+          type: string
+        interpreterNeeded:
+          example: false
+          type: boolean
+      required:
+      - dateOfBirth
+      - familyName
+      - givenNames
+      - language
+      - nationality
+      type: object
+    SearchResponse:
+      description: Response containing details of the application search.
+      example:
+        messageHeader:
+          eventDateTime: 2017-07-21T17:32:28Z
+          correlationId: ABC2344BCED2234EA
+          consumer:
+            code: HMCTS
+            description: HM Courts and Tribunal Service
+        messageType: RESPONSE_RIGHT_OF_APPEAL_DETAILS
+        status:
+        - applicationStatus:
+            applicationType:
+              code: ASYLUM
+              description: Asylum and Protection
+            metadata:
+            - valueBoolean: true
+              code: APPEALABLE or DISPATCH_DATE
+              valueString: Some extra decision data
+              valueDateTime: 2017-07-21T17:32:28Z
+            - valueBoolean: true
+              code: APPEALABLE or DISPATCH_DATE
+              valueString: Some extra decision data
+              valueDateTime: 2017-07-21T17:32:28Z
+            rejectionReasons:
+            - reason: Application not completed properly
+            - reason: Application not completed properly
+            decisionCommunication:
+              sentDate: 2017-07-21T17:32:28Z
+              dispatchDate: 2017-07-21T17:32:28Z
+              description: E-mail
+              type: EMAIL
+            claimReasonType:
+              code: HUMANRIGHTS
+              description: Human Rights
+            documentReference: 1234-1234-5678-5678/00
+            roleSubType:
+              code: SPOUSE. Could be MAIN if the role type is APPLICANT
+              description: Spouse
+            decisionType:
+              code: REJECTION
+              description: Rejected
+            roleType:
+              code: DEPENDANT
+              description: Dependant
+            decisionDate: 2017-07-21T17:32:28Z
+          person:
+            gender:
+              code: M (denoting male)
+              description: Male
+            nationality:
+              code: CAN (denoting Canada)
+              description: Canada
+            dayOfBirth: 21
+            givenName: Capability
+            familyName: Smith
+            fullName: Capability Smith
+            monthOfBirth: 0
+            yearOfBirth: 1970
+        - applicationStatus:
+            applicationType:
+              code: ASYLUM
+              description: Asylum and Protection
+            metadata:
+            - valueBoolean: true
+              code: APPEALABLE or DISPATCH_DATE
+              valueString: Some extra decision data
+              valueDateTime: 2017-07-21T17:32:28Z
+            - valueBoolean: true
+              code: APPEALABLE or DISPATCH_DATE
+              valueString: Some extra decision data
+              valueDateTime: 2017-07-21T17:32:28Z
+            rejectionReasons:
+            - reason: Application not completed properly
+            - reason: Application not completed properly
+            decisionCommunication:
+              sentDate: 2017-07-21T17:32:28Z
+              dispatchDate: 2017-07-21T17:32:28Z
+              description: E-mail
+              type: EMAIL
+            claimReasonType:
+              code: HUMANRIGHTS
+              description: Human Rights
+            documentReference: 1234-1234-5678-5678/00
+            roleSubType:
+              code: SPOUSE. Could be MAIN if the role type is APPLICANT
+              description: Spouse
+            decisionType:
+              code: REJECTION
+              description: Rejected
+            roleType:
+              code: DEPENDANT
+              description: Dependant
+            decisionDate: 2017-07-21T17:32:28Z
+          person:
+            gender:
+              code: M (denoting male)
+              description: Male
+            nationality:
+              code: CAN (denoting Canada)
+              description: Canada
+            dayOfBirth: 21
+            givenName: Capability
+            familyName: Smith
+            fullName: Capability Smith
+            monthOfBirth: 0
+            yearOfBirth: 1970
+      properties:
+        messageHeader:
+          $ref: "#/components/schemas/MessageHeader"
+        messageType:
+          description: Identifies the type of message
+          enum:
+          - RESPONSE_RIGHT_OF_APPEAL_DETAILS
+          example: RESPONSE_RIGHT_OF_APPEAL_DETAILS
+          type: string
+        status:
+          description: "An array of persons and application status; generally, the\
+            \ status will be the same for all persons but this format provides flexibility"
+          example: null
+          items:
+            $ref: "#/components/schemas/SearchResponse_status"
+          type: array
+      type: object
+    SearchErrorResponse:
+      example: null
+      properties:
+        messageHeader:
+          $ref: "#/components/schemas/MessageHeader"
+        errorDetail:
+          $ref: "#/components/schemas/ErrorResponse"
+      type: object
+    InstructMessage:
+      description: |
+        ### Message instructing Home Office about an event, or action to perform.
+
+        #### Mandatory items for all messages
+
+        messageHeader, messageType, hoReference, and consumerReference
+
+        #### Optional items
+
+        note
+
+        #### Message Types and Mandatory Elements
+
+        REQUEST_CHALLENGE_END: endReason, endChallengeDate
+
+        REQUEST_EVIDENCE_BUNDLE: challenge, deadlineDate
+
+        REQUEST_REVIEW: deadlineDate (a review has its own deadline)
+
+        HEARING: hearing
+
+        HEARING_BUNDLE_READY: hearing (passing just hmctsHearingRef and hearingType)
+
+        COURT_OUTCOME: courtOutcome
+
+        PERMISSION_TO_APPEAL: courtType
+
+        DEFAULT: No additional mandatory elements; generic item that is not a bundle/review request
+      example:
+        endChallengeDate: 2017-07-21T17:32:28Z
+        courtType: FIRST_TIER
+        note: Additional notes from HMCTS
+        messageHeader:
+          eventDateTime: 2017-07-21T17:32:28Z
+          correlationId: ABC2344BCED2234EA
+          consumer:
+            code: HMCTS
+            description: HM Courts and Tribunal Service
+        messageType: REQUEST_CHALLENGE_END
+        courtOutcome:
+          courtType: FIRST_TIER
+          outcome: ALLOWED
+        endReason: STRUCK_OUT
+        deadlineDate: 2017-07-21T17:32:28Z
+        challenge:
+          appealTierType: FIRST_TIER
+          appealType: PROTECTION
+          applicants:
+          - gender:
+              code: M (denoting male)
+              description: Male
+            nationality:
+              code: CAN (denoting Canada)
+              description: Canada
+            dayOfBirth: 21
+            givenName: Capability
+            familyName: Smith
+            fullName: Capability Smith
+            monthOfBirth: 0
+            yearOfBirth: 1970
+          - gender:
+              code: M (denoting male)
+              description: Male
+            nationality:
+              code: CAN (denoting Canada)
+              description: Canada
+            dayOfBirth: 21
+            givenName: Capability
+            familyName: Smith
+            fullName: Capability Smith
+            monthOfBirth: 0
+            yearOfBirth: 1970
+          challengeSubmissionDate: 2017-07-21T17:32:28Z
+        hearing:
+          hearingType: PAPER
+          witnessQty: 0
+          witnessNames: "John Smyth, Jennie Walker"
+          hearingDate: 2017-07-21T00:00:00.000+00:00
+          hearingLocation: "Royal Courts of Justice, London"
+          hearingTime: 10:30:00Z
+          hmctsHearingRef: hmctsHearingRef
+        hoReference: "nnnn-nnnn-nnnn-nnnn (UAN) or CID (case ID, e.g. 001234567)"
+        consumerReference:
+          code: HMCTS_CHALLENGE_REF
+          description: HMCTS challenge reference
+          value: xxxyyyynnn-nnn
+          consumer:
+            code: HMCTS
+            description: HM Courts and Tribunal Service
+      properties:
+        messageHeader:
+          $ref: "#/components/schemas/MessageHeader"
+        messageType:
+          description: Message type
+          enum:
+          - REQUEST_CHALLENGE_END
+          - REQUEST_EVIDENCE_BUNDLE
+          - REQUEST_REVIEW
+          - HEARING
+          - HEARING_BUNDLE_READY
+          - COURT_OUTCOME
+          - PERMISSION_TO_APPEAL
+          - DEFAULT
+          example: null
+          type: string
+        hoReference:
+          description: Home Office reference (UAN or CID case ID)
+          example: "nnnn-nnnn-nnnn-nnnn (UAN) or CID (case ID, e.g. 001234567)"
+          type: string
+        consumerReference:
+          $ref: "#/components/schemas/ConsumerRef"
+        endReason:
+          description: Code indicating reason for ending a challenge. *Mandatory if
+            messageType is REQUEST_CHALLENGE_END*
+          enum:
+          - STRUCK_OUT
+          - ABANDONED
+          - WITHDRAWN
+          - NOT_VALID
+          - INCORRECT_DETAILS
+          example: null
+          type: string
+        endChallengeDate:
+          description: "Date (and time, if available) the challenge was ended, in\
+            \ the standard format yyyy-mm-dd (with HH:mm:ss if the time is available,\
+            \ otherwise not). Date/time is assumed to be in UTC. *Mandatory if messageType\
+            \ is REQUEST_CHALLENGE_END*"
+          example: 2017-07-21T17:32:28Z
+          format: date-time
+          type: string
+        deadlineDate:
+          description: "Deadline date (and time, if available) for the appeal, in\
+            \ the standard format yyyy-mm-dd (with HH:mm:ss if the time is available,\
+            \ otherwise not). Date/time is assumed to be in UTC"
+          example: 2017-07-21T17:32:28Z
+          format: date-time
+          type: string
+        courtType:
+          description: Court type. *Mandatory if messageType is PERMISSION_TO_APPEAL*
+          enum:
+          - FIRST_TIER
+          - UPPER_TRIBUNAL
+          - COURT_OF_APPEAL
+          - SUPREME_COURT
+          example: null
+          type: string
+        challenge:
+          $ref: "#/components/schemas/Challenge"
+        hearing:
+          $ref: "#/components/schemas/Hearing"
+        courtOutcome:
+          $ref: "#/components/schemas/CourtOutcome"
+        note:
+          description: "Optional note. Can be used for indicating notification type\
+            \ and, possibly, Home Office actions required"
+          example: Additional notes from HMCTS
+          type: string
+      required:
+      - consumerReference
+      - hoReference
+      - messageHeader
+      - messageType
+      type: object
+    InstructResponse:
+      description: Response round-tripping request message header.
+      example:
+        messageHeader:
+          eventDateTime: 2017-07-21T17:32:28Z
+          correlationId: ABC2344BCED2234EA
+          consumer:
+            code: HMCTS
+            description: HM Courts and Tribunal Service
+      properties:
+        messageHeader:
+          $ref: "#/components/schemas/MessageHeader"
+      type: object
+    InstructErrorResponse:
+      example: null
+      properties:
+        messageHeader:
+          $ref: "#/components/schemas/MessageHeader"
+        errorDetail:
+          $ref: "#/components/schemas/ErrorResponse"
+      type: object
+    Person:
+      description: An individual fufilling a role on the application.
+      example:
+        gender:
+          code: M (denoting male)
+          description: Male
+        nationality:
+          code: CAN (denoting Canada)
+          description: Canada
+        dayOfBirth: 21
+        givenName: Capability
+        familyName: Smith
+        fullName: Capability Smith
+        monthOfBirth: 0
+        yearOfBirth: 1970
+      properties:
+        givenName:
+          description: Person's given names. Assumed to be a concatenated list of
+            names
+          example: Capability
+          type: string
+        familyName:
+          description: Person's family names. Assumed to be a concatenated list of
+            names
+          example: Smith
+          type: string
+        fullName:
+          description: Person's full name
+          example: Capability Smith
+          type: string
+        gender:
+          $ref: "#/components/schemas/Person_gender"
+        dayOfBirth:
+          description: "Day of month the person was born on, from 1-31. No leading\
+            \ zeroes"
+          example: 21
+          type: integer
+        monthOfBirth:
+          description: "Month of year (Gregorian calendar) the person was born in,\
+            \ from 1-12. No leading zeroes"
+          example: null
+          type: integer
+        yearOfBirth:
+          description: Year the person was born in (4 digits)
+          example: 1970
+          type: integer
+        nationality:
+          $ref: "#/components/schemas/Person_nationality"
+      type: object
+    Challenge:
+      description: "Details of a challenge (initially, all appeal related)."
+      example:
+        appealTierType: FIRST_TIER
+        appealType: PROTECTION
+        applicants:
+        - gender:
+            code: M (denoting male)
+            description: Male
+          nationality:
+            code: CAN (denoting Canada)
+            description: Canada
+          dayOfBirth: 21
+          givenName: Capability
+          familyName: Smith
+          fullName: Capability Smith
+          monthOfBirth: 0
+          yearOfBirth: 1970
+        - gender:
+            code: M (denoting male)
+            description: Male
+          nationality:
+            code: CAN (denoting Canada)
+            description: Canada
+          dayOfBirth: 21
+          givenName: Capability
+          familyName: Smith
+          fullName: Capability Smith
+          monthOfBirth: 0
+          yearOfBirth: 1970
+        challengeSubmissionDate: 2017-07-21T17:32:28Z
+      properties:
+        appealType:
+          description: The type of appeal
+          enum:
+          - PROTECTION
+          - REVOCATION_OF_PROTECTION
+          - DEPRIVATION_OF_CITIZENSHIP
+          - HUMAN_RIGHTS
+          - EEA
+          example: null
+          type: string
+        appealTierType:
+          description: The type of appeal tier
+          enum:
+          - FIRST_TIER
+          example: null
+          type: string
+        challengeSubmissionDate:
+          description: "Date (and time, if available) of challenge submission, in\
+            \ the standard format yyyy-mm-dd (with HH:mm:ss if the time is available,\
+            \ otherwise not). Date/time is assumed to be in UTC"
+          example: 2017-07-21T17:32:28Z
+          format: date-time
+          type: string
+        applicants:
+          description: List of applicants (will initially be just one)
+          example: null
+          items:
+            $ref: "#/components/schemas/Person"
+          minItems: 1
+          type: array
+      required:
+      - appealTierType
+      - appealType
+      - applicants
+      - challengeSubmissionDate
+      type: object
+    Hearing:
+      description: Details of a hearing.
+      example:
+        hearingType: PAPER
+        witnessQty: 0
+        witnessNames: "John Smyth, Jennie Walker"
+        hearingDate: 2017-07-21T00:00:00.000+00:00
+        hearingLocation: "Royal Courts of Justice, London"
+        hearingTime: 10:30:00Z
+        hmctsHearingRef: hmctsHearingRef
+      properties:
+        hmctsHearingRef:
+          description: HMCTS reference for a hearing. (Allows for multiple hearings
+            though usually it's just one.)
+          example: null
+          type: string
+        hearingLocation:
+          description: Venue where the hearing is to take place
+          example: "Royal Courts of Justice, London"
+          type: string
+        hearingDate:
+          description: "Date of the hearing, in the standard format yyyy-mm-dd"
+          example: 2017-07-21
+          format: date
+          type: string
+        hearingTime:
+          description: "Time of the hearing, in the standard format HH:mm:ss. Time\
+            \ is assumed to be in UTC"
+          example: 10:30:00Z
+          type: string
+        hearingType:
+          description: Type of hearing
+          enum:
+          - PAPER
+          - ORAL
+          example: null
+          type: string
+        witnessQty:
+          description: Number of witnesses to be called to provide evidence at the
+            hearing
+          example: null
+          type: integer
+        witnessNames:
+          description: "Names of witnesses. Recorded as notes in HMCTS, so cannot\
+            \ be a list of names"
+          example: "John Smyth, Jennie Walker"
+          type: string
+      required:
+      - hearingType
+      - hmctsHearingRef
+      type: object
+    CourtOutcome:
+      description: Court type and outcome of the appeal.
+      example:
+        courtType: FIRST_TIER
+        outcome: ALLOWED
+      properties:
+        courtType:
+          description: Court (tribunal) type
+          enum:
+          - FIRST_TIER
+          - FTPA
+          - UTPA
+          example: null
+          type: string
+        outcome:
+          description: Appeal outcome
+          enum:
+          - ALLOWED
+          - DISMISSED
+          - GRANTED
+          - REFUSED
+          - REHEARD
+          - REMADE
+          example: null
+          type: string
+      required:
+      - courtType
+      - outcome
+      type: object
+    Consumer:
+      description: Consumer of the service.
+      example:
+        code: HMCTS
+        description: HM Courts and Tribunal Service
+      properties:
+        code:
+          description: Short code for the consumer
+          enum:
+          - HMCTS
+          example: null
+          type: string
+        description:
+          description: Description of the consumer (for legibility reasons)
+          example: HM Courts and Tribunal Service
+          type: string
+      required:
+      - code
+      type: object
+    ConsumerRef:
+      description: "Consumer reference; reference provided to Home Office, to be used\
+        \ in subsequent calls to update the same item."
+      example:
+        code: HMCTS_CHALLENGE_REF
+        description: HMCTS challenge reference
+        value: xxxyyyynnn-nnn
+        consumer:
+          code: HMCTS
+          description: HM Courts and Tribunal Service
+      properties:
+        consumer:
+          $ref: "#/components/schemas/Consumer"
+        code:
+          description: Short code for the reference
+          enum:
+          - HMCTS_CHALLENGE_REF
+          example: null
+          type: string
+        description:
+          example: HMCTS challenge reference
+          type: string
+        value:
+          description: Value for the reference
+          example: xxxyyyynnn-nnn
+          type: string
+      required:
+      - code
+      - consumer
+      - value
+      type: object
+    MessageHeader:
+      description: Message parameters (not business oriented).
+      example:
+        eventDateTime: 2017-07-21T17:32:28Z
+        correlationId: ABC2344BCED2234EA
+        consumer:
+          code: HMCTS
+          description: HM Courts and Tribunal Service
+      properties:
+        eventDateTime:
+          description: UTC timestamp for debugging purposes
+          example: 2017-07-21T17:32:28Z
+          format: date-time
+          type: string
+        correlationId:
+          description: "ID allowing correlation between service consumer and API log\
+            \ files. Expected to be unique, for example, a UUID"
+          example: ABC2344BCED2234EA
+          type: string
+        consumer:
+          $ref: "#/components/schemas/Consumer"
+      required:
+      - consumer
+      - correlationId
+      - eventDateTime
+      type: object
+    ErrorResponse:
+      example: null
+      properties:
+        success:
+          enum:
+          - "true"
+          - "false"
+          example: "false"
+          type: string
+        messageText:
+          description: Error message text
+          example: Invalid reference format. Format should be either nnnn-nnnn-nnnn-nnnn
+            or 0(0) followed by digits (total length 9 or 10)
+          type: string
+        errorCode:
+          description: "Error code (non-HTTP) \n\n 1010 - A UAN/Case Reference has\
+            \ a Service Delivery with no DECIDE_APPLICATION_OUTCOME event history\n\
+            \n 1020 - Cannot build Search Response - no service delivery details found\
+            \ for UAN: \n\n 1030 - A UAN/Case Reference does not refer to a valid\
+            \ application or reconsideration\n\n 1040 - Method argument not valid\
+            \ \n\n 1060 - A UAN/Case Reference is submitted in the incorrect format.\n\
+            \n 1070 - Internal system error \n\n 1080 - This Consumer is not authorised\
+            \ to access this endpoint\n\n 1090 - The header value is incorrect\n\n\
+            \ 2000 - A Downstream system is unavailable (CSDP)\n\n 2010 - A Downstream\
+            \ system is unavailable (AWS-SQS)"
+          enum:
+          - "1010"
+          - "1020"
+          - "1030"
+          - "1040"
+          - "1060"
+          - "1070"
+          - "1080"
+          - "1090"
+          - "2000"
+          - "2010"
+          example: null
+          type: string
+      type: object
+    SearchParameters_searchParams:
+      example:
+        spValue: "UAN (nnnn-nnnn-nnnn-nnnn) or CID (case ID, e.g. 001234567)"
+        spType: DOCUMENT_REFERENCE
+      properties:
+        spType:
+          description: Reference type
+          enum:
+          - DOCUMENT_REFERENCE
+          example: DOCUMENT_REFERENCE
+          type: string
+        spValue:
+          description: Unique reference
+          example: "UAN (nnnn-nnnn-nnnn-nnnn) or CID (case ID, e.g. 001234567)"
+          maxLength: 30
+          type: string
+      required:
+      - spType
+      - spValue
+      type: object
+    SearchResponse_applicationStatus_roleType:
+      description: Role of the individual in this application
+      example:
+        code: DEPENDANT
+        description: Dependant
+      properties:
+        code:
+          description: Code for the role type
+          example: DEPENDANT
+          type: string
+        description:
+          description: Description of the role type
+          example: Dependant
+          type: string
+      type: object
+    SearchResponse_applicationStatus_roleSubType:
+      description: Role sub-type of the individual in this application. **Note:**
+        may not be available for legacy CID cases
+      example:
+        code: SPOUSE. Could be MAIN if the role type is APPLICANT
+        description: Spouse
+      properties:
+        code:
+          description: Code for the role sub-type
+          example: SPOUSE. Could be MAIN if the role type is APPLICANT
+          type: string
+        description:
+          description: Description of the role sub-type
+          example: Spouse
+          type: string
+      type: object
+    SearchResponse_applicationStatus_applicationType:
+      description: Type of application
+      example:
+        code: ASYLUM
+        description: Asylum and Protection
+      properties:
+        code:
+          description: Code for the application type
+          example: ASYLUM
+          type: string
+        description:
+          description: Description of the application type
+          example: Asylum and Protection
+          type: string
+      type: object
+    SearchResponse_applicationStatus_claimReasonType:
+      description: Type of reason for claim on application. **Note:** may not be available
+        for any cases
+      example:
+        code: HUMANRIGHTS
+        description: Human Rights
+      properties:
+        code:
+          description: Code for the claim reason type
+          example: HUMANRIGHTS
+          type: string
+        description:
+          description: Description of the claim reason type
+          example: Human Rights
+          type: string
+      type: object
+    SearchResponse_applicationStatus_decisionType:
+      description: Type of decision made on the application
+      example:
+        code: REJECTION
+        description: Rejected
+      properties:
+        code:
+          description: Code for the decision type
+          example: REJECTION
+          type: string
+        description:
+          description: Description of the decision type
+          example: Rejected
+          type: string
+      type: object
+    SearchResponse_applicationStatus_decisionCommunication:
+      description: Communication of the decision
+      example:
+        sentDate: 2017-07-21T17:32:28Z
+        dispatchDate: 2017-07-21T17:32:28Z
+        description: E-mail
+        type: EMAIL
+      properties:
+        type:
+          description: Type of communication
+          enum:
+          - EMAIL
+          - POST
+          example: EMAIL
+          type: string
+        description:
+          description: Description of the communication type
+          example: E-mail
+          type: string
+        sentDate:
+          description: "Date (and time, if available) the communication was requested\
+            \ to be sent. This is effectively the decision date. See description of\
+            \ decisionDate for details of how it will be displayed. This is assumed\
+            \ to be in UTC"
+          example: 2017-07-21T17:32:28Z
+          format: date-time
+          type: string
+        dispatchDate:
+          description: "Date (and time, if available) the communication was actually\
+            \ dispatched. See description of decisionDate for details of how it will\
+            \ be displayed. This is assumed to be in UTC"
+          example: 2017-07-21T17:32:28Z
+          format: date-time
+          type: string
+      type: object
+    SearchResponse_applicationStatus_rejectionReasons:
+      example:
+        reason: Application not completed properly
+      properties:
+        reason:
+          description: Reason for application rejection
+          example: Application not completed properly
+          type: string
+      type: object
+    SearchResponse_applicationStatus_metadata:
+      description: "Metadata item, comprising an item code and one (usually) or more\
+        \ data values that are typed"
+      example:
+        valueBoolean: true
+        code: APPEALABLE or DISPATCH_DATE
+        valueString: Some extra decision data
+        valueDateTime: 2017-07-21T17:32:28Z
+      properties:
+        code:
+          description: Metadata item code
+          example: APPEALABLE or DISPATCH_DATE
+          type: string
+        valueBoolean:
+          description: Boolean metadata value
+          example: true
+          type: boolean
+        valueDateTime:
+          description: "Date (and time) metadata value, in the standard format yyyy-mm-dd\
+            \ (with the HH:mm:ss if the time is available - this won't be displayed\
+            \ if it isn't). This is assumed to be in UTC"
+          example: 2017-07-21T17:32:28Z
+          format: date-time
+          type: string
+        valueString:
+          description: String metadata value
+          example: Some extra decision data
+          type: string
+      required:
+      - code
+      type: object
+    SearchResponse_applicationStatus:
+      description: Current status of the individual's application
+      example:
+        applicationType:
+          code: ASYLUM
+          description: Asylum and Protection
+        metadata:
+        - valueBoolean: true
+          code: APPEALABLE or DISPATCH_DATE
+          valueString: Some extra decision data
+          valueDateTime: 2017-07-21T17:32:28Z
+        - valueBoolean: true
+          code: APPEALABLE or DISPATCH_DATE
+          valueString: Some extra decision data
+          valueDateTime: 2017-07-21T17:32:28Z
+        rejectionReasons:
+        - reason: Application not completed properly
+        - reason: Application not completed properly
+        decisionCommunication:
+          sentDate: 2017-07-21T17:32:28Z
+          dispatchDate: 2017-07-21T17:32:28Z
+          description: E-mail
+          type: EMAIL
+        claimReasonType:
+          code: HUMANRIGHTS
+          description: Human Rights
+        documentReference: 1234-1234-5678-5678/00
+        roleSubType:
+          code: SPOUSE. Could be MAIN if the role type is APPLICANT
+          description: Spouse
+        decisionType:
+          code: REJECTION
+          description: Rejected
+        roleType:
+          code: DEPENDANT
+          description: Dependant
+        decisionDate: 2017-07-21T17:32:28Z
+      properties:
+        documentReference:
+          description: "The UAN or Case ID (CID) passed to the Home Office in the\
+            \ original request. (Allows for the UAN/nn value - nn denoting an individual\
+            \ within a group UAN - to be returned to HMCTS, should this value be available.)"
+          example: 1234-1234-5678-5678/00
+          type: string
+        roleType:
+          $ref: "#/components/schemas/SearchResponse_applicationStatus_roleType"
+        roleSubType:
+          $ref: "#/components/schemas/SearchResponse_applicationStatus_roleSubType"
+        applicationType:
+          $ref: "#/components/schemas/SearchResponse_applicationStatus_applicationType"
+        claimReasonType:
+          $ref: "#/components/schemas/SearchResponse_applicationStatus_claimReasonType"
+        decisionType:
+          $ref: "#/components/schemas/SearchResponse_applicationStatus_decisionType"
+        decisionDate:
+          description: "Date (and time, if available) of decision made on the application,\
+            \ in the standard format yyyy-mm-dd (with the HH:mm:ss if the time is\
+            \ available - this won't be displayed if it isn't). All dates/times are\
+            \ assumed to be in UTC"
+          example: 2017-07-21T17:32:28Z
+          format: date-time
+          type: string
+        decisionCommunication:
+          $ref: "#/components/schemas/SearchResponse_applicationStatus_decisionCommunication"
+        rejectionReasons:
+          description: Rejection reasons
+          example: null
+          items:
+            $ref: "#/components/schemas/SearchResponse_applicationStatus_rejectionReasons"
+          type: array
+        metadata:
+          description: |
+            Additional attributes (metadata) of the application
+          example: null
+          items:
+            $ref: "#/components/schemas/SearchResponse_applicationStatus_metadata"
+          type: array
+      type: object
+    SearchResponse_status:
+      example:
+        applicationStatus:
+          applicationType:
+            code: ASYLUM
+            description: Asylum and Protection
+          metadata:
+          - valueBoolean: true
+            code: APPEALABLE or DISPATCH_DATE
+            valueString: Some extra decision data
+            valueDateTime: 2017-07-21T17:32:28Z
+          - valueBoolean: true
+            code: APPEALABLE or DISPATCH_DATE
+            valueString: Some extra decision data
+            valueDateTime: 2017-07-21T17:32:28Z
+          rejectionReasons:
+          - reason: Application not completed properly
+          - reason: Application not completed properly
+          decisionCommunication:
+            sentDate: 2017-07-21T17:32:28Z
+            dispatchDate: 2017-07-21T17:32:28Z
+            description: E-mail
+            type: EMAIL
+          claimReasonType:
+            code: HUMANRIGHTS
+            description: Human Rights
+          documentReference: 1234-1234-5678-5678/00
+          roleSubType:
+            code: SPOUSE. Could be MAIN if the role type is APPLICANT
+            description: Spouse
+          decisionType:
+            code: REJECTION
+            description: Rejected
+          roleType:
+            code: DEPENDANT
+            description: Dependant
+          decisionDate: 2017-07-21T17:32:28Z
+        person:
+          gender:
+            code: M (denoting male)
+            description: Male
+          nationality:
+            code: CAN (denoting Canada)
+            description: Canada
+          dayOfBirth: 21
+          givenName: Capability
+          familyName: Smith
+          fullName: Capability Smith
+          monthOfBirth: 0
+          yearOfBirth: 1970
+      properties:
+        person:
+          $ref: "#/components/schemas/Person"
+        applicationStatus:
+          $ref: "#/components/schemas/SearchResponse_applicationStatus"
+      type: object
+    Person_gender:
+      example:
+        code: M (denoting male)
+        description: Male
+      properties:
+        code:
+          description: Letter code for the gender
+          example: M (denoting male)
+          type: string
+        description:
+          description: Gender description
+          example: Male
+          type: string
+      type: object
+    Person_nationality:
+      description: Person's nationality
+      example:
+        code: CAN (denoting Canada)
+        description: Canada
+      properties:
+        code:
+          description: Short code for the nationality
+          example: CAN (denoting Canada)
+          type: string
+        description:
+          description: Description of the nationality
+          example: Canada
+          type: string
+      type: object

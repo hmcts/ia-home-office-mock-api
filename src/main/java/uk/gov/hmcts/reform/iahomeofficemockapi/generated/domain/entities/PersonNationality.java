@@ -1,17 +1,27 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
+import java.net.URI;
+import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.time.OffsetDateTime;
+import javax.validation.Valid;
+import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
-import java.util.Objects;
+
+import java.util.*;
+import javax.annotation.Generated;
 
 /**
  * Person&#39;s nationality
  */
-@Schema(description = "Person's nationality")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-07-01T14:15:45.837+01:00[Europe/London]")
 
+@Schema(name = "Person_nationality", description = "Person's nationality")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-16T15:17:31.480240Z[Europe/London]")
 public class PersonNationality   {
+
   @JsonProperty("code")
   private String code;
 
@@ -27,9 +37,8 @@ public class PersonNationality   {
    * Short code for the nationality
    * @return code
   */
-  @Schema(example = "CAN (denoting Canada)", description = "Short code for the nationality")
-
-
+  
+  @Schema(name = "code", example = "CAN (denoting Canada)", description = "Short code for the nationality", required = false)
   public String getCode() {
     return code;
   }
@@ -47,9 +56,8 @@ public class PersonNationality   {
    * Description of the nationality
    * @return description
   */
-  @Schema(example = "Canada", description = "Description of the nationality")
-
-
+  
+  @Schema(name = "description", example = "Canada", description = "Description of the nationality", required = false)
   public String getDescription() {
     return description;
   }
@@ -58,9 +66,8 @@ public class PersonNationality   {
     this.description = description;
   }
 
-
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -81,7 +88,6 @@ public class PersonNationality   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PersonNationality {\n");
-
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("}");
@@ -92,7 +98,7 @@ public class PersonNationality   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

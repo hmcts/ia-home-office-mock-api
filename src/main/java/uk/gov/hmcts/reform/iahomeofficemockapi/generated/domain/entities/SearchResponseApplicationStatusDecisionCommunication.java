@@ -1,27 +1,36 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
+import java.net.URI;
+import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import java.time.OffsetDateTime;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.time.OffsetDateTime;
+import javax.validation.Valid;
+import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
-import javax.validation.Valid;
-import java.time.OffsetDateTime;
-import java.util.Objects;
+
+import java.util.*;
+import javax.annotation.Generated;
 
 /**
  * Communication of the decision
  */
-@Schema(description = "Communication of the decision")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-07-01T14:15:45.837+01:00[Europe/London]")
 
+@Schema(name = "SearchResponse_applicationStatus_decisionCommunication", description = "Communication of the decision")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-16T15:17:31.480240Z[Europe/London]")
 public class SearchResponseApplicationStatusDecisionCommunication   {
+
   /**
    * Type of communication
    */
   public enum TypeEnum {
     EMAIL("EMAIL"),
-
+    
     POST("POST");
 
     private String value;
@@ -58,9 +67,11 @@ public class SearchResponseApplicationStatusDecisionCommunication   {
   private String description;
 
   @JsonProperty("sentDate")
+  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private OffsetDateTime sentDate;
 
   @JsonProperty("dispatchDate")
+  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private OffsetDateTime dispatchDate;
 
   public SearchResponseApplicationStatusDecisionCommunication type(TypeEnum type) {
@@ -72,9 +83,8 @@ public class SearchResponseApplicationStatusDecisionCommunication   {
    * Type of communication
    * @return type
   */
-  @Schema(example = "EMAIL", description = "Type of communication")
-
-
+  
+  @Schema(name = "type", example = "EMAIL", description = "Type of communication", required = false)
   public TypeEnum getType() {
     return type;
   }
@@ -92,9 +102,8 @@ public class SearchResponseApplicationStatusDecisionCommunication   {
    * Description of the communication type
    * @return description
   */
-  @Schema(example = "E-mail", description = "Description of the communication type")
-
-
+  
+  @Schema(name = "description", example = "E-mail", description = "Description of the communication type", required = false)
   public String getDescription() {
     return description;
   }
@@ -112,10 +121,8 @@ public class SearchResponseApplicationStatusDecisionCommunication   {
    * Date (and time, if available) the communication was requested to be sent. This is effectively the decision date. See description of decisionDate for details of how it will be displayed. This is assumed to be in UTC
    * @return sentDate
   */
-  @Schema(example = "2017-07-21T17:32:28Z", description = "Date (and time, if available) the communication was requested to be sent. This is effectively the decision date. See description of decisionDate for details of how it will be displayed. This is assumed to be in UTC")
-
-  @Valid
-
+  @Valid 
+  @Schema(name = "sentDate", example = "2017-07-21T17:32:28Z", description = "Date (and time, if available) the communication was requested to be sent. This is effectively the decision date. See description of decisionDate for details of how it will be displayed. This is assumed to be in UTC", required = false)
   public OffsetDateTime getSentDate() {
     return sentDate;
   }
@@ -133,10 +140,8 @@ public class SearchResponseApplicationStatusDecisionCommunication   {
    * Date (and time, if available) the communication was actually dispatched. See description of decisionDate for details of how it will be displayed. This is assumed to be in UTC
    * @return dispatchDate
   */
-  @Schema(example = "2017-07-21T17:32:28Z", description = "Date (and time, if available) the communication was actually dispatched. See description of decisionDate for details of how it will be displayed. This is assumed to be in UTC")
-
-  @Valid
-
+  @Valid 
+  @Schema(name = "dispatchDate", example = "2017-07-21T17:32:28Z", description = "Date (and time, if available) the communication was actually dispatched. See description of decisionDate for details of how it will be displayed. This is assumed to be in UTC", required = false)
   public OffsetDateTime getDispatchDate() {
     return dispatchDate;
   }
@@ -145,9 +150,8 @@ public class SearchResponseApplicationStatusDecisionCommunication   {
     this.dispatchDate = dispatchDate;
   }
 
-
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -170,7 +174,6 @@ public class SearchResponseApplicationStatusDecisionCommunication   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SearchResponseApplicationStatusDecisionCommunication {\n");
-
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    sentDate: ").append(toIndentedString(sentDate)).append("\n");
@@ -183,7 +186,7 @@ public class SearchResponseApplicationStatusDecisionCommunication   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }
