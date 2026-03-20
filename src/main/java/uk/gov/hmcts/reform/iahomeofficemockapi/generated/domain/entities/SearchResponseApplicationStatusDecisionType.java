@@ -19,7 +19,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "SearchResponse_applicationStatus_decisionType", description = "Type of decision made on the application")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-16T15:17:31.480240Z[Europe/London]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-20T18:22:35.342881Z[Europe/London]")
 public class SearchResponseApplicationStatusDecisionType   {
 
   @JsonProperty("code")

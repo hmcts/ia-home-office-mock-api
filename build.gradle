@@ -87,9 +87,38 @@ task copyOpenApiYaml(type: Copy) {
   into("$projectDir/src/main/resources/")
 }
 
+task fixGeneratedControllers {
+    doLast {
+        def targetDir = file("$buildDir/apidocs/src/main/java/uk/gov/hmcts/reform/iahomeofficemockapi/generated/infrastructure/api")
+
+        fileTree(targetDir).matching {
+            include "**/*.java"
+        }.forEach { file ->
+
+            def original = file.getText("UTF-8")
+
+            def updated = original.replaceAll(
+                /return\s+new\s+ResponseEntity<[^>]*>\(HttpStatus\.NOT_IMPLEMENTED\);/,
+                "return ResponseEntity.ok().build();"
+            )
+
+            updated = updated.replaceAll(
+                /return\s+new\s+ResponseEntity<>\(HttpStatus\.NOT_IMPLEMENTED\);/,
+                "return ResponseEntity.ok().build();"
+            )
+
+            if (original != updated) {
+                file.write(updated, "UTF-8")
+            }
+        }
+    }
+}
+
 copyApiDocs.dependsOn copyOpenApiYaml
 copyApiDocs.dependsOn tasks.openApiGenerate
 copyOpenApiYaml.dependsOn tasks.openApiGenerate
+fixGeneratedControllers.dependsOn tasks.openApiGenerate
+copyApiDocs.dependsOn fixGeneratedControllers
 
 
 tasks.withType(JavaCompile) {
