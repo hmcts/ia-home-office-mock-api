@@ -21,7 +21,7 @@ import org.springframework.context.annotation.FilterType;
         @ComponentScan.Filter(
             type = FilterType.ASSIGNABLE_TYPE,
             classes = {
-                uk.gov.hmcts.reform.iahomeofficemockapi.generated.infrastructure.api.IchallengeApi.class,
+                uk.gov.hmcts.reform.iahomeofficemockapi.generated.infrastructure.api.TokenApi.class,
                 uk.gov.hmcts.reform.iahomeofficemockapi.generated.infrastructure.api.ApplicationsApi.class,
                 uk.gov.hmcts.reform.iahomeofficemockapi.generated.infrastructure.api.V1Api.class
             }

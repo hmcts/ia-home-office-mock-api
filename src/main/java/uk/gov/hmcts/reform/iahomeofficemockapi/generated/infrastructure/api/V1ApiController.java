@@ -31,9 +31,9 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-24T10:12:45.452730Z[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-24T17:15:37.128859Z[Europe/London]", comments = "Generator version: 7.20.0")
 @Controller
-@RequestMapping("${openapi.appealsInterface.base-path:}")
+@RequestMapping("${openapi.appealsInterface.base-path:/ichallenge}")
 public class V1ApiController implements V1Api {
 
     private final NativeWebRequest request;

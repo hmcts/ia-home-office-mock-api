@@ -22,7 +22,7 @@ import javax.annotation.Generated;
 
 @Schema(name = "SearchResponse_status_inner_applicationStatus_applicationType", description = "Type of application")
 @JsonTypeName("SearchResponse_status_inner_applicationStatus_applicationType")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-24T10:12:45.452730Z[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-24T17:15:37.128859Z[Europe/London]", comments = "Generator version: 7.20.0")
 public class SearchResponseStatusInnerApplicationStatusApplicationType {
 
   private @Nullable String code;

@@ -13,12 +13,12 @@ externalDocs:
   url: http://swagger.io
 servers:
 - description: Home Office mock API
-  url: http://localhost:8098
+  url: http://localhost:8098/ichallenge
 tags:
 - description: Appeals interface
   name: Appeals
 paths:
-  /ichallenge/token:
+  /token:
     post:
       operationId: tokenPost
       requestBody:
@@ -1335,5 +1335,5 @@ components:
       flows:
         clientCredentials:
           scopes: {}
-          tokenUrl: /ichallenge/token
+          tokenUrl: /token
       type: oauth2

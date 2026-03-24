@@ -34,18 +34,18 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-24T10:12:45.452730Z[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-24T17:15:37.128859Z[Europe/London]", comments = "Generator version: 7.20.0")
 @Validated
 @Tag(name = "Appeals", description = "Appeals interface")
-public interface IchallengeApi {
+public interface TokenApi {
 
     default Optional<NativeWebRequest> getRequest() {
         return Optional.empty();
     }
 
-    String PATH_TOKEN_POST = "/ichallenge/token";
+    String PATH_TOKEN_POST = "/token";
     /**
-     * POST /ichallenge/token : Obtain mock access token
+     * POST /token : Obtain mock access token
      *
      * @param grantType  (required)
      * @param clientId  (required)
@@ -67,7 +67,7 @@ public interface IchallengeApi {
     )
     @RequestMapping(
         method = RequestMethod.POST,
-        value = IchallengeApi.PATH_TOKEN_POST,
+        value = TokenApi.PATH_TOKEN_POST,
         produces = { "application/json" },
         consumes = { "application/x-www-form-urlencoded" }
     )
