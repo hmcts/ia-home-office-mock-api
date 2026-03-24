@@ -6,9 +6,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import org.springframework.lang.Nullable;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.MessageHeader;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchResponseStatus;
+import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchResponseStatusInner;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -24,11 +26,10 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "SearchResponse", description = "Response containing details of the application search.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-20T18:22:35.342881Z[Europe/London]")
-public class SearchResponse   {
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-24T10:12:45.452730Z[Europe/London]", comments = "Generator version: 7.20.0")
+public class SearchResponse {
 
-  @JsonProperty("messageHeader")
-  private MessageHeader messageHeader;
+  private @Nullable MessageHeader messageHeader;
 
   /**
    * Identifies the type of message
@@ -36,7 +37,7 @@ public class SearchResponse   {
   public enum MessageTypeEnum {
     RESPONSE_RIGHT_OF_APPEAL_DETAILS("RESPONSE_RIGHT_OF_APPEAL_DETAILS");
 
-    private String value;
+    private final String value;
 
     MessageTypeEnum(String value) {
       this.value = value;
@@ -63,14 +64,12 @@ public class SearchResponse   {
     }
   }
 
-  @JsonProperty("messageType")
-  private MessageTypeEnum messageType;
+  private @Nullable MessageTypeEnum messageType;
 
-  @JsonProperty("status")
   @Valid
-  private List<SearchResponseStatus> status = null;
+  private List<@Valid SearchResponseStatusInner> status = new ArrayList<>();
 
-  public SearchResponse messageHeader(MessageHeader messageHeader) {
+  public SearchResponse messageHeader(@Nullable MessageHeader messageHeader) {
     this.messageHeader = messageHeader;
     return this;
   }
@@ -78,18 +77,19 @@ public class SearchResponse   {
   /**
    * Get messageHeader
    * @return messageHeader
-  */
+   */
   @Valid 
-  @Schema(name = "messageHeader", required = false)
-  public MessageHeader getMessageHeader() {
+  @Schema(name = "messageHeader", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("messageHeader")
+  public @Nullable MessageHeader getMessageHeader() {
     return messageHeader;
   }
 
-  public void setMessageHeader(MessageHeader messageHeader) {
+  public void setMessageHeader(@Nullable MessageHeader messageHeader) {
     this.messageHeader = messageHeader;
   }
 
-  public SearchResponse messageType(MessageTypeEnum messageType) {
+  public SearchResponse messageType(@Nullable MessageTypeEnum messageType) {
     this.messageType = messageType;
     return this;
   }
@@ -97,23 +97,24 @@ public class SearchResponse   {
   /**
    * Identifies the type of message
    * @return messageType
-  */
+   */
   
-  @Schema(name = "messageType", example = "RESPONSE_RIGHT_OF_APPEAL_DETAILS", description = "Identifies the type of message", required = false)
-  public MessageTypeEnum getMessageType() {
+  @Schema(name = "messageType", example = "RESPONSE_RIGHT_OF_APPEAL_DETAILS", description = "Identifies the type of message", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("messageType")
+  public @Nullable MessageTypeEnum getMessageType() {
     return messageType;
   }
 
-  public void setMessageType(MessageTypeEnum messageType) {
+  public void setMessageType(@Nullable MessageTypeEnum messageType) {
     this.messageType = messageType;
   }
 
-  public SearchResponse status(List<SearchResponseStatus> status) {
+  public SearchResponse status(List<@Valid SearchResponseStatusInner> status) {
     this.status = status;
     return this;
   }
 
-  public SearchResponse addStatusItem(SearchResponseStatus statusItem) {
+  public SearchResponse addStatusItem(SearchResponseStatusInner statusItem) {
     if (this.status == null) {
       this.status = new ArrayList<>();
     }
@@ -124,14 +125,15 @@ public class SearchResponse   {
   /**
    * An array of persons and application status; generally, the status will be the same for all persons but this format provides flexibility
    * @return status
-  */
+   */
   @Valid 
-  @Schema(name = "status", description = "An array of persons and application status; generally, the status will be the same for all persons but this format provides flexibility", required = false)
-  public List<SearchResponseStatus> getStatus() {
+  @Schema(name = "status", description = "An array of persons and application status; generally, the status will be the same for all persons but this format provides flexibility", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("status")
+  public List<@Valid SearchResponseStatusInner> getStatus() {
     return status;
   }
 
-  public void setStatus(List<SearchResponseStatus> status) {
+  public void setStatus(List<@Valid SearchResponseStatusInner> status) {
     this.status = status;
   }
 
@@ -169,7 +171,7 @@ public class SearchResponse   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(@Nullable Object o) {
     if (o == null) {
       return "null";
     }

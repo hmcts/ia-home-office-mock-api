@@ -4,7 +4,9 @@ import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -16,11 +18,12 @@ import java.util.*;
 import javax.annotation.Generated;
 
 /**
- * SearchParametersSearchParams
+ * SearchParametersSearchParamsInner
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-20T18:22:35.342881Z[Europe/London]")
-public class SearchParametersSearchParams   {
+@JsonTypeName("SearchParameters_searchParams_inner")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-24T10:12:45.452730Z[Europe/London]", comments = "Generator version: 7.20.0")
+public class SearchParametersSearchParamsInner {
 
   /**
    * Reference type
@@ -28,7 +31,7 @@ public class SearchParametersSearchParams   {
   public enum SpTypeEnum {
     DOCUMENT_REFERENCE("DOCUMENT_REFERENCE");
 
-    private String value;
+    private final String value;
 
     SpTypeEnum(String value) {
       this.value = value;
@@ -55,13 +58,23 @@ public class SearchParametersSearchParams   {
     }
   }
 
-  @JsonProperty("spType")
   private SpTypeEnum spType;
 
-  @JsonProperty("spValue")
   private String spValue;
 
-  public SearchParametersSearchParams spType(SpTypeEnum spType) {
+  public SearchParametersSearchParamsInner() {
+    super();
+  }
+
+  /**
+   * Constructor with only required parameters
+   */
+  public SearchParametersSearchParamsInner(SpTypeEnum spType, String spValue) {
+    this.spType = spType;
+    this.spValue = spValue;
+  }
+
+  public SearchParametersSearchParamsInner spType(SpTypeEnum spType) {
     this.spType = spType;
     return this;
   }
@@ -69,9 +82,10 @@ public class SearchParametersSearchParams   {
   /**
    * Reference type
    * @return spType
-  */
+   */
   @NotNull 
-  @Schema(name = "spType", example = "DOCUMENT_REFERENCE", description = "Reference type", required = true)
+  @Schema(name = "spType", example = "DOCUMENT_REFERENCE", description = "Reference type", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("spType")
   public SpTypeEnum getSpType() {
     return spType;
   }
@@ -80,7 +94,7 @@ public class SearchParametersSearchParams   {
     this.spType = spType;
   }
 
-  public SearchParametersSearchParams spValue(String spValue) {
+  public SearchParametersSearchParamsInner spValue(String spValue) {
     this.spValue = spValue;
     return this;
   }
@@ -88,9 +102,10 @@ public class SearchParametersSearchParams   {
   /**
    * Unique reference
    * @return spValue
-  */
+   */
   @NotNull @Size(max = 30) 
-  @Schema(name = "spValue", example = "UAN (nnnn-nnnn-nnnn-nnnn) or CID (case ID, e.g. 001234567)", description = "Unique reference", required = true)
+  @Schema(name = "spValue", example = "UAN (nnnn-nnnn-nnnn-nnnn) or CID (case ID, e.g. 001234567)", description = "Unique reference", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("spValue")
   public String getSpValue() {
     return spValue;
   }
@@ -107,9 +122,9 @@ public class SearchParametersSearchParams   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SearchParametersSearchParams searchParametersSearchParams = (SearchParametersSearchParams) o;
-    return Objects.equals(this.spType, searchParametersSearchParams.spType) &&
-        Objects.equals(this.spValue, searchParametersSearchParams.spValue);
+    SearchParametersSearchParamsInner searchParametersSearchParamsInner = (SearchParametersSearchParamsInner) o;
+    return Objects.equals(this.spType, searchParametersSearchParamsInner.spType) &&
+        Objects.equals(this.spValue, searchParametersSearchParamsInner.spValue);
   }
 
   @Override
@@ -120,7 +135,7 @@ public class SearchParametersSearchParams   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SearchParametersSearchParams {\n");
+    sb.append("class SearchParametersSearchParamsInner {\n");
     sb.append("    spType: ").append(toIndentedString(spType)).append("\n");
     sb.append("    spValue: ").append(toIndentedString(spValue)).append("\n");
     sb.append("}");
@@ -131,7 +146,7 @@ public class SearchParametersSearchParams   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(@Nullable Object o) {
     if (o == null) {
       return "null";
     }

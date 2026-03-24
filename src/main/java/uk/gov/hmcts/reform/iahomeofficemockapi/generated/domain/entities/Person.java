@@ -4,6 +4,7 @@ import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import org.springframework.lang.Nullable;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.PersonGender;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.PersonNationality;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -21,34 +22,26 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "Person", description = "An individual fufilling a role on the application.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-20T18:22:35.342881Z[Europe/London]")
-public class Person   {
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-24T10:12:45.452730Z[Europe/London]", comments = "Generator version: 7.20.0")
+public class Person {
 
-  @JsonProperty("givenName")
-  private String givenName;
+  private @Nullable String givenName;
 
-  @JsonProperty("familyName")
-  private String familyName;
+  private @Nullable String familyName;
 
-  @JsonProperty("fullName")
-  private String fullName;
+  private @Nullable String fullName;
 
-  @JsonProperty("gender")
-  private PersonGender gender;
+  private @Nullable PersonGender gender;
 
-  @JsonProperty("dayOfBirth")
-  private Integer dayOfBirth;
+  private @Nullable Integer dayOfBirth;
 
-  @JsonProperty("monthOfBirth")
-  private Integer monthOfBirth;
+  private @Nullable Integer monthOfBirth;
 
-  @JsonProperty("yearOfBirth")
-  private Integer yearOfBirth;
+  private @Nullable Integer yearOfBirth;
 
-  @JsonProperty("nationality")
-  private PersonNationality nationality;
+  private @Nullable PersonNationality nationality;
 
-  public Person givenName(String givenName) {
+  public Person givenName(@Nullable String givenName) {
     this.givenName = givenName;
     return this;
   }
@@ -56,18 +49,19 @@ public class Person   {
   /**
    * Person's given names. Assumed to be a concatenated list of names
    * @return givenName
-  */
+   */
   
-  @Schema(name = "givenName", example = "Capability", description = "Person's given names. Assumed to be a concatenated list of names", required = false)
-  public String getGivenName() {
+  @Schema(name = "givenName", example = "Capability", description = "Person's given names. Assumed to be a concatenated list of names", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("givenName")
+  public @Nullable String getGivenName() {
     return givenName;
   }
 
-  public void setGivenName(String givenName) {
+  public void setGivenName(@Nullable String givenName) {
     this.givenName = givenName;
   }
 
-  public Person familyName(String familyName) {
+  public Person familyName(@Nullable String familyName) {
     this.familyName = familyName;
     return this;
   }
@@ -75,18 +69,19 @@ public class Person   {
   /**
    * Person's family names. Assumed to be a concatenated list of names
    * @return familyName
-  */
+   */
   
-  @Schema(name = "familyName", example = "Smith", description = "Person's family names. Assumed to be a concatenated list of names", required = false)
-  public String getFamilyName() {
+  @Schema(name = "familyName", example = "Smith", description = "Person's family names. Assumed to be a concatenated list of names", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("familyName")
+  public @Nullable String getFamilyName() {
     return familyName;
   }
 
-  public void setFamilyName(String familyName) {
+  public void setFamilyName(@Nullable String familyName) {
     this.familyName = familyName;
   }
 
-  public Person fullName(String fullName) {
+  public Person fullName(@Nullable String fullName) {
     this.fullName = fullName;
     return this;
   }
@@ -94,18 +89,19 @@ public class Person   {
   /**
    * Person's full name
    * @return fullName
-  */
+   */
   
-  @Schema(name = "fullName", example = "Capability Smith", description = "Person's full name", required = false)
-  public String getFullName() {
+  @Schema(name = "fullName", example = "Capability Smith", description = "Person's full name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("fullName")
+  public @Nullable String getFullName() {
     return fullName;
   }
 
-  public void setFullName(String fullName) {
+  public void setFullName(@Nullable String fullName) {
     this.fullName = fullName;
   }
 
-  public Person gender(PersonGender gender) {
+  public Person gender(@Nullable PersonGender gender) {
     this.gender = gender;
     return this;
   }
@@ -113,18 +109,19 @@ public class Person   {
   /**
    * Get gender
    * @return gender
-  */
+   */
   @Valid 
-  @Schema(name = "gender", required = false)
-  public PersonGender getGender() {
+  @Schema(name = "gender", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("gender")
+  public @Nullable PersonGender getGender() {
     return gender;
   }
 
-  public void setGender(PersonGender gender) {
+  public void setGender(@Nullable PersonGender gender) {
     this.gender = gender;
   }
 
-  public Person dayOfBirth(Integer dayOfBirth) {
+  public Person dayOfBirth(@Nullable Integer dayOfBirth) {
     this.dayOfBirth = dayOfBirth;
     return this;
   }
@@ -132,18 +129,19 @@ public class Person   {
   /**
    * Day of month the person was born on, from 1-31. No leading zeroes
    * @return dayOfBirth
-  */
+   */
   
-  @Schema(name = "dayOfBirth", example = "21", description = "Day of month the person was born on, from 1-31. No leading zeroes", required = false)
-  public Integer getDayOfBirth() {
+  @Schema(name = "dayOfBirth", example = "21", description = "Day of month the person was born on, from 1-31. No leading zeroes", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("dayOfBirth")
+  public @Nullable Integer getDayOfBirth() {
     return dayOfBirth;
   }
 
-  public void setDayOfBirth(Integer dayOfBirth) {
+  public void setDayOfBirth(@Nullable Integer dayOfBirth) {
     this.dayOfBirth = dayOfBirth;
   }
 
-  public Person monthOfBirth(Integer monthOfBirth) {
+  public Person monthOfBirth(@Nullable Integer monthOfBirth) {
     this.monthOfBirth = monthOfBirth;
     return this;
   }
@@ -151,18 +149,19 @@ public class Person   {
   /**
    * Month of year (Gregorian calendar) the person was born in, from 1-12. No leading zeroes
    * @return monthOfBirth
-  */
+   */
   
-  @Schema(name = "monthOfBirth", description = "Month of year (Gregorian calendar) the person was born in, from 1-12. No leading zeroes", required = false)
-  public Integer getMonthOfBirth() {
+  @Schema(name = "monthOfBirth", description = "Month of year (Gregorian calendar) the person was born in, from 1-12. No leading zeroes", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("monthOfBirth")
+  public @Nullable Integer getMonthOfBirth() {
     return monthOfBirth;
   }
 
-  public void setMonthOfBirth(Integer monthOfBirth) {
+  public void setMonthOfBirth(@Nullable Integer monthOfBirth) {
     this.monthOfBirth = monthOfBirth;
   }
 
-  public Person yearOfBirth(Integer yearOfBirth) {
+  public Person yearOfBirth(@Nullable Integer yearOfBirth) {
     this.yearOfBirth = yearOfBirth;
     return this;
   }
@@ -170,18 +169,19 @@ public class Person   {
   /**
    * Year the person was born in (4 digits)
    * @return yearOfBirth
-  */
+   */
   
-  @Schema(name = "yearOfBirth", example = "1970", description = "Year the person was born in (4 digits)", required = false)
-  public Integer getYearOfBirth() {
+  @Schema(name = "yearOfBirth", example = "1970", description = "Year the person was born in (4 digits)", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("yearOfBirth")
+  public @Nullable Integer getYearOfBirth() {
     return yearOfBirth;
   }
 
-  public void setYearOfBirth(Integer yearOfBirth) {
+  public void setYearOfBirth(@Nullable Integer yearOfBirth) {
     this.yearOfBirth = yearOfBirth;
   }
 
-  public Person nationality(PersonNationality nationality) {
+  public Person nationality(@Nullable PersonNationality nationality) {
     this.nationality = nationality;
     return this;
   }
@@ -189,14 +189,15 @@ public class Person   {
   /**
    * Get nationality
    * @return nationality
-  */
+   */
   @Valid 
-  @Schema(name = "nationality", required = false)
-  public PersonNationality getNationality() {
+  @Schema(name = "nationality", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("nationality")
+  public @Nullable PersonNationality getNationality() {
     return nationality;
   }
 
-  public void setNationality(PersonNationality nationality) {
+  public void setNationality(@Nullable PersonNationality nationality) {
     this.nationality = nationality;
   }
 
@@ -244,7 +245,7 @@ public class Person   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(@Nullable Object o) {
     if (o == null) {
       return "null";
     }

@@ -17,29 +17,29 @@ import java.util.*;
 import javax.annotation.Generated;
 
 /**
- * Person&#39;s nationality
+ * Type of application
  */
 
-@Schema(name = "Person_nationality", description = "Person's nationality")
-@JsonTypeName("Person_nationality")
+@Schema(name = "SearchResponse_status_inner_applicationStatus_applicationType", description = "Type of application")
+@JsonTypeName("SearchResponse_status_inner_applicationStatus_applicationType")
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-24T10:12:45.452730Z[Europe/London]", comments = "Generator version: 7.20.0")
-public class PersonNationality {
+public class SearchResponseStatusInnerApplicationStatusApplicationType {
 
   private @Nullable String code;
 
   private @Nullable String description;
 
-  public PersonNationality code(@Nullable String code) {
+  public SearchResponseStatusInnerApplicationStatusApplicationType code(@Nullable String code) {
     this.code = code;
     return this;
   }
 
   /**
-   * Short code for the nationality
+   * Code for the application type
    * @return code
    */
   
-  @Schema(name = "code", example = "CAN (denoting Canada)", description = "Short code for the nationality", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "code", example = "ASYLUM", description = "Code for the application type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("code")
   public @Nullable String getCode() {
     return code;
@@ -49,17 +49,17 @@ public class PersonNationality {
     this.code = code;
   }
 
-  public PersonNationality description(@Nullable String description) {
+  public SearchResponseStatusInnerApplicationStatusApplicationType description(@Nullable String description) {
     this.description = description;
     return this;
   }
 
   /**
-   * Description of the nationality
+   * Description of the application type
    * @return description
    */
   
-  @Schema(name = "description", example = "Canada", description = "Description of the nationality", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "description", example = "Asylum and Protection", description = "Description of the application type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("description")
   public @Nullable String getDescription() {
     return description;
@@ -77,9 +77,9 @@ public class PersonNationality {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    PersonNationality personNationality = (PersonNationality) o;
-    return Objects.equals(this.code, personNationality.code) &&
-        Objects.equals(this.description, personNationality.description);
+    SearchResponseStatusInnerApplicationStatusApplicationType searchResponseStatusInnerApplicationStatusApplicationType = (SearchResponseStatusInnerApplicationStatusApplicationType) o;
+    return Objects.equals(this.code, searchResponseStatusInnerApplicationStatusApplicationType.code) &&
+        Objects.equals(this.description, searchResponseStatusInnerApplicationStatusApplicationType.description);
   }
 
   @Override
@@ -90,7 +90,7 @@ public class PersonNationality {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class PersonNationality {\n");
+    sb.append("class SearchResponseStatusInnerApplicationStatusApplicationType {\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("}");

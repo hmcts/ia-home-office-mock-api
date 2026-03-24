@@ -1,11 +1,7 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.infrastructure.api;
 
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.InstructErrorResponse;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.InstructMessage;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.InstructResponse;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchErrorResponse;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchParameters;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchResponse;
+import org.springframework.lang.Nullable;
+import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.TokenResponse;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,12 +30,12 @@ import javax.annotation.Generated;
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-24T10:12:45.452730Z[Europe/London]", comments = "Generator version: 7.20.0")
 @Controller
 @RequestMapping("${openapi.appealsInterface.base-path:}")
-public class V1ApiController implements V1Api {
+public class IchallengeApiController implements IchallengeApi {
 
     private final NativeWebRequest request;
 
     @Autowired
-    public V1ApiController(NativeWebRequest request) {
+    public IchallengeApiController(NativeWebRequest request) {
         this.request = request;
     }
 

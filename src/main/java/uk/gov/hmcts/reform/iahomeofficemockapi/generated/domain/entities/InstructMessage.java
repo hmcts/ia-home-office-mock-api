@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.time.OffsetDateTime;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.lang.Nullable;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.Challenge;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.ConsumerRef;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.CourtOutcome;
@@ -27,10 +28,9 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "InstructMessage", description = "### Message instructing Home Office about an event, or action to perform.  #### Mandatory items for all messages  messageHeader, messageType, hoReference, and consumerReference  #### Optional items  note  #### Message Types and Mandatory Elements  REQUEST_CHALLENGE_END: endReason, endChallengeDate  REQUEST_EVIDENCE_BUNDLE: challenge, deadlineDate  REQUEST_REVIEW: deadlineDate (a review has its own deadline)  HEARING: hearing  HEARING_BUNDLE_READY: hearing (passing just hmctsHearingRef and hearingType)  COURT_OUTCOME: courtOutcome  PERMISSION_TO_APPEAL: courtType  DEFAULT: No additional mandatory elements; generic item that is not a bundle/review request ")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-20T18:22:35.342881Z[Europe/London]")
-public class InstructMessage   {
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-24T10:12:45.452730Z[Europe/London]", comments = "Generator version: 7.20.0")
+public class InstructMessage {
 
-  @JsonProperty("messageHeader")
   private MessageHeader messageHeader;
 
   /**
@@ -53,7 +53,7 @@ public class InstructMessage   {
     
     DEFAULT("DEFAULT");
 
-    private String value;
+    private final String value;
 
     MessageTypeEnum(String value) {
       this.value = value;
@@ -80,13 +80,10 @@ public class InstructMessage   {
     }
   }
 
-  @JsonProperty("messageType")
   private MessageTypeEnum messageType;
 
-  @JsonProperty("hoReference")
   private String hoReference;
 
-  @JsonProperty("consumerReference")
   private ConsumerRef consumerReference;
 
   /**
@@ -103,7 +100,7 @@ public class InstructMessage   {
     
     INCORRECT_DETAILS("INCORRECT_DETAILS");
 
-    private String value;
+    private final String value;
 
     EndReasonEnum(String value) {
       this.value = value;
@@ -130,16 +127,13 @@ public class InstructMessage   {
     }
   }
 
-  @JsonProperty("endReason")
-  private EndReasonEnum endReason;
+  private @Nullable EndReasonEnum endReason;
 
-  @JsonProperty("endChallengeDate")
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-  private OffsetDateTime endChallengeDate;
+  private @Nullable OffsetDateTime endChallengeDate;
 
-  @JsonProperty("deadlineDate")
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-  private OffsetDateTime deadlineDate;
+  private @Nullable OffsetDateTime deadlineDate;
 
   /**
    * Court type. *Mandatory if messageType is PERMISSION_TO_APPEAL*
@@ -153,7 +147,7 @@ public class InstructMessage   {
     
     SUPREME_COURT("SUPREME_COURT");
 
-    private String value;
+    private final String value;
 
     CourtTypeEnum(String value) {
       this.value = value;
@@ -180,20 +174,29 @@ public class InstructMessage   {
     }
   }
 
-  @JsonProperty("courtType")
-  private CourtTypeEnum courtType;
+  private @Nullable CourtTypeEnum courtType;
 
-  @JsonProperty("challenge")
-  private Challenge challenge;
+  private @Nullable Challenge challenge;
 
-  @JsonProperty("hearing")
-  private Hearing hearing;
+  private @Nullable Hearing hearing;
 
-  @JsonProperty("courtOutcome")
-  private CourtOutcome courtOutcome;
+  private @Nullable CourtOutcome courtOutcome;
 
-  @JsonProperty("note")
-  private String note;
+  private @Nullable String note;
+
+  public InstructMessage() {
+    super();
+  }
+
+  /**
+   * Constructor with only required parameters
+   */
+  public InstructMessage(MessageHeader messageHeader, MessageTypeEnum messageType, String hoReference, ConsumerRef consumerReference) {
+    this.messageHeader = messageHeader;
+    this.messageType = messageType;
+    this.hoReference = hoReference;
+    this.consumerReference = consumerReference;
+  }
 
   public InstructMessage messageHeader(MessageHeader messageHeader) {
     this.messageHeader = messageHeader;
@@ -203,9 +206,10 @@ public class InstructMessage   {
   /**
    * Get messageHeader
    * @return messageHeader
-  */
+   */
   @NotNull @Valid 
-  @Schema(name = "messageHeader", required = true)
+  @Schema(name = "messageHeader", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("messageHeader")
   public MessageHeader getMessageHeader() {
     return messageHeader;
   }
@@ -222,9 +226,10 @@ public class InstructMessage   {
   /**
    * Message type
    * @return messageType
-  */
+   */
   @NotNull 
-  @Schema(name = "messageType", description = "Message type", required = true)
+  @Schema(name = "messageType", description = "Message type", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("messageType")
   public MessageTypeEnum getMessageType() {
     return messageType;
   }
@@ -241,9 +246,10 @@ public class InstructMessage   {
   /**
    * Home Office reference (UAN or CID case ID)
    * @return hoReference
-  */
+   */
   @NotNull 
-  @Schema(name = "hoReference", example = "nnnn-nnnn-nnnn-nnnn (UAN) or CID (case ID, e.g. 001234567)", description = "Home Office reference (UAN or CID case ID)", required = true)
+  @Schema(name = "hoReference", example = "nnnn-nnnn-nnnn-nnnn (UAN) or CID (case ID, e.g. 001234567)", description = "Home Office reference (UAN or CID case ID)", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("hoReference")
   public String getHoReference() {
     return hoReference;
   }
@@ -260,9 +266,10 @@ public class InstructMessage   {
   /**
    * Get consumerReference
    * @return consumerReference
-  */
+   */
   @NotNull @Valid 
-  @Schema(name = "consumerReference", required = true)
+  @Schema(name = "consumerReference", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("consumerReference")
   public ConsumerRef getConsumerReference() {
     return consumerReference;
   }
@@ -271,7 +278,7 @@ public class InstructMessage   {
     this.consumerReference = consumerReference;
   }
 
-  public InstructMessage endReason(EndReasonEnum endReason) {
+  public InstructMessage endReason(@Nullable EndReasonEnum endReason) {
     this.endReason = endReason;
     return this;
   }
@@ -279,18 +286,19 @@ public class InstructMessage   {
   /**
    * Code indicating reason for ending a challenge. *Mandatory if messageType is REQUEST_CHALLENGE_END*
    * @return endReason
-  */
+   */
   
-  @Schema(name = "endReason", description = "Code indicating reason for ending a challenge. *Mandatory if messageType is REQUEST_CHALLENGE_END*", required = false)
-  public EndReasonEnum getEndReason() {
+  @Schema(name = "endReason", description = "Code indicating reason for ending a challenge. *Mandatory if messageType is REQUEST_CHALLENGE_END*", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("endReason")
+  public @Nullable EndReasonEnum getEndReason() {
     return endReason;
   }
 
-  public void setEndReason(EndReasonEnum endReason) {
+  public void setEndReason(@Nullable EndReasonEnum endReason) {
     this.endReason = endReason;
   }
 
-  public InstructMessage endChallengeDate(OffsetDateTime endChallengeDate) {
+  public InstructMessage endChallengeDate(@Nullable OffsetDateTime endChallengeDate) {
     this.endChallengeDate = endChallengeDate;
     return this;
   }
@@ -298,18 +306,19 @@ public class InstructMessage   {
   /**
    * Date (and time, if available) the challenge was ended, in the standard format yyyy-mm-dd (with HH:mm:ss if the time is available, otherwise not). Date/time is assumed to be in UTC. *Mandatory if messageType is REQUEST_CHALLENGE_END*
    * @return endChallengeDate
-  */
+   */
   @Valid 
-  @Schema(name = "endChallengeDate", example = "2017-07-21T17:32:28Z", description = "Date (and time, if available) the challenge was ended, in the standard format yyyy-mm-dd (with HH:mm:ss if the time is available, otherwise not). Date/time is assumed to be in UTC. *Mandatory if messageType is REQUEST_CHALLENGE_END*", required = false)
-  public OffsetDateTime getEndChallengeDate() {
+  @Schema(name = "endChallengeDate", example = "2017-07-21T17:32:28Z", description = "Date (and time, if available) the challenge was ended, in the standard format yyyy-mm-dd (with HH:mm:ss if the time is available, otherwise not). Date/time is assumed to be in UTC. *Mandatory if messageType is REQUEST_CHALLENGE_END*", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("endChallengeDate")
+  public @Nullable OffsetDateTime getEndChallengeDate() {
     return endChallengeDate;
   }
 
-  public void setEndChallengeDate(OffsetDateTime endChallengeDate) {
+  public void setEndChallengeDate(@Nullable OffsetDateTime endChallengeDate) {
     this.endChallengeDate = endChallengeDate;
   }
 
-  public InstructMessage deadlineDate(OffsetDateTime deadlineDate) {
+  public InstructMessage deadlineDate(@Nullable OffsetDateTime deadlineDate) {
     this.deadlineDate = deadlineDate;
     return this;
   }
@@ -317,18 +326,19 @@ public class InstructMessage   {
   /**
    * Deadline date (and time, if available) for the appeal, in the standard format yyyy-mm-dd (with HH:mm:ss if the time is available, otherwise not). Date/time is assumed to be in UTC
    * @return deadlineDate
-  */
+   */
   @Valid 
-  @Schema(name = "deadlineDate", example = "2017-07-21T17:32:28Z", description = "Deadline date (and time, if available) for the appeal, in the standard format yyyy-mm-dd (with HH:mm:ss if the time is available, otherwise not). Date/time is assumed to be in UTC", required = false)
-  public OffsetDateTime getDeadlineDate() {
+  @Schema(name = "deadlineDate", example = "2017-07-21T17:32:28Z", description = "Deadline date (and time, if available) for the appeal, in the standard format yyyy-mm-dd (with HH:mm:ss if the time is available, otherwise not). Date/time is assumed to be in UTC", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("deadlineDate")
+  public @Nullable OffsetDateTime getDeadlineDate() {
     return deadlineDate;
   }
 
-  public void setDeadlineDate(OffsetDateTime deadlineDate) {
+  public void setDeadlineDate(@Nullable OffsetDateTime deadlineDate) {
     this.deadlineDate = deadlineDate;
   }
 
-  public InstructMessage courtType(CourtTypeEnum courtType) {
+  public InstructMessage courtType(@Nullable CourtTypeEnum courtType) {
     this.courtType = courtType;
     return this;
   }
@@ -336,18 +346,19 @@ public class InstructMessage   {
   /**
    * Court type. *Mandatory if messageType is PERMISSION_TO_APPEAL*
    * @return courtType
-  */
+   */
   
-  @Schema(name = "courtType", description = "Court type. *Mandatory if messageType is PERMISSION_TO_APPEAL*", required = false)
-  public CourtTypeEnum getCourtType() {
+  @Schema(name = "courtType", description = "Court type. *Mandatory if messageType is PERMISSION_TO_APPEAL*", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("courtType")
+  public @Nullable CourtTypeEnum getCourtType() {
     return courtType;
   }
 
-  public void setCourtType(CourtTypeEnum courtType) {
+  public void setCourtType(@Nullable CourtTypeEnum courtType) {
     this.courtType = courtType;
   }
 
-  public InstructMessage challenge(Challenge challenge) {
+  public InstructMessage challenge(@Nullable Challenge challenge) {
     this.challenge = challenge;
     return this;
   }
@@ -355,18 +366,19 @@ public class InstructMessage   {
   /**
    * Get challenge
    * @return challenge
-  */
+   */
   @Valid 
-  @Schema(name = "challenge", required = false)
-  public Challenge getChallenge() {
+  @Schema(name = "challenge", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("challenge")
+  public @Nullable Challenge getChallenge() {
     return challenge;
   }
 
-  public void setChallenge(Challenge challenge) {
+  public void setChallenge(@Nullable Challenge challenge) {
     this.challenge = challenge;
   }
 
-  public InstructMessage hearing(Hearing hearing) {
+  public InstructMessage hearing(@Nullable Hearing hearing) {
     this.hearing = hearing;
     return this;
   }
@@ -374,18 +386,19 @@ public class InstructMessage   {
   /**
    * Get hearing
    * @return hearing
-  */
+   */
   @Valid 
-  @Schema(name = "hearing", required = false)
-  public Hearing getHearing() {
+  @Schema(name = "hearing", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("hearing")
+  public @Nullable Hearing getHearing() {
     return hearing;
   }
 
-  public void setHearing(Hearing hearing) {
+  public void setHearing(@Nullable Hearing hearing) {
     this.hearing = hearing;
   }
 
-  public InstructMessage courtOutcome(CourtOutcome courtOutcome) {
+  public InstructMessage courtOutcome(@Nullable CourtOutcome courtOutcome) {
     this.courtOutcome = courtOutcome;
     return this;
   }
@@ -393,18 +406,19 @@ public class InstructMessage   {
   /**
    * Get courtOutcome
    * @return courtOutcome
-  */
+   */
   @Valid 
-  @Schema(name = "courtOutcome", required = false)
-  public CourtOutcome getCourtOutcome() {
+  @Schema(name = "courtOutcome", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("courtOutcome")
+  public @Nullable CourtOutcome getCourtOutcome() {
     return courtOutcome;
   }
 
-  public void setCourtOutcome(CourtOutcome courtOutcome) {
+  public void setCourtOutcome(@Nullable CourtOutcome courtOutcome) {
     this.courtOutcome = courtOutcome;
   }
 
-  public InstructMessage note(String note) {
+  public InstructMessage note(@Nullable String note) {
     this.note = note;
     return this;
   }
@@ -412,14 +426,15 @@ public class InstructMessage   {
   /**
    * Optional note. Can be used for indicating notification type and, possibly, Home Office actions required
    * @return note
-  */
+   */
   
-  @Schema(name = "note", example = "Additional notes from HMCTS", description = "Optional note. Can be used for indicating notification type and, possibly, Home Office actions required", required = false)
-  public String getNote() {
+  @Schema(name = "note", example = "Additional notes from HMCTS", description = "Optional note. Can be used for indicating notification type and, possibly, Home Office actions required", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("note")
+  public @Nullable String getNote() {
     return note;
   }
 
-  public void setNote(String note) {
+  public void setNote(@Nullable String note) {
     this.note = note;
   }
 
@@ -475,7 +490,7 @@ public class InstructMessage   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(@Nullable Object o) {
     if (o == null) {
       return "null";
     }

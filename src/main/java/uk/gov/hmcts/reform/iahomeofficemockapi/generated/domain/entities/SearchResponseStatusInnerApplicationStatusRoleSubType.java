@@ -17,29 +17,29 @@ import java.util.*;
 import javax.annotation.Generated;
 
 /**
- * Person&#39;s nationality
+ * Role sub-type of the individual in this application. **Note:** may not be available for legacy CID cases
  */
 
-@Schema(name = "Person_nationality", description = "Person's nationality")
-@JsonTypeName("Person_nationality")
+@Schema(name = "SearchResponse_status_inner_applicationStatus_roleSubType", description = "Role sub-type of the individual in this application. **Note:** may not be available for legacy CID cases")
+@JsonTypeName("SearchResponse_status_inner_applicationStatus_roleSubType")
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-24T10:12:45.452730Z[Europe/London]", comments = "Generator version: 7.20.0")
-public class PersonNationality {
+public class SearchResponseStatusInnerApplicationStatusRoleSubType {
 
   private @Nullable String code;
 
   private @Nullable String description;
 
-  public PersonNationality code(@Nullable String code) {
+  public SearchResponseStatusInnerApplicationStatusRoleSubType code(@Nullable String code) {
     this.code = code;
     return this;
   }
 
   /**
-   * Short code for the nationality
+   * Code for the role sub-type
    * @return code
    */
   
-  @Schema(name = "code", example = "CAN (denoting Canada)", description = "Short code for the nationality", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "code", example = "SPOUSE. Could be MAIN if the role type is APPLICANT", description = "Code for the role sub-type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("code")
   public @Nullable String getCode() {
     return code;
@@ -49,17 +49,17 @@ public class PersonNationality {
     this.code = code;
   }
 
-  public PersonNationality description(@Nullable String description) {
+  public SearchResponseStatusInnerApplicationStatusRoleSubType description(@Nullable String description) {
     this.description = description;
     return this;
   }
 
   /**
-   * Description of the nationality
+   * Description of the role sub-type
    * @return description
    */
   
-  @Schema(name = "description", example = "Canada", description = "Description of the nationality", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "description", example = "Spouse", description = "Description of the role sub-type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("description")
   public @Nullable String getDescription() {
     return description;
@@ -77,9 +77,9 @@ public class PersonNationality {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    PersonNationality personNationality = (PersonNationality) o;
-    return Objects.equals(this.code, personNationality.code) &&
-        Objects.equals(this.description, personNationality.description);
+    SearchResponseStatusInnerApplicationStatusRoleSubType searchResponseStatusInnerApplicationStatusRoleSubType = (SearchResponseStatusInnerApplicationStatusRoleSubType) o;
+    return Objects.equals(this.code, searchResponseStatusInnerApplicationStatusRoleSubType.code) &&
+        Objects.equals(this.description, searchResponseStatusInnerApplicationStatusRoleSubType.description);
   }
 
   @Override
@@ -90,7 +90,7 @@ public class PersonNationality {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class PersonNationality {\n");
+    sb.append("class SearchResponseStatusInnerApplicationStatusRoleSubType {\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("}");

@@ -12,10 +12,10 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.infrastructure.api.invoker.OpenAPI2SpringBoot;
+import uk.gov.hmcts.reform.iahomeofficemockapi.MockApiApplication;
 
 @SpringBootTest(classes = {
-    OpenAPI2SpringBoot.class
+    MockApiApplication.class
 })
 @AutoConfigureMockMvc(addFilters = false)
 @ActiveProfiles("integration")

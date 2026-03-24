@@ -7,16 +7,43 @@ info:
     url: http://www.apache.org/licenses/LICENSE-2.0.html
   termsOfService: http://swagger.io/terms/
   title: Appeals interface
-  version: 1d Draft
+  version: "2.0"
 externalDocs:
   description: Find out more about Swagger
   url: http://swagger.io
 servers:
-- url: https://somehost.example.com
+- description: Home Office mock API
+  url: http://localhost:8098
 tags:
 - description: Appeals interface
   name: Appeals
 paths:
+  /ichallenge/token:
+    post:
+      operationId: tokenPost
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/TokenRequest"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TokenResponse"
+          description: Mock token response
+        "400":
+          description: Invalid request
+      summary: Obtain mock access token
+      tags:
+      - Appeals
+      x-content-type: application/x-www-form-urlencoded
+      x-accepts:
+      - application/json
+      x-tags:
+      - tag: Appeals
   /applications/v1/{id}:
     get:
       description: "This resource represents the people involved in an application\
@@ -31,7 +58,6 @@ paths:
         name: id
         required: true
         schema:
-          example: null
           pattern: "^(\\d{4}-\\d{4}-\\d{4}-\\d{4}|GWF\\d{9})$"
           type: string
         style: simple
@@ -40,7 +66,6 @@ paths:
         name: Home-Office-Correlation-ID
         required: true
         schema:
-          example: null
           format: uuid
           type: string
         style: simple
@@ -56,7 +81,6 @@ paths:
         name: Home-Office-Event-DateTime
         required: true
         schema:
-          example: null
           format: date-time
           type: string
         style: simple
@@ -100,7 +124,8 @@ paths:
           description: Internal server error
       summary: Gets the appellants' details of an application for immigration or asylum
         from the Home Office.
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/applicationStatus/getBySearchParameters:
     post:
       requestBody:
@@ -125,8 +150,9 @@ paths:
       summary: Finds applications by search parameters (initially one).  This API
         is now deprecated.  Please use /applications for appeal validation and /applicationInstruct/setInstruct
         for appeal submission instead.
-      x-contentType: application/json
-      x-accepts: application/json
+      x-content-type: application/json
+      x-accepts:
+      - application/json
   /v1/applicationInstruct/setInstruct:
     post:
       requestBody:
@@ -151,14 +177,49 @@ paths:
       summary: "Instructs Home Office downstream systems. Note: Use of the term 'instruct'\
         \ avoids any confusion with existing business terms, such as 'notification'\
         \ and 'direction', which are not overly descriptive to the Home Office."
-      x-contentType: application/json
-      x-accepts: application/json
+      x-content-type: application/json
+      x-accepts:
+      - application/json
 components:
   schemas:
+    TokenRequest:
+      properties:
+        grant_type:
+          type: string
+        client_id:
+          type: string
+        client_secret:
+          type: string
+        scope:
+          type: string
+      required:
+      - client_id
+      - client_secret
+      - grant_type
+      type: object
+    TokenResponse:
+      example:
+        access_token: some_access_token
+        scope: email profile
+        token_type: bearer
+        expires_in: 300
+      properties:
+        access_token:
+          example: some_access_token
+          type: string
+        expires_in:
+          example: 300
+          type: integer
+        token_type:
+          example: bearer
+          type: string
+        scope:
+          example: email profile
+          type: string
+      type: object
     HomeOfficeConsumer:
       enum:
       - HMCTS
-      example: null
       type: string
     SearchParameters:
       description: |-
@@ -181,9 +242,8 @@ components:
         messageHeader:
           $ref: "#/components/schemas/MessageHeader"
         searchParams:
-          example: null
           items:
-            $ref: "#/components/schemas/SearchParameters_searchParams"
+            $ref: "#/components/schemas/SearchParameters_searchParams_inner"
           minItems: 1
           type: array
       required:
@@ -235,7 +295,6 @@ components:
           pattern: "^(19[0-9]{2}|[2-9][0-9]{3})-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$"
           type: string
         appellants:
-          example: null
           items:
             $ref: "#/components/schemas/Appellant"
           type: array
@@ -418,13 +477,23 @@ components:
         status:
           description: "An array of persons and application status; generally, the\
             \ status will be the same for all persons but this format provides flexibility"
-          example: null
           items:
-            $ref: "#/components/schemas/SearchResponse_status"
+            $ref: "#/components/schemas/SearchResponse_status_inner"
           type: array
       type: object
     SearchErrorResponse:
-      example: null
+      example:
+        messageHeader:
+          eventDateTime: 2017-07-21T17:32:28Z
+          correlationId: ABC2344BCED2234EA
+          consumer:
+            code: HMCTS
+            description: HM Courts and Tribunal Service
+        errorDetail:
+          messageText: Invalid reference format. Format should be either nnnn-nnnn-nnnn-nnnn
+            or 0(0) followed by digits (total length 9 or 10)
+          success: "false"
+          errorCode: "1010"
       properties:
         messageHeader:
           $ref: "#/components/schemas/MessageHeader"
@@ -509,7 +578,7 @@ components:
           hearingType: PAPER
           witnessQty: 0
           witnessNames: "John Smyth, Jennie Walker"
-          hearingDate: 2017-07-21T00:00:00.000+00:00
+          hearingDate: 2017-07-21
           hearingLocation: "Royal Courts of Justice, London"
           hearingTime: 10:30:00Z
           hmctsHearingRef: hmctsHearingRef
@@ -535,7 +604,6 @@ components:
           - COURT_OUTCOME
           - PERMISSION_TO_APPEAL
           - DEFAULT
-          example: null
           type: string
         hoReference:
           description: Home Office reference (UAN or CID case ID)
@@ -552,7 +620,6 @@ components:
           - WITHDRAWN
           - NOT_VALID
           - INCORRECT_DETAILS
-          example: null
           type: string
         endChallengeDate:
           description: "Date (and time, if available) the challenge was ended, in\
@@ -576,7 +643,6 @@ components:
           - UPPER_TRIBUNAL
           - COURT_OF_APPEAL
           - SUPREME_COURT
-          example: null
           type: string
         challenge:
           $ref: "#/components/schemas/Challenge"
@@ -609,7 +675,18 @@ components:
           $ref: "#/components/schemas/MessageHeader"
       type: object
     InstructErrorResponse:
-      example: null
+      example:
+        messageHeader:
+          eventDateTime: 2017-07-21T17:32:28Z
+          correlationId: ABC2344BCED2234EA
+          consumer:
+            code: HMCTS
+            description: HM Courts and Tribunal Service
+        errorDetail:
+          messageText: Invalid reference format. Format should be either nnnn-nnnn-nnnn-nnnn
+            or 0(0) followed by digits (total length 9 or 10)
+          success: "false"
+          errorCode: "1010"
       properties:
         messageHeader:
           $ref: "#/components/schemas/MessageHeader"
@@ -656,7 +733,6 @@ components:
         monthOfBirth:
           description: "Month of year (Gregorian calendar) the person was born in,\
             \ from 1-12. No leading zeroes"
-          example: null
           type: integer
         yearOfBirth:
           description: Year the person was born in (4 digits)
@@ -705,13 +781,11 @@ components:
           - DEPRIVATION_OF_CITIZENSHIP
           - HUMAN_RIGHTS
           - EEA
-          example: null
           type: string
         appealTierType:
           description: The type of appeal tier
           enum:
           - FIRST_TIER
-          example: null
           type: string
         challengeSubmissionDate:
           description: "Date (and time, if available) of challenge submission, in\
@@ -722,7 +796,6 @@ components:
           type: string
         applicants:
           description: List of applicants (will initially be just one)
-          example: null
           items:
             $ref: "#/components/schemas/Person"
           minItems: 1
@@ -739,7 +812,7 @@ components:
         hearingType: PAPER
         witnessQty: 0
         witnessNames: "John Smyth, Jennie Walker"
-        hearingDate: 2017-07-21T00:00:00.000+00:00
+        hearingDate: 2017-07-21
         hearingLocation: "Royal Courts of Justice, London"
         hearingTime: 10:30:00Z
         hmctsHearingRef: hmctsHearingRef
@@ -747,7 +820,6 @@ components:
         hmctsHearingRef:
           description: HMCTS reference for a hearing. (Allows for multiple hearings
             though usually it's just one.)
-          example: null
           type: string
         hearingLocation:
           description: Venue where the hearing is to take place
@@ -768,12 +840,10 @@ components:
           enum:
           - PAPER
           - ORAL
-          example: null
           type: string
         witnessQty:
           description: Number of witnesses to be called to provide evidence at the
             hearing
-          example: null
           type: integer
         witnessNames:
           description: "Names of witnesses. Recorded as notes in HMCTS, so cannot\
@@ -796,7 +866,6 @@ components:
           - FIRST_TIER
           - FTPA
           - UTPA
-          example: null
           type: string
         outcome:
           description: Appeal outcome
@@ -807,7 +876,6 @@ components:
           - REFUSED
           - REHEARD
           - REMADE
-          example: null
           type: string
       required:
       - courtType
@@ -823,7 +891,6 @@ components:
           description: Short code for the consumer
           enum:
           - HMCTS
-          example: null
           type: string
         description:
           description: Description of the consumer (for legibility reasons)
@@ -849,7 +916,6 @@ components:
           description: Short code for the reference
           enum:
           - HMCTS_CHALLENGE_REF
-          example: null
           type: string
         description:
           example: HMCTS challenge reference
@@ -890,7 +956,11 @@ components:
       - eventDateTime
       type: object
     ErrorResponse:
-      example: null
+      example:
+        messageText: Invalid reference format. Format should be either nnnn-nnnn-nnnn-nnnn
+          or 0(0) followed by digits (total length 9 or 10)
+        success: "false"
+        errorCode: "1010"
       properties:
         success:
           enum:
@@ -925,10 +995,9 @@ components:
           - "1090"
           - "2000"
           - "2010"
-          example: null
           type: string
       type: object
-    SearchParameters_searchParams:
+    SearchParameters_searchParams_inner:
       example:
         spValue: "UAN (nnnn-nnnn-nnnn-nnnn) or CID (case ID, e.g. 001234567)"
         spType: DOCUMENT_REFERENCE
@@ -948,7 +1017,7 @@ components:
       - spType
       - spValue
       type: object
-    SearchResponse_applicationStatus_roleType:
+    SearchResponse_status_inner_applicationStatus_roleType:
       description: Role of the individual in this application
       example:
         code: DEPENDANT
@@ -963,7 +1032,7 @@ components:
           example: Dependant
           type: string
       type: object
-    SearchResponse_applicationStatus_roleSubType:
+    SearchResponse_status_inner_applicationStatus_roleSubType:
       description: Role sub-type of the individual in this application. **Note:**
         may not be available for legacy CID cases
       example:
@@ -979,7 +1048,7 @@ components:
           example: Spouse
           type: string
       type: object
-    SearchResponse_applicationStatus_applicationType:
+    SearchResponse_status_inner_applicationStatus_applicationType:
       description: Type of application
       example:
         code: ASYLUM
@@ -994,7 +1063,7 @@ components:
           example: Asylum and Protection
           type: string
       type: object
-    SearchResponse_applicationStatus_claimReasonType:
+    SearchResponse_status_inner_applicationStatus_claimReasonType:
       description: Type of reason for claim on application. **Note:** may not be available
         for any cases
       example:
@@ -1010,7 +1079,7 @@ components:
           example: Human Rights
           type: string
       type: object
-    SearchResponse_applicationStatus_decisionType:
+    SearchResponse_status_inner_applicationStatus_decisionType:
       description: Type of decision made on the application
       example:
         code: REJECTION
@@ -1025,7 +1094,7 @@ components:
           example: Rejected
           type: string
       type: object
-    SearchResponse_applicationStatus_decisionCommunication:
+    SearchResponse_status_inner_applicationStatus_decisionCommunication:
       description: Communication of the decision
       example:
         sentDate: 2017-07-21T17:32:28Z
@@ -1060,7 +1129,7 @@ components:
           format: date-time
           type: string
       type: object
-    SearchResponse_applicationStatus_rejectionReasons:
+    SearchResponse_status_inner_applicationStatus_rejectionReasons_inner:
       example:
         reason: Application not completed properly
       properties:
@@ -1069,7 +1138,7 @@ components:
           example: Application not completed properly
           type: string
       type: object
-    SearchResponse_applicationStatus_metadata:
+    SearchResponse_status_inner_applicationStatus_metadata_inner:
       description: "Metadata item, comprising an item code and one (usually) or more\
         \ data values that are typed"
       example:
@@ -1100,7 +1169,7 @@ components:
       required:
       - code
       type: object
-    SearchResponse_applicationStatus:
+    SearchResponse_status_inner_applicationStatus:
       description: Current status of the individual's application
       example:
         applicationType:
@@ -1145,15 +1214,15 @@ components:
           example: 1234-1234-5678-5678/00
           type: string
         roleType:
-          $ref: "#/components/schemas/SearchResponse_applicationStatus_roleType"
+          $ref: "#/components/schemas/SearchResponse_status_inner_applicationStatus_roleType"
         roleSubType:
-          $ref: "#/components/schemas/SearchResponse_applicationStatus_roleSubType"
+          $ref: "#/components/schemas/SearchResponse_status_inner_applicationStatus_roleSubType"
         applicationType:
-          $ref: "#/components/schemas/SearchResponse_applicationStatus_applicationType"
+          $ref: "#/components/schemas/SearchResponse_status_inner_applicationStatus_applicationType"
         claimReasonType:
-          $ref: "#/components/schemas/SearchResponse_applicationStatus_claimReasonType"
+          $ref: "#/components/schemas/SearchResponse_status_inner_applicationStatus_claimReasonType"
         decisionType:
-          $ref: "#/components/schemas/SearchResponse_applicationStatus_decisionType"
+          $ref: "#/components/schemas/SearchResponse_status_inner_applicationStatus_decisionType"
         decisionDate:
           description: "Date (and time, if available) of decision made on the application,\
             \ in the standard format yyyy-mm-dd (with the HH:mm:ss if the time is\
@@ -1163,22 +1232,20 @@ components:
           format: date-time
           type: string
         decisionCommunication:
-          $ref: "#/components/schemas/SearchResponse_applicationStatus_decisionCommunication"
+          $ref: "#/components/schemas/SearchResponse_status_inner_applicationStatus_decisionCommunication"
         rejectionReasons:
           description: Rejection reasons
-          example: null
           items:
-            $ref: "#/components/schemas/SearchResponse_applicationStatus_rejectionReasons"
+            $ref: "#/components/schemas/SearchResponse_status_inner_applicationStatus_rejectionReasons_inner"
           type: array
         metadata:
           description: |
             Additional attributes (metadata) of the application
-          example: null
           items:
-            $ref: "#/components/schemas/SearchResponse_applicationStatus_metadata"
+            $ref: "#/components/schemas/SearchResponse_status_inner_applicationStatus_metadata_inner"
           type: array
       type: object
-    SearchResponse_status:
+    SearchResponse_status_inner:
       example:
         applicationStatus:
           applicationType:
@@ -1232,7 +1299,7 @@ components:
         person:
           $ref: "#/components/schemas/Person"
         applicationStatus:
-          $ref: "#/components/schemas/SearchResponse_applicationStatus"
+          $ref: "#/components/schemas/SearchResponse_status_inner_applicationStatus"
       type: object
     Person_gender:
       example:
@@ -1263,3 +1330,10 @@ components:
           example: Canada
           type: string
       type: object
+  securitySchemes:
+    oauth2:
+      flows:
+        clientCredentials:
+          scopes: {}
+          tokenUrl: /ichallenge/token
+      type: oauth2

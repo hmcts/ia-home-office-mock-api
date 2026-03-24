@@ -15,10 +15,9 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.context.ActiveProfiles;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.infrastructure.api.invoker.OpenAPI2SpringBoot;
 
 @SpringBootTest(classes = {
-    OpenAPI2SpringBoot.class
+    MockApiApplication.class
 })
 @ActiveProfiles("functional")
 @AutoConfigureMockMvc(addFilters = false)

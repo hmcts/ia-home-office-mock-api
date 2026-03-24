@@ -2,18 +2,40 @@ openapi: "3.0.0"
 info:
   description: |
     This is a specification for appeal/challenge to be consumed by HMCTS (in the first instance).
-  version: "1d Draft"
+  version: "2.0"
   title: "Appeals interface"
   termsOfService: "http://swagger.io/terms/"
   license:
     name: "Apache 2.0"
     url: "http://www.apache.org/licenses/LICENSE-2.0.html"
 servers:
-  - url: https://somehost.example.com
+  - url: http://localhost:8098
+    description: Home Office mock API
 tags:
   - name: "Appeals"
     description: "Appeals interface"
 paths:
+  /ichallenge/token:
+    post:
+      tags:
+        - Appeals
+      summary: Obtain mock access token
+      operationId: tokenPost
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenRequest'
+      responses:
+        '200':
+          description: Mock token response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+        '400':
+          description: Invalid request
   /applications/v1/{id}:
     get:
       summary: Gets the appellants' details of an application for immigration or asylum from the Home Office.
@@ -129,7 +151,44 @@ paths:
                 schema:
                   $ref: "#/components/schemas/InstructErrorResponse"
 components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: /ichallenge/token
+          scopes: {}
   schemas:
+    TokenRequest:
+      type: object
+      required:
+        - grant_type
+        - client_id
+        - client_secret
+      properties:
+        grant_type:
+          type: string
+        client_id:
+          type: string
+        client_secret:
+          type: string
+        scope:
+          type: string
+    TokenResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+          example: some_access_token
+        expires_in:
+          type: integer
+          example: 300
+        token_type:
+          type: string
+          example: bearer
+        scope:
+          type: string
+          example: email profile
     HomeOfficeConsumer:
       type: string
       enum:

@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.time.OffsetDateTime;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.lang.Nullable;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.Consumer;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
@@ -22,18 +23,28 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "MessageHeader", description = "Message parameters (not business oriented).")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-20T18:22:35.342881Z[Europe/London]")
-public class MessageHeader   {
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-24T10:12:45.452730Z[Europe/London]", comments = "Generator version: 7.20.0")
+public class MessageHeader {
 
-  @JsonProperty("eventDateTime")
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private OffsetDateTime eventDateTime;
 
-  @JsonProperty("correlationId")
   private String correlationId;
 
-  @JsonProperty("consumer")
   private Consumer consumer;
+
+  public MessageHeader() {
+    super();
+  }
+
+  /**
+   * Constructor with only required parameters
+   */
+  public MessageHeader(OffsetDateTime eventDateTime, String correlationId, Consumer consumer) {
+    this.eventDateTime = eventDateTime;
+    this.correlationId = correlationId;
+    this.consumer = consumer;
+  }
 
   public MessageHeader eventDateTime(OffsetDateTime eventDateTime) {
     this.eventDateTime = eventDateTime;
@@ -43,9 +54,10 @@ public class MessageHeader   {
   /**
    * UTC timestamp for debugging purposes
    * @return eventDateTime
-  */
+   */
   @NotNull @Valid 
-  @Schema(name = "eventDateTime", example = "2017-07-21T17:32:28Z", description = "UTC timestamp for debugging purposes", required = true)
+  @Schema(name = "eventDateTime", example = "2017-07-21T17:32:28Z", description = "UTC timestamp for debugging purposes", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("eventDateTime")
   public OffsetDateTime getEventDateTime() {
     return eventDateTime;
   }
@@ -62,9 +74,10 @@ public class MessageHeader   {
   /**
    * ID allowing correlation between service consumer and API log files. Expected to be unique, for example, a UUID
    * @return correlationId
-  */
+   */
   @NotNull 
-  @Schema(name = "correlationId", example = "ABC2344BCED2234EA", description = "ID allowing correlation between service consumer and API log files. Expected to be unique, for example, a UUID", required = true)
+  @Schema(name = "correlationId", example = "ABC2344BCED2234EA", description = "ID allowing correlation between service consumer and API log files. Expected to be unique, for example, a UUID", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("correlationId")
   public String getCorrelationId() {
     return correlationId;
   }
@@ -81,9 +94,10 @@ public class MessageHeader   {
   /**
    * Get consumer
    * @return consumer
-  */
+   */
   @NotNull @Valid 
-  @Schema(name = "consumer", required = true)
+  @Schema(name = "consumer", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("consumer")
   public Consumer getConsumer() {
     return consumer;
   }
@@ -126,7 +140,7 @@ public class MessageHeader   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(@Nullable Object o) {
     if (o == null) {
       return "null";
     }

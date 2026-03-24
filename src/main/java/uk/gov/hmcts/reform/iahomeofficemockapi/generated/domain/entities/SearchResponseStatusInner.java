@@ -4,8 +4,10 @@ import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import org.springframework.lang.Nullable;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.Person;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchResponseApplicationStatus;
+import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchResponseStatusInnerApplicationStatus;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -17,19 +19,18 @@ import java.util.*;
 import javax.annotation.Generated;
 
 /**
- * SearchResponseStatus
+ * SearchResponseStatusInner
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-20T18:22:35.342881Z[Europe/London]")
-public class SearchResponseStatus   {
+@JsonTypeName("SearchResponse_status_inner")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-24T10:12:45.452730Z[Europe/London]", comments = "Generator version: 7.20.0")
+public class SearchResponseStatusInner {
 
-  @JsonProperty("person")
-  private Person person;
+  private @Nullable Person person;
 
-  @JsonProperty("applicationStatus")
-  private SearchResponseApplicationStatus applicationStatus;
+  private @Nullable SearchResponseStatusInnerApplicationStatus applicationStatus;
 
-  public SearchResponseStatus person(Person person) {
+  public SearchResponseStatusInner person(@Nullable Person person) {
     this.person = person;
     return this;
   }
@@ -37,18 +38,19 @@ public class SearchResponseStatus   {
   /**
    * Get person
    * @return person
-  */
+   */
   @Valid 
-  @Schema(name = "person", required = false)
-  public Person getPerson() {
+  @Schema(name = "person", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("person")
+  public @Nullable Person getPerson() {
     return person;
   }
 
-  public void setPerson(Person person) {
+  public void setPerson(@Nullable Person person) {
     this.person = person;
   }
 
-  public SearchResponseStatus applicationStatus(SearchResponseApplicationStatus applicationStatus) {
+  public SearchResponseStatusInner applicationStatus(@Nullable SearchResponseStatusInnerApplicationStatus applicationStatus) {
     this.applicationStatus = applicationStatus;
     return this;
   }
@@ -56,14 +58,15 @@ public class SearchResponseStatus   {
   /**
    * Get applicationStatus
    * @return applicationStatus
-  */
+   */
   @Valid 
-  @Schema(name = "applicationStatus", required = false)
-  public SearchResponseApplicationStatus getApplicationStatus() {
+  @Schema(name = "applicationStatus", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("applicationStatus")
+  public @Nullable SearchResponseStatusInnerApplicationStatus getApplicationStatus() {
     return applicationStatus;
   }
 
-  public void setApplicationStatus(SearchResponseApplicationStatus applicationStatus) {
+  public void setApplicationStatus(@Nullable SearchResponseStatusInnerApplicationStatus applicationStatus) {
     this.applicationStatus = applicationStatus;
   }
 
@@ -75,9 +78,9 @@ public class SearchResponseStatus   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SearchResponseStatus searchResponseStatus = (SearchResponseStatus) o;
-    return Objects.equals(this.person, searchResponseStatus.person) &&
-        Objects.equals(this.applicationStatus, searchResponseStatus.applicationStatus);
+    SearchResponseStatusInner searchResponseStatusInner = (SearchResponseStatusInner) o;
+    return Objects.equals(this.person, searchResponseStatusInner.person) &&
+        Objects.equals(this.applicationStatus, searchResponseStatusInner.applicationStatus);
   }
 
   @Override
@@ -88,7 +91,7 @@ public class SearchResponseStatus   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SearchResponseStatus {\n");
+    sb.append("class SearchResponseStatusInner {\n");
     sb.append("    person: ").append(toIndentedString(person)).append("\n");
     sb.append("    applicationStatus: ").append(toIndentedString(applicationStatus)).append("\n");
     sb.append("}");
@@ -99,7 +102,7 @@ public class SearchResponseStatus   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(@Nullable Object o) {
     if (o == null) {
       return "null";
     }

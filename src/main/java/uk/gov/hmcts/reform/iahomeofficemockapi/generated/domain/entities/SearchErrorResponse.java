@@ -4,6 +4,7 @@ import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import org.springframework.lang.Nullable;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.ErrorResponse;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.MessageHeader;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -20,16 +21,14 @@ import javax.annotation.Generated;
  * SearchErrorResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-20T18:22:35.342881Z[Europe/London]")
-public class SearchErrorResponse   {
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-24T10:12:45.452730Z[Europe/London]", comments = "Generator version: 7.20.0")
+public class SearchErrorResponse {
 
-  @JsonProperty("messageHeader")
-  private MessageHeader messageHeader;
+  private @Nullable MessageHeader messageHeader;
 
-  @JsonProperty("errorDetail")
-  private ErrorResponse errorDetail;
+  private @Nullable ErrorResponse errorDetail;
 
-  public SearchErrorResponse messageHeader(MessageHeader messageHeader) {
+  public SearchErrorResponse messageHeader(@Nullable MessageHeader messageHeader) {
     this.messageHeader = messageHeader;
     return this;
   }
@@ -37,18 +36,19 @@ public class SearchErrorResponse   {
   /**
    * Get messageHeader
    * @return messageHeader
-  */
+   */
   @Valid 
-  @Schema(name = "messageHeader", required = false)
-  public MessageHeader getMessageHeader() {
+  @Schema(name = "messageHeader", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("messageHeader")
+  public @Nullable MessageHeader getMessageHeader() {
     return messageHeader;
   }
 
-  public void setMessageHeader(MessageHeader messageHeader) {
+  public void setMessageHeader(@Nullable MessageHeader messageHeader) {
     this.messageHeader = messageHeader;
   }
 
-  public SearchErrorResponse errorDetail(ErrorResponse errorDetail) {
+  public SearchErrorResponse errorDetail(@Nullable ErrorResponse errorDetail) {
     this.errorDetail = errorDetail;
     return this;
   }
@@ -56,14 +56,15 @@ public class SearchErrorResponse   {
   /**
    * Get errorDetail
    * @return errorDetail
-  */
+   */
   @Valid 
-  @Schema(name = "errorDetail", required = false)
-  public ErrorResponse getErrorDetail() {
+  @Schema(name = "errorDetail", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("errorDetail")
+  public @Nullable ErrorResponse getErrorDetail() {
     return errorDetail;
   }
 
-  public void setErrorDetail(ErrorResponse errorDetail) {
+  public void setErrorDetail(@Nullable ErrorResponse errorDetail) {
     this.errorDetail = errorDetail;
   }
 
@@ -99,7 +100,7 @@ public class SearchErrorResponse   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(@Nullable Object o) {
     if (o == null) {
       return "null";
     }

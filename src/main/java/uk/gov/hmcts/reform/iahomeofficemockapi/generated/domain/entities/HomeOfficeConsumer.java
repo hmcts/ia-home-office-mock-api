@@ -20,12 +20,12 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * Gets or Sets HomeOfficeConsumer
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-20T18:22:35.342881Z[Europe/London]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-24T10:12:45.452730Z[Europe/London]", comments = "Generator version: 7.20.0")
 public enum HomeOfficeConsumer {
   
   HMCTS("HMCTS");
 
-  private String value;
+  private final String value;
 
   HomeOfficeConsumer(String value) {
     this.value = value;

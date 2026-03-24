@@ -4,6 +4,7 @@ import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -18,40 +19,45 @@ import javax.annotation.Generated;
  * Appellant
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-20T18:22:35.342881Z[Europe/London]")
-public class Appellant   {
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-24T10:12:45.452730Z[Europe/London]", comments = "Generator version: 7.20.0")
+public class Appellant {
 
-  @JsonProperty("pp")
-  private String pp;
+  private @Nullable String pp;
 
-  @JsonProperty("familyName")
   private String familyName;
 
-  @JsonProperty("givenNames")
   private String givenNames;
 
-  @JsonProperty("dateOfBirth")
   private String dateOfBirth;
 
-  @JsonProperty("nationality")
   private String nationality;
 
-  @JsonProperty("roa")
-  private Boolean roa;
+  private @Nullable Boolean roa;
 
-  @JsonProperty("asylumSupport")
-  private Boolean asylumSupport;
+  private @Nullable Boolean asylumSupport;
 
-  @JsonProperty("hoFeeWaiver")
-  private Boolean hoFeeWaiver;
+  private @Nullable Boolean hoFeeWaiver;
 
-  @JsonProperty("language")
   private String language;
 
-  @JsonProperty("interpreterNeeded")
-  private Boolean interpreterNeeded;
+  private @Nullable Boolean interpreterNeeded;
 
-  public Appellant pp(String pp) {
+  public Appellant() {
+    super();
+  }
+
+  /**
+   * Constructor with only required parameters
+   */
+  public Appellant(String familyName, String givenNames, String dateOfBirth, String nationality, String language) {
+    this.familyName = familyName;
+    this.givenNames = givenNames;
+    this.dateOfBirth = dateOfBirth;
+    this.nationality = nationality;
+    this.language = language;
+  }
+
+  public Appellant pp(@Nullable String pp) {
     this.pp = pp;
     return this;
   }
@@ -59,14 +65,15 @@ public class Appellant   {
   /**
    * Get pp
    * @return pp
-  */
+   */
   @Pattern(regexp = "^[0-9]{2}$") 
-  @Schema(name = "pp", example = "01", required = false)
-  public String getPp() {
+  @Schema(name = "pp", example = "01", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("pp")
+  public @Nullable String getPp() {
     return pp;
   }
 
-  public void setPp(String pp) {
+  public void setPp(@Nullable String pp) {
     this.pp = pp;
   }
 
@@ -78,9 +85,10 @@ public class Appellant   {
   /**
    * Get familyName
    * @return familyName
-  */
+   */
   @NotNull 
-  @Schema(name = "familyName", example = "Wimp", required = true)
+  @Schema(name = "familyName", example = "Wimp", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("familyName")
   public String getFamilyName() {
     return familyName;
   }
@@ -97,9 +105,10 @@ public class Appellant   {
   /**
    * Get givenNames
    * @return givenNames
-  */
+   */
   @NotNull 
-  @Schema(name = "givenNames", example = "Horace", required = true)
+  @Schema(name = "givenNames", example = "Horace", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("givenNames")
   public String getGivenNames() {
     return givenNames;
   }
@@ -116,9 +125,10 @@ public class Appellant   {
   /**
    * Get dateOfBirth
    * @return dateOfBirth
-  */
+   */
   @NotNull @Pattern(regexp = "^(19[0-9]{2}|[2-9][0-9]{3})-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$") 
-  @Schema(name = "dateOfBirth", example = "2017-07-21", required = true)
+  @Schema(name = "dateOfBirth", example = "2017-07-21", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("dateOfBirth")
   public String getDateOfBirth() {
     return dateOfBirth;
   }
@@ -135,9 +145,10 @@ public class Appellant   {
   /**
    * Get nationality
    * @return nationality
-  */
+   */
   @NotNull @Pattern(regexp = "^[A-Z]{3}$") 
-  @Schema(name = "nationality", example = "GER", required = true)
+  @Schema(name = "nationality", example = "GER", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("nationality")
   public String getNationality() {
     return nationality;
   }
@@ -146,7 +157,7 @@ public class Appellant   {
     this.nationality = nationality;
   }
 
-  public Appellant roa(Boolean roa) {
+  public Appellant roa(@Nullable Boolean roa) {
     this.roa = roa;
     return this;
   }
@@ -154,18 +165,19 @@ public class Appellant   {
   /**
    * Get roa
    * @return roa
-  */
+   */
   
-  @Schema(name = "roa", example = "true", required = false)
-  public Boolean getRoa() {
+  @Schema(name = "roa", example = "true", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("roa")
+  public @Nullable Boolean getRoa() {
     return roa;
   }
 
-  public void setRoa(Boolean roa) {
+  public void setRoa(@Nullable Boolean roa) {
     this.roa = roa;
   }
 
-  public Appellant asylumSupport(Boolean asylumSupport) {
+  public Appellant asylumSupport(@Nullable Boolean asylumSupport) {
     this.asylumSupport = asylumSupport;
     return this;
   }
@@ -173,18 +185,19 @@ public class Appellant   {
   /**
    * Get asylumSupport
    * @return asylumSupport
-  */
+   */
   
-  @Schema(name = "asylumSupport", example = "false", required = false)
-  public Boolean getAsylumSupport() {
+  @Schema(name = "asylumSupport", example = "false", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("asylumSupport")
+  public @Nullable Boolean getAsylumSupport() {
     return asylumSupport;
   }
 
-  public void setAsylumSupport(Boolean asylumSupport) {
+  public void setAsylumSupport(@Nullable Boolean asylumSupport) {
     this.asylumSupport = asylumSupport;
   }
 
-  public Appellant hoFeeWaiver(Boolean hoFeeWaiver) {
+  public Appellant hoFeeWaiver(@Nullable Boolean hoFeeWaiver) {
     this.hoFeeWaiver = hoFeeWaiver;
     return this;
   }
@@ -192,14 +205,15 @@ public class Appellant   {
   /**
    * Get hoFeeWaiver
    * @return hoFeeWaiver
-  */
+   */
   
-  @Schema(name = "hoFeeWaiver", example = "true", required = false)
-  public Boolean getHoFeeWaiver() {
+  @Schema(name = "hoFeeWaiver", example = "true", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("hoFeeWaiver")
+  public @Nullable Boolean getHoFeeWaiver() {
     return hoFeeWaiver;
   }
 
-  public void setHoFeeWaiver(Boolean hoFeeWaiver) {
+  public void setHoFeeWaiver(@Nullable Boolean hoFeeWaiver) {
     this.hoFeeWaiver = hoFeeWaiver;
   }
 
@@ -211,9 +225,10 @@ public class Appellant   {
   /**
    * Get language
    * @return language
-  */
+   */
   @NotNull @Pattern(regexp = "^[a-z]{3}$") 
-  @Schema(name = "language", example = "eng", required = true)
+  @Schema(name = "language", example = "eng", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("language")
   public String getLanguage() {
     return language;
   }
@@ -222,7 +237,7 @@ public class Appellant   {
     this.language = language;
   }
 
-  public Appellant interpreterNeeded(Boolean interpreterNeeded) {
+  public Appellant interpreterNeeded(@Nullable Boolean interpreterNeeded) {
     this.interpreterNeeded = interpreterNeeded;
     return this;
   }
@@ -230,14 +245,15 @@ public class Appellant   {
   /**
    * Get interpreterNeeded
    * @return interpreterNeeded
-  */
+   */
   
-  @Schema(name = "interpreterNeeded", example = "false", required = false)
-  public Boolean getInterpreterNeeded() {
+  @Schema(name = "interpreterNeeded", example = "false", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("interpreterNeeded")
+  public @Nullable Boolean getInterpreterNeeded() {
     return interpreterNeeded;
   }
 
-  public void setInterpreterNeeded(Boolean interpreterNeeded) {
+  public void setInterpreterNeeded(@Nullable Boolean interpreterNeeded) {
     this.interpreterNeeded = interpreterNeeded;
   }
 
@@ -289,7 +305,7 @@ public class Appellant   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(@Nullable Object o) {
     if (o == null) {
       return "null";
     }

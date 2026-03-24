@@ -5,6 +5,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -20,8 +21,8 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CourtOutcome", description = "Court type and outcome of the appeal.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-20T18:22:35.342881Z[Europe/London]")
-public class CourtOutcome   {
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-24T10:12:45.452730Z[Europe/London]", comments = "Generator version: 7.20.0")
+public class CourtOutcome {
 
   /**
    * Court (tribunal) type
@@ -33,7 +34,7 @@ public class CourtOutcome   {
     
     UTPA("UTPA");
 
-    private String value;
+    private final String value;
 
     CourtTypeEnum(String value) {
       this.value = value;
@@ -60,7 +61,6 @@ public class CourtOutcome   {
     }
   }
 
-  @JsonProperty("courtType")
   private CourtTypeEnum courtType;
 
   /**
@@ -79,7 +79,7 @@ public class CourtOutcome   {
     
     REMADE("REMADE");
 
-    private String value;
+    private final String value;
 
     OutcomeEnum(String value) {
       this.value = value;
@@ -106,8 +106,19 @@ public class CourtOutcome   {
     }
   }
 
-  @JsonProperty("outcome")
   private OutcomeEnum outcome;
+
+  public CourtOutcome() {
+    super();
+  }
+
+  /**
+   * Constructor with only required parameters
+   */
+  public CourtOutcome(CourtTypeEnum courtType, OutcomeEnum outcome) {
+    this.courtType = courtType;
+    this.outcome = outcome;
+  }
 
   public CourtOutcome courtType(CourtTypeEnum courtType) {
     this.courtType = courtType;
@@ -117,9 +128,10 @@ public class CourtOutcome   {
   /**
    * Court (tribunal) type
    * @return courtType
-  */
+   */
   @NotNull 
-  @Schema(name = "courtType", description = "Court (tribunal) type", required = true)
+  @Schema(name = "courtType", description = "Court (tribunal) type", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("courtType")
   public CourtTypeEnum getCourtType() {
     return courtType;
   }
@@ -136,9 +148,10 @@ public class CourtOutcome   {
   /**
    * Appeal outcome
    * @return outcome
-  */
+   */
   @NotNull 
-  @Schema(name = "outcome", description = "Appeal outcome", required = true)
+  @Schema(name = "outcome", description = "Appeal outcome", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("outcome")
   public OutcomeEnum getOutcome() {
     return outcome;
   }
@@ -179,7 +192,7 @@ public class CourtOutcome   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(@Nullable Object o) {
     if (o == null) {
       return "null";
     }
