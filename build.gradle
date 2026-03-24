@@ -385,7 +385,7 @@ dependencies {
   smokeTestImplementation sourceSets.main.runtimeClasspath
 }
 
-mainClassName = 'uk.gov.hmcts.reform.iahomeofficemockapi.Application'
+mainClassName = 'uk.gov.hmcts.reform.iahomeofficemockapi.MockApiApplication'
 def jarName = 'ia-home-office-mock-api.jar'
 
 bootJar {
