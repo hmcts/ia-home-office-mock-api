@@ -102,7 +102,7 @@ paths:
             application/json:
                 schema:
                   $ref: "#/components/schemas/SearchErrorResponse"
-  /v1/applicationStatus/getBySearchParameters:
+  /applicationStatus/getBySearchParameters:
     post:
       summary: "Finds applications by search parameters (initially one).  This API is now deprecated.  Please use /applications for appeal validation and /applicationInstruct/setInstruct for appeal submission instead."
       requestBody:
@@ -128,7 +128,7 @@ paths:
             application/json:
                 schema:
                   $ref: "#/components/schemas/SearchErrorResponse"
-  /v1/applicationInstruct/setInstruct:
+  /applicationInstruct/setInstruct:
     post:
       summary: "Instructs Home Office downstream systems. Note: Use of the term 'instruct' avoids any confusion with existing business terms, such as 'notification' and 'direction', which are not overly descriptive to the Home Office."
       requestBody:

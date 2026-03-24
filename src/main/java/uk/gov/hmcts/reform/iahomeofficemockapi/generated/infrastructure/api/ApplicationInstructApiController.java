@@ -1,7 +1,8 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.infrastructure.api;
 
-import org.springframework.lang.Nullable;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.TokenResponse;
+import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.InstructErrorResponse;
+import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.InstructMessage;
+import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.InstructResponse;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,12 +31,12 @@ import javax.annotation.Generated;
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-24T17:52:14.183321Z[Europe/London]", comments = "Generator version: 7.20.0")
 @Controller
 @RequestMapping("${openapi.appealsInterface.base-path:/ichallenge}")
-public class TokenApiController implements TokenApi {
+public class ApplicationInstructApiController implements ApplicationInstructApi {
 
     private final NativeWebRequest request;
 
     @Autowired
-    public TokenApiController(NativeWebRequest request) {
+    public ApplicationInstructApiController(NativeWebRequest request) {
         this.request = request;
     }
 

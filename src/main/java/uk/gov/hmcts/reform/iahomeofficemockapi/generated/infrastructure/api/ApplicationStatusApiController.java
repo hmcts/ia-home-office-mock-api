@@ -1,8 +1,5 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.infrastructure.api;
 
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.InstructErrorResponse;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.InstructMessage;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.InstructResponse;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchErrorResponse;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchParameters;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchResponse;
@@ -31,15 +28,15 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-24T17:15:37.128859Z[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-24T17:52:14.183321Z[Europe/London]", comments = "Generator version: 7.20.0")
 @Controller
 @RequestMapping("${openapi.appealsInterface.base-path:/ichallenge}")
-public class V1ApiController implements V1Api {
+public class ApplicationStatusApiController implements ApplicationStatusApi {
 
     private final NativeWebRequest request;
 
     @Autowired
-    public V1ApiController(NativeWebRequest request) {
+    public ApplicationStatusApiController(NativeWebRequest request) {
         this.request = request;
     }
 

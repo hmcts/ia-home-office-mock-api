@@ -5,9 +5,6 @@
  */
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.infrastructure.api;
 
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.InstructErrorResponse;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.InstructMessage;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.InstructResponse;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchErrorResponse;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchParameters;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchResponse;
@@ -38,73 +35,25 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-24T17:15:37.128859Z[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-24T17:52:14.183321Z[Europe/London]", comments = "Generator version: 7.20.0")
 @Validated
-@Tag(name = "v1", description = "the v1 API")
-public interface V1Api {
+@Tag(name = "applicationStatus", description = "the applicationStatus API")
+public interface ApplicationStatusApi {
 
     default Optional<NativeWebRequest> getRequest() {
         return Optional.empty();
     }
 
-    String PATH_V1_APPLICATION_INSTRUCT_SET_INSTRUCT_POST = "/v1/applicationInstruct/setInstruct";
+    String PATH_APPLICATION_STATUS_GET_BY_SEARCH_PARAMETERS_POST = "/applicationStatus/getBySearchParameters";
     /**
-     * POST /v1/applicationInstruct/setInstruct : Instructs Home Office downstream systems. Note: Use of the term &#39;instruct&#39; avoids any confusion with existing business terms, such as &#39;notification&#39; and &#39;direction&#39;, which are not overly descriptive to the Home Office.
-     *
-     * @param instructMessage  (required)
-     * @return OK (status code 200)
-     *         or Invalid status value (status code 400)
-     */
-    @Operation(
-        operationId = "v1ApplicationInstructSetInstructPost",
-        summary = "Instructs Home Office downstream systems. Note: Use of the term 'instruct' avoids any confusion with existing business terms, such as 'notification' and 'direction', which are not overly descriptive to the Home Office.",
-        responses = {
-            @ApiResponse(responseCode = "200", description = "OK", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = InstructResponse.class))
-            }),
-            @ApiResponse(responseCode = "400", description = "Invalid status value", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = InstructErrorResponse.class))
-            })
-        }
-    )
-    @RequestMapping(
-        method = RequestMethod.POST,
-        value = V1Api.PATH_V1_APPLICATION_INSTRUCT_SET_INSTRUCT_POST,
-        produces = { "application/json" },
-        consumes = { "application/json" }
-    )
-    default ResponseEntity<InstructResponse> v1ApplicationInstructSetInstructPost(
-        @Parameter(name = "InstructMessage", description = "", required = true) @Valid @RequestBody InstructMessage instructMessage
-    ) {
-        getRequest().ifPresent(request -> {
-            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
-                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"messageHeader\" : { \"eventDateTime\" : \"2017-07-21T17:32:28Z\", \"correlationId\" : \"ABC2344BCED2234EA\", \"consumer\" : { \"code\" : \"HMCTS\", \"description\" : \"HM Courts and Tribunal Service\" } } }";
-                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
-                    break;
-                }
-                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"messageHeader\" : { \"eventDateTime\" : \"2017-07-21T17:32:28Z\", \"correlationId\" : \"ABC2344BCED2234EA\", \"consumer\" : { \"code\" : \"HMCTS\", \"description\" : \"HM Courts and Tribunal Service\" } }, \"errorDetail\" : { \"messageText\" : \"Invalid reference format. Format should be either nnnn-nnnn-nnnn-nnnn or 0(0) followed by digits (total length 9 or 10)\", \"success\" : \"false\", \"errorCode\" : \"1010\" } }";
-                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
-                    break;
-                }
-            }
-        });
-        return ResponseEntity.ok().build();
-
-    }
-
-
-    String PATH_V1_APPLICATION_STATUS_GET_BY_SEARCH_PARAMETERS_POST = "/v1/applicationStatus/getBySearchParameters";
-    /**
-     * POST /v1/applicationStatus/getBySearchParameters : Finds applications by search parameters (initially one).  This API is now deprecated.  Please use /applications for appeal validation and /applicationInstruct/setInstruct for appeal submission instead.
+     * POST /applicationStatus/getBySearchParameters : Finds applications by search parameters (initially one).  This API is now deprecated.  Please use /applications for appeal validation and /applicationInstruct/setInstruct for appeal submission instead.
      *
      * @param searchParameters  (required)
      * @return OK (status code 200)
      *         or Invalid status value (status code 400)
      */
     @Operation(
-        operationId = "v1ApplicationStatusGetBySearchParametersPost",
+        operationId = "applicationStatusGetBySearchParametersPost",
         summary = "Finds applications by search parameters (initially one).  This API is now deprecated.  Please use /applications for appeal validation and /applicationInstruct/setInstruct for appeal submission instead.",
         responses = {
             @ApiResponse(responseCode = "200", description = "OK", content = {
@@ -117,11 +66,11 @@ public interface V1Api {
     )
     @RequestMapping(
         method = RequestMethod.POST,
-        value = V1Api.PATH_V1_APPLICATION_STATUS_GET_BY_SEARCH_PARAMETERS_POST,
+        value = ApplicationStatusApi.PATH_APPLICATION_STATUS_GET_BY_SEARCH_PARAMETERS_POST,
         produces = { "application/json" },
         consumes = { "application/json" }
     )
-    default ResponseEntity<SearchResponse> v1ApplicationStatusGetBySearchParametersPost(
+    default ResponseEntity<SearchResponse> applicationStatusGetBySearchParametersPost(
         @Parameter(name = "SearchParameters", description = "", required = true) @Valid @RequestBody SearchParameters searchParameters
     ) {
         getRequest().ifPresent(request -> {

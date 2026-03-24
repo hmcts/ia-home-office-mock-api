@@ -23,7 +23,8 @@ import org.springframework.context.annotation.FilterType;
             classes = {
                 uk.gov.hmcts.reform.iahomeofficemockapi.generated.infrastructure.api.TokenApi.class,
                 uk.gov.hmcts.reform.iahomeofficemockapi.generated.infrastructure.api.ApplicationsApi.class,
-                uk.gov.hmcts.reform.iahomeofficemockapi.generated.infrastructure.api.V1Api.class
+                uk.gov.hmcts.reform.iahomeofficemockapi.generated.infrastructure.api.ApplicationStatusApi.class,
+                uk.gov.hmcts.reform.iahomeofficemockapi.generated.infrastructure.api.ApplicationInstructApi.class
             }
         )
     }
