@@ -21,7 +21,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "InstructResponse", description = "Response round-tripping request message header.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-25T18:25:38.716846Z[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-25T19:03:55.795081Z[Europe/London]", comments = "Generator version: 7.20.0")
 public class InstructResponse {
 
   private @Nullable MessageHeader messageHeader;
