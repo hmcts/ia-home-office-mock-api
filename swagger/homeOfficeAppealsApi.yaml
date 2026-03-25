@@ -645,7 +645,7 @@ components:
         challengeSubmissionDate:
           description: "Date (and time, if available) of challenge submission, in the standard format yyyy-mm-dd (with HH:mm:ss if the time is available, otherwise not). Date/time is assumed to be in UTC"
           type: "string"
-          format: "date-time"
+          pattern: "^(?:\\d{4}-\\d{2}-\\d{2}|\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?Z)$"
           example: "2017-07-21T17:32:28Z"
         applicants:
           type: "array"

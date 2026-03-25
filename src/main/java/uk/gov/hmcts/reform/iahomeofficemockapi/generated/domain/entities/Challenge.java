@@ -5,11 +5,9 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.Nullable;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.Person;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -27,7 +25,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "Challenge", description = "Details of a challenge (initially, all appeal related).")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-25T12:41:46.920130Z[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-25T13:02:20.630405Z[Europe/London]", comments = "Generator version: 7.20.0")
 public class Challenge {
 
   /**
@@ -108,8 +106,7 @@ public class Challenge {
 
   private AppealTierTypeEnum appealTierType;
 
-  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-  private OffsetDateTime challengeSubmissionDate;
+  private String challengeSubmissionDate;
 
   @Valid
   private List<@Valid Person> applicants = new ArrayList<>();
@@ -121,7 +118,7 @@ public class Challenge {
   /**
    * Constructor with only required parameters
    */
-  public Challenge(AppealTypeEnum appealType, AppealTierTypeEnum appealTierType, OffsetDateTime challengeSubmissionDate, List<@Valid Person> applicants) {
+  public Challenge(AppealTypeEnum appealType, AppealTierTypeEnum appealTierType, String challengeSubmissionDate, List<@Valid Person> applicants) {
     this.appealType = appealType;
     this.appealTierType = appealTierType;
     this.challengeSubmissionDate = challengeSubmissionDate;
@@ -168,7 +165,7 @@ public class Challenge {
     this.appealTierType = appealTierType;
   }
 
-  public Challenge challengeSubmissionDate(OffsetDateTime challengeSubmissionDate) {
+  public Challenge challengeSubmissionDate(String challengeSubmissionDate) {
     this.challengeSubmissionDate = challengeSubmissionDate;
     return this;
   }
@@ -177,14 +174,14 @@ public class Challenge {
    * Date (and time, if available) of challenge submission, in the standard format yyyy-mm-dd (with HH:mm:ss if the time is available, otherwise not). Date/time is assumed to be in UTC
    * @return challengeSubmissionDate
    */
-  @NotNull @Valid 
+  @NotNull @Pattern(regexp = "^(?:\\d{4}-\\d{2}-\\d{2}|\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?Z)$") 
   @Schema(name = "challengeSubmissionDate", example = "2017-07-21T17:32:28Z", description = "Date (and time, if available) of challenge submission, in the standard format yyyy-mm-dd (with HH:mm:ss if the time is available, otherwise not). Date/time is assumed to be in UTC", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("challengeSubmissionDate")
-  public OffsetDateTime getChallengeSubmissionDate() {
+  public String getChallengeSubmissionDate() {
     return challengeSubmissionDate;
   }
 
-  public void setChallengeSubmissionDate(OffsetDateTime challengeSubmissionDate) {
+  public void setChallengeSubmissionDate(String challengeSubmissionDate) {
     this.challengeSubmissionDate = challengeSubmissionDate;
   }
 
