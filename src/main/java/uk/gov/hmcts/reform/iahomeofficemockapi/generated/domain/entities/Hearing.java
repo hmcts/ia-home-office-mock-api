@@ -23,7 +23,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "Hearing", description = "Details of a hearing.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-25T13:02:20.630405Z[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-25T17:21:33.201375Z[Europe/London]", comments = "Generator version: 7.20.0")
 public class Hearing {
 
   private String hmctsHearingRef;
@@ -178,7 +178,7 @@ public class Hearing {
    * @return hearingType
    */
   @NotNull 
-  @Schema(name = "hearingType", description = "Type of hearing", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Schema(name = "hearingType", example = "ORAL", description = "Type of hearing", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("hearingType")
   public HearingTypeEnum getHearingType() {
     return hearingType;

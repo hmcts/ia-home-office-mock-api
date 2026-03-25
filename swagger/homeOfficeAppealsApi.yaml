@@ -191,6 +191,7 @@ components:
           example: email profile
     HomeOfficeConsumer:
       type: string
+      example: "HMCTS"
       enum:
         - HMCTS
     SearchParameters:
@@ -498,6 +499,7 @@ components:
         messageType:
           description: "Message type"
           type: "string"
+          example: "REQUEST_CHALLENGE_END"
           enum:
             - "REQUEST_CHALLENGE_END"
             - "REQUEST_EVIDENCE_BUNDLE"
@@ -516,6 +518,7 @@ components:
         endReason:
           description: "Code indicating reason for ending a challenge. *Mandatory if messageType is REQUEST_CHALLENGE_END*"
           type: "string"
+          example: "STRUCK_OUT"
           enum:
             - "STRUCK_OUT"
             - "ABANDONED"
@@ -535,6 +538,7 @@ components:
         courtType:
           description: "Court type. *Mandatory if messageType is PERMISSION_TO_APPEAL*"
           type: "string"
+          example: "FIRST_TIER"
           enum:
             - "FIRST_TIER"
             - "UPPER_TRIBUNAL"
@@ -630,6 +634,7 @@ components:
         appealType:
           description: "The type of appeal"
           type: "string"
+          example: "DEPRIVATION_OF_CITIZENSHIP"
           enum:
             - "PROTECTION" # First-time appeal for protection
             - "REVOCATION_OF_PROTECTION" # Subsequent appeal against revocation
@@ -639,6 +644,7 @@ components:
         appealTierType:
           description: "The type of appeal tier"
           type: "string"
+          example: "FIRST_TIER"
           enum:
           # Currently, only first-tier appeals are being implemented
             - "FIRST_TIER"
@@ -681,6 +687,7 @@ components:
         hearingType:
           description: "Type of hearing"
           type: "string"
+          example: "ORAL"
           enum:
             - "PAPER"
             - "ORAL"
@@ -701,6 +708,7 @@ components:
         courtType:
           description: "Court (tribunal) type"
           type: "string"
+          example: "FIRST_TIER"
           enum:
             - "FIRST_TIER" # Current item in scope
             - "FTPA" # Future implementation
@@ -708,6 +716,7 @@ components:
         outcome:
           description: "Appeal outcome"
           type: "string"
+          example: "DISMISSED"
           enum:
             - "ALLOWED" # For FIRST_TIER tribunal
             - "DISMISSED" # For FIRST_TIER tribunal
@@ -725,6 +734,7 @@ components:
         code:
           description: "Short code for the consumer"
           type: "string"
+          example: "HMCTS"
           enum:
             - "HMCTS"
         description:
@@ -742,6 +752,7 @@ components:
         code:
           description: "Short code for the reference"
           type: "string"
+          example: "HMCTS_CHALLENGE_REF"
           enum:
             - "HMCTS_CHALLENGE_REF"
         description:
@@ -779,10 +790,10 @@ components:
       properties:
         success:
           type: string
+          example: "false"
           enum:
             - "true"
             - "false"
-          example: "false"
         messageText:
           description: "Error message text"
           type: string
@@ -800,6 +811,7 @@ components:
           2000 - A Downstream system is unavailable (CSDP)\n\n
           2010 - A Downstream system is unavailable (AWS-SQS)"
           type: "string"
+          example: "2000"
           enum:
             - "1010"
             - "1020"

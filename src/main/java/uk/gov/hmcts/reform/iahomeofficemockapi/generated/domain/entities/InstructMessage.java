@@ -28,7 +28,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "InstructMessage", description = "### Message instructing Home Office about an event, or action to perform.  #### Mandatory items for all messages  messageHeader, messageType, hoReference, and consumerReference  #### Optional items  note  #### Message Types and Mandatory Elements  REQUEST_CHALLENGE_END: endReason, endChallengeDate  REQUEST_EVIDENCE_BUNDLE: challenge, deadlineDate  REQUEST_REVIEW: deadlineDate (a review has its own deadline)  HEARING: hearing  HEARING_BUNDLE_READY: hearing (passing just hmctsHearingRef and hearingType)  COURT_OUTCOME: courtOutcome  PERMISSION_TO_APPEAL: courtType  DEFAULT: No additional mandatory elements; generic item that is not a bundle/review request ")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-25T13:02:20.630405Z[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-25T17:21:33.201375Z[Europe/London]", comments = "Generator version: 7.20.0")
 public class InstructMessage {
 
   private MessageHeader messageHeader;
@@ -227,7 +227,7 @@ public class InstructMessage {
    * @return messageType
    */
   @NotNull 
-  @Schema(name = "messageType", description = "Message type", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Schema(name = "messageType", example = "REQUEST_CHALLENGE_END", description = "Message type", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("messageType")
   public MessageTypeEnum getMessageType() {
     return messageType;
@@ -287,7 +287,7 @@ public class InstructMessage {
    * @return endReason
    */
   
-  @Schema(name = "endReason", description = "Code indicating reason for ending a challenge. *Mandatory if messageType is REQUEST_CHALLENGE_END*", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "endReason", example = "STRUCK_OUT", description = "Code indicating reason for ending a challenge. *Mandatory if messageType is REQUEST_CHALLENGE_END*", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("endReason")
   public @Nullable EndReasonEnum getEndReason() {
     return endReason;
@@ -347,7 +347,7 @@ public class InstructMessage {
    * @return courtType
    */
   
-  @Schema(name = "courtType", description = "Court type. *Mandatory if messageType is PERMISSION_TO_APPEAL*", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "courtType", example = "FIRST_TIER", description = "Court type. *Mandatory if messageType is PERMISSION_TO_APPEAL*", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("courtType")
   public @Nullable CourtTypeEnum getCourtType() {
     return courtType;

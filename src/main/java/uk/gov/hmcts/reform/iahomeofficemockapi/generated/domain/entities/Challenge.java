@@ -25,7 +25,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "Challenge", description = "Details of a challenge (initially, all appeal related).")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-25T13:02:20.630405Z[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-25T17:21:33.201375Z[Europe/London]", comments = "Generator version: 7.20.0")
 public class Challenge {
 
   /**
@@ -135,7 +135,7 @@ public class Challenge {
    * @return appealType
    */
   @NotNull 
-  @Schema(name = "appealType", description = "The type of appeal", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Schema(name = "appealType", example = "DEPRIVATION_OF_CITIZENSHIP", description = "The type of appeal", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("appealType")
   public AppealTypeEnum getAppealType() {
     return appealType;
@@ -155,7 +155,7 @@ public class Challenge {
    * @return appealTierType
    */
   @NotNull 
-  @Schema(name = "appealTierType", description = "The type of appeal tier", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Schema(name = "appealTierType", example = "FIRST_TIER", description = "The type of appeal tier", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("appealTierType")
   public AppealTierTypeEnum getAppealTierType() {
     return appealTierType;

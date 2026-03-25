@@ -21,7 +21,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CourtOutcome", description = "Court type and outcome of the appeal.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-25T13:02:20.630405Z[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-25T17:21:33.201375Z[Europe/London]", comments = "Generator version: 7.20.0")
 public class CourtOutcome {
 
   /**
@@ -130,7 +130,7 @@ public class CourtOutcome {
    * @return courtType
    */
   @NotNull 
-  @Schema(name = "courtType", description = "Court (tribunal) type", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Schema(name = "courtType", example = "FIRST_TIER", description = "Court (tribunal) type", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("courtType")
   public CourtTypeEnum getCourtType() {
     return courtType;
@@ -150,7 +150,7 @@ public class CourtOutcome {
    * @return outcome
    */
   @NotNull 
-  @Schema(name = "outcome", description = "Appeal outcome", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Schema(name = "outcome", example = "DISMISSED", description = "Appeal outcome", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("outcome")
   public OutcomeEnum getOutcome() {
     return outcome;

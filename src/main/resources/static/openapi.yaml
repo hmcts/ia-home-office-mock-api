@@ -220,6 +220,7 @@ components:
     HomeOfficeConsumer:
       enum:
       - HMCTS
+      example: HMCTS
       type: string
     SearchParameters:
       description: |-
@@ -493,7 +494,7 @@ components:
           messageText: Invalid reference format. Format should be either nnnn-nnnn-nnnn-nnnn
             or 0(0) followed by digits (total length 9 or 10)
           success: "false"
-          errorCode: "1010"
+          errorCode: "2000"
       properties:
         messageHeader:
           $ref: "#/components/schemas/MessageHeader"
@@ -542,12 +543,12 @@ components:
         messageType: REQUEST_CHALLENGE_END
         courtOutcome:
           courtType: FIRST_TIER
-          outcome: ALLOWED
+          outcome: DISMISSED
         endReason: STRUCK_OUT
         deadlineDate: 2017-07-21T17:32:28Z
         challenge:
           appealTierType: FIRST_TIER
-          appealType: PROTECTION
+          appealType: DEPRIVATION_OF_CITIZENSHIP
           applicants:
           - gender:
               code: M (denoting male)
@@ -575,7 +576,7 @@ components:
             yearOfBirth: 1970
           challengeSubmissionDate: 2017-07-21T17:32:28Z
         hearing:
-          hearingType: PAPER
+          hearingType: ORAL
           witnessQty: 0
           witnessNames: "John Smyth, Jennie Walker"
           hearingDate: 2017-07-21
@@ -604,6 +605,7 @@ components:
           - COURT_OUTCOME
           - PERMISSION_TO_APPEAL
           - DEFAULT
+          example: REQUEST_CHALLENGE_END
           type: string
         hoReference:
           description: Home Office reference (UAN or CID case ID)
@@ -620,6 +622,7 @@ components:
           - WITHDRAWN
           - NOT_VALID
           - INCORRECT_DETAILS
+          example: STRUCK_OUT
           type: string
         endChallengeDate:
           description: "Date (and time, if available) the challenge was ended, in\
@@ -644,6 +647,7 @@ components:
           - UPPER_TRIBUNAL
           - COURT_OF_APPEAL
           - SUPREME_COURT
+          example: FIRST_TIER
           type: string
         challenge:
           $ref: "#/components/schemas/Challenge"
@@ -687,7 +691,7 @@ components:
           messageText: Invalid reference format. Format should be either nnnn-nnnn-nnnn-nnnn
             or 0(0) followed by digits (total length 9 or 10)
           success: "false"
-          errorCode: "1010"
+          errorCode: "2000"
       properties:
         messageHeader:
           $ref: "#/components/schemas/MessageHeader"
@@ -746,7 +750,7 @@ components:
       description: "Details of a challenge (initially, all appeal related)."
       example:
         appealTierType: FIRST_TIER
-        appealType: PROTECTION
+        appealType: DEPRIVATION_OF_CITIZENSHIP
         applicants:
         - gender:
             code: M (denoting male)
@@ -782,11 +786,13 @@ components:
           - DEPRIVATION_OF_CITIZENSHIP
           - HUMAN_RIGHTS
           - EEA
+          example: DEPRIVATION_OF_CITIZENSHIP
           type: string
         appealTierType:
           description: The type of appeal tier
           enum:
           - FIRST_TIER
+          example: FIRST_TIER
           type: string
         challengeSubmissionDate:
           description: "Date (and time, if available) of challenge submission, in\
@@ -811,7 +817,7 @@ components:
     Hearing:
       description: Details of a hearing.
       example:
-        hearingType: PAPER
+        hearingType: ORAL
         witnessQty: 0
         witnessNames: "John Smyth, Jennie Walker"
         hearingDate: 2017-07-21
@@ -842,6 +848,7 @@ components:
           enum:
           - PAPER
           - ORAL
+          example: ORAL
           type: string
         witnessQty:
           description: Number of witnesses to be called to provide evidence at the
@@ -860,7 +867,7 @@ components:
       description: Court type and outcome of the appeal.
       example:
         courtType: FIRST_TIER
-        outcome: ALLOWED
+        outcome: DISMISSED
       properties:
         courtType:
           description: Court (tribunal) type
@@ -868,6 +875,7 @@ components:
           - FIRST_TIER
           - FTPA
           - UTPA
+          example: FIRST_TIER
           type: string
         outcome:
           description: Appeal outcome
@@ -878,6 +886,7 @@ components:
           - REFUSED
           - REHEARD
           - REMADE
+          example: DISMISSED
           type: string
       required:
       - courtType
@@ -893,6 +902,7 @@ components:
           description: Short code for the consumer
           enum:
           - HMCTS
+          example: HMCTS
           type: string
         description:
           description: Description of the consumer (for legibility reasons)
@@ -918,6 +928,7 @@ components:
           description: Short code for the reference
           enum:
           - HMCTS_CHALLENGE_REF
+          example: HMCTS_CHALLENGE_REF
           type: string
         description:
           example: HMCTS challenge reference
@@ -962,7 +973,7 @@ components:
         messageText: Invalid reference format. Format should be either nnnn-nnnn-nnnn-nnnn
           or 0(0) followed by digits (total length 9 or 10)
         success: "false"
-        errorCode: "1010"
+        errorCode: "2000"
       properties:
         success:
           enum:
@@ -997,6 +1008,7 @@ components:
           - "1090"
           - "2000"
           - "2010"
+          example: "2000"
           type: string
       type: object
     SearchParameters_searchParams_inner:

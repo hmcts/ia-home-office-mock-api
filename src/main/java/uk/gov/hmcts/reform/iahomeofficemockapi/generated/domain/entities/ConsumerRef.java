@@ -22,7 +22,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "ConsumerRef", description = "Consumer reference; reference provided to Home Office, to be used in subsequent calls to update the same item.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-25T13:02:20.630405Z[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-25T17:21:33.201375Z[Europe/London]", comments = "Generator version: 7.20.0")
 public class ConsumerRef {
 
   private Consumer consumer;
@@ -109,7 +109,7 @@ public class ConsumerRef {
    * @return code
    */
   @NotNull 
-  @Schema(name = "code", description = "Short code for the reference", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Schema(name = "code", example = "HMCTS_CHALLENGE_REF", description = "Short code for the reference", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("code")
   public CodeEnum getCode() {
     return code;

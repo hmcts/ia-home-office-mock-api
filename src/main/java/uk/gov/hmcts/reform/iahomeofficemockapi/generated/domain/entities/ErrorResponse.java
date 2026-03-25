@@ -20,7 +20,7 @@ import javax.annotation.Generated;
  * ErrorResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-25T13:02:20.630405Z[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-25T17:21:33.201375Z[Europe/London]", comments = "Generator version: 7.20.0")
 public class ErrorResponse {
 
   /**
@@ -165,7 +165,7 @@ public class ErrorResponse {
    * @return errorCode
    */
   
-  @Schema(name = "errorCode", description = "Error code (non-HTTP)    1010 - A UAN/Case Reference has a Service Delivery with no DECIDE_APPLICATION_OUTCOME event history   1020 - Cannot build Search Response - no service delivery details found for UAN:    1030 - A UAN/Case Reference does not refer to a valid application or reconsideration   1040 - Method argument not valid    1060 - A UAN/Case Reference is submitted in the incorrect format.   1070 - Internal system error    1080 - This Consumer is not authorised to access this endpoint   1090 - The header value is incorrect   2000 - A Downstream system is unavailable (CSDP)   2010 - A Downstream system is unavailable (AWS-SQS)", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "errorCode", example = "2000", description = "Error code (non-HTTP)    1010 - A UAN/Case Reference has a Service Delivery with no DECIDE_APPLICATION_OUTCOME event history   1020 - Cannot build Search Response - no service delivery details found for UAN:    1030 - A UAN/Case Reference does not refer to a valid application or reconsideration   1040 - Method argument not valid    1060 - A UAN/Case Reference is submitted in the incorrect format.   1070 - Internal system error    1080 - This Consumer is not authorised to access this endpoint   1090 - The header value is incorrect   2000 - A Downstream system is unavailable (CSDP)   2010 - A Downstream system is unavailable (AWS-SQS)", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("errorCode")
   public @Nullable ErrorCodeEnum getErrorCode() {
     return errorCode;

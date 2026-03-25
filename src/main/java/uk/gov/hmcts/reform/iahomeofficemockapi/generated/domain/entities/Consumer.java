@@ -21,7 +21,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "Consumer", description = "Consumer of the service.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-25T13:02:20.630405Z[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-25T17:21:33.201375Z[Europe/London]", comments = "Generator version: 7.20.0")
 public class Consumer {
 
   /**
@@ -82,7 +82,7 @@ public class Consumer {
    * @return code
    */
   @NotNull 
-  @Schema(name = "code", description = "Short code for the consumer", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Schema(name = "code", example = "HMCTS", description = "Short code for the consumer", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("code")
   public CodeEnum getCode() {
     return code;
