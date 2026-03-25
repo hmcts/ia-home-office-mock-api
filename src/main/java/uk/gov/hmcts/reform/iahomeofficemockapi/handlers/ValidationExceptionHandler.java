@@ -5,6 +5,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MissingRequestHeaderException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import com.fasterxml.jackson.databind.JsonMappingException;
+
 import uk.gov.hmcts.reform.iahomeofficemockapi.entities.ErrorCode;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.ErrorResponse;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.MessageHeader;
@@ -38,6 +41,16 @@ public class ValidationExceptionHandler {
             IllegalArgumentException ex) {
 
         ErrorCode errorCode = ErrorCode.INVALID_MESSAGE_HEADERS;
+        SearchErrorResponse errorResponse = getErrorResponse(ex, errorCode);
+        
+        return ResponseEntity.badRequest().body(errorResponse);
+    }
+
+    @ExceptionHandler(JsonMappingException.class)
+    public ResponseEntity<SearchErrorResponse> handleJsonMappingException(
+            JsonMappingException ex) {
+
+        ErrorCode errorCode = ErrorCode.MESSAGE_FORMAT_INVALID;
         SearchErrorResponse errorResponse = getErrorResponse(ex, errorCode);
         
         return ResponseEntity.badRequest().body(errorResponse);
