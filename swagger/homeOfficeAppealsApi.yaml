@@ -423,7 +423,9 @@ components:
                         reason:
                           description: "Reason for application rejection"
                           type: "string"
-                          example: "Application not completed properly"
+                    example:
+                      - reason: "Application not completed properly"
+                      - reason: "You caught me on a bad day"                          
                   # Array of metadata, which allows additional attributes of the application to be returned
                   metadata:
                     description: |
@@ -455,6 +457,102 @@ components:
                           example: "Some extra decision data"
                       required:
                         - "code"
+                    example:
+                    - code: "APPEALABLE"
+                      valueBoolean: true
+                    - code: "DISPATCH_DATE"
+                      valueDateTime: "2017-07-21T17:32:28Z"
+                    - code: "SUSPENSIVE"
+                      valueString: "Some extra decision data"
+                      valueDateTime: "2027-07-27T07:17:27Z"
+                      valueBoolean: false
+          example:
+            - person:
+                givenName: "Capability"
+                familyName: "Smith"
+                fullName: "Capability Smith"
+                gender:
+                  code: "M"
+                  description: "Male"
+                dayOfBirth: 21
+                monthOfBirth: 4
+                yearOfBirth: 1970
+                nationality:
+                  code: "CAN"
+                  description: "Canada"
+              applicationStatus:
+                documentReference: "1234-1234-5678-5678/00"
+                roleType:
+                  code: "APPLICANT"
+                  description: "Applicant"
+                applicationType:
+                  code: "ASYLUM"
+                  description: "Asylum and Protection"
+                decisionType:
+                  code: "REJECTION"
+                  description: "Rejected"
+                decisionDate: "2017-07-21T17:32:28Z"
+                decisionCommunication:
+                  type: "EMAIL"
+                  description: "E-mail"
+                  sentDate: "2017-07-21T17:32:28Z"
+                rejectionReasons:
+                  - reason: "Application not completed properly"
+                  - reason: "You caught me on a bad day"
+                metadata:
+                  - code: "APPEALABLE"
+                    valueBoolean: true
+                  - code: "DISPATCH_DATE"
+                    valueDateTime: "2017-07-21T17:32:28Z"
+                  - code: "SUSPENSIVE"
+                    valueString: "Some extra decision data"
+                    valueDateTime: "2027-07-27T07:17:27Z"
+                    valueBoolean: false
+            - person:
+                givenName: "Aishwarya"
+                familyName: "Rai"
+                fullName: "Aishwarya Rai"
+                gender:
+                  code: "F"
+                  description: "Female"
+                dayOfBirth: 1
+                monthOfBirth: 11
+                yearOfBirth: 1973
+                nationality:
+                  code: "IND"
+                  description: "India"
+              applicationStatus:
+                documentReference: "9876-5432-1111-2222/01"
+                roleType:
+                  code: "DEPENDANT"
+                  description: "Dependant"
+                roleSubType:
+                  code: "SPOUSE"
+                  description: "Spouse"
+                applicationType:
+                  code: "ASYLUM"
+                  description: "Asylum and Protection"
+                claimReasonType:
+                  code: "HUMANRIGHTS"
+                  description: "Human Rights"
+                decisionType:
+                  code: "REJECTION"
+                  description: "Rejected"
+                decisionDate: "2018-01-10T09:15:00Z"
+                decisionCommunication:
+                  type: "POST"
+                  description: "Postal"
+                  sentDate: "2018-01-10T09:15:00Z"
+                  dispatchDate: "2018-01-11T10:00:00Z"
+                rejectionReasons:
+                  - reason: "Application submitted late"
+                metadata:
+                  - code: "DISPATCH_DATE"
+                    valueDateTime: "2018-01-11T10:00:00Z"
+                  - code: "SUSPENSIVE"
+                    valueBoolean: false
+                  - code: "NOTE"
+                    valueString: "Manual review required"
     SearchErrorResponse:
       type: "object"
       properties:

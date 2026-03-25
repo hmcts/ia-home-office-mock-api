@@ -25,7 +25,7 @@ import javax.annotation.Generated;
 
 @Schema(name = "SearchResponse_status_inner_applicationStatus_decisionCommunication", description = "Communication of the decision")
 @JsonTypeName("SearchResponse_status_inner_applicationStatus_decisionCommunication")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-25T17:21:33.201375Z[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-25T18:25:38.716846Z[Europe/London]", comments = "Generator version: 7.20.0")
 public class SearchResponseStatusInnerApplicationStatusDecisionCommunication {
 
   /**

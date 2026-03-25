@@ -370,102 +370,92 @@ components:
             description: HM Courts and Tribunal Service
         messageType: RESPONSE_RIGHT_OF_APPEAL_DETAILS
         status:
-        - applicationStatus:
-            applicationType:
-              code: ASYLUM
-              description: Asylum and Protection
-            metadata:
-            - valueBoolean: true
-              code: APPEALABLE or DISPATCH_DATE
-              valueString: Some extra decision data
-              valueDateTime: 2017-07-21T17:32:28Z
-            - valueBoolean: true
-              code: APPEALABLE or DISPATCH_DATE
-              valueString: Some extra decision data
-              valueDateTime: 2017-07-21T17:32:28Z
-            rejectionReasons:
-            - reason: Application not completed properly
-            - reason: Application not completed properly
-            decisionCommunication:
-              sentDate: 2017-07-21T17:32:28Z
-              dispatchDate: 2017-07-21T17:32:28Z
-              description: E-mail
-              type: EMAIL
-            claimReasonType:
-              code: HUMANRIGHTS
-              description: Human Rights
-            documentReference: 1234-1234-5678-5678/00
-            roleSubType:
-              code: SPOUSE. Could be MAIN if the role type is APPLICANT
-              description: Spouse
-            decisionType:
-              code: REJECTION
-              description: Rejected
-            roleType:
-              code: DEPENDANT
-              description: Dependant
-            decisionDate: 2017-07-21T17:32:28Z
-          person:
-            gender:
-              code: M (denoting male)
-              description: Male
-            nationality:
-              code: CAN (denoting Canada)
-              description: Canada
-            dayOfBirth: 21
+        - person:
             givenName: Capability
             familyName: Smith
             fullName: Capability Smith
-            monthOfBirth: 0
+            gender:
+              code: M
+              description: Male
+            dayOfBirth: 21
+            monthOfBirth: 4
             yearOfBirth: 1970
-        - applicationStatus:
+            nationality:
+              code: CAN
+              description: Canada
+          applicationStatus:
+            documentReference: 1234-1234-5678-5678/00
+            roleType:
+              code: APPLICANT
+              description: Applicant
             applicationType:
               code: ASYLUM
               description: Asylum and Protection
-            metadata:
-            - valueBoolean: true
-              code: APPEALABLE or DISPATCH_DATE
-              valueString: Some extra decision data
-              valueDateTime: 2017-07-21T17:32:28Z
-            - valueBoolean: true
-              code: APPEALABLE or DISPATCH_DATE
-              valueString: Some extra decision data
-              valueDateTime: 2017-07-21T17:32:28Z
-            rejectionReasons:
-            - reason: Application not completed properly
-            - reason: Application not completed properly
-            decisionCommunication:
-              sentDate: 2017-07-21T17:32:28Z
-              dispatchDate: 2017-07-21T17:32:28Z
-              description: E-mail
-              type: EMAIL
-            claimReasonType:
-              code: HUMANRIGHTS
-              description: Human Rights
-            documentReference: 1234-1234-5678-5678/00
-            roleSubType:
-              code: SPOUSE. Could be MAIN if the role type is APPLICANT
-              description: Spouse
             decisionType:
               code: REJECTION
               description: Rejected
+            decisionDate: 2017-07-21T17:32:28Z
+            decisionCommunication:
+              type: EMAIL
+              description: E-mail
+              sentDate: 2017-07-21T17:32:28Z
+            rejectionReasons:
+            - reason: Application not completed properly
+            - reason: You caught me on a bad day
+            metadata:
+            - code: APPEALABLE
+              valueBoolean: true
+            - code: DISPATCH_DATE
+              valueDateTime: 2017-07-21T17:32:28Z
+            - code: SUSPENSIVE
+              valueString: Some extra decision data
+              valueDateTime: 2027-07-27T07:17:27Z
+              valueBoolean: false
+        - person:
+            givenName: Aishwarya
+            familyName: Rai
+            fullName: Aishwarya Rai
+            gender:
+              code: F
+              description: Female
+            dayOfBirth: 1
+            monthOfBirth: 11
+            yearOfBirth: 1973
+            nationality:
+              code: IND
+              description: India
+          applicationStatus:
+            documentReference: 9876-5432-1111-2222/01
             roleType:
               code: DEPENDANT
               description: Dependant
-            decisionDate: 2017-07-21T17:32:28Z
-          person:
-            gender:
-              code: M (denoting male)
-              description: Male
-            nationality:
-              code: CAN (denoting Canada)
-              description: Canada
-            dayOfBirth: 21
-            givenName: Capability
-            familyName: Smith
-            fullName: Capability Smith
-            monthOfBirth: 0
-            yearOfBirth: 1970
+            roleSubType:
+              code: SPOUSE
+              description: Spouse
+            applicationType:
+              code: ASYLUM
+              description: Asylum and Protection
+            claimReasonType:
+              code: HUMANRIGHTS
+              description: Human Rights
+            decisionType:
+              code: REJECTION
+              description: Rejected
+            decisionDate: 2018-01-10T09:15:00Z
+            decisionCommunication:
+              type: POST
+              description: Postal
+              sentDate: 2018-01-10T09:15:00Z
+              dispatchDate: 2018-01-11T10:00:00Z
+            rejectionReasons:
+            - reason: Application submitted late
+            metadata:
+            - code: DISPATCH_DATE
+              valueDateTime: 2018-01-11T10:00:00Z
+            - code: SUSPENSIVE
+              valueBoolean: false
+            - code: NOTE
+              valueString: Manual review required
       properties:
         messageHeader:
           $ref: "#/components/schemas/MessageHeader"
@@ -478,6 +468,93 @@ components:
         status:
           description: "An array of persons and application status; generally, the\
             \ status will be the same for all persons but this format provides flexibility"
+          example:
+          - person:
+              givenName: Capability
+              familyName: Smith
+              fullName: Capability Smith
+              gender:
+                code: M
+                description: Male
+              dayOfBirth: 21
+              monthOfBirth: 4
+              yearOfBirth: 1970
+              nationality:
+                code: CAN
+                description: Canada
+            applicationStatus:
+              documentReference: 1234-1234-5678-5678/00
+              roleType:
+                code: APPLICANT
+                description: Applicant
+              applicationType:
+                code: ASYLUM
+                description: Asylum and Protection
+              decisionType:
+                code: REJECTION
+                description: Rejected
+              decisionDate: 2017-07-21T17:32:28Z
+              decisionCommunication:
+                type: EMAIL
+                description: E-mail
+                sentDate: 2017-07-21T17:32:28Z
+              rejectionReasons:
+              - reason: Application not completed properly
+              - reason: You caught me on a bad day
+              metadata:
+              - code: APPEALABLE
+                valueBoolean: true
+              - code: DISPATCH_DATE
+                valueDateTime: 2017-07-21T17:32:28Z
+              - code: SUSPENSIVE
+                valueString: Some extra decision data
+                valueDateTime: 2027-07-27T07:17:27Z
+                valueBoolean: false
+          - person:
+              givenName: Aishwarya
+              familyName: Rai
+              fullName: Aishwarya Rai
+              gender:
+                code: F
+                description: Female
+              dayOfBirth: 1
+              monthOfBirth: 11
+              yearOfBirth: 1973
+              nationality:
+                code: IND
+                description: India
+            applicationStatus:
+              documentReference: 9876-5432-1111-2222/01
+              roleType:
+                code: DEPENDANT
+                description: Dependant
+              roleSubType:
+                code: SPOUSE
+                description: Spouse
+              applicationType:
+                code: ASYLUM
+                description: Asylum and Protection
+              claimReasonType:
+                code: HUMANRIGHTS
+                description: Human Rights
+              decisionType:
+                code: REJECTION
+                description: Rejected
+              decisionDate: 2018-01-10T09:15:00Z
+              decisionCommunication:
+                type: POST
+                description: Postal
+                sentDate: 2018-01-10T09:15:00Z
+                dispatchDate: 2018-01-11T10:00:00Z
+              rejectionReasons:
+              - reason: Application submitted late
+              metadata:
+              - code: DISPATCH_DATE
+                valueDateTime: 2018-01-11T10:00:00Z
+              - code: SUSPENSIVE
+                valueBoolean: false
+              - code: NOTE
+                valueString: Manual review required
           items:
             $ref: "#/components/schemas/SearchResponse_status_inner"
           type: array
@@ -577,7 +654,7 @@ components:
           challengeSubmissionDate: 2017-07-21T17:32:28Z
         hearing:
           hearingType: ORAL
-          witnessQty: 0
+          witnessQty: 6
           witnessNames: "John Smyth, Jennie Walker"
           hearingDate: 2017-07-21
           hearingLocation: "Royal Courts of Justice, London"
@@ -818,7 +895,7 @@ components:
       description: Details of a hearing.
       example:
         hearingType: ORAL
-        witnessQty: 0
+        witnessQty: 6
         witnessNames: "John Smyth, Jennie Walker"
         hearingDate: 2017-07-21
         hearingLocation: "Royal Courts of Justice, London"
@@ -1033,9 +1110,6 @@ components:
       type: object
     SearchResponse_status_inner_applicationStatus_roleType:
       description: Role of the individual in this application
-      example:
-        code: DEPENDANT
-        description: Dependant
       properties:
         code:
           description: Code for the role type
@@ -1049,9 +1123,6 @@ components:
     SearchResponse_status_inner_applicationStatus_roleSubType:
       description: Role sub-type of the individual in this application. **Note:**
         may not be available for legacy CID cases
-      example:
-        code: SPOUSE. Could be MAIN if the role type is APPLICANT
-        description: Spouse
       properties:
         code:
           description: Code for the role sub-type
@@ -1064,9 +1135,6 @@ components:
       type: object
     SearchResponse_status_inner_applicationStatus_applicationType:
       description: Type of application
-      example:
-        code: ASYLUM
-        description: Asylum and Protection
       properties:
         code:
           description: Code for the application type
@@ -1080,9 +1148,6 @@ components:
     SearchResponse_status_inner_applicationStatus_claimReasonType:
       description: Type of reason for claim on application. **Note:** may not be available
         for any cases
-      example:
-        code: HUMANRIGHTS
-        description: Human Rights
       properties:
         code:
           description: Code for the claim reason type
@@ -1095,9 +1160,6 @@ components:
       type: object
     SearchResponse_status_inner_applicationStatus_decisionType:
       description: Type of decision made on the application
-      example:
-        code: REJECTION
-        description: Rejected
       properties:
         code:
           description: Code for the decision type
@@ -1110,11 +1172,6 @@ components:
       type: object
     SearchResponse_status_inner_applicationStatus_decisionCommunication:
       description: Communication of the decision
-      example:
-        sentDate: 2017-07-21T17:32:28Z
-        dispatchDate: 2017-07-21T17:32:28Z
-        description: E-mail
-        type: EMAIL
       properties:
         type:
           description: Type of communication
@@ -1144,22 +1201,14 @@ components:
           type: string
       type: object
     SearchResponse_status_inner_applicationStatus_rejectionReasons_inner:
-      example:
-        reason: Application not completed properly
       properties:
         reason:
           description: Reason for application rejection
-          example: Application not completed properly
           type: string
       type: object
     SearchResponse_status_inner_applicationStatus_metadata_inner:
       description: "Metadata item, comprising an item code and one (usually) or more\
         \ data values that are typed"
-      example:
-        valueBoolean: true
-        code: APPEALABLE or DISPATCH_DATE
-        valueString: Some extra decision data
-        valueDateTime: 2017-07-21T17:32:28Z
       properties:
         code:
           description: Metadata item code
@@ -1185,41 +1234,6 @@ components:
       type: object
     SearchResponse_status_inner_applicationStatus:
       description: Current status of the individual's application
-      example:
-        applicationType:
-          code: ASYLUM
-          description: Asylum and Protection
-        metadata:
-        - valueBoolean: true
-          code: APPEALABLE or DISPATCH_DATE
-          valueString: Some extra decision data
-          valueDateTime: 2017-07-21T17:32:28Z
-        - valueBoolean: true
-          code: APPEALABLE or DISPATCH_DATE
-          valueString: Some extra decision data
-          valueDateTime: 2017-07-21T17:32:28Z
-        rejectionReasons:
-        - reason: Application not completed properly
-        - reason: Application not completed properly
-        decisionCommunication:
-          sentDate: 2017-07-21T17:32:28Z
-          dispatchDate: 2017-07-21T17:32:28Z
-          description: E-mail
-          type: EMAIL
-        claimReasonType:
-          code: HUMANRIGHTS
-          description: Human Rights
-        documentReference: 1234-1234-5678-5678/00
-        roleSubType:
-          code: SPOUSE. Could be MAIN if the role type is APPLICANT
-          description: Spouse
-        decisionType:
-          code: REJECTION
-          description: Rejected
-        roleType:
-          code: DEPENDANT
-          description: Dependant
-        decisionDate: 2017-07-21T17:32:28Z
       properties:
         documentReference:
           description: "The UAN or Case ID (CID) passed to the Home Office in the\
@@ -1249,66 +1263,29 @@ components:
           $ref: "#/components/schemas/SearchResponse_status_inner_applicationStatus_decisionCommunication"
         rejectionReasons:
           description: Rejection reasons
+          example:
+          - reason: Application not completed properly
+          - reason: You caught me on a bad day
           items:
             $ref: "#/components/schemas/SearchResponse_status_inner_applicationStatus_rejectionReasons_inner"
           type: array
         metadata:
           description: |
             Additional attributes (metadata) of the application
+          example:
+          - code: APPEALABLE
+            valueBoolean: true
+          - code: DISPATCH_DATE
+            valueDateTime: 2017-07-21T17:32:28Z
+          - code: SUSPENSIVE
+            valueString: Some extra decision data
+            valueDateTime: 2027-07-27T07:17:27Z
+            valueBoolean: false
           items:
             $ref: "#/components/schemas/SearchResponse_status_inner_applicationStatus_metadata_inner"
           type: array
       type: object
     SearchResponse_status_inner:
-      example:
-        applicationStatus:
-          applicationType:
-            code: ASYLUM
-            description: Asylum and Protection
-          metadata:
-          - valueBoolean: true
-            code: APPEALABLE or DISPATCH_DATE
-            valueString: Some extra decision data
-            valueDateTime: 2017-07-21T17:32:28Z
-          - valueBoolean: true
-            code: APPEALABLE or DISPATCH_DATE
-            valueString: Some extra decision data
-            valueDateTime: 2017-07-21T17:32:28Z
-          rejectionReasons:
-          - reason: Application not completed properly
-          - reason: Application not completed properly
-          decisionCommunication:
-            sentDate: 2017-07-21T17:32:28Z
-            dispatchDate: 2017-07-21T17:32:28Z
-            description: E-mail
-            type: EMAIL
-          claimReasonType:
-            code: HUMANRIGHTS
-            description: Human Rights
-          documentReference: 1234-1234-5678-5678/00
-          roleSubType:
-            code: SPOUSE. Could be MAIN if the role type is APPLICANT
-            description: Spouse
-          decisionType:
-            code: REJECTION
-            description: Rejected
-          roleType:
-            code: DEPENDANT
-            description: Dependant
-          decisionDate: 2017-07-21T17:32:28Z
-        person:
-          gender:
-            code: M (denoting male)
-            description: Male
-          nationality:
-            code: CAN (denoting Canada)
-            description: Canada
-          dayOfBirth: 21
-          givenName: Capability
-          familyName: Smith
-          fullName: Capability Smith
-          monthOfBirth: 0
-          yearOfBirth: 1970
       properties:
         person:
           $ref: "#/components/schemas/Person"

@@ -35,7 +35,7 @@ import javax.annotation.Generated;
 
 @Schema(name = "SearchResponse_status_inner_applicationStatus", description = "Current status of the individual's application")
 @JsonTypeName("SearchResponse_status_inner_applicationStatus")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-25T17:21:33.201375Z[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-25T18:25:38.716846Z[Europe/London]", comments = "Generator version: 7.20.0")
 public class SearchResponseStatusInnerApplicationStatus {
 
   private @Nullable String documentReference;
@@ -239,7 +239,7 @@ public class SearchResponseStatusInnerApplicationStatus {
    * @return rejectionReasons
    */
   @Valid 
-  @Schema(name = "rejectionReasons", description = "Rejection reasons", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "rejectionReasons", example = "[{\"reason\":\"Application not completed properly\"},{\"reason\":\"You caught me on a bad day\"}]", description = "Rejection reasons", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("rejectionReasons")
   public List<@Valid SearchResponseStatusInnerApplicationStatusRejectionReasonsInner> getRejectionReasons() {
     return rejectionReasons;
@@ -267,7 +267,7 @@ public class SearchResponseStatusInnerApplicationStatus {
    * @return metadata
    */
   @Valid 
-  @Schema(name = "metadata", description = "Additional attributes (metadata) of the application ", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "metadata", example = "[{\"code\":\"APPEALABLE\",\"valueBoolean\":true},{\"code\":\"DISPATCH_DATE\",\"valueDateTime\":\"2017-07-21T17:32:28Z\"},{\"code\":\"SUSPENSIVE\",\"valueString\":\"Some extra decision data\",\"valueDateTime\":\"2027-07-27T07:17:27Z\",\"valueBoolean\":false}]", description = "Additional attributes (metadata) of the application ", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("metadata")
   public List<@Valid SearchResponseStatusInnerApplicationStatusMetadataInner> getMetadata() {
     return metadata;
