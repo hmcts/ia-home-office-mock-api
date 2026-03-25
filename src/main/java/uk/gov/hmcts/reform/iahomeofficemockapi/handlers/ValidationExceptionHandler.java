@@ -1,13 +1,11 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.handlers;
 
+import com.fasterxml.jackson.databind.JsonMappingException;
 import javax.validation.ConstraintViolationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MissingRequestHeaderException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-
-import com.fasterxml.jackson.databind.JsonMappingException;
-
 import uk.gov.hmcts.reform.iahomeofficemockapi.entities.ErrorCode;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.ErrorResponse;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.MessageHeader;
