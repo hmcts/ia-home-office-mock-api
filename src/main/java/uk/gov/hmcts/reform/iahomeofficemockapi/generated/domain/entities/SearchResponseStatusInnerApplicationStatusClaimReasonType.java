@@ -22,7 +22,7 @@ import javax.annotation.Generated;
 
 @Schema(name = "SearchResponse_status_inner_applicationStatus_claimReasonType", description = "Type of reason for claim on application. **Note:** may not be available for any cases")
 @JsonTypeName("SearchResponse_status_inner_applicationStatus_claimReasonType")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-24T17:52:14.183321Z[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-25T12:41:46.920130Z[Europe/London]", comments = "Generator version: 7.20.0")
 public class SearchResponseStatusInnerApplicationStatusClaimReasonType {
 
   private @Nullable String code;

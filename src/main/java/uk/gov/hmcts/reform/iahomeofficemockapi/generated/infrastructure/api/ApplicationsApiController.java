@@ -31,7 +31,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-24T17:52:14.183321Z[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-25T12:41:46.920130Z[Europe/London]", comments = "Generator version: 7.20.0")
 @Controller
 @RequestMapping("${openapi.appealsInterface.base-path:/ichallenge}")
 public class ApplicationsApiController implements ApplicationsApi {

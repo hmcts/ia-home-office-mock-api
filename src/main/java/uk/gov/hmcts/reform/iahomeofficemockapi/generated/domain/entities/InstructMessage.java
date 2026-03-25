@@ -28,7 +28,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "InstructMessage", description = "### Message instructing Home Office about an event, or action to perform.  #### Mandatory items for all messages  messageHeader, messageType, hoReference, and consumerReference  #### Optional items  note  #### Message Types and Mandatory Elements  REQUEST_CHALLENGE_END: endReason, endChallengeDate  REQUEST_EVIDENCE_BUNDLE: challenge, deadlineDate  REQUEST_REVIEW: deadlineDate (a review has its own deadline)  HEARING: hearing  HEARING_BUNDLE_READY: hearing (passing just hmctsHearingRef and hearingType)  COURT_OUTCOME: courtOutcome  PERMISSION_TO_APPEAL: courtType  DEFAULT: No additional mandatory elements; generic item that is not a bundle/review request ")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-24T17:52:14.183321Z[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-25T12:41:46.920130Z[Europe/London]", comments = "Generator version: 7.20.0")
 public class InstructMessage {
 
   private MessageHeader messageHeader;
@@ -132,8 +132,7 @@ public class InstructMessage {
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private @Nullable OffsetDateTime endChallengeDate;
 
-  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-  private @Nullable OffsetDateTime deadlineDate;
+  private @Nullable String deadlineDate;
 
   /**
    * Court type. *Mandatory if messageType is PERMISSION_TO_APPEAL*
@@ -318,7 +317,7 @@ public class InstructMessage {
     this.endChallengeDate = endChallengeDate;
   }
 
-  public InstructMessage deadlineDate(@Nullable OffsetDateTime deadlineDate) {
+  public InstructMessage deadlineDate(@Nullable String deadlineDate) {
     this.deadlineDate = deadlineDate;
     return this;
   }
@@ -327,14 +326,14 @@ public class InstructMessage {
    * Deadline date (and time, if available) for the appeal, in the standard format yyyy-mm-dd (with HH:mm:ss if the time is available, otherwise not). Date/time is assumed to be in UTC
    * @return deadlineDate
    */
-  @Valid 
+  @Pattern(regexp = "^(?:\\d{4}-\\d{2}-\\d{2}|\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?Z)$") 
   @Schema(name = "deadlineDate", example = "2017-07-21T17:32:28Z", description = "Deadline date (and time, if available) for the appeal, in the standard format yyyy-mm-dd (with HH:mm:ss if the time is available, otherwise not). Date/time is assumed to be in UTC", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("deadlineDate")
-  public @Nullable OffsetDateTime getDeadlineDate() {
+  public @Nullable String getDeadlineDate() {
     return deadlineDate;
   }
 
-  public void setDeadlineDate(@Nullable OffsetDateTime deadlineDate) {
+  public void setDeadlineDate(@Nullable String deadlineDate) {
     this.deadlineDate = deadlineDate;
   }
 

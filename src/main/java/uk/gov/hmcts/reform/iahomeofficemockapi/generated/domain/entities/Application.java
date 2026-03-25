@@ -24,7 +24,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "Application", description = "Details of the application, including appellants' biographic information.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-24T17:52:14.183321Z[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-25T12:41:46.920130Z[Europe/London]", comments = "Generator version: 7.20.0")
 public class Application {
 
   private @Nullable String uan;
