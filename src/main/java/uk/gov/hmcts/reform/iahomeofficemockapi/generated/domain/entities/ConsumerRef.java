@@ -1,22 +1,30 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
+import java.net.URI;
+import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import org.springframework.lang.Nullable;
+import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.Consumer;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.time.OffsetDateTime;
+import javax.validation.Valid;
+import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import java.util.Objects;
+
+import java.util.*;
+import javax.annotation.Generated;
 
 /**
  * Consumer reference; reference provided to Home Office, to be used in subsequent calls to update the same item.
  */
-@Schema(description = "Consumer reference; reference provided to Home Office, to be used in subsequent calls to update the same item.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-07-01T14:15:45.837+01:00[Europe/London]")
 
-public class ConsumerRef   {
-  @JsonProperty("consumer")
+@Schema(name = "ConsumerRef", description = "Consumer reference; reference provided to Home Office, to be used in subsequent calls to update the same item.")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-25T19:03:55.795081Z[Europe/London]", comments = "Generator version: 7.20.0")
+public class ConsumerRef {
+
   private Consumer consumer;
 
   /**
@@ -25,7 +33,7 @@ public class ConsumerRef   {
   public enum CodeEnum {
     HMCTS_CHALLENGE_REF("HMCTS_CHALLENGE_REF");
 
-    private String value;
+    private final String value;
 
     CodeEnum(String value) {
       this.value = value;
@@ -52,14 +60,24 @@ public class ConsumerRef   {
     }
   }
 
-  @JsonProperty("code")
   private CodeEnum code;
 
-  @JsonProperty("description")
-  private String description;
+  private @Nullable String description;
 
-  @JsonProperty("value")
   private String value;
+
+  public ConsumerRef() {
+    super();
+  }
+
+  /**
+   * Constructor with only required parameters
+   */
+  public ConsumerRef(Consumer consumer, CodeEnum code, String value) {
+    this.consumer = consumer;
+    this.code = code;
+    this.value = value;
+  }
 
   public ConsumerRef consumer(Consumer consumer) {
     this.consumer = consumer;
@@ -69,12 +87,10 @@ public class ConsumerRef   {
   /**
    * Get consumer
    * @return consumer
-  */
-  @Schema(required = true)
-  @NotNull
-
-  @Valid
-
+   */
+  @NotNull @Valid 
+  @Schema(name = "consumer", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("consumer")
   public Consumer getConsumer() {
     return consumer;
   }
@@ -91,11 +107,10 @@ public class ConsumerRef   {
   /**
    * Short code for the reference
    * @return code
-  */
-  @Schema(required = true, description = "Short code for the reference")
-  @NotNull
-
-
+   */
+  @NotNull 
+  @Schema(name = "code", example = "HMCTS_CHALLENGE_REF", description = "Short code for the reference", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("code")
   public CodeEnum getCode() {
     return code;
   }
@@ -104,7 +119,7 @@ public class ConsumerRef   {
     this.code = code;
   }
 
-  public ConsumerRef description(String description) {
+  public ConsumerRef description(@Nullable String description) {
     this.description = description;
     return this;
   }
@@ -112,15 +127,15 @@ public class ConsumerRef   {
   /**
    * Get description
    * @return description
-  */
-  @Schema(example = "HMCTS challenge reference")
-
-
-  public String getDescription() {
+   */
+  
+  @Schema(name = "description", example = "HMCTS challenge reference", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("description")
+  public @Nullable String getDescription() {
     return description;
   }
 
-  public void setDescription(String description) {
+  public void setDescription(@Nullable String description) {
     this.description = description;
   }
 
@@ -132,11 +147,10 @@ public class ConsumerRef   {
   /**
    * Value for the reference
    * @return value
-  */
-  @Schema(example = "xxxyyyynnn-nnn", required = true, description = "Value for the reference")
-  @NotNull
-
-
+   */
+  @NotNull 
+  @Schema(name = "value", example = "xxxyyyynnn-nnn", description = "Value for the reference", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("value")
   public String getValue() {
     return value;
   }
@@ -145,9 +159,8 @@ public class ConsumerRef   {
     this.value = value;
   }
 
-
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -170,7 +183,6 @@ public class ConsumerRef   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConsumerRef {\n");
-
     sb.append("    consumer: ").append(toIndentedString(consumer)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
@@ -183,7 +195,7 @@ public class ConsumerRef   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(@Nullable Object o) {
     if (o == null) {
       return "null";
     }

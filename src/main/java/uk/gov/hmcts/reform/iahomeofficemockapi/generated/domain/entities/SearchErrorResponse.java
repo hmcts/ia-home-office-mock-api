@@ -1,24 +1,34 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
+import java.net.URI;
+import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import org.springframework.lang.Nullable;
+import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.ErrorResponse;
+import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.MessageHeader;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.time.OffsetDateTime;
+import javax.validation.Valid;
+import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
-import javax.validation.Valid;
-import java.util.Objects;
+
+import java.util.*;
+import javax.annotation.Generated;
 
 /**
  * SearchErrorResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-07-01T14:15:45.837+01:00[Europe/London]")
 
-public class SearchErrorResponse   {
-  @JsonProperty("messageHeader")
-  private MessageHeader messageHeader;
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-25T19:03:55.795081Z[Europe/London]", comments = "Generator version: 7.20.0")
+public class SearchErrorResponse {
 
-  @JsonProperty("errorDetail")
-  private ErrorResponse errorDetail;
+  private @Nullable MessageHeader messageHeader;
 
-  public SearchErrorResponse messageHeader(MessageHeader messageHeader) {
+  private @Nullable ErrorResponse errorDetail;
+
+  public SearchErrorResponse messageHeader(@Nullable MessageHeader messageHeader) {
     this.messageHeader = messageHeader;
     return this;
   }
@@ -26,20 +36,19 @@ public class SearchErrorResponse   {
   /**
    * Get messageHeader
    * @return messageHeader
-  */
-  @Schema()
-
-  @Valid
-
-  public MessageHeader getMessageHeader() {
+   */
+  @Valid 
+  @Schema(name = "messageHeader", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("messageHeader")
+  public @Nullable MessageHeader getMessageHeader() {
     return messageHeader;
   }
 
-  public void setMessageHeader(MessageHeader messageHeader) {
+  public void setMessageHeader(@Nullable MessageHeader messageHeader) {
     this.messageHeader = messageHeader;
   }
 
-  public SearchErrorResponse errorDetail(ErrorResponse errorDetail) {
+  public SearchErrorResponse errorDetail(@Nullable ErrorResponse errorDetail) {
     this.errorDetail = errorDetail;
     return this;
   }
@@ -47,22 +56,20 @@ public class SearchErrorResponse   {
   /**
    * Get errorDetail
    * @return errorDetail
-  */
-  @Schema()
-
-  @Valid
-
-  public ErrorResponse getErrorDetail() {
+   */
+  @Valid 
+  @Schema(name = "errorDetail", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("errorDetail")
+  public @Nullable ErrorResponse getErrorDetail() {
     return errorDetail;
   }
 
-  public void setErrorDetail(ErrorResponse errorDetail) {
+  public void setErrorDetail(@Nullable ErrorResponse errorDetail) {
     this.errorDetail = errorDetail;
   }
 
-
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -83,7 +90,6 @@ public class SearchErrorResponse   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SearchErrorResponse {\n");
-
     sb.append("    messageHeader: ").append(toIndentedString(messageHeader)).append("\n");
     sb.append("    errorDetail: ").append(toIndentedString(errorDetail)).append("\n");
     sb.append("}");
@@ -94,7 +100,7 @@ public class SearchErrorResponse   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(@Nullable Object o) {
     if (o == null) {
       return "null";
     }

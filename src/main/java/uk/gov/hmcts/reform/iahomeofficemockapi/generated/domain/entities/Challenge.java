@@ -1,39 +1,48 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
+import java.net.URI;
+import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import org.springframework.lang.Nullable;
+import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.Person;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.time.OffsetDateTime;
+import javax.validation.Valid;
+import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+
+import java.util.*;
+import javax.annotation.Generated;
 
 /**
  * Details of a challenge (initially, all appeal related).
  */
-@Schema(description = "Details of a challenge (initially, all appeal related).")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-07-01T14:15:45.837+01:00[Europe/London]")
 
-public class Challenge   {
+@Schema(name = "Challenge", description = "Details of a challenge (initially, all appeal related).")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-25T19:03:55.795081Z[Europe/London]", comments = "Generator version: 7.20.0")
+public class Challenge {
+
   /**
    * The type of appeal
    */
   public enum AppealTypeEnum {
     PROTECTION("PROTECTION"),
-
+    
     REVOCATION_OF_PROTECTION("REVOCATION_OF_PROTECTION"),
-
+    
     DEPRIVATION_OF_CITIZENSHIP("DEPRIVATION_OF_CITIZENSHIP"),
-
+    
     HUMAN_RIGHTS("HUMAN_RIGHTS"),
-
+    
     EEA("EEA");
 
-    private String value;
+    private final String value;
 
     AppealTypeEnum(String value) {
       this.value = value;
@@ -60,7 +69,6 @@ public class Challenge   {
     }
   }
 
-  @JsonProperty("appealType")
   private AppealTypeEnum appealType;
 
   /**
@@ -69,7 +77,7 @@ public class Challenge   {
   public enum AppealTierTypeEnum {
     FIRST_TIER("FIRST_TIER");
 
-    private String value;
+    private final String value;
 
     AppealTierTypeEnum(String value) {
       this.value = value;
@@ -96,15 +104,26 @@ public class Challenge   {
     }
   }
 
-  @JsonProperty("appealTierType")
   private AppealTierTypeEnum appealTierType;
 
-  @JsonProperty("challengeSubmissionDate")
   private String challengeSubmissionDate;
 
-  @JsonProperty("applicants")
   @Valid
-  private List<Person> applicants = new ArrayList<>();
+  private List<@Valid Person> applicants = new ArrayList<>();
+
+  public Challenge() {
+    super();
+  }
+
+  /**
+   * Constructor with only required parameters
+   */
+  public Challenge(AppealTypeEnum appealType, AppealTierTypeEnum appealTierType, String challengeSubmissionDate, List<@Valid Person> applicants) {
+    this.appealType = appealType;
+    this.appealTierType = appealTierType;
+    this.challengeSubmissionDate = challengeSubmissionDate;
+    this.applicants = applicants;
+  }
 
   public Challenge appealType(AppealTypeEnum appealType) {
     this.appealType = appealType;
@@ -114,11 +133,10 @@ public class Challenge   {
   /**
    * The type of appeal
    * @return appealType
-  */
-  @Schema(required = true, description = "The type of appeal")
-  @NotNull
-
-
+   */
+  @NotNull 
+  @Schema(name = "appealType", example = "DEPRIVATION_OF_CITIZENSHIP", description = "The type of appeal", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("appealType")
   public AppealTypeEnum getAppealType() {
     return appealType;
   }
@@ -135,11 +153,10 @@ public class Challenge   {
   /**
    * The type of appeal tier
    * @return appealTierType
-  */
-  @Schema(required = true, description = "The type of appeal tier")
-  @NotNull
-
-
+   */
+  @NotNull 
+  @Schema(name = "appealTierType", example = "FIRST_TIER", description = "The type of appeal tier", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("appealTierType")
   public AppealTierTypeEnum getAppealTierType() {
     return appealTierType;
   }
@@ -156,12 +173,10 @@ public class Challenge   {
   /**
    * Date (and time, if available) of challenge submission, in the standard format yyyy-mm-dd (with HH:mm:ss if the time is available, otherwise not). Date/time is assumed to be in UTC
    * @return challengeSubmissionDate
-  */
-  @Schema(example = "2017-07-21T17:32:28Z", required = true, description = "Date (and time, if available) of challenge submission, in the standard format yyyy-mm-dd (with HH:mm:ss if the time is available, otherwise not). Date/time is assumed to be in UTC")
-  @NotNull
-
-  @Valid
-
+   */
+  @NotNull @Pattern(regexp = "^(?:\\d{4}-\\d{2}-\\d{2}|\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?Z)$") 
+  @Schema(name = "challengeSubmissionDate", example = "2017-07-21T17:32:28Z", description = "Date (and time, if available) of challenge submission, in the standard format yyyy-mm-dd (with HH:mm:ss if the time is available, otherwise not). Date/time is assumed to be in UTC", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("challengeSubmissionDate")
   public String getChallengeSubmissionDate() {
     return challengeSubmissionDate;
   }
@@ -170,12 +185,15 @@ public class Challenge   {
     this.challengeSubmissionDate = challengeSubmissionDate;
   }
 
-  public Challenge applicants(List<Person> applicants) {
+  public Challenge applicants(List<@Valid Person> applicants) {
     this.applicants = applicants;
     return this;
   }
 
   public Challenge addApplicantsItem(Person applicantsItem) {
+    if (this.applicants == null) {
+      this.applicants = new ArrayList<>();
+    }
     this.applicants.add(applicantsItem);
     return this;
   }
@@ -183,23 +201,20 @@ public class Challenge   {
   /**
    * List of applicants (will initially be just one)
    * @return applicants
-  */
-  @Schema(required = true, description = "List of applicants (will initially be just one)")
-  @NotNull
-
-  @Valid
-@Size(min=1)
-  public List<Person> getApplicants() {
+   */
+  @NotNull @Valid @Size(min = 1) 
+  @Schema(name = "applicants", description = "List of applicants (will initially be just one)", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("applicants")
+  public List<@Valid Person> getApplicants() {
     return applicants;
   }
 
-  public void setApplicants(List<Person> applicants) {
+  public void setApplicants(List<@Valid Person> applicants) {
     this.applicants = applicants;
   }
 
-
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -222,7 +237,6 @@ public class Challenge   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Challenge {\n");
-
     sb.append("    appealType: ").append(toIndentedString(appealType)).append("\n");
     sb.append("    appealTierType: ").append(toIndentedString(appealTierType)).append("\n");
     sb.append("    challengeSubmissionDate: ").append(toIndentedString(challengeSubmissionDate)).append("\n");
@@ -235,7 +249,7 @@ public class Challenge   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(@Nullable Object o) {
     if (o == null) {
       return "null";
     }

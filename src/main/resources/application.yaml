@@ -9,10 +9,14 @@ management:
     web:
       base-path: /
       exposure:
-        include: health, info, prometheus
+        include: health, info, prometheus, mappings
 
 spring:
   application:
     name: IA Home Office Mock API
   config:
     import: "optional:configtree:/mnt/secrets/ia/"
+
+springdoc:
+  swagger-ui:
+    url: /openapi.yaml

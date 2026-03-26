@@ -1,0 +1,112 @@
+package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
+
+import java.net.URI;
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import org.springframework.lang.Nullable;
+import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.Person;
+import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchResponseStatusInnerApplicationStatus;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.time.OffsetDateTime;
+import javax.validation.Valid;
+import javax.validation.constraints.*;
+import io.swagger.v3.oas.annotations.media.Schema;
+
+
+import java.util.*;
+import javax.annotation.Generated;
+
+/**
+ * SearchResponseStatusInner
+ */
+
+@JsonTypeName("SearchResponse_status_inner")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-25T19:03:55.795081Z[Europe/London]", comments = "Generator version: 7.20.0")
+public class SearchResponseStatusInner {
+
+  private @Nullable Person person;
+
+  private @Nullable SearchResponseStatusInnerApplicationStatus applicationStatus;
+
+  public SearchResponseStatusInner person(@Nullable Person person) {
+    this.person = person;
+    return this;
+  }
+
+  /**
+   * Get person
+   * @return person
+   */
+  @Valid 
+  @Schema(name = "person", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("person")
+  public @Nullable Person getPerson() {
+    return person;
+  }
+
+  public void setPerson(@Nullable Person person) {
+    this.person = person;
+  }
+
+  public SearchResponseStatusInner applicationStatus(@Nullable SearchResponseStatusInnerApplicationStatus applicationStatus) {
+    this.applicationStatus = applicationStatus;
+    return this;
+  }
+
+  /**
+   * Get applicationStatus
+   * @return applicationStatus
+   */
+  @Valid 
+  @Schema(name = "applicationStatus", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("applicationStatus")
+  public @Nullable SearchResponseStatusInnerApplicationStatus getApplicationStatus() {
+    return applicationStatus;
+  }
+
+  public void setApplicationStatus(@Nullable SearchResponseStatusInnerApplicationStatus applicationStatus) {
+    this.applicationStatus = applicationStatus;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    SearchResponseStatusInner searchResponseStatusInner = (SearchResponseStatusInner) o;
+    return Objects.equals(this.person, searchResponseStatusInner.person) &&
+        Objects.equals(this.applicationStatus, searchResponseStatusInner.applicationStatus);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(person, applicationStatus);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class SearchResponseStatusInner {\n");
+    sb.append("    person: ").append(toIndentedString(person)).append("\n");
+    sb.append("    applicationStatus: ").append(toIndentedString(applicationStatus)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(@Nullable Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+}
+

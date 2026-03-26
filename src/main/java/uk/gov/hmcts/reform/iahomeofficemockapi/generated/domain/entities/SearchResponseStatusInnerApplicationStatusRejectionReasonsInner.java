@@ -4,8 +4,8 @@ import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import org.springframework.lang.Nullable;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.MessageHeader;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -17,33 +17,33 @@ import java.util.*;
 import javax.annotation.Generated;
 
 /**
- * Response round-tripping request message header.
+ * SearchResponseStatusInnerApplicationStatusRejectionReasonsInner
  */
 
-@Schema(name = "InstructResponse", description = "Response round-tripping request message header.")
+@JsonTypeName("SearchResponse_status_inner_applicationStatus_rejectionReasons_inner")
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-25T19:03:55.795081Z[Europe/London]", comments = "Generator version: 7.20.0")
-public class InstructResponse {
+public class SearchResponseStatusInnerApplicationStatusRejectionReasonsInner {
 
-  private @Nullable MessageHeader messageHeader;
+  private @Nullable String reason;
 
-  public InstructResponse messageHeader(@Nullable MessageHeader messageHeader) {
-    this.messageHeader = messageHeader;
+  public SearchResponseStatusInnerApplicationStatusRejectionReasonsInner reason(@Nullable String reason) {
+    this.reason = reason;
     return this;
   }
 
   /**
-   * Get messageHeader
-   * @return messageHeader
+   * Reason for application rejection
+   * @return reason
    */
-  @Valid 
-  @Schema(name = "messageHeader", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("messageHeader")
-  public @Nullable MessageHeader getMessageHeader() {
-    return messageHeader;
+  
+  @Schema(name = "reason", description = "Reason for application rejection", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("reason")
+  public @Nullable String getReason() {
+    return reason;
   }
 
-  public void setMessageHeader(@Nullable MessageHeader messageHeader) {
-    this.messageHeader = messageHeader;
+  public void setReason(@Nullable String reason) {
+    this.reason = reason;
   }
 
   @Override
@@ -54,20 +54,20 @@ public class InstructResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InstructResponse instructResponse = (InstructResponse) o;
-    return Objects.equals(this.messageHeader, instructResponse.messageHeader);
+    SearchResponseStatusInnerApplicationStatusRejectionReasonsInner searchResponseStatusInnerApplicationStatusRejectionReasonsInner = (SearchResponseStatusInnerApplicationStatusRejectionReasonsInner) o;
+    return Objects.equals(this.reason, searchResponseStatusInnerApplicationStatusRejectionReasonsInner.reason);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(messageHeader);
+    return Objects.hash(reason);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class InstructResponse {\n");
-    sb.append("    messageHeader: ").append(toIndentedString(messageHeader)).append("\n");
+    sb.append("class SearchResponseStatusInnerApplicationStatusRejectionReasonsInner {\n");
+    sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
     sb.append("}");
     return sb.toString();
   }

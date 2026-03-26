@@ -1,0 +1,65 @@
+package uk.gov.hmcts.reform.iahomeofficemockapi;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
+import net.serenitybdd.rest.SerenityRest;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.HttpStatus;
+import org.springframework.test.context.ActiveProfiles;
+
+@SpringBootTest(classes = {
+    MockApiApplication.class
+})
+@ActiveProfiles("functional")
+@AutoConfigureMockMvc(addFilters = false)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+public class HealthFunctionTest {
+
+    private static final String MEDIA_TYPE_APPLICATION_SPRING_BOOT_ACTUATOR = 
+            "application/vnd.spring-boot.actuator.v3+json";
+
+    @Value("${targetInstance}") private String targetInstance;
+
+    @BeforeEach
+    public void setUp() {
+        RestAssured.baseURI = targetInstance;
+        RestAssured.useRelaxedHTTPSValidation();
+    }
+
+    @Test
+    public void should_allow_unauthenticated_requests_to_health_check_and_return_200_response_code()
+        throws Exception {
+
+        final Response response = SerenityRest
+            .given()
+            .relaxedHTTPSValidation()
+            .when()
+            .get("/health");
+
+        assertThat(allStatusesUp(response.getBody().asString()));
+        response
+            .then()
+            .statusCode(HttpStatus.OK.value())
+            .contentType(MEDIA_TYPE_APPLICATION_SPRING_BOOT_ACTUATOR);
+    }
+
+    private static boolean allStatusesUp(String json) throws Exception {
+
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode root = mapper.readTree(json);
+
+        return "UP".equals(root.path("status").asText())
+            && "UP".equals(root.path("components").path("diskSpace").path("status").asText())
+            && "UP".equals(root.path("components").path("ping").path("status").asText())
+            && "UP".equals(root.path("components").path("refreshScope").path("status").asText());
+    }
+}

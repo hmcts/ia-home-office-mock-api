@@ -4,7 +4,7 @@ import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
@@ -17,92 +17,49 @@ import java.util.*;
 import javax.annotation.Generated;
 
 /**
- * Consumer of the service.
+ * Type of reason for claim on application. **Note:** may not be available for any cases
  */
 
-@Schema(name = "Consumer", description = "Consumer of the service.")
+@Schema(name = "SearchResponse_status_inner_applicationStatus_claimReasonType", description = "Type of reason for claim on application. **Note:** may not be available for any cases")
+@JsonTypeName("SearchResponse_status_inner_applicationStatus_claimReasonType")
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-25T19:03:55.795081Z[Europe/London]", comments = "Generator version: 7.20.0")
-public class Consumer {
+public class SearchResponseStatusInnerApplicationStatusClaimReasonType {
 
-  /**
-   * Short code for the consumer
-   */
-  public enum CodeEnum {
-    HMCTS("HMCTS");
-
-    private final String value;
-
-    CodeEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static CodeEnum fromValue(String value) {
-      for (CodeEnum b : CodeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  private CodeEnum code;
+  private @Nullable String code;
 
   private @Nullable String description;
 
-  public Consumer() {
-    super();
-  }
-
-  /**
-   * Constructor with only required parameters
-   */
-  public Consumer(CodeEnum code) {
-    this.code = code;
-  }
-
-  public Consumer code(CodeEnum code) {
+  public SearchResponseStatusInnerApplicationStatusClaimReasonType code(@Nullable String code) {
     this.code = code;
     return this;
   }
 
   /**
-   * Short code for the consumer
+   * Code for the claim reason type
    * @return code
    */
-  @NotNull 
-  @Schema(name = "code", example = "HMCTS", description = "Short code for the consumer", requiredMode = Schema.RequiredMode.REQUIRED)
+  
+  @Schema(name = "code", example = "HUMANRIGHTS", description = "Code for the claim reason type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("code")
-  public CodeEnum getCode() {
+  public @Nullable String getCode() {
     return code;
   }
 
-  public void setCode(CodeEnum code) {
+  public void setCode(@Nullable String code) {
     this.code = code;
   }
 
-  public Consumer description(@Nullable String description) {
+  public SearchResponseStatusInnerApplicationStatusClaimReasonType description(@Nullable String description) {
     this.description = description;
     return this;
   }
 
   /**
-   * Description of the consumer (for legibility reasons)
+   * Description of the claim reason type
    * @return description
    */
   
-  @Schema(name = "description", example = "HM Courts and Tribunal Service", description = "Description of the consumer (for legibility reasons)", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Schema(name = "description", example = "Human Rights", description = "Description of the claim reason type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("description")
   public @Nullable String getDescription() {
     return description;
@@ -120,9 +77,9 @@ public class Consumer {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Consumer consumer = (Consumer) o;
-    return Objects.equals(this.code, consumer.code) &&
-        Objects.equals(this.description, consumer.description);
+    SearchResponseStatusInnerApplicationStatusClaimReasonType searchResponseStatusInnerApplicationStatusClaimReasonType = (SearchResponseStatusInnerApplicationStatusClaimReasonType) o;
+    return Objects.equals(this.code, searchResponseStatusInnerApplicationStatusClaimReasonType.code) &&
+        Objects.equals(this.description, searchResponseStatusInnerApplicationStatusClaimReasonType.description);
   }
 
   @Override
@@ -133,7 +90,7 @@ public class Consumer {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Consumer {\n");
+    sb.append("class SearchResponseStatusInnerApplicationStatusClaimReasonType {\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("}");

@@ -1,31 +1,40 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
+import java.net.URI;
+import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import org.springframework.lang.Nullable;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.time.OffsetDateTime;
+import javax.validation.Valid;
+import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
-import javax.validation.constraints.NotNull;
-import java.util.Objects;
+
+import java.util.*;
+import javax.annotation.Generated;
 
 /**
  * Court type and outcome of the appeal.
  */
-@Schema(description = "Court type and outcome of the appeal.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-07-01T14:15:45.837+01:00[Europe/London]")
 
-public class CourtOutcome   {
+@Schema(name = "CourtOutcome", description = "Court type and outcome of the appeal.")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-25T19:03:55.795081Z[Europe/London]", comments = "Generator version: 7.20.0")
+public class CourtOutcome {
+
   /**
    * Court (tribunal) type
    */
   public enum CourtTypeEnum {
     FIRST_TIER("FIRST_TIER"),
-
+    
     FTPA("FTPA"),
-
+    
     UTPA("UTPA");
 
-    private String value;
+    private final String value;
 
     CourtTypeEnum(String value) {
       this.value = value;
@@ -52,7 +61,6 @@ public class CourtOutcome   {
     }
   }
 
-  @JsonProperty("courtType")
   private CourtTypeEnum courtType;
 
   /**
@@ -60,18 +68,18 @@ public class CourtOutcome   {
    */
   public enum OutcomeEnum {
     ALLOWED("ALLOWED"),
-
+    
     DISMISSED("DISMISSED"),
-
+    
     GRANTED("GRANTED"),
-
+    
     REFUSED("REFUSED"),
-
+    
     REHEARD("REHEARD"),
-
+    
     REMADE("REMADE");
 
-    private String value;
+    private final String value;
 
     OutcomeEnum(String value) {
       this.value = value;
@@ -98,8 +106,19 @@ public class CourtOutcome   {
     }
   }
 
-  @JsonProperty("outcome")
   private OutcomeEnum outcome;
+
+  public CourtOutcome() {
+    super();
+  }
+
+  /**
+   * Constructor with only required parameters
+   */
+  public CourtOutcome(CourtTypeEnum courtType, OutcomeEnum outcome) {
+    this.courtType = courtType;
+    this.outcome = outcome;
+  }
 
   public CourtOutcome courtType(CourtTypeEnum courtType) {
     this.courtType = courtType;
@@ -109,11 +128,10 @@ public class CourtOutcome   {
   /**
    * Court (tribunal) type
    * @return courtType
-  */
-  @Schema(required = true, description = "Court (tribunal) type")
-  @NotNull
-
-
+   */
+  @NotNull 
+  @Schema(name = "courtType", example = "FIRST_TIER", description = "Court (tribunal) type", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("courtType")
   public CourtTypeEnum getCourtType() {
     return courtType;
   }
@@ -130,11 +148,10 @@ public class CourtOutcome   {
   /**
    * Appeal outcome
    * @return outcome
-  */
-  @Schema(required = true, description = "Appeal outcome")
-  @NotNull
-
-
+   */
+  @NotNull 
+  @Schema(name = "outcome", example = "DISMISSED", description = "Appeal outcome", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("outcome")
   public OutcomeEnum getOutcome() {
     return outcome;
   }
@@ -143,9 +160,8 @@ public class CourtOutcome   {
     this.outcome = outcome;
   }
 
-
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -166,7 +182,6 @@ public class CourtOutcome   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CourtOutcome {\n");
-
     sb.append("    courtType: ").append(toIndentedString(courtType)).append("\n");
     sb.append("    outcome: ").append(toIndentedString(outcome)).append("\n");
     sb.append("}");
@@ -177,7 +192,7 @@ public class CourtOutcome   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(@Nullable Object o) {
     if (o == null) {
       return "null";
     }

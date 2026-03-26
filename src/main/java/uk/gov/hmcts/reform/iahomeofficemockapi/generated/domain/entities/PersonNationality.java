@@ -1,24 +1,35 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
+import java.net.URI;
+import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import org.springframework.lang.Nullable;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.time.OffsetDateTime;
+import javax.validation.Valid;
+import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
-import java.util.Objects;
+
+import java.util.*;
+import javax.annotation.Generated;
 
 /**
  * Person&#39;s nationality
  */
-@Schema(description = "Person's nationality")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-07-01T14:15:45.837+01:00[Europe/London]")
 
-public class PersonNationality   {
-  @JsonProperty("code")
-  private String code;
+@Schema(name = "Person_nationality", description = "Person's nationality")
+@JsonTypeName("Person_nationality")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-25T19:03:55.795081Z[Europe/London]", comments = "Generator version: 7.20.0")
+public class PersonNationality {
 
-  @JsonProperty("description")
-  private String description;
+  private @Nullable String code;
 
-  public PersonNationality code(String code) {
+  private @Nullable String description;
+
+  public PersonNationality code(@Nullable String code) {
     this.code = code;
     return this;
   }
@@ -26,19 +37,19 @@ public class PersonNationality   {
   /**
    * Short code for the nationality
    * @return code
-  */
-  @Schema(example = "CAN (denoting Canada)", description = "Short code for the nationality")
-
-
-  public String getCode() {
+   */
+  
+  @Schema(name = "code", example = "CAN (denoting Canada)", description = "Short code for the nationality", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("code")
+  public @Nullable String getCode() {
     return code;
   }
 
-  public void setCode(String code) {
+  public void setCode(@Nullable String code) {
     this.code = code;
   }
 
-  public PersonNationality description(String description) {
+  public PersonNationality description(@Nullable String description) {
     this.description = description;
     return this;
   }
@@ -46,21 +57,20 @@ public class PersonNationality   {
   /**
    * Description of the nationality
    * @return description
-  */
-  @Schema(example = "Canada", description = "Description of the nationality")
-
-
-  public String getDescription() {
+   */
+  
+  @Schema(name = "description", example = "Canada", description = "Description of the nationality", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("description")
+  public @Nullable String getDescription() {
     return description;
   }
 
-  public void setDescription(String description) {
+  public void setDescription(@Nullable String description) {
     this.description = description;
   }
 
-
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -81,7 +91,6 @@ public class PersonNationality   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PersonNationality {\n");
-
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("}");
@@ -92,7 +101,7 @@ public class PersonNationality   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(@Nullable Object o) {
     if (o == null) {
       return "null";
     }

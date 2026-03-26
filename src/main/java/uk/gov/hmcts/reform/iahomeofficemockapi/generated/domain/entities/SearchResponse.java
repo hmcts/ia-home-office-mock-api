@@ -1,24 +1,35 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
+import java.net.URI;
+import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import org.springframework.lang.Nullable;
+import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.MessageHeader;
+import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchResponseStatusInner;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.time.OffsetDateTime;
+import javax.validation.Valid;
+import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
-import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+
+import java.util.*;
+import javax.annotation.Generated;
 
 /**
  * Response containing details of the application search.
  */
-@Schema(description = "Response containing details of the application search.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-07-01T14:15:45.837+01:00[Europe/London]")
 
-public class SearchResponse   {
-  @JsonProperty("messageHeader")
-  private MessageHeader messageHeader;
+@Schema(name = "SearchResponse", description = "Response containing details of the application search.")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-25T19:03:55.795081Z[Europe/London]", comments = "Generator version: 7.20.0")
+public class SearchResponse {
+
+  private @Nullable MessageHeader messageHeader;
 
   /**
    * Identifies the type of message
@@ -26,7 +37,7 @@ public class SearchResponse   {
   public enum MessageTypeEnum {
     RESPONSE_RIGHT_OF_APPEAL_DETAILS("RESPONSE_RIGHT_OF_APPEAL_DETAILS");
 
-    private String value;
+    private final String value;
 
     MessageTypeEnum(String value) {
       this.value = value;
@@ -53,14 +64,12 @@ public class SearchResponse   {
     }
   }
 
-  @JsonProperty("messageType")
-  private MessageTypeEnum messageType;
+  private @Nullable MessageTypeEnum messageType;
 
-  @JsonProperty("status")
   @Valid
-  private List<SearchResponseStatus> status = null;
+  private List<@Valid SearchResponseStatusInner> status = new ArrayList<>();
 
-  public SearchResponse messageHeader(MessageHeader messageHeader) {
+  public SearchResponse messageHeader(@Nullable MessageHeader messageHeader) {
     this.messageHeader = messageHeader;
     return this;
   }
@@ -68,20 +77,19 @@ public class SearchResponse   {
   /**
    * Get messageHeader
    * @return messageHeader
-  */
-  @Schema()
-
-  @Valid
-
-  public MessageHeader getMessageHeader() {
+   */
+  @Valid 
+  @Schema(name = "messageHeader", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("messageHeader")
+  public @Nullable MessageHeader getMessageHeader() {
     return messageHeader;
   }
 
-  public void setMessageHeader(MessageHeader messageHeader) {
+  public void setMessageHeader(@Nullable MessageHeader messageHeader) {
     this.messageHeader = messageHeader;
   }
 
-  public SearchResponse messageType(MessageTypeEnum messageType) {
+  public SearchResponse messageType(@Nullable MessageTypeEnum messageType) {
     this.messageType = messageType;
     return this;
   }
@@ -89,24 +97,24 @@ public class SearchResponse   {
   /**
    * Identifies the type of message
    * @return messageType
-  */
-  @Schema(example = "RESPONSE_RIGHT_OF_APPEAL_DETAILS", description = "Identifies the type of message")
-
-
-  public MessageTypeEnum getMessageType() {
+   */
+  
+  @Schema(name = "messageType", example = "RESPONSE_RIGHT_OF_APPEAL_DETAILS", description = "Identifies the type of message", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("messageType")
+  public @Nullable MessageTypeEnum getMessageType() {
     return messageType;
   }
 
-  public void setMessageType(MessageTypeEnum messageType) {
+  public void setMessageType(@Nullable MessageTypeEnum messageType) {
     this.messageType = messageType;
   }
 
-  public SearchResponse status(List<SearchResponseStatus> status) {
+  public SearchResponse status(List<@Valid SearchResponseStatusInner> status) {
     this.status = status;
     return this;
   }
 
-  public SearchResponse addStatusItem(SearchResponseStatus statusItem) {
+  public SearchResponse addStatusItem(SearchResponseStatusInner statusItem) {
     if (this.status == null) {
       this.status = new ArrayList<>();
     }
@@ -117,22 +125,20 @@ public class SearchResponse   {
   /**
    * An array of persons and application status; generally, the status will be the same for all persons but this format provides flexibility
    * @return status
-  */
-  @Schema(description= "An array of persons and application status; generally, the status will be the same for all persons but this format provides flexibility")
-
-  @Valid
-
-  public List<SearchResponseStatus> getStatus() {
+   */
+  @Valid 
+  @Schema(name = "status", example = "[{\"person\":{\"givenName\":\"Capability\",\"familyName\":\"Smith\",\"fullName\":\"Capability Smith\",\"gender\":{\"code\":\"M\",\"description\":\"Male\"},\"dayOfBirth\":21,\"monthOfBirth\":4,\"yearOfBirth\":1970,\"nationality\":{\"code\":\"CAN\",\"description\":\"Canada\"}},\"applicationStatus\":{\"documentReference\":\"9876-5432-1111-2222/01\",\"roleType\":{\"code\":\"APPLICANT\",\"description\":\"Applicant\"},\"applicationType\":{\"code\":\"ASYLUM\",\"description\":\"Asylum and Protection\"},\"decisionType\":{\"code\":\"REJECTION\",\"description\":\"Rejected\"},\"decisionDate\":\"2017-07-21T17:32:28Z\",\"decisionCommunication\":{\"type\":\"EMAIL\",\"description\":\"E-mail\",\"sentDate\":\"2017-07-21T17:32:28Z\"},\"rejectionReasons\":[{\"reason\":\"Application not completed properly\"},{\"reason\":\"You caught me on a bad day\"}],\"metadata\":[{\"code\":\"APPEALABLE\",\"valueBoolean\":true},{\"code\":\"DISPATCH_DATE\",\"valueDateTime\":\"2017-07-21T17:32:28Z\"},{\"code\":\"SUSPENSIVE\",\"valueString\":\"Some extra decision data\",\"valueDateTime\":\"2027-07-27T07:17:27Z\",\"valueBoolean\":false}]}},{\"person\":{\"givenName\":\"Aishwarya\",\"familyName\":\"Rai\",\"fullName\":\"Aishwarya Rai\",\"gender\":{\"code\":\"F\",\"description\":\"Female\"},\"dayOfBirth\":1,\"monthOfBirth\":11,\"yearOfBirth\":1973,\"nationality\":{\"code\":\"IND\",\"description\":\"India\"}},\"applicationStatus\":{\"documentReference\":\"9876-5432-1111-2222/02\",\"roleType\":{\"code\":\"DEPENDANT\",\"description\":\"Dependant\"},\"roleSubType\":{\"code\":\"SPOUSE\",\"description\":\"Spouse\"},\"applicationType\":{\"code\":\"ASYLUM\",\"description\":\"Asylum and Protection\"},\"claimReasonType\":{\"code\":\"HUMANRIGHTS\",\"description\":\"Human Rights\"},\"decisionType\":{\"code\":\"REJECTION\",\"description\":\"Rejected\"},\"decisionDate\":\"2018-01-10T09:15:00Z\",\"decisionCommunication\":{\"type\":\"POST\",\"description\":\"Postal\",\"sentDate\":\"2018-01-10T09:15:00Z\",\"dispatchDate\":\"2018-01-11T10:00:00Z\"},\"rejectionReasons\":[{\"reason\":\"Application submitted late\"}],\"metadata\":[{\"code\":\"DISPATCH_DATE\",\"valueDateTime\":\"2018-01-11T10:00:00Z\"},{\"code\":\"SUSPENSIVE\",\"valueBoolean\":false},{\"code\":\"NOTE\",\"valueString\":\"Manual review required\"}]}}]", description = "An array of persons and application status; generally, the status will be the same for all persons but this format provides flexibility", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("status")
+  public List<@Valid SearchResponseStatusInner> getStatus() {
     return status;
   }
 
-  public void setStatus(List<SearchResponseStatus> status) {
+  public void setStatus(List<@Valid SearchResponseStatusInner> status) {
     this.status = status;
   }
 
-
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -154,7 +160,6 @@ public class SearchResponse   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SearchResponse {\n");
-
     sb.append("    messageHeader: ").append(toIndentedString(messageHeader)).append("\n");
     sb.append("    messageType: ").append(toIndentedString(messageType)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
@@ -166,7 +171,7 @@ public class SearchResponse   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(@Nullable Object o) {
     if (o == null) {
       return "null";
     }

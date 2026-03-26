@@ -1,8 +1,11 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.infrastructure.api;
 
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.InstructErrorResponse;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.InstructMessage;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.InstructResponse;
+import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.Application;
+import org.springframework.format.annotation.DateTimeFormat;
+import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.HomeOfficeConsumer;
+import java.time.OffsetDateTime;
+import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchErrorResponse;
+import java.util.UUID;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,12 +34,12 @@ import javax.annotation.Generated;
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-25T19:03:55.795081Z[Europe/London]", comments = "Generator version: 7.20.0")
 @Controller
 @RequestMapping("${openapi.appealsInterface.base-path:/ichallenge}")
-public class ApplicationInstructApiController implements ApplicationInstructApi {
+public class ApplicationsApiController implements ApplicationsApi {
 
     private final NativeWebRequest request;
 
     @Autowired
-    public ApplicationInstructApiController(NativeWebRequest request) {
+    public ApplicationsApiController(NativeWebRequest request) {
         this.request = request;
     }
 
