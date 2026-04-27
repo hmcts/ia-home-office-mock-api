@@ -22,7 +22,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "Person", description = "An individual fufilling a role on the application.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-25T19:03:55.795081Z[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-04-27T09:30:21.003363+01:00[Europe/London]", comments = "Generator version: 7.20.0")
 public class Person {
 
   private @Nullable String givenName;
