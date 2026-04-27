@@ -38,7 +38,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-25T19:03:55.795081Z[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-04-27T09:30:21.003363+01:00[Europe/London]", comments = "Generator version: 7.20.0")
 @Validated
 @Tag(name = "applications", description = "the applications API")
 public interface ApplicationsApi {
@@ -102,7 +102,7 @@ public interface ApplicationsApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"hoClaimDate\" : \"2017-07-18\", \"uan\" : \"1342-5786-9120-3564\", \"hoDecisionLetterDate\" : \"2017-07-20\", \"appellants\" : [ { \"pp\" : \"01\", \"hoFeeWaiver\" : true, \"nationality\" : \"GER\", \"roa\" : true, \"familyName\" : \"Wimp\", \"givenNames\" : \"Horace\", \"dateOfBirth\" : \"2017-07-21\", \"asylumSupport\" : false, \"language\" : \"eng\", \"interpreterNeeded\" : false }, { \"pp\" : \"01\", \"hoFeeWaiver\" : true, \"nationality\" : \"GER\", \"roa\" : true, \"familyName\" : \"Wimp\", \"givenNames\" : \"Horace\", \"dateOfBirth\" : \"2017-07-21\", \"asylumSupport\" : false, \"language\" : \"eng\", \"interpreterNeeded\" : false } ], \"hoDecisionDate\" : \"2017-07-19\" }";
+                    String exampleString = "{ \"hoClaimDate\" : \"2017-07-18\", \"uan\" : \"1342-5786-9120-3564\", \"hoDecisionLetterDate\" : \"2017-07-20\", \"appellants\" : [ { \"pp\" : \"01\", \"familyName\" : \"Bachchan\", \"givenNames\" : \"Abhishek Amitabh\", \"dateOfBirth\" : \"1976-02-05\", \"nationality\" : \"IND\", \"roa\" : true, \"asylumSupport\" : false, \"hoFeeWaiver\" : true, \"language\" : \"hin\", \"interpreterNeeded\" : false }, { \"pp\" : \"02\", \"familyName\" : \"Rai\", \"givenNames\" : \"Aishwarya\", \"dateOfBirth\" : \"1973-11-01\", \"nationality\" : \"IND\", \"roa\" : false, \"asylumSupport\" : true, \"hoFeeWaiver\" : false, \"language\" : \"hin\", \"interpreterNeeded\" : true } ], \"hoDecisionDate\" : \"2017-07-19\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }

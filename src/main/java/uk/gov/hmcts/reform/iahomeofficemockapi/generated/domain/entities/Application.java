@@ -24,7 +24,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "Application", description = "Details of the application, including appellants' biographic information.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-03-25T19:03:55.795081Z[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-04-27T09:30:21.003363+01:00[Europe/London]", comments = "Generator version: 7.20.0")
 public class Application {
 
   private @Nullable String uan;
@@ -150,7 +150,7 @@ public class Application {
    * @return appellants
    */
   @NotNull @Valid 
-  @Schema(name = "appellants", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Schema(name = "appellants", example = "[{\"pp\":\"01\",\"familyName\":\"Bachchan\",\"givenNames\":\"Abhishek Amitabh\",\"dateOfBirth\":\"1976-02-05\",\"nationality\":\"IND\",\"roa\":true,\"asylumSupport\":false,\"hoFeeWaiver\":true,\"language\":\"hin\",\"interpreterNeeded\":false},{\"pp\":\"02\",\"familyName\":\"Rai\",\"givenNames\":\"Aishwarya\",\"dateOfBirth\":\"1973-11-01\",\"nationality\":\"IND\",\"roa\":false,\"asylumSupport\":true,\"hoFeeWaiver\":false,\"language\":\"hin\",\"interpreterNeeded\":true}]", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("appellants")
   public List<@Valid Appellant> getAppellants() {
     return appellants;
