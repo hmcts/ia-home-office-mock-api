@@ -341,7 +341,7 @@ dependencies {
 
   implementation group: 'com.nimbusds', name: 'nimbus-jose-jwt', version: '9.37.3'
 
-  implementation group: 'net.minidev', name: 'json-smart', version: '2.5.0'
+  implementation group: 'net.minidev', name: 'json-smart', version: '2.6.0'
 
   // OpenAPI 3 annotations (required for generated code in 7.20.0)
   implementation group: 'io.swagger.core.v3', name: 'swagger-annotations', version: '2.2.10'
