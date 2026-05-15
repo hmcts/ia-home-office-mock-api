@@ -344,7 +344,7 @@ dependencies {
   implementation group: 'net.minidev', name: 'json-smart', version: '2.5.0'
 
   // OpenAPI 3 annotations (required for generated code in 7.20.0)
-  implementation group: 'io.swagger.core.v3', name: 'swagger-annotations', version: '2.2.10'
+  implementation group: 'io.swagger.core.v3', name: 'swagger-annotations', version: '2.2.50'
   implementation group: 'io.swagger.core.v3', name: 'swagger-models', version: '2.2.10'
 
   // Jakarta Validation API (for @Valid, @NotNull, etc.)
