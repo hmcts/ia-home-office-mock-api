@@ -1,22 +1,16 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
-import java.net.URI;
-import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
-import java.time.OffsetDateTime;
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.annotation.Generated;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.Nullable;
-import org.openapitools.jackson.nullable.JsonNullable;
+
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
-import io.swagger.v3.oas.annotations.media.Schema;
-
-
-import java.util.*;
-import javax.annotation.Generated;
+import java.util.Objects;
 
 /**
  * Metadata item, comprising an item code and one (usually) or more data values that are typed
@@ -24,7 +18,7 @@ import javax.annotation.Generated;
 
 @Schema(name = "SearchResponse_status_inner_applicationStatus_metadata_inner", description = "Metadata item, comprising an item code and one (usually) or more data values that are typed")
 @JsonTypeName("SearchResponse_status_inner_applicationStatus_metadata_inner")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-04-27T09:30:21.003363+01:00[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-05-28T11:19:43.880285+01:00[Europe/London]", comments = "Generator version: 7.20.0")
 public class SearchResponseStatusInnerApplicationStatusMetadataInner {
 
   private String code;
@@ -56,7 +50,7 @@ public class SearchResponseStatusInnerApplicationStatusMetadataInner {
    * Metadata item code
    * @return code
    */
-  @NotNull 
+  @NotNull
   @Schema(name = "code", example = "APPEALABLE or DISPATCH_DATE", description = "Metadata item code", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("code")
   public String getCode() {
@@ -76,7 +70,7 @@ public class SearchResponseStatusInnerApplicationStatusMetadataInner {
    * Boolean metadata value
    * @return valueBoolean
    */
-  
+
   @Schema(name = "valueBoolean", example = "true", description = "Boolean metadata value", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("valueBoolean")
   public @Nullable Boolean getValueBoolean() {
@@ -96,7 +90,7 @@ public class SearchResponseStatusInnerApplicationStatusMetadataInner {
    * Date (and time) metadata value, in the standard format yyyy-mm-dd (with the HH:mm:ss if the time is available - this won't be displayed if it isn't). This is assumed to be in UTC
    * @return valueDateTime
    */
-  @Valid 
+  @Valid
   @Schema(name = "valueDateTime", example = "2017-07-21T17:32:28Z", description = "Date (and time) metadata value, in the standard format yyyy-mm-dd (with the HH:mm:ss if the time is available - this won't be displayed if it isn't). This is assumed to be in UTC", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("valueDateTime")
   public @Nullable OffsetDateTime getValueDateTime() {
@@ -116,7 +110,7 @@ public class SearchResponseStatusInnerApplicationStatusMetadataInner {
    * String metadata value
    * @return valueString
    */
-  
+
   @Schema(name = "valueString", example = "Some extra decision data", description = "String metadata value", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("valueString")
   public @Nullable String getValueString() {

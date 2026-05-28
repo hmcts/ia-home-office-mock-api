@@ -1,23 +1,17 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
-import java.net.URI;
-import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.time.OffsetDateTime;
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.annotation.Generated;
+import jakarta.validation.Valid;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.Nullable;
-import org.openapitools.jackson.nullable.JsonNullable;
+
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
-import io.swagger.v3.oas.annotations.media.Schema;
-
-
-import java.util.*;
-import javax.annotation.Generated;
+import java.util.Objects;
 
 /**
  * Communication of the decision
@@ -25,7 +19,7 @@ import javax.annotation.Generated;
 
 @Schema(name = "SearchResponse_status_inner_applicationStatus_decisionCommunication", description = "Communication of the decision")
 @JsonTypeName("SearchResponse_status_inner_applicationStatus_decisionCommunication")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-04-27T09:30:21.003363+01:00[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-05-28T11:19:43.880285+01:00[Europe/London]", comments = "Generator version: 7.20.0")
 public class SearchResponseStatusInnerApplicationStatusDecisionCommunication {
 
   /**
@@ -33,7 +27,7 @@ public class SearchResponseStatusInnerApplicationStatusDecisionCommunication {
    */
   public enum TypeEnum {
     EMAIL("EMAIL"),
-    
+
     POST("POST");
 
     private final String value;
@@ -82,7 +76,7 @@ public class SearchResponseStatusInnerApplicationStatusDecisionCommunication {
    * Type of communication
    * @return type
    */
-  
+
   @Schema(name = "type", example = "EMAIL", description = "Type of communication", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("type")
   public @Nullable TypeEnum getType() {
@@ -102,7 +96,7 @@ public class SearchResponseStatusInnerApplicationStatusDecisionCommunication {
    * Description of the communication type
    * @return description
    */
-  
+
   @Schema(name = "description", example = "E-mail", description = "Description of the communication type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("description")
   public @Nullable String getDescription() {
@@ -122,7 +116,7 @@ public class SearchResponseStatusInnerApplicationStatusDecisionCommunication {
    * Date (and time, if available) the communication was requested to be sent. This is effectively the decision date. See description of decisionDate for details of how it will be displayed. This is assumed to be in UTC
    * @return sentDate
    */
-  @Valid 
+  @Valid
   @Schema(name = "sentDate", example = "2017-07-21T17:32:28Z", description = "Date (and time, if available) the communication was requested to be sent. This is effectively the decision date. See description of decisionDate for details of how it will be displayed. This is assumed to be in UTC", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("sentDate")
   public @Nullable OffsetDateTime getSentDate() {
@@ -142,7 +136,7 @@ public class SearchResponseStatusInnerApplicationStatusDecisionCommunication {
    * Date (and time, if available) the communication was actually dispatched. See description of decisionDate for details of how it will be displayed. This is assumed to be in UTC
    * @return dispatchDate
    */
-  @Valid 
+  @Valid
   @Schema(name = "dispatchDate", example = "2017-07-21T17:32:28Z", description = "Date (and time, if available) the communication was actually dispatched. See description of decisionDate for details of how it will be displayed. This is assumed to be in UTC", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("dispatchDate")
   public @Nullable OffsetDateTime getDispatchDate() {

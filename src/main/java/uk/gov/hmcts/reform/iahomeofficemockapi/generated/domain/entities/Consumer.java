@@ -1,27 +1,21 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
-import java.net.URI;
-import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
-import org.springframework.lang.Nullable;
-import org.openapitools.jackson.nullable.JsonNullable;
-import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.annotation.Generated;
+import jakarta.validation.constraints.NotNull;
+import org.springframework.lang.Nullable;
 
-
-import java.util.*;
-import javax.annotation.Generated;
+import java.util.Objects;
 
 /**
  * Consumer of the service.
  */
 
 @Schema(name = "Consumer", description = "Consumer of the service.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-04-27T09:30:21.003363+01:00[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-05-28T11:19:43.880285+01:00[Europe/London]", comments = "Generator version: 7.20.0")
 public class Consumer {
 
   /**
@@ -81,7 +75,7 @@ public class Consumer {
    * Short code for the consumer
    * @return code
    */
-  @NotNull 
+  @NotNull
   @Schema(name = "code", example = "HMCTS", description = "Short code for the consumer", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("code")
   public CodeEnum getCode() {
@@ -101,7 +95,7 @@ public class Consumer {
    * Description of the consumer (for legibility reasons)
    * @return description
    */
-  
+
   @Schema(name = "description", example = "HM Courts and Tribunal Service", description = "Description of the consumer (for legibility reasons)", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("description")
   public @Nullable String getDescription() {

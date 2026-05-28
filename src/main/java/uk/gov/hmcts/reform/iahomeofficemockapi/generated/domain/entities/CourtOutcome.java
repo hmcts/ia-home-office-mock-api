@@ -1,27 +1,21 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
-import java.net.URI;
-import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
-import org.springframework.lang.Nullable;
-import org.openapitools.jackson.nullable.JsonNullable;
-import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.annotation.Generated;
+import jakarta.validation.constraints.NotNull;
+import org.springframework.lang.Nullable;
 
-
-import java.util.*;
-import javax.annotation.Generated;
+import java.util.Objects;
 
 /**
  * Court type and outcome of the appeal.
  */
 
 @Schema(name = "CourtOutcome", description = "Court type and outcome of the appeal.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-04-27T09:30:21.003363+01:00[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-05-28T11:19:43.880285+01:00[Europe/London]", comments = "Generator version: 7.20.0")
 public class CourtOutcome {
 
   /**
@@ -29,9 +23,9 @@ public class CourtOutcome {
    */
   public enum CourtTypeEnum {
     FIRST_TIER("FIRST_TIER"),
-    
+
     FTPA("FTPA"),
-    
+
     UTPA("UTPA");
 
     private final String value;
@@ -68,15 +62,15 @@ public class CourtOutcome {
    */
   public enum OutcomeEnum {
     ALLOWED("ALLOWED"),
-    
+
     DISMISSED("DISMISSED"),
-    
+
     GRANTED("GRANTED"),
-    
+
     REFUSED("REFUSED"),
-    
+
     REHEARD("REHEARD"),
-    
+
     REMADE("REMADE");
 
     private final String value;
@@ -129,7 +123,7 @@ public class CourtOutcome {
    * Court (tribunal) type
    * @return courtType
    */
-  @NotNull 
+  @NotNull
   @Schema(name = "courtType", example = "FIRST_TIER", description = "Court (tribunal) type", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("courtType")
   public CourtTypeEnum getCourtType() {
@@ -149,7 +143,7 @@ public class CourtOutcome {
    * Appeal outcome
    * @return outcome
    */
-  @NotNull 
+  @NotNull
   @Schema(name = "outcome", example = "DISMISSED", description = "Appeal outcome", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("outcome")
   public OutcomeEnum getOutcome() {

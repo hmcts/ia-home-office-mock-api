@@ -3,8 +3,8 @@ plugins {
   id 'checkstyle'
   id 'pmd'
   id 'jacoco'
-  id 'io.spring.dependency-management' version '1.0.9.RELEASE'
-  id 'org.springframework.boot' version '2.7.18'
+  id 'io.spring.dependency-management' version '1.1.7'
+  id 'org.springframework.boot' version '3.5.14'
   id 'org.owasp.dependencycheck' version '10.0.3'
   id 'com.github.ben-manes.versions' version '0.28.0'
   id 'org.sonarqube' version '4.3.0.3225'
@@ -20,7 +20,7 @@ version = '0.0.1'
 
 java {
   toolchain {
-    languageVersion = JavaLanguageVersion.of(17)
+    languageVersion = JavaLanguageVersion.of(21)
   }
 }
 
@@ -53,7 +53,7 @@ sourceSets {
   }
 }
 
-def apiGenerateBuildDir = "$buildDir/apidocs".toString()
+def apiGenerateBuildDir = "${project.getLayout().getBuildDirectory()}/apidocs".toString()
 
 openApiGenerate {
   generatorName = "spring"
@@ -67,11 +67,12 @@ openApiGenerate {
 
   configOptions = [
           dateLibrary: "java8",
-          serializationLibrary: "jackson"
+          serializationLibrary: "jackson",
+          useSpringBoot3: "true"
   ]
 }
 
-task copyApiDocs(type: Copy) {
+tasks.register('copyApiDocs', Copy) {
 
   def srcPath = "$apiGenerateBuildDir/src/main/java"
   def targetPath = "$rootDir/src/main/java"
@@ -81,37 +82,37 @@ task copyApiDocs(type: Copy) {
   into(targetPath)
 }
 
-task copyOpenApiYaml(type: Copy) {
+tasks.register('copyOpenApiYaml', Copy) {
   // copy original YAML file so that Spring can load it
   from("$apiGenerateBuildDir/src/main/resources/openapi.yaml")
   into("$projectDir/src/main/resources/static/")
 }
 
-task fixGeneratedControllers {
-    doLast {
-        def targetDir = file("$buildDir/apidocs/src/main/java/uk/gov/hmcts/reform/iahomeofficemockapi/generated/infrastructure/api")
+tasks.register('fixGeneratedControllers') {
+  doLast {
+    def targetDir = file("${project.getLayout().getBuildDirectory()}/apidocs/src/main/java/uk/gov/hmcts/reform/iahomeofficemockapi/generated/infrastructure/api")
 
-        fileTree(targetDir).matching {
-            include "**/*.java"
-        }.forEach { file ->
+    fileTree(targetDir).matching {
+      include "**/*.java"
+    }.forEach { file ->
 
-            def original = file.getText("UTF-8")
+      def original = file.getText("UTF-8")
 
-            def updated = original.replaceAll(
-                /return\s+new\s+ResponseEntity<[^>]*>\(HttpStatus\.NOT_IMPLEMENTED\);/,
-                "return ResponseEntity.ok().build();"
-            )
+      def updated = original.replaceAll(
+        /return\s+new\s+ResponseEntity<[^>]*>\(HttpStatus\.NOT_IMPLEMENTED\);/,
+        "return ResponseEntity.ok().build();"
+      )
 
-            updated = updated.replaceAll(
-                /return\s+new\s+ResponseEntity<>\(HttpStatus\.NOT_IMPLEMENTED\);/,
-                "return ResponseEntity.ok().build();"
-            )
+      updated = updated.replaceAll(
+        /return\s+new\s+ResponseEntity<>\(HttpStatus\.NOT_IMPLEMENTED\);/,
+        "return ResponseEntity.ok().build();"
+      )
 
-            if (original != updated) {
-                file.write(updated, "UTF-8")
-            }
-        }
+      if (original != updated) {
+        file.write(updated, "UTF-8")
+      }
     }
+  }
 }
 
 copyApiDocs.dependsOn copyOpenApiYaml
@@ -121,12 +122,16 @@ fixGeneratedControllers.dependsOn tasks.openApiGenerate
 copyApiDocs.dependsOn fixGeneratedControllers
 
 
-tasks.withType(JavaCompile) {
-  options.compilerArgs << "-Xlint:unchecked" << "-Werror"
+tasks.withType(JavaCompile).configureEach {
+  options.compilerArgs += [
+    '-parameters',
+    '-Xlint:unchecked',
+    '-Werror'
+  ]
   options.encoding = 'UTF-8'
 }
 
-tasks.withType(Test) {
+tasks.withType(Test).configureEach {
   useJUnitPlatform()
 
   testLogging {
@@ -134,8 +139,8 @@ tasks.withType(Test) {
   }
 }
 
-tasks.withType(Checkstyle) {
-    exclude '**/generated/**', '**/openapitools/**', '**/ErrorCode.java', '**/MockApiApplication.java'
+tasks.withType(Checkstyle).configureEach {
+  exclude '**/generated/**', '**/openapitools/**', '**/ErrorCode.java', '**/MockApiApplication.java'
 }
 
 test {
@@ -152,14 +157,14 @@ test {
     ignoreFailures = true
 }
 
-task functional(type: Test) {
+tasks.register('functional', Test) {
   description = "Runs functional tests"
   group = "Verification"
   testClassesDirs = sourceSets.functionalTest.output.classesDirs
   classpath = sourceSets.functionalTest.runtimeClasspath
 }
 
-task integration(type: Test) {
+tasks.register('integration', Test) {
   description = "Runs integration tests"
   group = "Verification"
   testClassesDirs = sourceSets.integrationTest.output.classesDirs
@@ -167,13 +172,13 @@ task integration(type: Test) {
   failFast = true
 }
 
-task smoke(type: Test) {
+tasks.register('smoke', Test) {
   description = "Runs Smoke Tests"
   testClassesDirs = sourceSets.smokeTest.output.classesDirs
   classpath = sourceSets.smokeTest.runtimeClasspath
 }
 
-task fortifyScan(type: JavaExec, description: 'Run fortify scan.')  {
+tasks.register('fortifyScan', JavaExec) {
   getMainClass().set("uk.gov.hmcts.fortifyclient.FortifyClientMainApp")
   classpath += sourceSets.test.runtimeClasspath
   jvmArgs = ['--add-opens=java.base/java.lang.reflect=ALL-UNNAMED']
@@ -187,6 +192,18 @@ processFunctionalTestResources {
   duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
 
+configurations {
+  integrationTestImplementation.extendsFrom testImplementation
+  integrationTestCompile.extendsFrom testCompile
+  integrationTestRuntime.extendsFrom testRuntime
+  functionalTestImplementation.extendsFrom testImplementation
+  functionalTestCompile.extendsFrom testCompile
+  functionalTestRuntime.extendsFrom testRuntime
+  smokeTestImplementation.extendsFrom testImplementation
+  smokeTestCompile.extendsFrom testCompile
+  smokeTestRuntime.extendsFrom testRuntime
+}
+
 checkstyle {
   maxWarnings = 100000
   toolVersion = '8.40'
@@ -197,7 +214,7 @@ pmd {
   toolVersion = "6.18.0"
   ignoreFailures = true
   sourceSets = [sourceSets.main, sourceSets.test, sourceSets.functionalTest, sourceSets.integrationTest, sourceSets.smokeTest]
-  reportsDir = file("$project.buildDir/reports/pmd")
+  reportsDir = file("${project.getLayout().getBuildDirectory()}/reports/pmd")
   // https://github.com/pmd/pmd/issues/876
   ruleSets = []
   ruleSetFiles = files("config/pmd/ruleset.xml")
@@ -216,7 +233,9 @@ jacocoTestReport {
   }
 }
 
-project.tasks['sonarqube'].dependsOn test, integration, jacocoTestReport
+tasks.named('sonarqube') {
+  dependsOn test, integration, jacocoTestReport
+}
 
 sonarqube {
   properties {
@@ -245,32 +264,53 @@ dependencyUpdates {
 
 // https://jeremylong.github.io/DependencyCheck/dependency-check-gradle/configuration.html
 dependencyCheck {
-  // Specifies if the build should be failed if a CVSS score above a specified level is identified.
-  // range of 0-10 fails the build, anything greater and it doesn't fail the build
-  failBuildOnCVSS = System.getProperty('dependencyCheck.failBuild') == 'true' ? 0 : 11
-  suppressionFile = 'https://raw.githubusercontent.com/hmcts/ia-owasp-suppressions/refs/heads/master/ia-home-office-mock-api/suppressions.xml'
+  suppressionFile = 'config/owasp/suppressions.xml'
   configurations.collect { it.name }.findAll {
     it.startsWith('org.openapitools.configuration') ||  it.startsWith('uk.gov.hmcts.reform.iahomeofficemockapi.generated')}
-
   analyzers {
     // Disable scanning of .NET related binaries
     assemblyEnabled = false
   }
 }
 
+ext["tomcat.version"] = "10.1.55"
+
 dependencyManagement {
+  imports {
+    mavenBom "net.serenity-bdd:serenity-bom:5.3.10"
+    mavenBom 'org.springframework.cloud:spring-cloud-dependencies:2025.0.2'
+    mavenBom 'com.fasterxml.jackson:jackson-bom:2.21.3'
+  }
+
   dependencies {
-    dependencySet(group: 'org.yaml', version: '2.0') {
-      entry 'snakeyaml'
+    dependencySet(group: 'org.junit.jupiter', version: '5.14.4') {
+      entry 'junit-jupiter'
+      entry 'junit-jupiter-api'
+      entry 'junit-jupiter-engine'
+      entry 'junit-jupiter-params'
     }
-    dependencySet(group: 'com.google.guava', version: '32.0.1-jre') {
-      entry 'guava'
+
+    dependencySet(group: 'org.junit.platform', version: '1.14.4') {
+      entry 'junit-platform-commons'
+      entry 'junit-platform-engine'
+      entry 'junit-platform-launcher'
     }
-    dependencySet(group: 'org.apache.tomcat.embed', version: '9.0.110') {
-      entry 'tomcat-embed-core'
-      entry 'tomcat-embed-el'
-      entry 'tomcat-embed-websocket'
+
+    dependency group: 'io.rest-assured', name: 'rest-assured', version: '5.5.7'
+
+    dependencySet(group: 'org.mockito', version: '5.23.0') {
+      entry 'mockito-core'
+      entry 'mockito-junit-jupiter'
     }
+
+    dependencySet(group: 'org.apache.logging.log4j', version: '2.25.4') {
+      entry 'log4j-to-slf4j'
+      entry 'log4j-api'
+      entry 'log4j-core'
+    }
+
+    // due to Serenity 5.3.10 forcing spring-context-support@6.2.10
+    dependency group: 'org.springframework', name: 'spring-context-support', version: '6.2.18'
   }
 }
 
@@ -278,111 +318,57 @@ repositories {
   mavenLocal()
   mavenCentral()
   maven {
-    url "https://dl.bintray.com/hmcts/hmcts-maven"
-  }
-  maven {
     url 'https://pkgs.dev.azure.com/hmcts/Artifacts/_packaging/hmcts-lib/maven/v1'
   }
 }
 
-def versions = [
-  junit           : '5.8.2',
-  junitPlatform   : '1.8.1',
-  reformLogging   : '6.0.1',
-  springBoot      : '2.7.18',
-  serenity        : '3.2.3'
-]
-
-ext.libraries = [
-  junit5: [
-    "org.junit.jupiter:junit-jupiter-api:${versions.junit}",
-    "org.junit.jupiter:junit-jupiter-engine:${versions.junit}",
-    "org.junit.jupiter:junit-jupiter-params:${versions.junit}",
-    "org.junit.platform:junit-platform-commons:${versions.junitPlatform}",
-    "org.junit.platform:junit-platform-engine:${versions.junitPlatform}"
-  ]
-]
-
 dependencies {
-  implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web'
-  implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
-  implementation group: 'org.springframework.boot', name: 'spring-boot-starter-aop'
-  implementation group: 'org.springframework.boot', name: 'spring-boot-starter-json'
-  implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: versions.springBoot
+  runtimeOnly group: "jakarta.xml.bind", name: "jakarta.xml.bind-api", version: "4.0.5"
 
-  implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.18.0'
-  implementation group: 'org.springdoc', name: 'springdoc-openapi-ui', version: '1.7.0'
+  implementation 'org.springframework.boot:spring-boot-starter-web'
+  implementation 'org.springframework.boot:spring-boot-starter-actuator'
+  implementation 'org.springframework.boot:spring-boot-starter-aop'
+  implementation 'org.springframework.boot:spring-boot-starter-json'
+  implementation 'org.springframework.boot:spring-boot-starter-validation'
+  implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap'
 
-  implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.13'
-  implementation group: 'ch.qos.logback', name: 'logback-core', version: '1.2.13'
-  implementation group: 'net.logstash.logback', name: 'logstash-logback-encoder', version: '8.0'
+  implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.20.0'
+  implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.8.17'
 
-  implementation group: 'com.github.hmcts.java-logging', name: 'logging', version: versions.reformLogging
-  implementation group: 'com.github.hmcts.java-logging', name: 'logging-appinsights', version: versions.reformLogging
-  implementation(group: 'org.springframework.cloud', name: 'spring-cloud-starter-bootstrap' , version: '3.1.7') {
-    exclude group: "org.bouncycastle", module: "bcprov-jdk15on"
-  }
-  implementation group: 'org.bouncycastle', name: 'bcprov-jdk18on', version: '1.74'
-  implementation group: 'com.sun.xml.bind', name: 'jaxb-osgi', version: '2.3.3'
-  // CVE-2020-9488
-  implementation group: 'org.apache.logging.log4j', name: 'log4j-to-slf4j', version: '2.13.2'
-  implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.13.2'
+  implementation group: 'net.logstash.logback', name: 'logstash-logback-encoder', version: '8.1'
 
-  implementation group: 'javax.xml.bind', name:'jaxb-api', version:'2.2.11'
-  implementation group:'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310'
-  implementation group: 'org.openapitools', name: 'jackson-databind-nullable', version: '0.2.6'
-  implementation group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
+  implementation group: 'com.github.hmcts.java-logging', name: 'logging', version: '8.0.0'
 
-  implementation group: 'org.webjars.bower', name: 'jquery', version: '3.6.0'
-
-  implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.13'
-
-  implementation group: 'org.apache.sling', name: 'org.apache.sling.api', version: '2.25.4'
-
-  implementation group: 'com.nimbusds', name: 'nimbus-jose-jwt', version: '9.37.3'
-
-  implementation group: 'net.minidev', name: 'json-smart', version: '2.5.0'
+  implementation group: 'jakarta.xml.bind', name:'jakarta.xml.bind-api', version:'4.0.5'
+  implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
+  implementation group: 'org.openapitools', name: 'jackson-databind-nullable', version: '0.2.10'
 
   // OpenAPI 3 annotations (required for generated code in 7.20.0)
-  implementation group: 'io.swagger.core.v3', name: 'swagger-annotations', version: '2.2.10'
-  implementation group: 'io.swagger.core.v3', name: 'swagger-models', version: '2.2.10'
+  implementation group: 'io.swagger.core.v3', name: 'swagger-annotations-jakarta', version: '2.2.49'
+  implementation group: 'io.swagger.core.v3', name: 'swagger-models-jakarta', version: '2.2.49'
 
   // Jakarta Validation API (for @Valid, @NotNull, etc.)
-  implementation group: 'jakarta.validation', name: 'jakarta.validation-api', version: '3.0.2'
+  implementation group: "jakarta.servlet", name: "jakarta.servlet-api", version: "6.0.0"
 
-  // for when.MAYBE enum
-  implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.2'
+  testImplementation group: 'com.github.hmcts', name: 'fortify-client', version: '1.4.10'
 
-  testImplementation group: 'com.github.hmcts', name: 'fortify-client', version: '1.3.0-azure'
+  testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-  testImplementation libraries.junit5
-  implementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', {
-    exclude group: 'junit', module: 'junit'
-    exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-  }
+  testImplementation 'org.springframework.cloud:spring-cloud-contract-wiremock'
 
-  testImplementation(group: 'org.springframework.cloud', name: 'spring-cloud-contract-wiremock', version: '3.1.6') {
-    exclude group: "com.github.tomakehurst", module: "wiremock-standalone"
-  }
-  testImplementation group: 'org.apiguardian', name: 'apiguardian-api', version: '1.1.2'
+  functionalTestImplementation 'net.serenity-bdd:serenity-rest-assured'
+  functionalTestImplementation 'net.serenity-bdd:serenity-spring'
 
-  functionalTestImplementation group: 'org.apiguardian', name: 'apiguardian-api', version: '1.1.2'
-  functionalTestImplementation group: 'net.serenity-bdd', name: 'serenity-rest-assured', version: versions.serenity
-  functionalTestImplementation group: 'net.serenity-bdd', name: 'serenity-core', version: versions.serenity
-  functionalTestImplementation group: 'net.serenity-bdd', name: 'serenity-junit', version: versions.serenity
-  functionalTestImplementation group: 'net.serenity-bdd', name: 'serenity-spring', version: versions.serenity
-  functionalTestImplementation group: 'io.rest-assured', name: 'rest-assured-all', version: '4.5.1'
-  functionalTestImplementation group: 'io.rest-assured', name: 'rest-assured', version: '4.5.1'
-
-  smokeTestImplementation group: 'org.apiguardian', name: 'apiguardian-api', version: '1.1.2'
-  smokeTestImplementation group: 'io.rest-assured', name: 'rest-assured', version: '4.5.1'
+  smokeTestImplementation 'io.rest-assured:rest-assured'
 
   integrationTestImplementation sourceSets.main.runtimeClasspath
   integrationTestImplementation sourceSets.test.runtimeClasspath
 
   functionalTestImplementation sourceSets.main.runtimeClasspath
+  functionalTestImplementation sourceSets.test.runtimeClasspath
 
   smokeTestImplementation sourceSets.main.runtimeClasspath
+  smokeTestImplementation sourceSets.test.runtimeClasspath
 }
 
 mainClassName = 'uk.gov.hmcts.reform.iahomeofficemockapi.MockApiApplication'

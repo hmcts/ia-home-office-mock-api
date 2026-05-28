@@ -1,7 +1,7 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.handlers;
 
 import com.fasterxml.jackson.databind.JsonMappingException;
-import javax.validation.ConstraintViolationException;
+import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MissingRequestHeaderException;
 import org.springframework.web.bind.annotation.ExceptionHandler;

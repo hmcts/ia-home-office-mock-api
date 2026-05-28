@@ -1,20 +1,12 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
-import java.net.URI;
-import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
-import org.springframework.lang.Nullable;
-import org.openapitools.jackson.nullable.JsonNullable;
-import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.annotation.Generated;
+import org.springframework.lang.Nullable;
 
-
-import java.util.*;
-import javax.annotation.Generated;
+import java.util.Objects;
 
 /**
  * Type of reason for claim on application. **Note:** may not be available for any cases
@@ -22,7 +14,7 @@ import javax.annotation.Generated;
 
 @Schema(name = "SearchResponse_status_inner_applicationStatus_claimReasonType", description = "Type of reason for claim on application. **Note:** may not be available for any cases")
 @JsonTypeName("SearchResponse_status_inner_applicationStatus_claimReasonType")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-04-27T09:30:21.003363+01:00[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-05-28T11:19:43.880285+01:00[Europe/London]", comments = "Generator version: 7.20.0")
 public class SearchResponseStatusInnerApplicationStatusClaimReasonType {
 
   private @Nullable String code;
@@ -38,7 +30,7 @@ public class SearchResponseStatusInnerApplicationStatusClaimReasonType {
    * Code for the claim reason type
    * @return code
    */
-  
+
   @Schema(name = "code", example = "HUMANRIGHTS", description = "Code for the claim reason type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("code")
   public @Nullable String getCode() {
@@ -58,7 +50,7 @@ public class SearchResponseStatusInnerApplicationStatusClaimReasonType {
    * Description of the claim reason type
    * @return description
    */
-  
+
   @Schema(name = "description", example = "Human Rights", description = "Description of the claim reason type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("description")
   public @Nullable String getDescription() {

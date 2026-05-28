@@ -1,33 +1,17 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
-import java.net.URI;
-import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
-import java.time.OffsetDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.annotation.Generated;
+import jakarta.validation.Valid;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.Nullable;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchResponseStatusInnerApplicationStatusApplicationType;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchResponseStatusInnerApplicationStatusClaimReasonType;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchResponseStatusInnerApplicationStatusDecisionCommunication;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchResponseStatusInnerApplicationStatusDecisionType;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchResponseStatusInnerApplicationStatusMetadataInner;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchResponseStatusInnerApplicationStatusRejectionReasonsInner;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchResponseStatusInnerApplicationStatusRoleSubType;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchResponseStatusInnerApplicationStatusRoleType;
-import org.openapitools.jackson.nullable.JsonNullable;
+
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
-import io.swagger.v3.oas.annotations.media.Schema;
-
-
-import java.util.*;
-import javax.annotation.Generated;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * Current status of the individual&#39;s application
@@ -35,7 +19,7 @@ import javax.annotation.Generated;
 
 @Schema(name = "SearchResponse_status_inner_applicationStatus", description = "Current status of the individual's application")
 @JsonTypeName("SearchResponse_status_inner_applicationStatus")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-04-27T09:30:21.003363+01:00[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-05-28T11:19:43.880285+01:00[Europe/London]", comments = "Generator version: 7.20.0")
 public class SearchResponseStatusInnerApplicationStatus {
 
   private @Nullable String documentReference;
@@ -70,7 +54,7 @@ public class SearchResponseStatusInnerApplicationStatus {
    * The UAN or Case ID (CID) passed to the Home Office in the original request. (Allows for the UAN/nn value - nn denoting an individual within a group UAN - to be returned to HMCTS, should this value be available.)
    * @return documentReference
    */
-  
+
   @Schema(name = "documentReference", example = "1234-1234-5678-5678/00", description = "The UAN or Case ID (CID) passed to the Home Office in the original request. (Allows for the UAN/nn value - nn denoting an individual within a group UAN - to be returned to HMCTS, should this value be available.)", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("documentReference")
   public @Nullable String getDocumentReference() {
@@ -90,7 +74,7 @@ public class SearchResponseStatusInnerApplicationStatus {
    * Get roleType
    * @return roleType
    */
-  @Valid 
+  @Valid
   @Schema(name = "roleType", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("roleType")
   public @Nullable SearchResponseStatusInnerApplicationStatusRoleType getRoleType() {
@@ -110,7 +94,7 @@ public class SearchResponseStatusInnerApplicationStatus {
    * Get roleSubType
    * @return roleSubType
    */
-  @Valid 
+  @Valid
   @Schema(name = "roleSubType", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("roleSubType")
   public @Nullable SearchResponseStatusInnerApplicationStatusRoleSubType getRoleSubType() {
@@ -130,7 +114,7 @@ public class SearchResponseStatusInnerApplicationStatus {
    * Get applicationType
    * @return applicationType
    */
-  @Valid 
+  @Valid
   @Schema(name = "applicationType", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("applicationType")
   public @Nullable SearchResponseStatusInnerApplicationStatusApplicationType getApplicationType() {
@@ -150,7 +134,7 @@ public class SearchResponseStatusInnerApplicationStatus {
    * Get claimReasonType
    * @return claimReasonType
    */
-  @Valid 
+  @Valid
   @Schema(name = "claimReasonType", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("claimReasonType")
   public @Nullable SearchResponseStatusInnerApplicationStatusClaimReasonType getClaimReasonType() {
@@ -170,7 +154,7 @@ public class SearchResponseStatusInnerApplicationStatus {
    * Get decisionType
    * @return decisionType
    */
-  @Valid 
+  @Valid
   @Schema(name = "decisionType", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("decisionType")
   public @Nullable SearchResponseStatusInnerApplicationStatusDecisionType getDecisionType() {
@@ -190,7 +174,7 @@ public class SearchResponseStatusInnerApplicationStatus {
    * Date (and time, if available) of decision made on the application, in the standard format yyyy-mm-dd (with the HH:mm:ss if the time is available - this won't be displayed if it isn't). All dates/times are assumed to be in UTC
    * @return decisionDate
    */
-  @Valid 
+  @Valid
   @Schema(name = "decisionDate", example = "2017-07-21T17:32:28Z", description = "Date (and time, if available) of decision made on the application, in the standard format yyyy-mm-dd (with the HH:mm:ss if the time is available - this won't be displayed if it isn't). All dates/times are assumed to be in UTC", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("decisionDate")
   public @Nullable OffsetDateTime getDecisionDate() {
@@ -210,7 +194,7 @@ public class SearchResponseStatusInnerApplicationStatus {
    * Get decisionCommunication
    * @return decisionCommunication
    */
-  @Valid 
+  @Valid
   @Schema(name = "decisionCommunication", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("decisionCommunication")
   public @Nullable SearchResponseStatusInnerApplicationStatusDecisionCommunication getDecisionCommunication() {
@@ -238,7 +222,7 @@ public class SearchResponseStatusInnerApplicationStatus {
    * Rejection reasons
    * @return rejectionReasons
    */
-  @Valid 
+  @Valid
   @Schema(name = "rejectionReasons", example = "[{\"reason\":\"Application not completed properly\"},{\"reason\":\"You caught me on a bad day\"}]", description = "Rejection reasons", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("rejectionReasons")
   public List<@Valid SearchResponseStatusInnerApplicationStatusRejectionReasonsInner> getRejectionReasons() {
@@ -263,10 +247,10 @@ public class SearchResponseStatusInnerApplicationStatus {
   }
 
   /**
-   * Additional attributes (metadata) of the application 
+   * Additional attributes (metadata) of the application
    * @return metadata
    */
-  @Valid 
+  @Valid
   @Schema(name = "metadata", example = "[{\"code\":\"APPEALABLE\",\"valueBoolean\":true},{\"code\":\"DISPATCH_DATE\",\"valueDateTime\":\"2017-07-21T17:32:28Z\"},{\"code\":\"SUSPENSIVE\",\"valueString\":\"Some extra decision data\",\"valueDateTime\":\"2027-07-27T07:17:27Z\",\"valueBoolean\":false}]", description = "Additional attributes (metadata) of the application ", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("metadata")
   public List<@Valid SearchResponseStatusInnerApplicationStatusMetadataInner> getMetadata() {

@@ -1,32 +1,23 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
-import java.net.URI;
-import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import org.springframework.lang.Nullable;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.MessageHeader;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchResponseStatusInner;
-import org.openapitools.jackson.nullable.JsonNullable;
-import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.annotation.Generated;
+import jakarta.validation.Valid;
+import org.springframework.lang.Nullable;
 
-
-import java.util.*;
-import javax.annotation.Generated;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * Response containing details of the application search.
  */
 
 @Schema(name = "SearchResponse", description = "Response containing details of the application search.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-04-27T09:30:21.003363+01:00[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-05-28T11:19:43.880285+01:00[Europe/London]", comments = "Generator version: 7.20.0")
 public class SearchResponse {
 
   private @Nullable MessageHeader messageHeader;
@@ -78,7 +69,7 @@ public class SearchResponse {
    * Get messageHeader
    * @return messageHeader
    */
-  @Valid 
+  @Valid
   @Schema(name = "messageHeader", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("messageHeader")
   public @Nullable MessageHeader getMessageHeader() {
@@ -98,7 +89,7 @@ public class SearchResponse {
    * Identifies the type of message
    * @return messageType
    */
-  
+
   @Schema(name = "messageType", example = "RESPONSE_RIGHT_OF_APPEAL_DETAILS", description = "Identifies the type of message", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("messageType")
   public @Nullable MessageTypeEnum getMessageType() {
@@ -126,7 +117,7 @@ public class SearchResponse {
    * An array of persons and application status; generally, the status will be the same for all persons but this format provides flexibility
    * @return status
    */
-  @Valid 
+  @Valid
   @Schema(name = "status", example = "[{\"person\":{\"givenName\":\"Capability\",\"familyName\":\"Smith\",\"fullName\":\"Capability Smith\",\"gender\":{\"code\":\"M\",\"description\":\"Male\"},\"dayOfBirth\":21,\"monthOfBirth\":4,\"yearOfBirth\":1970,\"nationality\":{\"code\":\"CAN\",\"description\":\"Canada\"}},\"applicationStatus\":{\"documentReference\":\"9876-5432-1111-2222/01\",\"roleType\":{\"code\":\"APPLICANT\",\"description\":\"Applicant\"},\"applicationType\":{\"code\":\"ASYLUM\",\"description\":\"Asylum and Protection\"},\"decisionType\":{\"code\":\"REJECTION\",\"description\":\"Rejected\"},\"decisionDate\":\"2017-07-21T17:32:28Z\",\"decisionCommunication\":{\"type\":\"EMAIL\",\"description\":\"E-mail\",\"sentDate\":\"2017-07-21T17:32:28Z\"},\"rejectionReasons\":[{\"reason\":\"Application not completed properly\"},{\"reason\":\"You caught me on a bad day\"}],\"metadata\":[{\"code\":\"APPEALABLE\",\"valueBoolean\":true},{\"code\":\"DISPATCH_DATE\",\"valueDateTime\":\"2017-07-21T17:32:28Z\"},{\"code\":\"SUSPENSIVE\",\"valueString\":\"Some extra decision data\",\"valueDateTime\":\"2027-07-27T07:17:27Z\",\"valueBoolean\":false}]}},{\"person\":{\"givenName\":\"Aishwarya\",\"familyName\":\"Rai\",\"fullName\":\"Aishwarya Rai\",\"gender\":{\"code\":\"F\",\"description\":\"Female\"},\"dayOfBirth\":1,\"monthOfBirth\":11,\"yearOfBirth\":1973,\"nationality\":{\"code\":\"IND\",\"description\":\"India\"}},\"applicationStatus\":{\"documentReference\":\"9876-5432-1111-2222/02\",\"roleType\":{\"code\":\"DEPENDANT\",\"description\":\"Dependant\"},\"roleSubType\":{\"code\":\"SPOUSE\",\"description\":\"Spouse\"},\"applicationType\":{\"code\":\"ASYLUM\",\"description\":\"Asylum and Protection\"},\"claimReasonType\":{\"code\":\"HUMANRIGHTS\",\"description\":\"Human Rights\"},\"decisionType\":{\"code\":\"REJECTION\",\"description\":\"Rejected\"},\"decisionDate\":\"2018-01-10T09:15:00Z\",\"decisionCommunication\":{\"type\":\"POST\",\"description\":\"Postal\",\"sentDate\":\"2018-01-10T09:15:00Z\",\"dispatchDate\":\"2018-01-11T10:00:00Z\"},\"rejectionReasons\":[{\"reason\":\"Application submitted late\"}],\"metadata\":[{\"code\":\"DISPATCH_DATE\",\"valueDateTime\":\"2018-01-11T10:00:00Z\"},{\"code\":\"SUSPENSIVE\",\"valueBoolean\":false},{\"code\":\"NOTE\",\"valueString\":\"Manual review required\"}]}}]", description = "An array of persons and application status; generally, the status will be the same for all persons but this format provides flexibility", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
   public List<@Valid SearchResponseStatusInner> getStatus() {
