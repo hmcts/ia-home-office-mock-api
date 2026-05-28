@@ -1,10 +1,9 @@
 package org.openapitools.configuration;
 
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.HomeOfficeConsumer;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.convert.converter.Converter;
+import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.HomeOfficeConsumer;
 
 /**
  * This class provides Spring Converter beans for the enum models in the OpenAPI specification.

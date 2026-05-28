@@ -1,34 +1,25 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
-import java.net.URI;
-import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.time.OffsetDateTime;
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.annotation.Generated;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.Nullable;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.Challenge;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.ConsumerRef;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.CourtOutcome;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.Hearing;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.MessageHeader;
-import org.openapitools.jackson.nullable.JsonNullable;
+
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
-import io.swagger.v3.oas.annotations.media.Schema;
-
-
-import java.util.*;
-import javax.annotation.Generated;
+import java.util.Objects;
 
 /**
- * ### Message instructing Home Office about an event, or action to perform.  #### Mandatory items for all messages  messageHeader, messageType, hoReference, and consumerReference  #### Optional items  note  #### Message Types and Mandatory Elements  REQUEST_CHALLENGE_END: endReason, endChallengeDate  REQUEST_EVIDENCE_BUNDLE: challenge, deadlineDate  REQUEST_REVIEW: deadlineDate (a review has its own deadline)  HEARING: hearing  HEARING_BUNDLE_READY: hearing (passing just hmctsHearingRef and hearingType)  COURT_OUTCOME: courtOutcome  PERMISSION_TO_APPEAL: courtType  DEFAULT: No additional mandatory elements; generic item that is not a bundle/review request 
+ * ### Message instructing Home Office about an event, or action to perform.  #### Mandatory items for all messages  messageHeader, messageType, hoReference, and consumerReference  #### Optional items  note  #### Message Types and Mandatory Elements  REQUEST_CHALLENGE_END: endReason, endChallengeDate  REQUEST_EVIDENCE_BUNDLE: challenge, deadlineDate  REQUEST_REVIEW: deadlineDate (a review has its own deadline)  HEARING: hearing  HEARING_BUNDLE_READY: hearing (passing just hmctsHearingRef and hearingType)  COURT_OUTCOME: courtOutcome  PERMISSION_TO_APPEAL: courtType  DEFAULT: No additional mandatory elements; generic item that is not a bundle/review request
  */
 
 @Schema(name = "InstructMessage", description = "### Message instructing Home Office about an event, or action to perform.  #### Mandatory items for all messages  messageHeader, messageType, hoReference, and consumerReference  #### Optional items  note  #### Message Types and Mandatory Elements  REQUEST_CHALLENGE_END: endReason, endChallengeDate  REQUEST_EVIDENCE_BUNDLE: challenge, deadlineDate  REQUEST_REVIEW: deadlineDate (a review has its own deadline)  HEARING: hearing  HEARING_BUNDLE_READY: hearing (passing just hmctsHearingRef and hearingType)  COURT_OUTCOME: courtOutcome  PERMISSION_TO_APPEAL: courtType  DEFAULT: No additional mandatory elements; generic item that is not a bundle/review request ")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-04-27T09:30:21.003363+01:00[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-05-28T11:19:43.880285+01:00[Europe/London]", comments = "Generator version: 7.20.0")
 public class InstructMessage {
 
   private MessageHeader messageHeader;
@@ -38,19 +29,19 @@ public class InstructMessage {
    */
   public enum MessageTypeEnum {
     REQUEST_CHALLENGE_END("REQUEST_CHALLENGE_END"),
-    
+
     REQUEST_EVIDENCE_BUNDLE("REQUEST_EVIDENCE_BUNDLE"),
-    
+
     REQUEST_REVIEW("REQUEST_REVIEW"),
-    
+
     HEARING("HEARING"),
-    
+
     HEARING_BUNDLE_READY("HEARING_BUNDLE_READY"),
-    
+
     COURT_OUTCOME("COURT_OUTCOME"),
-    
+
     PERMISSION_TO_APPEAL("PERMISSION_TO_APPEAL"),
-    
+
     DEFAULT("DEFAULT");
 
     private final String value;
@@ -91,13 +82,13 @@ public class InstructMessage {
    */
   public enum EndReasonEnum {
     STRUCK_OUT("STRUCK_OUT"),
-    
+
     ABANDONED("ABANDONED"),
-    
+
     WITHDRAWN("WITHDRAWN"),
-    
+
     NOT_VALID("NOT_VALID"),
-    
+
     INCORRECT_DETAILS("INCORRECT_DETAILS");
 
     private final String value;
@@ -139,11 +130,11 @@ public class InstructMessage {
    */
   public enum CourtTypeEnum {
     FIRST_TIER("FIRST_TIER"),
-    
+
     UPPER_TRIBUNAL("UPPER_TRIBUNAL"),
-    
+
     COURT_OF_APPEAL("COURT_OF_APPEAL"),
-    
+
     SUPREME_COURT("SUPREME_COURT");
 
     private final String value;
@@ -206,7 +197,7 @@ public class InstructMessage {
    * Get messageHeader
    * @return messageHeader
    */
-  @NotNull @Valid 
+  @NotNull @Valid
   @Schema(name = "messageHeader", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("messageHeader")
   public MessageHeader getMessageHeader() {
@@ -226,7 +217,7 @@ public class InstructMessage {
    * Message type
    * @return messageType
    */
-  @NotNull 
+  @NotNull
   @Schema(name = "messageType", example = "REQUEST_CHALLENGE_END", description = "Message type", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("messageType")
   public MessageTypeEnum getMessageType() {
@@ -246,7 +237,7 @@ public class InstructMessage {
    * Home Office reference (UAN or CID case ID)
    * @return hoReference
    */
-  @NotNull 
+  @NotNull
   @Schema(name = "hoReference", example = "nnnn-nnnn-nnnn-nnnn (UAN) or CID (case ID, e.g. 001234567)", description = "Home Office reference (UAN or CID case ID)", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("hoReference")
   public String getHoReference() {
@@ -266,7 +257,7 @@ public class InstructMessage {
    * Get consumerReference
    * @return consumerReference
    */
-  @NotNull @Valid 
+  @NotNull @Valid
   @Schema(name = "consumerReference", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("consumerReference")
   public ConsumerRef getConsumerReference() {
@@ -286,7 +277,7 @@ public class InstructMessage {
    * Code indicating reason for ending a challenge. *Mandatory if messageType is REQUEST_CHALLENGE_END*
    * @return endReason
    */
-  
+
   @Schema(name = "endReason", example = "STRUCK_OUT", description = "Code indicating reason for ending a challenge. *Mandatory if messageType is REQUEST_CHALLENGE_END*", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("endReason")
   public @Nullable EndReasonEnum getEndReason() {
@@ -306,7 +297,7 @@ public class InstructMessage {
    * Date (and time, if available) the challenge was ended, in the standard format yyyy-mm-dd (with HH:mm:ss if the time is available, otherwise not). Date/time is assumed to be in UTC. *Mandatory if messageType is REQUEST_CHALLENGE_END*
    * @return endChallengeDate
    */
-  @Valid 
+  @Valid
   @Schema(name = "endChallengeDate", example = "2017-07-21T17:32:28Z", description = "Date (and time, if available) the challenge was ended, in the standard format yyyy-mm-dd (with HH:mm:ss if the time is available, otherwise not). Date/time is assumed to be in UTC. *Mandatory if messageType is REQUEST_CHALLENGE_END*", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("endChallengeDate")
   public @Nullable OffsetDateTime getEndChallengeDate() {
@@ -326,7 +317,7 @@ public class InstructMessage {
    * Deadline date (and time, if available) for the appeal, in the standard format yyyy-mm-dd (with HH:mm:ss if the time is available, otherwise not). Date/time is assumed to be in UTC
    * @return deadlineDate
    */
-  @Pattern(regexp = "^(?:\\d{4}-\\d{2}-\\d{2}|\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?Z)$") 
+  @Pattern(regexp = "^(?:\\d{4}-\\d{2}-\\d{2}|\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?Z)$")
   @Schema(name = "deadlineDate", example = "2017-07-21T17:32:28Z", description = "Deadline date (and time, if available) for the appeal, in the standard format yyyy-mm-dd (with HH:mm:ss if the time is available, otherwise not). Date/time is assumed to be in UTC", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("deadlineDate")
   public @Nullable String getDeadlineDate() {
@@ -346,7 +337,7 @@ public class InstructMessage {
    * Court type. *Mandatory if messageType is PERMISSION_TO_APPEAL*
    * @return courtType
    */
-  
+
   @Schema(name = "courtType", example = "FIRST_TIER", description = "Court type. *Mandatory if messageType is PERMISSION_TO_APPEAL*", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("courtType")
   public @Nullable CourtTypeEnum getCourtType() {
@@ -366,7 +357,7 @@ public class InstructMessage {
    * Get challenge
    * @return challenge
    */
-  @Valid 
+  @Valid
   @Schema(name = "challenge", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("challenge")
   public @Nullable Challenge getChallenge() {
@@ -386,7 +377,7 @@ public class InstructMessage {
    * Get hearing
    * @return hearing
    */
-  @Valid 
+  @Valid
   @Schema(name = "hearing", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("hearing")
   public @Nullable Hearing getHearing() {
@@ -406,7 +397,7 @@ public class InstructMessage {
    * Get courtOutcome
    * @return courtOutcome
    */
-  @Valid 
+  @Valid
   @Schema(name = "courtOutcome", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("courtOutcome")
   public @Nullable CourtOutcome getCourtOutcome() {
@@ -426,7 +417,7 @@ public class InstructMessage {
    * Optional note. Can be used for indicating notification type and, possibly, Home Office actions required
    * @return note
    */
-  
+
   @Schema(name = "note", example = "Additional notes from HMCTS", description = "Optional note. Can be used for indicating notification type and, possibly, Home Office actions required", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("note")
   public @Nullable String getNote() {

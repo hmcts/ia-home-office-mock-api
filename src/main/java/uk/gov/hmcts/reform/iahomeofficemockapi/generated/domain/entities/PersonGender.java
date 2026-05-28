@@ -1,27 +1,19 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
-import java.net.URI;
-import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
-import org.springframework.lang.Nullable;
-import org.openapitools.jackson.nullable.JsonNullable;
-import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.annotation.Generated;
+import org.springframework.lang.Nullable;
 
-
-import java.util.*;
-import javax.annotation.Generated;
+import java.util.Objects;
 
 /**
  * PersonGender
  */
 
 @JsonTypeName("Person_gender")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-04-27T09:30:21.003363+01:00[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-05-28T11:19:43.880285+01:00[Europe/London]", comments = "Generator version: 7.20.0")
 public class PersonGender {
 
   private @Nullable String code;
@@ -37,7 +29,7 @@ public class PersonGender {
    * Letter code for the gender
    * @return code
    */
-  
+
   @Schema(name = "code", example = "M (denoting male)", description = "Letter code for the gender", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("code")
   public @Nullable String getCode() {
@@ -57,7 +49,7 @@ public class PersonGender {
    * Gender description
    * @return description
    */
-  
+
   @Schema(name = "description", example = "Male", description = "Gender description", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("description")
   public @Nullable String getDescription() {

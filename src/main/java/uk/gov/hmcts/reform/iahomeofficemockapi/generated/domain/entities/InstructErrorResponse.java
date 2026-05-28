@@ -1,27 +1,18 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
-import java.net.URI;
-import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import org.springframework.lang.Nullable;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.ErrorResponse;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.MessageHeader;
-import org.openapitools.jackson.nullable.JsonNullable;
-import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.annotation.Generated;
+import jakarta.validation.Valid;
+import org.springframework.lang.Nullable;
 
-
-import java.util.*;
-import javax.annotation.Generated;
+import java.util.Objects;
 
 /**
  * InstructErrorResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-04-27T09:30:21.003363+01:00[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-05-28T11:19:43.880285+01:00[Europe/London]", comments = "Generator version: 7.20.0")
 public class InstructErrorResponse {
 
   private @Nullable MessageHeader messageHeader;
@@ -37,7 +28,7 @@ public class InstructErrorResponse {
    * Get messageHeader
    * @return messageHeader
    */
-  @Valid 
+  @Valid
   @Schema(name = "messageHeader", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("messageHeader")
   public @Nullable MessageHeader getMessageHeader() {
@@ -57,7 +48,7 @@ public class InstructErrorResponse {
    * Get errorDetail
    * @return errorDetail
    */
-  @Valid 
+  @Valid
   @Schema(name = "errorDetail", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("errorDetail")
   public @Nullable ErrorResponse getErrorDetail() {

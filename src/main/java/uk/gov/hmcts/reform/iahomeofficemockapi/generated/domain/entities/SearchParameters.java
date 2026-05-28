@@ -1,31 +1,23 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
-import java.net.URI;
-import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import org.springframework.lang.Nullable;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.MessageHeader;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchParametersSearchParamsInner;
-import org.openapitools.jackson.nullable.JsonNullable;
-import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.annotation.Generated;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import org.springframework.lang.Nullable;
 
-
-import java.util.*;
-import javax.annotation.Generated;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * Parameters passed in to enable searching for applications. Currently supports only one type/value pair but the interface is designed to support multiple in future.  As a side effect this service will send a notification to the Event Publisher to inform them that a request for a possible appeal has been made.
  */
 
 @Schema(name = "SearchParameters", description = "Parameters passed in to enable searching for applications. Currently supports only one type/value pair but the interface is designed to support multiple in future.  As a side effect this service will send a notification to the Event Publisher to inform them that a request for a possible appeal has been made.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-04-27T09:30:21.003363+01:00[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-05-28T11:19:43.880285+01:00[Europe/London]", comments = "Generator version: 7.20.0")
 public class SearchParameters {
 
   private MessageHeader messageHeader;
@@ -54,7 +46,7 @@ public class SearchParameters {
    * Get messageHeader
    * @return messageHeader
    */
-  @NotNull @Valid 
+  @NotNull @Valid
   @Schema(name = "messageHeader", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("messageHeader")
   public MessageHeader getMessageHeader() {
@@ -82,7 +74,7 @@ public class SearchParameters {
    * Get searchParams
    * @return searchParams
    */
-  @NotNull @Valid @Size(min = 1) 
+  @NotNull @Valid @Size(min = 1)
   @Schema(name = "searchParams", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("searchParams")
   public List<@Valid SearchParametersSearchParamsInner> getSearchParams() {

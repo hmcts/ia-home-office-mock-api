@@ -1,25 +1,17 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
-import java.net.URI;
-import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import org.springframework.lang.Nullable;
-import org.openapitools.jackson.nullable.JsonNullable;
-import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.annotation.Generated;
+import org.springframework.lang.Nullable;
 
-
-import java.util.*;
-import javax.annotation.Generated;
+import java.util.Objects;
 
 /**
  * TokenResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-04-27T09:30:21.003363+01:00[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-05-28T11:19:43.880285+01:00[Europe/London]", comments = "Generator version: 7.20.0")
 public class TokenResponse {
 
   private @Nullable String accessToken;
@@ -39,7 +31,7 @@ public class TokenResponse {
    * Get accessToken
    * @return accessToken
    */
-  
+
   @Schema(name = "access_token", example = "some_access_token", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("access_token")
   public @Nullable String getAccessToken() {
@@ -59,7 +51,7 @@ public class TokenResponse {
    * Get expiresIn
    * @return expiresIn
    */
-  
+
   @Schema(name = "expires_in", example = "300", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("expires_in")
   public @Nullable Integer getExpiresIn() {
@@ -79,7 +71,7 @@ public class TokenResponse {
    * Get tokenType
    * @return tokenType
    */
-  
+
   @Schema(name = "token_type", example = "bearer", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("token_type")
   public @Nullable String getTokenType() {
@@ -99,7 +91,7 @@ public class TokenResponse {
    * Get scope
    * @return scope
    */
-  
+
   @Schema(name = "scope", example = "email profile", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("scope")
   public @Nullable String getScope() {

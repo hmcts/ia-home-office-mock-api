@@ -1,29 +1,22 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
-import java.net.URI;
-import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import java.time.OffsetDateTime;
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.annotation.Generated;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.Nullable;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.Consumer;
-import org.openapitools.jackson.nullable.JsonNullable;
+
 import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
-import io.swagger.v3.oas.annotations.media.Schema;
-
-
-import java.util.*;
-import javax.annotation.Generated;
+import java.util.Objects;
 
 /**
  * Message parameters (not business oriented).
  */
 
 @Schema(name = "MessageHeader", description = "Message parameters (not business oriented).")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-04-27T09:30:21.003363+01:00[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-05-28T11:19:43.880285+01:00[Europe/London]", comments = "Generator version: 7.20.0")
 public class MessageHeader {
 
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
@@ -55,7 +48,7 @@ public class MessageHeader {
    * UTC timestamp for debugging purposes
    * @return eventDateTime
    */
-  @NotNull @Valid 
+  @NotNull @Valid
   @Schema(name = "eventDateTime", example = "2017-07-21T17:32:28Z", description = "UTC timestamp for debugging purposes", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("eventDateTime")
   public OffsetDateTime getEventDateTime() {
@@ -75,7 +68,7 @@ public class MessageHeader {
    * ID allowing correlation between service consumer and API log files. Expected to be unique, for example, a UUID
    * @return correlationId
    */
-  @NotNull 
+  @NotNull
   @Schema(name = "correlationId", example = "ABC2344BCED2234EA", description = "ID allowing correlation between service consumer and API log files. Expected to be unique, for example, a UUID", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("correlationId")
   public String getCorrelationId() {
@@ -95,7 +88,7 @@ public class MessageHeader {
    * Get consumer
    * @return consumer
    */
-  @NotNull @Valid 
+  @NotNull @Valid
   @Schema(name = "consumer", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("consumer")
   public Consumer getConsumer() {

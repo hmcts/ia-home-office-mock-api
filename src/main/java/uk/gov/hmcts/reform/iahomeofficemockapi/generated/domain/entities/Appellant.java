@@ -1,25 +1,19 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
-import java.net.URI;
-import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import org.springframework.lang.Nullable;
-import org.openapitools.jackson.nullable.JsonNullable;
-import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.annotation.Generated;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import org.springframework.lang.Nullable;
 
-
-import java.util.*;
-import javax.annotation.Generated;
+import java.util.Objects;
 
 /**
  * Appellant
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-04-27T09:30:21.003363+01:00[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-05-28T11:19:43.880285+01:00[Europe/London]", comments = "Generator version: 7.20.0")
 public class Appellant {
 
   private @Nullable String pp;
@@ -66,7 +60,7 @@ public class Appellant {
    * Get pp
    * @return pp
    */
-  @Pattern(regexp = "^[0-9]{2}$") 
+  @Pattern(regexp = "^[0-9]{2}$")
   @Schema(name = "pp", example = "01", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("pp")
   public @Nullable String getPp() {
@@ -86,7 +80,7 @@ public class Appellant {
    * Get familyName
    * @return familyName
    */
-  @NotNull 
+  @NotNull
   @Schema(name = "familyName", example = "Wimp", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("familyName")
   public String getFamilyName() {
@@ -106,7 +100,7 @@ public class Appellant {
    * Get givenNames
    * @return givenNames
    */
-  @NotNull 
+  @NotNull
   @Schema(name = "givenNames", example = "Horace", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("givenNames")
   public String getGivenNames() {
@@ -126,7 +120,7 @@ public class Appellant {
    * Get dateOfBirth
    * @return dateOfBirth
    */
-  @NotNull @Pattern(regexp = "^(19[0-9]{2}|[2-9][0-9]{3})-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$") 
+  @NotNull @Pattern(regexp = "^(19[0-9]{2}|[2-9][0-9]{3})-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$")
   @Schema(name = "dateOfBirth", example = "2017-07-21", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("dateOfBirth")
   public String getDateOfBirth() {
@@ -146,7 +140,7 @@ public class Appellant {
    * Get nationality
    * @return nationality
    */
-  @NotNull @Pattern(regexp = "^[A-Z]{3}$") 
+  @NotNull @Pattern(regexp = "^[A-Z]{3}$")
   @Schema(name = "nationality", example = "GER", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("nationality")
   public String getNationality() {
@@ -166,7 +160,7 @@ public class Appellant {
    * Get roa
    * @return roa
    */
-  
+
   @Schema(name = "roa", example = "true", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("roa")
   public @Nullable Boolean getRoa() {
@@ -186,7 +180,7 @@ public class Appellant {
    * Get asylumSupport
    * @return asylumSupport
    */
-  
+
   @Schema(name = "asylumSupport", example = "false", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("asylumSupport")
   public @Nullable Boolean getAsylumSupport() {
@@ -206,7 +200,7 @@ public class Appellant {
    * Get hoFeeWaiver
    * @return hoFeeWaiver
    */
-  
+
   @Schema(name = "hoFeeWaiver", example = "true", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("hoFeeWaiver")
   public @Nullable Boolean getHoFeeWaiver() {
@@ -226,7 +220,7 @@ public class Appellant {
    * Get language
    * @return language
    */
-  @NotNull @Pattern(regexp = "^[a-z]{3}$") 
+  @NotNull @Pattern(regexp = "^[a-z]{3}$")
   @Schema(name = "language", example = "eng", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("language")
   public String getLanguage() {
@@ -246,7 +240,7 @@ public class Appellant {
    * Get interpreterNeeded
    * @return interpreterNeeded
    */
-  
+
   @Schema(name = "interpreterNeeded", example = "false", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("interpreterNeeded")
   public @Nullable Boolean getInterpreterNeeded() {

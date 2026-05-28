@@ -1,28 +1,22 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
-import java.net.URI;
-import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
-import org.springframework.lang.Nullable;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.Consumer;
-import org.openapitools.jackson.nullable.JsonNullable;
-import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.annotation.Generated;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import org.springframework.lang.Nullable;
 
-
-import java.util.*;
-import javax.annotation.Generated;
+import java.util.Objects;
 
 /**
  * Consumer reference; reference provided to Home Office, to be used in subsequent calls to update the same item.
  */
 
 @Schema(name = "ConsumerRef", description = "Consumer reference; reference provided to Home Office, to be used in subsequent calls to update the same item.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-04-27T09:30:21.003363+01:00[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-05-28T11:19:43.880285+01:00[Europe/London]", comments = "Generator version: 7.20.0")
 public class ConsumerRef {
 
   private Consumer consumer;
@@ -88,7 +82,7 @@ public class ConsumerRef {
    * Get consumer
    * @return consumer
    */
-  @NotNull @Valid 
+  @NotNull @Valid
   @Schema(name = "consumer", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("consumer")
   public Consumer getConsumer() {
@@ -108,7 +102,7 @@ public class ConsumerRef {
    * Short code for the reference
    * @return code
    */
-  @NotNull 
+  @NotNull
   @Schema(name = "code", example = "HMCTS_CHALLENGE_REF", description = "Short code for the reference", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("code")
   public CodeEnum getCode() {
@@ -128,7 +122,7 @@ public class ConsumerRef {
    * Get description
    * @return description
    */
-  
+
   @Schema(name = "description", example = "HMCTS challenge reference", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("description")
   public @Nullable String getDescription() {
@@ -148,7 +142,7 @@ public class ConsumerRef {
    * Value for the reference
    * @return value
    */
-  @NotNull 
+  @NotNull
   @Schema(name = "value", example = "xxxyyyynnn-nnn", description = "Value for the reference", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("value")
   public String getValue() {

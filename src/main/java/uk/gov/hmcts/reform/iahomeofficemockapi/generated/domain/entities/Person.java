@@ -1,28 +1,19 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
-import java.net.URI;
-import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import org.springframework.lang.Nullable;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.PersonGender;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.PersonNationality;
-import org.openapitools.jackson.nullable.JsonNullable;
-import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.annotation.Generated;
+import jakarta.validation.Valid;
+import org.springframework.lang.Nullable;
 
-
-import java.util.*;
-import javax.annotation.Generated;
+import java.util.Objects;
 
 /**
  * An individual fufilling a role on the application.
  */
 
 @Schema(name = "Person", description = "An individual fufilling a role on the application.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-04-27T09:30:21.003363+01:00[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-05-28T11:19:43.880285+01:00[Europe/London]", comments = "Generator version: 7.20.0")
 public class Person {
 
   private @Nullable String givenName;
@@ -50,7 +41,7 @@ public class Person {
    * Person's given names. Assumed to be a concatenated list of names
    * @return givenName
    */
-  
+
   @Schema(name = "givenName", example = "Capability", description = "Person's given names. Assumed to be a concatenated list of names", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("givenName")
   public @Nullable String getGivenName() {
@@ -70,7 +61,7 @@ public class Person {
    * Person's family names. Assumed to be a concatenated list of names
    * @return familyName
    */
-  
+
   @Schema(name = "familyName", example = "Smith", description = "Person's family names. Assumed to be a concatenated list of names", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("familyName")
   public @Nullable String getFamilyName() {
@@ -90,7 +81,7 @@ public class Person {
    * Person's full name
    * @return fullName
    */
-  
+
   @Schema(name = "fullName", example = "Capability Smith", description = "Person's full name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("fullName")
   public @Nullable String getFullName() {
@@ -110,7 +101,7 @@ public class Person {
    * Get gender
    * @return gender
    */
-  @Valid 
+  @Valid
   @Schema(name = "gender", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("gender")
   public @Nullable PersonGender getGender() {
@@ -130,7 +121,7 @@ public class Person {
    * Day of month the person was born on, from 1-31. No leading zeroes
    * @return dayOfBirth
    */
-  
+
   @Schema(name = "dayOfBirth", example = "21", description = "Day of month the person was born on, from 1-31. No leading zeroes", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("dayOfBirth")
   public @Nullable Integer getDayOfBirth() {
@@ -150,7 +141,7 @@ public class Person {
    * Month of year (Gregorian calendar) the person was born in, from 1-12. No leading zeroes
    * @return monthOfBirth
    */
-  
+
   @Schema(name = "monthOfBirth", description = "Month of year (Gregorian calendar) the person was born in, from 1-12. No leading zeroes", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("monthOfBirth")
   public @Nullable Integer getMonthOfBirth() {
@@ -170,7 +161,7 @@ public class Person {
    * Year the person was born in (4 digits)
    * @return yearOfBirth
    */
-  
+
   @Schema(name = "yearOfBirth", example = "1970", description = "Year the person was born in (4 digits)", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("yearOfBirth")
   public @Nullable Integer getYearOfBirth() {
@@ -190,7 +181,7 @@ public class Person {
    * Get nationality
    * @return nationality
    */
-  @Valid 
+  @Valid
   @Schema(name = "nationality", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("nationality")
   public @Nullable PersonNationality getNationality() {

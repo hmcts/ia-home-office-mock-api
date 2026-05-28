@@ -1,29 +1,24 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
-import java.net.URI;
-import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.time.LocalDate;
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.annotation.Generated;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.Nullable;
-import org.openapitools.jackson.nullable.JsonNullable;
-import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
-import io.swagger.v3.oas.annotations.media.Schema;
 
-
-import java.util.*;
-import javax.annotation.Generated;
+import java.time.LocalDate;
+import java.util.Objects;
 
 /**
  * Details of a hearing.
  */
 
 @Schema(name = "Hearing", description = "Details of a hearing.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-04-27T09:30:21.003363+01:00[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-05-28T11:19:43.880285+01:00[Europe/London]", comments = "Generator version: 7.20.0")
 public class Hearing {
 
   private String hmctsHearingRef;
@@ -40,7 +35,7 @@ public class Hearing {
    */
   public enum HearingTypeEnum {
     PAPER("PAPER"),
-    
+
     ORAL("ORAL");
 
     private final String value;
@@ -97,7 +92,7 @@ public class Hearing {
    * HMCTS reference for a hearing. (Allows for multiple hearings though usually it's just one.)
    * @return hmctsHearingRef
    */
-  @NotNull 
+  @NotNull
   @Schema(name = "hmctsHearingRef", description = "HMCTS reference for a hearing. (Allows for multiple hearings though usually it's just one.)", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("hmctsHearingRef")
   public String getHmctsHearingRef() {
@@ -117,7 +112,7 @@ public class Hearing {
    * Venue where the hearing is to take place
    * @return hearingLocation
    */
-  
+
   @Schema(name = "hearingLocation", example = "Royal Courts of Justice, London", description = "Venue where the hearing is to take place", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("hearingLocation")
   public @Nullable String getHearingLocation() {
@@ -137,7 +132,7 @@ public class Hearing {
    * Date of the hearing, in the standard format yyyy-mm-dd
    * @return hearingDate
    */
-  @Valid 
+  @Valid
   @Schema(name = "hearingDate", example = "2017-07-21", description = "Date of the hearing, in the standard format yyyy-mm-dd", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("hearingDate")
   public @Nullable LocalDate getHearingDate() {
@@ -157,7 +152,7 @@ public class Hearing {
    * Time of the hearing, in the standard format HH:mm:ss. Time is assumed to be in UTC
    * @return hearingTime
    */
-  
+
   @Schema(name = "hearingTime", example = "10:30:00Z", description = "Time of the hearing, in the standard format HH:mm:ss. Time is assumed to be in UTC", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("hearingTime")
   public @Nullable String getHearingTime() {
@@ -177,7 +172,7 @@ public class Hearing {
    * Type of hearing
    * @return hearingType
    */
-  @NotNull 
+  @NotNull
   @Schema(name = "hearingType", example = "ORAL", description = "Type of hearing", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("hearingType")
   public HearingTypeEnum getHearingType() {
@@ -197,7 +192,7 @@ public class Hearing {
    * Number of witnesses to be called to provide evidence at the hearing
    * @return witnessQty
    */
-  
+
   @Schema(name = "witnessQty", description = "Number of witnesses to be called to provide evidence at the hearing", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("witnessQty")
   public @Nullable Integer getWitnessQty() {
@@ -217,7 +212,7 @@ public class Hearing {
    * Names of witnesses. Recorded as notes in HMCTS, so cannot be a list of names
    * @return witnessNames
    */
-  
+
   @Schema(name = "witnessNames", example = "John Smyth, Jennie Walker", description = "Names of witnesses. Recorded as notes in HMCTS, so cannot be a list of names", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("witnessNames")
   public @Nullable String getWitnessNames() {

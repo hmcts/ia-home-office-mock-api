@@ -1,30 +1,23 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
-import java.net.URI;
-import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import org.springframework.lang.Nullable;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.Appellant;
-import org.openapitools.jackson.nullable.JsonNullable;
-import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.annotation.Generated;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import org.springframework.lang.Nullable;
 
-
-import java.util.*;
-import javax.annotation.Generated;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * Details of the application, including appellants&#39; biographic information.
  */
 
 @Schema(name = "Application", description = "Details of the application, including appellants' biographic information.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-04-27T09:30:21.003363+01:00[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-05-28T11:19:43.880285+01:00[Europe/London]", comments = "Generator version: 7.20.0")
 public class Application {
 
   private @Nullable String uan;
@@ -61,7 +54,7 @@ public class Application {
    * Get uan
    * @return uan
    */
-  @Pattern(regexp = "^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}$") 
+  @Pattern(regexp = "^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}$")
   @Schema(name = "uan", example = "1342-5786-9120-3564", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("uan")
   public @Nullable String getUan() {
@@ -81,7 +74,7 @@ public class Application {
    * Get hoClaimDate
    * @return hoClaimDate
    */
-  @NotNull @Pattern(regexp = "^(19[0-9]{2}|[2-9][0-9]{3})-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$") 
+  @NotNull @Pattern(regexp = "^(19[0-9]{2}|[2-9][0-9]{3})-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$")
   @Schema(name = "hoClaimDate", example = "2017-07-18", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("hoClaimDate")
   public String getHoClaimDate() {
@@ -101,7 +94,7 @@ public class Application {
    * Get hoDecisionDate
    * @return hoDecisionDate
    */
-  @NotNull @Pattern(regexp = "^(19[0-9]{2}|[2-9][0-9]{3})-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$") 
+  @NotNull @Pattern(regexp = "^(19[0-9]{2}|[2-9][0-9]{3})-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$")
   @Schema(name = "hoDecisionDate", example = "2017-07-19", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("hoDecisionDate")
   public String getHoDecisionDate() {
@@ -121,7 +114,7 @@ public class Application {
    * Get hoDecisionLetterDate
    * @return hoDecisionLetterDate
    */
-  @NotNull @Pattern(regexp = "^(19[0-9]{2}|[2-9][0-9]{3})-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$") 
+  @NotNull @Pattern(regexp = "^(19[0-9]{2}|[2-9][0-9]{3})-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$")
   @Schema(name = "hoDecisionLetterDate", example = "2017-07-20", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("hoDecisionLetterDate")
   public String getHoDecisionLetterDate() {
@@ -149,7 +142,7 @@ public class Application {
    * Get appellants
    * @return appellants
    */
-  @NotNull @Valid 
+  @NotNull @Valid
   @Schema(name = "appellants", example = "[{\"pp\":\"01\",\"familyName\":\"Bachchan\",\"givenNames\":\"Abhishek Amitabh\",\"dateOfBirth\":\"1976-02-05\",\"nationality\":\"IND\",\"roa\":true,\"asylumSupport\":false,\"hoFeeWaiver\":true,\"language\":\"hin\",\"interpreterNeeded\":false},{\"pp\":\"02\",\"familyName\":\"Rai\",\"givenNames\":\"Aishwarya\",\"dateOfBirth\":\"1973-11-01\",\"nationality\":\"IND\",\"roa\":false,\"asylumSupport\":true,\"hoFeeWaiver\":false,\"language\":\"hin\",\"interpreterNeeded\":true}]", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("appellants")
   public List<@Valid Appellant> getAppellants() {

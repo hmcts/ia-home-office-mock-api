@@ -1,31 +1,26 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
-import java.net.URI;
-import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import org.springframework.lang.Nullable;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.Person;
-import org.openapitools.jackson.nullable.JsonNullable;
-import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.annotation.Generated;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
+import org.springframework.lang.Nullable;
 
-
-import java.util.*;
-import javax.annotation.Generated;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * Details of a challenge (initially, all appeal related).
  */
 
 @Schema(name = "Challenge", description = "Details of a challenge (initially, all appeal related).")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-04-27T09:30:21.003363+01:00[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-05-28T11:19:43.880285+01:00[Europe/London]", comments = "Generator version: 7.20.0")
 public class Challenge {
 
   /**
@@ -33,13 +28,13 @@ public class Challenge {
    */
   public enum AppealTypeEnum {
     PROTECTION("PROTECTION"),
-    
+
     REVOCATION_OF_PROTECTION("REVOCATION_OF_PROTECTION"),
-    
+
     DEPRIVATION_OF_CITIZENSHIP("DEPRIVATION_OF_CITIZENSHIP"),
-    
+
     HUMAN_RIGHTS("HUMAN_RIGHTS"),
-    
+
     EEA("EEA");
 
     private final String value;
@@ -134,7 +129,7 @@ public class Challenge {
    * The type of appeal
    * @return appealType
    */
-  @NotNull 
+  @NotNull
   @Schema(name = "appealType", example = "DEPRIVATION_OF_CITIZENSHIP", description = "The type of appeal", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("appealType")
   public AppealTypeEnum getAppealType() {
@@ -154,7 +149,7 @@ public class Challenge {
    * The type of appeal tier
    * @return appealTierType
    */
-  @NotNull 
+  @NotNull
   @Schema(name = "appealTierType", example = "FIRST_TIER", description = "The type of appeal tier", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("appealTierType")
   public AppealTierTypeEnum getAppealTierType() {
@@ -174,7 +169,7 @@ public class Challenge {
    * Date (and time, if available) of challenge submission, in the standard format yyyy-mm-dd (with HH:mm:ss if the time is available, otherwise not). Date/time is assumed to be in UTC
    * @return challengeSubmissionDate
    */
-  @NotNull @Pattern(regexp = "^(?:\\d{4}-\\d{2}-\\d{2}|\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?Z)$") 
+  @NotNull @Pattern(regexp = "^(?:\\d{4}-\\d{2}-\\d{2}|\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?Z)$")
   @Schema(name = "challengeSubmissionDate", example = "2017-07-21T17:32:28Z", description = "Date (and time, if available) of challenge submission, in the standard format yyyy-mm-dd (with HH:mm:ss if the time is available, otherwise not). Date/time is assumed to be in UTC", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("challengeSubmissionDate")
   public String getChallengeSubmissionDate() {
@@ -202,7 +197,7 @@ public class Challenge {
    * List of applicants (will initially be just one)
    * @return applicants
    */
-  @NotNull @Valid @Size(min = 1) 
+  @NotNull @Valid @Size(min = 1)
   @Schema(name = "applicants", description = "List of applicants (will initially be just one)", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("applicants")
   public List<@Valid Person> getApplicants() {

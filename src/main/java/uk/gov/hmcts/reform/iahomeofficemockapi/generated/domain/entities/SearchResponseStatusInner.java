@@ -1,29 +1,20 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities;
 
-import java.net.URI;
-import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
-import org.springframework.lang.Nullable;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.Person;
-import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchResponseStatusInnerApplicationStatus;
-import org.openapitools.jackson.nullable.JsonNullable;
-import java.time.OffsetDateTime;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.annotation.Generated;
+import jakarta.validation.Valid;
+import org.springframework.lang.Nullable;
 
-
-import java.util.*;
-import javax.annotation.Generated;
+import java.util.Objects;
 
 /**
  * SearchResponseStatusInner
  */
 
 @JsonTypeName("SearchResponse_status_inner")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-04-27T09:30:21.003363+01:00[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-05-28T11:19:43.880285+01:00[Europe/London]", comments = "Generator version: 7.20.0")
 public class SearchResponseStatusInner {
 
   private @Nullable Person person;
@@ -39,7 +30,7 @@ public class SearchResponseStatusInner {
    * Get person
    * @return person
    */
-  @Valid 
+  @Valid
   @Schema(name = "person", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("person")
   public @Nullable Person getPerson() {
@@ -59,7 +50,7 @@ public class SearchResponseStatusInner {
    * Get applicationStatus
    * @return applicationStatus
    */
-  @Valid 
+  @Valid
   @Schema(name = "applicationStatus", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("applicationStatus")
   public @Nullable SearchResponseStatusInnerApplicationStatus getApplicationStatus() {
