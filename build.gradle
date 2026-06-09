@@ -349,7 +349,7 @@ dependencies {
   implementation group: 'io.swagger.core.v3', name: 'swagger-models-jakarta', version: '2.2.49'
 
   // Jakarta Validation API (for @Valid, @NotNull, etc.)
-  implementation group: "jakarta.servlet", name: "jakarta.servlet-api", version: "6.0.0"
+  implementation group: "jakarta.servlet", name: "jakarta.servlet-api", version: "6.1.0"
 
   testImplementation group: 'com.github.hmcts', name: 'fortify-client', version: '1.4.10'
 
