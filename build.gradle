@@ -4,7 +4,7 @@ plugins {
   id 'pmd'
   id 'jacoco'
   id 'io.spring.dependency-management' version '1.1.7'
-  id 'org.springframework.boot' version '3.5.14'
+  id 'org.springframework.boot' version '3.5.15'
   id 'org.owasp.dependencycheck' version '12.2.0'
   id 'uk.gov.hmcts.java' version '0.12.70'
   id 'com.github.ben-manes.versions' version '0.51.0'
@@ -278,7 +278,6 @@ ext["tomcat.version"] = "10.1.55"
 
 dependencyManagement {
   imports {
-    mavenBom "net.serenity-bdd:serenity-bom:5.3.10"
     mavenBom 'org.springframework.cloud:spring-cloud-dependencies:2025.0.2'
     mavenBom 'com.fasterxml.jackson:jackson-bom:2.21.3'
   }
@@ -357,8 +356,8 @@ dependencies {
 
   testImplementation 'org.springframework.cloud:spring-cloud-contract-wiremock'
 
-  functionalTestImplementation 'net.serenity-bdd:serenity-rest-assured'
-  functionalTestImplementation 'net.serenity-bdd:serenity-spring'
+  functionalTestImplementation group: 'net.serenity-bdd', name: 'serenity-rest-assured', version: '5.3.10'
+  functionalTestImplementation group: 'net.serenity-bdd', name: 'serenity-spring', version: '5.3.10'
 
   smokeTestImplementation 'io.rest-assured:rest-assured'
 
