@@ -222,7 +222,7 @@ pmd {
 }
 
 jacoco {
-  toolVersion = "0.8.10"
+  toolVersion = "0.8.15"
 }
 
 jacocoTestReport {
@@ -310,7 +310,7 @@ dependencyManagement {
     }
 
     // due to Serenity 5.3.10 forcing spring-context-support@6.2.10
-    dependency group: 'org.springframework', name: 'spring-context-support', version: '6.2.18'
+    dependency group: 'org.springframework', name: 'spring-context-support', version: '6.2.19'
   }
 }
 
@@ -344,8 +344,8 @@ dependencies {
   implementation group: 'org.openapitools', name: 'jackson-databind-nullable', version: '0.2.10'
 
   // OpenAPI 3 annotations (required for generated code in 7.20.0)
-  implementation group: 'io.swagger.core.v3', name: 'swagger-annotations-jakarta', version: '2.2.49'
-  implementation group: 'io.swagger.core.v3', name: 'swagger-models-jakarta', version: '2.2.49'
+  implementation group: 'io.swagger.core.v3', name: 'swagger-annotations-jakarta', version: '2.2.52'
+  implementation group: 'io.swagger.core.v3', name: 'swagger-models-jakarta', version: '2.2.52'
 
   // Jakarta Validation API (for @Valid, @NotNull, etc.)
   implementation group: "jakarta.servlet", name: "jakarta.servlet-api", version: "6.0.0"
