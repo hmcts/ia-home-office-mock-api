@@ -22,4 +22,4 @@ bin/functionalTest/
 
 .DS_Store
 
-.vscode//reports/pmd/*
+.vscode/

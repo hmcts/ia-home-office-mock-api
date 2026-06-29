@@ -595,6 +595,8 @@ components:
         note
         
         #### Message Types and Mandatory Elements
+
+        APPEAL_REQUESTED: [none]
         
         REQUEST_CHALLENGE_END: endReason, endChallengeDate
         
@@ -620,6 +622,7 @@ components:
           type: "string"
           example: "REQUEST_CHALLENGE_END"
           enum:
+            - "APPEAL_REQUESTED"
             - "REQUEST_CHALLENGE_END"
             - "REQUEST_EVIDENCE_BUNDLE"
             - "REQUEST_REVIEW"

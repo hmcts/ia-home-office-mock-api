@@ -602,6 +602,8 @@ components:
 
         #### Message Types and Mandatory Elements
 
+        APPEAL_REQUESTED: [none]
+        
         REQUEST_CHALLENGE_END: endReason, endChallengeDate
 
         REQUEST_EVIDENCE_BUNDLE: challenge, deadlineDate
@@ -684,6 +686,7 @@ components:
         messageType:
           description: Message type
           enum:
+          - APPEAL_REQUESTED
           - REQUEST_CHALLENGE_END
           - REQUEST_EVIDENCE_BUNDLE
           - REQUEST_REVIEW
