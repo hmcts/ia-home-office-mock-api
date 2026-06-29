@@ -15,10 +15,10 @@ import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /**
- * ### Message instructing Home Office about an event, or action to perform.  #### Mandatory items for all messages  messageHeader, messageType, hoReference, and consumerReference  #### Optional items  note  #### Message Types and Mandatory Elements  REQUEST_CHALLENGE_END: endReason, endChallengeDate  REQUEST_EVIDENCE_BUNDLE: challenge, deadlineDate  REQUEST_REVIEW: deadlineDate (a review has its own deadline)  HEARING: hearing  HEARING_BUNDLE_READY: hearing (passing just hmctsHearingRef and hearingType)  COURT_OUTCOME: courtOutcome  PERMISSION_TO_APPEAL: courtType  DEFAULT: No additional mandatory elements; generic item that is not a bundle/review request
+ * ### Message instructing Home Office about an event, or action to perform.  #### Mandatory items for all messages  messageHeader, messageType, hoReference, and consumerReference  #### Optional items  note  #### Message Types and Mandatory Elements  APPEAL_REQUESTED: [None]  REQUEST_CHALLENGE_END: endReason, endChallengeDate  REQUEST_EVIDENCE_BUNDLE: challenge, deadlineDate  REQUEST_REVIEW: deadlineDate (a review has its own deadline)  HEARING: hearing  HEARING_BUNDLE_READY: hearing (passing just hmctsHearingRef and hearingType)  COURT_OUTCOME: courtOutcome  PERMISSION_TO_APPEAL: courtType  DEFAULT: No additional mandatory elements; generic item that is not a bundle/review request
  */
 
-@Schema(name = "InstructMessage", description = "### Message instructing Home Office about an event, or action to perform.  #### Mandatory items for all messages  messageHeader, messageType, hoReference, and consumerReference  #### Optional items  note  #### Message Types and Mandatory Elements  REQUEST_CHALLENGE_END: endReason, endChallengeDate  REQUEST_EVIDENCE_BUNDLE: challenge, deadlineDate  REQUEST_REVIEW: deadlineDate (a review has its own deadline)  HEARING: hearing  HEARING_BUNDLE_READY: hearing (passing just hmctsHearingRef and hearingType)  COURT_OUTCOME: courtOutcome  PERMISSION_TO_APPEAL: courtType  DEFAULT: No additional mandatory elements; generic item that is not a bundle/review request ")
+@Schema(name = "InstructMessage", description = "### Message instructing Home Office about an event, or action to perform.  #### Mandatory items for all messages  messageHeader, messageType, hoReference, and consumerReference  #### Optional items  note  #### Message Types and Mandatory Elements  APPEAL_REQUESTED: [None]  REQUEST_CHALLENGE_END: endReason, endChallengeDate  REQUEST_EVIDENCE_BUNDLE: challenge, deadlineDate  REQUEST_REVIEW: deadlineDate (a review has its own deadline)  HEARING: hearing  HEARING_BUNDLE_READY: hearing (passing just hmctsHearingRef and hearingType)  COURT_OUTCOME: courtOutcome  PERMISSION_TO_APPEAL: courtType  DEFAULT: No additional mandatory elements; generic item that is not a bundle/review request ")
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-05-28T11:19:43.880285+01:00[Europe/London]", comments = "Generator version: 7.20.0")
 public class InstructMessage {
 
@@ -28,6 +28,8 @@ public class InstructMessage {
    * Message type
    */
   public enum MessageTypeEnum {
+    APPEAL_REQUESTED("APPEAL_REQUESTED"),
+
     REQUEST_CHALLENGE_END("REQUEST_CHALLENGE_END"),
 
     REQUEST_EVIDENCE_BUNDLE("REQUEST_EVIDENCE_BUNDLE"),
