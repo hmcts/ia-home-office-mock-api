@@ -274,12 +274,12 @@ dependencyCheck {
   }
 }
 
-ext["tomcat.version"] = "10.1.56"
+ext["tomcat.version"] = "10.1.59"
 
 dependencyManagement {
   imports {
     mavenBom 'org.springframework.cloud:spring-cloud-dependencies:2025.0.2'
-    mavenBom 'com.fasterxml.jackson:jackson-bom:2.21.4'
+    mavenBom 'com.fasterxml.jackson:jackson-bom:2.21.5'
   }
 
   dependencies {
@@ -303,7 +303,7 @@ dependencyManagement {
       entry 'mockito-junit-jupiter'
     }
 
-    dependencySet(group: 'org.apache.logging.log4j', version: '2.25.4') {
+    dependencySet(group: 'org.apache.logging.log4j', version: '2.25.5') {
       entry 'log4j-to-slf4j'
       entry 'log4j-api'
       entry 'log4j-core'
