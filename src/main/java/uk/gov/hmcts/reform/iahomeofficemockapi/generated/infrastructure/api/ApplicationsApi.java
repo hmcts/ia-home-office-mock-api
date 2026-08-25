@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.request.NativeWebRequest;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.Application;
+import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.ApplicationTwo;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.HomeOfficeConsumer;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.SearchErrorResponse;
 
@@ -33,7 +34,7 @@ import java.time.OffsetDateTime;
 import java.util.Optional;
 import java.util.UUID;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-25T12:38:09.070865+01:00[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-25T13:34:49.897332+01:00[Europe/London]", comments = "Generator version: 7.20.0")
 @Validated
 @Tag(name = "applications", description = "the applications API")
 public interface ApplicationsApi {
@@ -41,6 +42,95 @@ public interface ApplicationsApi {
     default Optional<NativeWebRequest> getRequest() {
         return Optional.empty();
     }
+
+    String PATH_APPLICATIONS_V11234123412341234_GET = "/applications/v1/1234-1234-1234-1234";
+    /**
+     * GET /applications/v1/1234-1234-1234-1234 : Gets a specific appellants&#39; details of an application for immigration or asylum from the Home Office.
+     * This resource represents the people involved in an application for immigration or asylum from the Home Office.  The application number is a fixed UAN (16 digits in four blocks of four separated by dashes).
+     *
+     * @param homeOfficeCorrelationID  (required)
+     * @param homeOfficeConsumer  (required)
+     * @param homeOfficeEventDateTime  (required)
+     * @return OK (response returned) (status code 200)
+     *         or Bad request (missing or invalid application ID, HTTP headers etc.) (status code 400)
+     *         or Not authenticated (missing or invalid credentials) (status code 401)
+     *         or Not authorised (insufficient permissions to retrieve this resource) (status code 403)
+     *         or Not found (no application with that ID exists on the server) (status code 404)
+     *         or Internal server error (status code 5XX)
+     */
+    @Operation(
+        operationId = "applicationsV11234123412341234Get",
+        summary = "Gets a specific appellants' details of an application for immigration or asylum from the Home Office.",
+        description = "This resource represents the people involved in an application for immigration or asylum from the Home Office.  The application number is a fixed UAN (16 digits in four blocks of four separated by dashes).",
+        responses = {
+            @ApiResponse(responseCode = "200", description = "OK (response returned)", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = ApplicationTwo.class))
+            }),
+            @ApiResponse(responseCode = "400", description = "Bad request (missing or invalid application ID, HTTP headers etc.)", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = SearchErrorResponse.class))
+            }),
+            @ApiResponse(responseCode = "401", description = "Not authenticated (missing or invalid credentials)", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = SearchErrorResponse.class))
+            }),
+            @ApiResponse(responseCode = "403", description = "Not authorised (insufficient permissions to retrieve this resource)", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = SearchErrorResponse.class))
+            }),
+            @ApiResponse(responseCode = "404", description = "Not found (no application with that ID exists on the server)", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = SearchErrorResponse.class))
+            }),
+            @ApiResponse(responseCode = "5XX", description = "Internal server error", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = SearchErrorResponse.class))
+            })
+        }
+    )
+    @RequestMapping(
+        method = RequestMethod.GET,
+        value = ApplicationsApi.PATH_APPLICATIONS_V11234123412341234_GET,
+        produces = { "application/json" }
+    )
+    default ResponseEntity<ApplicationTwo> applicationsV11234123412341234Get(
+        @NotNull @Parameter(name = "Home-Office-Correlation-ID", description = "", required = true, in = ParameterIn.HEADER) @RequestHeader(value = "Home-Office-Correlation-ID", required = true) UUID homeOfficeCorrelationID,
+        @NotNull @Parameter(name = "Home-Office-Consumer", description = "", required = true, in = ParameterIn.HEADER) @RequestHeader(value = "Home-Office-Consumer", required = true) HomeOfficeConsumer homeOfficeConsumer,
+        @NotNull @Parameter(name = "Home-Office-Event-DateTime", description = "", required = true, in = ParameterIn.HEADER) @RequestHeader(value = "Home-Office-Event-DateTime", required = true) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) OffsetDateTime homeOfficeEventDateTime
+    ) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"hoClaimDate\" : \"2019-09-18\", \"uan\" : \"1234-1234-1234-1234\", \"hoDecisionLetterDate\" : \"2019-09-20\", \"appellants\" : [ { \"pp\" : \"01\", \"familyName\" : \"Gonzalez\", \"givenNames\" : \"Jose\", \"dateOfBirth\" : \"1989-02-10\", \"nationality\" : \"ICE\", \"roa\" : true, \"asylumSupport\" : false, \"hoFeeWaiver\" : true, \"language\" : \"hin\", \"interpreterNeeded\" : false } ], \"hoDecisionDate\" : \"2019-09-19\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"messageHeader\" : { \"eventDateTime\" : \"2017-07-21T17:32:28Z\", \"correlationId\" : \"ABC2344BCED2234EA\", \"consumer\" : { \"code\" : \"HMCTS\", \"description\" : \"HM Courts and Tribunal Service\" } }, \"errorDetail\" : { \"messageText\" : \"Invalid reference format. Format should be either nnnn-nnnn-nnnn-nnnn or 0(0) followed by digits (total length 9 or 10)\", \"success\" : \"false\", \"errorCode\" : \"2000\" } }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"messageHeader\" : { \"eventDateTime\" : \"2017-07-21T17:32:28Z\", \"correlationId\" : \"ABC2344BCED2234EA\", \"consumer\" : { \"code\" : \"HMCTS\", \"description\" : \"HM Courts and Tribunal Service\" } }, \"errorDetail\" : { \"messageText\" : \"Invalid reference format. Format should be either nnnn-nnnn-nnnn-nnnn or 0(0) followed by digits (total length 9 or 10)\", \"success\" : \"false\", \"errorCode\" : \"2000\" } }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"messageHeader\" : { \"eventDateTime\" : \"2017-07-21T17:32:28Z\", \"correlationId\" : \"ABC2344BCED2234EA\", \"consumer\" : { \"code\" : \"HMCTS\", \"description\" : \"HM Courts and Tribunal Service\" } }, \"errorDetail\" : { \"messageText\" : \"Invalid reference format. Format should be either nnnn-nnnn-nnnn-nnnn or 0(0) followed by digits (total length 9 or 10)\", \"success\" : \"false\", \"errorCode\" : \"2000\" } }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"messageHeader\" : { \"eventDateTime\" : \"2017-07-21T17:32:28Z\", \"correlationId\" : \"ABC2344BCED2234EA\", \"consumer\" : { \"code\" : \"HMCTS\", \"description\" : \"HM Courts and Tribunal Service\" } }, \"errorDetail\" : { \"messageText\" : \"Invalid reference format. Format should be either nnnn-nnnn-nnnn-nnnn or 0(0) followed by digits (total length 9 or 10)\", \"success\" : \"false\", \"errorCode\" : \"2000\" } }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"messageHeader\" : { \"eventDateTime\" : \"2017-07-21T17:32:28Z\", \"correlationId\" : \"ABC2344BCED2234EA\", \"consumer\" : { \"code\" : \"HMCTS\", \"description\" : \"HM Courts and Tribunal Service\" } }, \"errorDetail\" : { \"messageText\" : \"Invalid reference format. Format should be either nnnn-nnnn-nnnn-nnnn or 0(0) followed by digits (total length 9 or 10)\", \"success\" : \"false\", \"errorCode\" : \"2000\" } }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
 
     String PATH_APPLICATIONS_V1_ID_GET = "/applications/v1/{id}";
     /**
@@ -89,7 +179,7 @@ public interface ApplicationsApi {
         produces = { "application/json" }
     )
     default ResponseEntity<Application> applicationsV1IdGet(
-        @NotNull @Pattern(regexp = "^(\\d{4}-\\d{4}-\\d{4}-\\d{4}|GWF\\d{9})$") @Parameter(name = "id", description = "Application ID", required = true, in = ParameterIn.PATH) @PathVariable("id") String id,
+        @NotNull @Pattern(regexp = "^(?!1234)(\\d{4}-\\d{4}-\\d{4}-\\d{4}|GWF\\d{9})$") @Parameter(name = "id", description = "Application ID", required = true, in = ParameterIn.PATH) @PathVariable("id") String id,
         @NotNull @Parameter(name = "Home-Office-Correlation-ID", description = "", required = true, in = ParameterIn.HEADER) @RequestHeader(value = "Home-Office-Correlation-ID", required = true) UUID homeOfficeCorrelationID,
         @NotNull @Parameter(name = "Home-Office-Consumer", description = "", required = true, in = ParameterIn.HEADER) @RequestHeader(value = "Home-Office-Consumer", required = true) HomeOfficeConsumer homeOfficeConsumer,
         @NotNull @Parameter(name = "Home-Office-Event-DateTime", description = "", required = true, in = ParameterIn.HEADER) @RequestHeader(value = "Home-Office-Event-DateTime", required = true) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) OffsetDateTime homeOfficeEventDateTime

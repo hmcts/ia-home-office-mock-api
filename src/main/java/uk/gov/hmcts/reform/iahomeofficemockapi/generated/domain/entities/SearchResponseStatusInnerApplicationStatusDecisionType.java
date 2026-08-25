@@ -14,7 +14,7 @@ import java.util.Objects;
 
 @Schema(name = "SearchResponse_status_inner_applicationStatus_decisionType", description = "Type of decision made on the application")
 @JsonTypeName("SearchResponse_status_inner_applicationStatus_decisionType")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-25T12:38:09.070865+01:00[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-25T13:34:49.897332+01:00[Europe/London]", comments = "Generator version: 7.20.0")
 public class SearchResponseStatusInnerApplicationStatusDecisionType {
 
   private @Nullable String code;
