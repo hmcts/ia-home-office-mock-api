@@ -15,7 +15,7 @@ import java.util.Objects;
  */
 
 @Schema(name = "CourtOutcome", description = "Court type and outcome of the appeal.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-05-28T11:19:43.880285+01:00[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-25T12:38:09.070865+01:00[Europe/London]", comments = "Generator version: 7.20.0")
 public class CourtOutcome {
 
   /**

@@ -13,6 +13,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -24,7 +25,7 @@ import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.TokenRe
 
 import java.util.Optional;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-05-28T11:19:43.880285+01:00[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-25T12:38:09.070865+01:00[Europe/London]", comments = "Generator version: 7.20.0")
 @Validated
 @Tag(name = "Appeals", description = "Appeals interface")
 public interface TokenApi {
@@ -76,7 +77,7 @@ public interface TokenApi {
                 }
             }
         });
-        return ResponseEntity.ok().build();
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }
 

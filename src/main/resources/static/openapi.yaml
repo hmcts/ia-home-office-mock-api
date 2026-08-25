@@ -603,7 +603,7 @@ components:
         #### Message Types and Mandatory Elements
 
         APPEAL_REQUESTED: [none]
-        
+
         REQUEST_CHALLENGE_END: endReason, endChallengeDate
 
         REQUEST_EVIDENCE_BUNDLE: challenge, deadlineDate

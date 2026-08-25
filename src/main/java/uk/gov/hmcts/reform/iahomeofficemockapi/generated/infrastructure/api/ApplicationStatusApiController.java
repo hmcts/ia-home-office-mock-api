@@ -8,7 +8,7 @@ import org.springframework.web.context.request.NativeWebRequest;
 
 import java.util.Optional;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-05-28T10:55:26.076071+01:00[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-25T12:38:09.070865+01:00[Europe/London]", comments = "Generator version: 7.20.0")
 @Controller
 @RequestMapping("${openapi.appealsInterface.base-path:/ichallenge}")
 public class ApplicationStatusApiController implements ApplicationStatusApi {

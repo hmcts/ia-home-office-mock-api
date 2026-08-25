@@ -54,7 +54,7 @@ sourceSets {
   }
 }
 
-def apiGenerateBuildDir = "${project.getLayout().getBuildDirectory()}/apidocs".toString()
+def apiGenerateBuildDir = "$projectDir/build/apidocs".toString()
 
 openApiGenerate {
   generatorName = "spring"
