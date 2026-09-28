@@ -143,7 +143,7 @@ public class Application {
    * @return appellants
    */
   @NotNull @Valid
-  @Schema(name = "appellants", example = "[{\"pp\":\"01\",\"familyName\":\"Bachchan\",\"givenNames\":\"Abhishek Amitabh\",\"dateOfBirth\":\"1976-02-05\",\"nationality\":\"IND\",\"roa\":true,\"asylumSupport\":false,\"hoFeeWaiver\":true,\"language\":\"hin\",\"interpreterNeeded\":false},{\"pp\":\"02\",\"familyName\":\"Rai\",\"givenNames\":\"Aishwarya\",\"dateOfBirth\":\"1973-11-01\",\"nationality\":\"IND\",\"roa\":false,\"asylumSupport\":true,\"hoFeeWaiver\":false,\"language\":\"hin\",\"interpreterNeeded\":true}]", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Schema(name = "appellants", example = "[{\"pp\":\"01\",\"familyName\":\"Bachchan\",\"givenNames\":\"Abhishek Amitabh\",\"dateOfBirth\":\"2000-02-05\",\"nationality\":\"IND\",\"roa\":true,\"asylumSupport\":false,\"hoFeeWaiver\":true,\"language\":\"hin\",\"interpreterNeeded\":false},{\"pp\":\"02\",\"familyName\":\"Rai\",\"givenNames\":\"Aishwarya\",\"dateOfBirth\":\"1973-11-01\",\"nationality\":\"IND\",\"roa\":false,\"asylumSupport\":true,\"hoFeeWaiver\":false,\"language\":\"hin\",\"interpreterNeeded\":true}]", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("appellants")
   public List<@Valid Appellant> getAppellants() {
     return appellants;

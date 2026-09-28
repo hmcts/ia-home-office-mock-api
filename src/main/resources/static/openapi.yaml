@@ -266,7 +266,7 @@ components:
         - pp: "01"
           familyName: Bachchan
           givenNames: Abhishek Amitabh
-          dateOfBirth: 1976-02-05
+          dateOfBirth: 2000-02-05
           nationality: IND
           roa: true
           asylumSupport: false
@@ -306,7 +306,7 @@ components:
           - pp: "01"
             familyName: Bachchan
             givenNames: Abhishek Amitabh
-            dateOfBirth: 1976-02-05
+            dateOfBirth: 2000-02-05
             nationality: IND
             roa: true
             asylumSupport: false
