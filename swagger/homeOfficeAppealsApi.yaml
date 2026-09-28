@@ -43,6 +43,7 @@ paths:
       x-mock-403-id: "1234-5678-9101-1123"
       x-mock-404-id: "1234-5678-9101-1124"
       x-mock-500x-id: "1234-5678-9101-1125"
+      x-mock-gwf-id: "GWF123456789"
       summary: Gets the appellants' details of an application for immigration or asylum from the Home Office.
       description: This resource represents the people involved in an application for immigration or asylum from the Home Office.  The application number is identified by the `id` passed in, which is a UAN (16 digits in four blocks of four separated by dashes) or a GWF (beginning wth the letters **GWF** followed by nine digits).
       parameters:

@@ -26,6 +26,11 @@
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
                 }
             {{/vendorExtensions.x-mock-401-id}}
+            {{#vendorExtensions.x-mock-gwf-id}}
+              if ("{{vendorExtensions.x-mock-gwf-id}}".equals(id)) {
+              return ResponseEntity.status(HttpStatus.OK).build();
+              }
+            {{/vendorExtensions.x-mock-gwf-id}}
             {{#vendorExtensions.x-mock-403-id}}
                 if ("{{vendorExtensions.x-mock-403-id}}".equals(id)) {
                 return ResponseEntity.status(HttpStatus.FORBIDDEN).build();

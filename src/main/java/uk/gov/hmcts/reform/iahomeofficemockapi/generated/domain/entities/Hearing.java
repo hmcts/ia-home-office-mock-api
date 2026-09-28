@@ -18,7 +18,7 @@ import java.util.Objects;
  */
 
 @Schema(name = "Hearing", description = "Details of a hearing.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-08-26T13:24:12.082923+01:00[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-09-28T11:44:58.476093+01:00[Europe/London]", comments = "Generator version: 7.20.0")
 public class Hearing {
 
   private String hmctsHearingRef;
