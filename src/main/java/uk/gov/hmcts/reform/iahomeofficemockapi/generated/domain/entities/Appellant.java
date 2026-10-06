@@ -13,7 +13,7 @@ import java.util.Objects;
  * Appellant
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-09-28T11:44:58.476093+01:00[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-10-06T11:12:35.897731+01:00[Europe/London]", comments = "Generator version: 7.20.0")
 public class Appellant {
 
   private @Nullable String pp;
@@ -220,7 +220,7 @@ public class Appellant {
    * Get language
    * @return language
    */
-  @NotNull @Pattern(regexp = "^[a-z]{3}$")
+  @NotNull @Pattern(regexp = "^[A-Z_]{3,50}$")
   @Schema(name = "language", example = "eng", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("language")
   public String getLanguage() {

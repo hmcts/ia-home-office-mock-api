@@ -16,7 +16,7 @@ import java.util.Objects;
  */
 
 @Schema(name = "ConsumerRef", description = "Consumer reference; reference provided to Home Office, to be used in subsequent calls to update the same item.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-09-28T11:44:58.476093+01:00[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-10-06T11:12:35.897731+01:00[Europe/London]", comments = "Generator version: 7.20.0")
 public class ConsumerRef {
 
   private Consumer consumer;
