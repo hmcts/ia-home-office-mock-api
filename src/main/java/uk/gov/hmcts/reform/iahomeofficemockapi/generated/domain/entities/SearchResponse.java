@@ -17,7 +17,7 @@ import java.util.Objects;
  */
 
 @Schema(name = "SearchResponse", description = "Response containing details of the application search.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-09-28T11:44:58.476093+01:00[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-10-06T10:07:01.548479+01:00[Europe/London]", comments = "Generator version: 7.20.0")
 public class SearchResponse {
 
   private @Nullable MessageHeader messageHeader;

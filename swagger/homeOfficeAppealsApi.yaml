@@ -273,6 +273,11 @@ components:
               hoFeeWaiver: false
               language: "hin"
               interpreterNeeded: true
+            - pp: "03"
+              familyName: "Gonzalez"
+              givenNames: "Jose"
+              dateOfBirth: "1989-02-10"
+              nationality: "SPN"
       required:
         - hoClaimDate
         - hoDecisionDate

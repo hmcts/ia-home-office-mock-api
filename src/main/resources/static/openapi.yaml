@@ -283,6 +283,11 @@ components:
           hoFeeWaiver: false
           language: hin
           interpreterNeeded: true
+        - pp: "03"
+          familyName: Gonzalez
+          givenNames: Jose
+          dateOfBirth: 1989-02-10
+          nationality: SPN
         hoDecisionDate: 2017-07-19
       properties:
         uan:
@@ -323,6 +328,11 @@ components:
             hoFeeWaiver: false
             language: hin
             interpreterNeeded: true
+          - pp: "03"
+            familyName: Gonzalez
+            givenNames: Jose
+            dateOfBirth: 1989-02-10
+            nationality: SPN
           items:
             $ref: "#/components/schemas/Appellant"
           type: array
