@@ -14,7 +14,7 @@ import java.util.Objects;
 
 @Schema(name = "SearchResponse_status_inner_applicationStatus_roleSubType", description = "Role sub-type of the individual in this application. **Note:** may not be available for legacy CID cases")
 @JsonTypeName("SearchResponse_status_inner_applicationStatus_roleSubType")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-10-06T10:07:01.548479+01:00[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-10-06T11:12:35.897731+01:00[Europe/London]", comments = "Generator version: 7.20.0")
 public class SearchResponseStatusInnerApplicationStatusRoleSubType {
 
   private @Nullable String code;

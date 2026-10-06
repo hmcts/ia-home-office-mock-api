@@ -316,7 +316,7 @@ components:
             roa: true
             asylumSupport: false
             hoFeeWaiver: true
-            language: hin
+            language: GUJ
             interpreterNeeded: false
           - pp: "02"
             familyName: Rai
@@ -326,7 +326,7 @@ components:
             roa: false
             asylumSupport: true
             hoFeeWaiver: false
-            language: hin
+            language: HINDI
             interpreterNeeded: true
           - pp: "03"
             familyName: Gonzalez
@@ -373,7 +373,7 @@ components:
           type: boolean
         language:
           example: eng
-          pattern: "^[a-z]{3}$"
+          pattern: "^[A-Z_]{3,50}$"
           type: string
         interpreterNeeded:
           example: false

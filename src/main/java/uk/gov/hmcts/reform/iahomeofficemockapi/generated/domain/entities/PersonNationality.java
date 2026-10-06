@@ -14,7 +14,7 @@ import java.util.Objects;
 
 @Schema(name = "Person_nationality", description = "Person's nationality")
 @JsonTypeName("Person_nationality")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-10-06T10:07:01.548479+01:00[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-10-06T11:12:35.897731+01:00[Europe/London]", comments = "Generator version: 7.20.0")
 public class PersonNationality {
 
   private @Nullable String code;

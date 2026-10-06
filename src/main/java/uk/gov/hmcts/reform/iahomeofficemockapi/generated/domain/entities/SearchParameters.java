@@ -17,7 +17,7 @@ import java.util.Objects;
  */
 
 @Schema(name = "SearchParameters", description = "Parameters passed in to enable searching for applications. Currently supports only one type/value pair but the interface is designed to support multiple in future.  As a side effect this service will send a notification to the Event Publisher to inform them that a request for a possible appeal has been made.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-10-06T10:07:01.548479+01:00[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-10-06T11:12:35.897731+01:00[Europe/London]", comments = "Generator version: 7.20.0")
 public class SearchParameters {
 
   private MessageHeader messageHeader;

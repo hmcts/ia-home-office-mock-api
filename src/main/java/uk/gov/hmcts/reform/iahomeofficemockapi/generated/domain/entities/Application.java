@@ -17,7 +17,7 @@ import java.util.Objects;
  */
 
 @Schema(name = "Application", description = "Details of the application, including appellants' biographic information.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-10-06T10:07:01.548479+01:00[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-10-06T11:12:35.897731+01:00[Europe/London]", comments = "Generator version: 7.20.0")
 public class Application {
 
   private @Nullable String uan;
@@ -143,7 +143,7 @@ public class Application {
    * @return appellants
    */
   @NotNull @Valid
-  @Schema(name = "appellants", example = "[{\"pp\":\"01\",\"familyName\":\"Bachchan\",\"givenNames\":\"Abhishek Amitabh\",\"dateOfBirth\":\"1976-02-05\",\"nationality\":\"IND\",\"roa\":true,\"asylumSupport\":false,\"hoFeeWaiver\":true,\"language\":\"hin\",\"interpreterNeeded\":false},{\"pp\":\"02\",\"familyName\":\"Rai\",\"givenNames\":\"Aishwarya\",\"dateOfBirth\":\"1973-11-01\",\"nationality\":\"IND\",\"roa\":false,\"asylumSupport\":true,\"hoFeeWaiver\":false,\"language\":\"hin\",\"interpreterNeeded\":true},{\"pp\":\"03\",\"familyName\":\"Gonzalez\",\"givenNames\":\"Jose\",\"dateOfBirth\":\"1989-02-10\",\"nationality\":\"SPN\"}]", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Schema(name = "appellants", example = "[{\"pp\":\"01\",\"familyName\":\"Bachchan\",\"givenNames\":\"Abhishek Amitabh\",\"dateOfBirth\":\"1976-02-05\",\"nationality\":\"IND\",\"roa\":true,\"asylumSupport\":false,\"hoFeeWaiver\":true,\"language\":\"GUJ\",\"interpreterNeeded\":false},{\"pp\":\"02\",\"familyName\":\"Rai\",\"givenNames\":\"Aishwarya\",\"dateOfBirth\":\"1973-11-01\",\"nationality\":\"IND\",\"roa\":false,\"asylumSupport\":true,\"hoFeeWaiver\":false,\"language\":\"HINDI\",\"interpreterNeeded\":true},{\"pp\":\"03\",\"familyName\":\"Gonzalez\",\"givenNames\":\"Jose\",\"dateOfBirth\":\"1989-02-10\",\"nationality\":\"SPN\"}]", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("appellants")
   public List<@Valid Appellant> getAppellants() {
     return appellants;
