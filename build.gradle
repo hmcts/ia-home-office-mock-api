@@ -316,8 +316,11 @@ dependencies {
   implementation group: 'com.github.hmcts.java-logging', name: 'logging', version: '8.0.0'
 
   implementation group: 'jakarta.xml.bind', name: 'jakarta.xml.bind-api', version: '4.0.5'
-  implementation 'tools.jackson.core:jackson-databind'
-  implementation group: 'org.openapitools', name: 'jackson-databind-nullable', version: '0.2.12'
+  implementation ('tools.jackson.core:jackson-databind'){
+    exclude group: 'org.springframework.boot', module: 'spring-boot-jackson'}
+  implementation ('org.openapitools:jackson-databind-nullable:0.2.12'){
+    exclude group: 'org.springframework.boot', module: 'spring-boot-jackson'
+  }
 
   // OpenAPI 3 annotations (required for generated code in 7.20.0)
   implementation group: 'io.swagger.core.v3', name: 'swagger-annotations-jakarta', version: '2.2.55'

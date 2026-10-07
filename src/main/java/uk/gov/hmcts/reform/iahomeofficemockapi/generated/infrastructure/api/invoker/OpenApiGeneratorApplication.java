@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.FullyQualifiedAnnotationBeanNameGenerator;
-import tools.jackson.databind.JacksonModule;
+import com.fasterxml.jackson.databind.Module;
 
 @SpringBootApplication(
     nameGenerator = FullyQualifiedAnnotationBeanNameGenerator.class
@@ -22,7 +22,7 @@ public class OpenApiGeneratorApplication {
     }
 
     @Bean(name = "uk.gov.hmcts.reform.iahomeofficemockapi.generated.infrastructure.api.invoker.OpenApiGeneratorApplication.jsonNullableModule")
-    public JacksonModule jsonNullableModule() {
+    public Module jsonNullableModule() {
         return new JsonNullableModule();
     }
 
