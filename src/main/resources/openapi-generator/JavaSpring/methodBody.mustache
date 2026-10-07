@@ -21,6 +21,11 @@
                 return ResponseEntity.notFound().build();
                 }
             {{/vendorExtensions.x-mock-400-id}}
+            {{#vendorExtensions.x-mock-400-instruct-hoReference}}
+              if ("{{vendorExtensions.x-mock-400-instruct-hoReference}}".equals(instructMessage.getHoReference())) {
+              return ResponseEntity.notFound().build();
+              }
+            {{/vendorExtensions.x-mock-400-instruct-hoReference}}
             {{#vendorExtensions.x-mock-401-id}}
                 if ("{{vendorExtensions.x-mock-401-id}}".equals(id)) {
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();

@@ -136,6 +136,7 @@ paths:
                   $ref: "#/components/schemas/SearchErrorResponse"
   /applicationInstruct/setInstruct:
     post:
+      x-mock-400-instruct-hoReference: "1234-5678-9101-1121"
       summary: "Instructs Home Office downstream systems. Note: Use of the term 'instruct' avoids any confusion with existing business terms, such as 'notification' and 'direction', which are not overly descriptive to the Home Office."
       requestBody:
         required: true

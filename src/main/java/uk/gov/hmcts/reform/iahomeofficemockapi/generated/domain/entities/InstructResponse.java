@@ -13,7 +13,7 @@ import java.util.Objects;
  */
 
 @Schema(name = "InstructResponse", description = "Response round-tripping request message header.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-10-06T11:12:35.897731+01:00[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-10-07T10:57:38.844876+01:00[Europe/London]", comments = "Generator version: 7.20.0")
 public class InstructResponse {
 
   private @Nullable MessageHeader messageHeader;
