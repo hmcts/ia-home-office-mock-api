@@ -2,8 +2,9 @@ package uk.gov.hmcts.reform.iahomeofficemockapi;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.JsonNode;
+import tools.jackson.databind.ObjectMapper;
+import tools.jackson.databind.json.JsonMapper;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import net.serenitybdd.rest.SerenityRest;
@@ -11,7 +12,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.context.ActiveProfiles;
@@ -54,12 +55,12 @@ public class HealthFunctionTest {
 
     private static boolean allStatusesUp(String json) throws Exception {
 
-        ObjectMapper mapper = new ObjectMapper();
+        ObjectMapper mapper = new JsonMapper();
         JsonNode root = mapper.readTree(json);
 
-        return "UP".equals(root.path("status").asText())
-            && "UP".equals(root.path("components").path("diskSpace").path("status").asText())
-            && "UP".equals(root.path("components").path("ping").path("status").asText())
-            && "UP".equals(root.path("components").path("refreshScope").path("status").asText());
+        return "UP".equals(root.path("status").asString())
+            && "UP".equals(root.path("components").path("diskSpace").path("status").asString())
+            && "UP".equals(root.path("components").path("ping").path("status").asString())
+            && "UP".equals(root.path("components").path("refreshScope").path("status").asString());
     }
 }

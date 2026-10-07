@@ -6,9 +6,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.constraints.NotNull;
-import org.springframework.lang.Nullable;
 
 import java.util.Objects;
+import org.jspecify.annotations.Nullable;
 
 /**
  * Consumer of the service.
@@ -26,7 +26,8 @@ public class Consumer {
 
     private final String value;
 
-    CodeEnum(String value) {
+      @JsonCreator
+      CodeEnum(String value) {
       this.value = value;
     }
 

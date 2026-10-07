@@ -1,11 +1,11 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.handlers;
 
-import com.fasterxml.jackson.databind.JsonMappingException;
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MissingRequestHeaderException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import tools.jackson.databind.DatabindException;
 import uk.gov.hmcts.reform.iahomeofficemockapi.entities.ErrorCode;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.ErrorResponse;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.MessageHeader;
@@ -44,9 +44,9 @@ public class ValidationExceptionHandler {
         return ResponseEntity.badRequest().body(errorResponse);
     }
 
-    @ExceptionHandler(JsonMappingException.class)
+    @ExceptionHandler(DatabindException.class)
     public ResponseEntity<SearchErrorResponse> handleJsonMappingException(
-            JsonMappingException ex) {
+            DatabindException ex) {
 
         ErrorCode errorCode = ErrorCode.MESSAGE_FORMAT_INVALID;
         SearchErrorResponse errorResponse = getErrorResponse(ex, errorCode);
