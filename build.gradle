@@ -256,18 +256,6 @@ dependencyManagement {
   }
 
   dependencies {
-    dependencySet(group: 'org.junit.jupiter', version: '5.14.4') {
-      entry 'junit-jupiter'
-      entry 'junit-jupiter-api'
-      entry 'junit-jupiter-engine'
-      entry 'junit-jupiter-params'
-    }
-
-    dependencySet(group: 'org.junit.platform', version: '1.14.4') {
-      entry 'junit-platform-commons'
-      entry 'junit-platform-engine'
-      entry 'junit-platform-launcher'
-    }
 
     dependency group: 'io.rest-assured', name: 'rest-assured', version: '5.5.7'
 
