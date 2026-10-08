@@ -8,8 +8,8 @@ import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
+import org.jspecify.annotations.Nullable;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.lang.Nullable;
 
 import java.time.OffsetDateTime;
 import java.util.Objects;
@@ -48,7 +48,8 @@ public class InstructMessage {
 
     private final String value;
 
-    MessageTypeEnum(String value) {
+      @JsonCreator
+      MessageTypeEnum(String value) {
       this.value = value;
     }
 
@@ -95,7 +96,8 @@ public class InstructMessage {
 
     private final String value;
 
-    EndReasonEnum(String value) {
+      @JsonCreator
+      EndReasonEnum(String value) {
       this.value = value;
     }
 
@@ -141,7 +143,8 @@ public class InstructMessage {
 
     private final String value;
 
-    CourtTypeEnum(String value) {
+      @JsonCreator
+      CourtTypeEnum(String value) {
       this.value = value;
     }
 

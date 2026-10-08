@@ -16,9 +16,8 @@ import jakarta.validation.Valid;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.request.NativeWebRequest;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.InstructErrorResponse;
 import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.InstructMessage;
@@ -55,8 +54,7 @@ public interface ApplicationInstructApi {
             })
         }
     )
-    @RequestMapping(
-        method = RequestMethod.POST,
+    @PostMapping(
         value = ApplicationInstructApi.PATH_APPLICATION_INSTRUCT_SET_INSTRUCT_POST,
         produces = { "application/json" },
         consumes = { "application/json" }

@@ -6,11 +6,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import org.springframework.lang.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import org.jspecify.annotations.Nullable;
 
 /**
  * Response containing details of the application search.
@@ -30,7 +30,8 @@ public class SearchResponse {
 
     private final String value;
 
-    MessageTypeEnum(String value) {
+      @JsonCreator
+      MessageTypeEnum(String value) {
       this.value = value;
     }
 

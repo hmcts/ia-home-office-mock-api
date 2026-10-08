@@ -12,6 +12,9 @@ management:
         include: health, info, prometheus, mappings
 
 spring:
+  http:
+    converters:
+      preferred-json-mapper: jackson2
   application:
     name: IA Home Office Mock API
   config:
