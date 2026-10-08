@@ -302,6 +302,7 @@ dependencies {
   runtimeOnly group: "javax.xml.bind", name: "jaxb-api", version: "2.3.1"
 
   implementation 'org.springframework.boot:spring-boot-starter-webmvc'
+  implementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
   implementation 'org.springframework.boot:spring-boot-starter-actuator'
   implementation 'org.springframework.boot:spring-boot-starter-json'
   implementation 'org.springframework.boot:spring-boot-starter-aspectj'
@@ -333,7 +334,8 @@ dependencies {
 
   testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-  testImplementation 'org.springframework.cloud:spring-cloud-contract-wiremock'
+  //  testImplementation 'org.springframework.cloud:spring-cloud-contract-wiremock'
+  testImplementation group: "org.wiremock.integrations", name: "wiremock-spring-boot", version: '4.4.3'
 
   functionalTestImplementation group: 'net.serenity-bdd', name: 'serenity-rest-assured', version: '5.3.11'
   functionalTestImplementation group: 'net.serenity-bdd', name: 'serenity-spring', version: '5.3.11'
