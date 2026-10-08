@@ -11,7 +11,6 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.client.HttpClientErrorException;
@@ -19,18 +18,18 @@ import org.springframework.web.client.RestClientException;
 
 public class SmokeTest {
 
-    @BeforeAll
-    public static void setup(){
-        RestAssured.config = RestAssured.config()
-            .objectMapperConfig(ObjectMapperConfig.objectMapperConfig()
-                .defaultObjectMapperType(ObjectMapperType.JACKSON_2));
-    }
-
     private final String targetInstance =
         StringUtils.defaultIfBlank(
             System.getenv("TEST_URL"),
             "http://localhost:8098"
         );
+
+    @BeforeAll
+    public static void setup(){
+        RestAssured.config = RestAssured.config()
+            .objectMapperConfig(ObjectMapperConfig.objectMapperConfig()
+                                    .defaultObjectMapperType(ObjectMapperType.JACKSON_2));
+    }
 
     @Test
     public void should_prove_app_is_running_and_healthy() {
