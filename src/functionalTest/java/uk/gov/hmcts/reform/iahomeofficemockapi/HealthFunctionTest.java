@@ -2,9 +2,8 @@ package uk.gov.hmcts.reform.iahomeofficemockapi;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import tools.jackson.databind.JsonNode;
-import tools.jackson.databind.ObjectMapper;
-import tools.jackson.databind.json.JsonMapper;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import net.serenitybdd.rest.SerenityRest;
@@ -25,7 +24,7 @@ import org.springframework.test.context.ActiveProfiles;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class HealthFunctionTest {
 
-    private static final String MEDIA_TYPE_APPLICATION_SPRING_BOOT_ACTUATOR = 
+    private static final String MEDIA_TYPE_APPLICATION_SPRING_BOOT_ACTUATOR =
             "application/vnd.spring-boot.actuator.v3+json";
 
     @Value("${targetInstance}") private String targetInstance;
@@ -55,12 +54,12 @@ public class HealthFunctionTest {
 
     private static boolean allStatusesUp(String json) throws Exception {
 
-        ObjectMapper mapper = new JsonMapper();
+        ObjectMapper mapper = new ObjectMapper();
         JsonNode root = mapper.readTree(json);
 
-        return "UP".equals(root.path("status").asString())
-            && "UP".equals(root.path("components").path("diskSpace").path("status").asString())
-            && "UP".equals(root.path("components").path("ping").path("status").asString())
-            && "UP".equals(root.path("components").path("refreshScope").path("status").asString());
+        return "UP".equals(root.path("status").asText())
+            && "UP".equals(root.path("components").path("diskSpace").path("status").asText())
+            && "UP".equals(root.path("components").path("ping").path("status").asText())
+            && "UP".equals(root.path("components").path("refreshScope").path("status").asText());
     }
 }
