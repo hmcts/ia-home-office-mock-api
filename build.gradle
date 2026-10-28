@@ -194,7 +194,7 @@ pmd {
 }
 
 jacoco {
-  toolVersion = "0.8.15"
+  toolVersion = "0.8.16"
 }
 
 jacocoTestReport {
@@ -314,7 +314,7 @@ dependencies {
 
   implementation group: 'jakarta.xml.bind', name: 'jakarta.xml.bind-api', version: '4.0.5'
   implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
-  implementation group: 'org.openapitools', name: 'jackson-databind-nullable', version: '0.2.12'
+  implementation group: 'org.openapitools', name: 'jackson-databind-nullable', version: '0.2.13'
 
   // OpenAPI 3 annotations (required for generated code in 7.20.0)
   implementation group: 'io.swagger.core.v3', name: 'swagger-annotations-jakarta', version: '2.2.55'
