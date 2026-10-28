@@ -8,9 +8,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import org.springframework.lang.Nullable;
 
 import java.util.Objects;
+import org.jspecify.annotations.Nullable;
 
 /**
  * SearchParametersSearchParamsInner
@@ -28,7 +28,8 @@ public class SearchParametersSearchParamsInner {
 
     private final String value;
 
-    SpTypeEnum(String value) {
+      @JsonCreator
+      SpTypeEnum(String value) {
       this.value = value;
     }
 

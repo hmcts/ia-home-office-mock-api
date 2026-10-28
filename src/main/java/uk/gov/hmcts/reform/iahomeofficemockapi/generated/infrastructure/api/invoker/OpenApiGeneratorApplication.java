@@ -1,12 +1,12 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.infrastructure.api.invoker;
 
-import com.fasterxml.jackson.databind.Module;
 import org.openapitools.jackson.nullable.JsonNullableModule;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.FullyQualifiedAnnotationBeanNameGenerator;
+import com.fasterxml.jackson.databind.Module;
 
 @SpringBootApplication(
     nameGenerator = FullyQualifiedAnnotationBeanNameGenerator.class

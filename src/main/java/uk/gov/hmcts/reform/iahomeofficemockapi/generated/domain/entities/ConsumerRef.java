@@ -7,9 +7,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
-import org.springframework.lang.Nullable;
 
 import java.util.Objects;
+import org.jspecify.annotations.Nullable;
 
 /**
  * Consumer reference; reference provided to Home Office, to be used in subsequent calls to update the same item.
@@ -29,7 +29,8 @@ public class ConsumerRef {
 
     private final String value;
 
-    CodeEnum(String value) {
+      @JsonCreator
+      CodeEnum(String value) {
       this.value = value;
     }
 

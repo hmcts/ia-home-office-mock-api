@@ -7,8 +7,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
+import org.jspecify.annotations.Nullable;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.lang.Nullable;
 
 import java.time.LocalDate;
 import java.util.Objects;
@@ -40,7 +40,8 @@ public class Hearing {
 
     private final String value;
 
-    HearingTypeEnum(String value) {
+      @JsonCreator
+      HearingTypeEnum(String value) {
       this.value = value;
     }
 

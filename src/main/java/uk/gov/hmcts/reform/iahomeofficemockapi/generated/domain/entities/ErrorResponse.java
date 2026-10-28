@@ -5,9 +5,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import org.springframework.lang.Nullable;
 
 import java.util.Objects;
+import org.jspecify.annotations.Nullable;
 
 /**
  * ErrorResponse
@@ -26,7 +26,8 @@ public class ErrorResponse {
 
     private final String value;
 
-    SuccessEnum(String value) {
+      @JsonCreator
+      SuccessEnum(String value) {
       this.value = value;
     }
 
@@ -81,7 +82,8 @@ public class ErrorResponse {
 
     private final String value;
 
-    ErrorCodeEnum(String value) {
+      @JsonCreator
+      ErrorCodeEnum(String value) {
       this.value = value;
     }
 

@@ -1,7 +1,6 @@
 package uk.gov.hmcts.reform.iahomeofficemockapi.generated.infrastructure.api;
 
 import jakarta.annotation.Generated;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.request.NativeWebRequest;
@@ -15,7 +14,6 @@ public class ApplicationsApiController implements ApplicationsApi {
 
     private final NativeWebRequest request;
 
-    @Autowired
     public ApplicationsApiController(NativeWebRequest request) {
         this.request = request;
     }

@@ -9,11 +9,11 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
-import org.springframework.lang.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import org.jspecify.annotations.Nullable;
 
 /**
  * Details of a challenge (initially, all appeal related).
@@ -39,7 +39,8 @@ public class Challenge {
 
     private final String value;
 
-    AppealTypeEnum(String value) {
+      @JsonCreator
+      AppealTypeEnum(String value) {
       this.value = value;
     }
 
@@ -74,7 +75,8 @@ public class Challenge {
 
     private final String value;
 
-    AppealTierTypeEnum(String value) {
+      @JsonCreator
+      AppealTierTypeEnum(String value) {
       this.value = value;
     }
 

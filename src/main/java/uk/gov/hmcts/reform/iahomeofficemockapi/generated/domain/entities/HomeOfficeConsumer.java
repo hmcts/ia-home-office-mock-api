@@ -15,7 +15,8 @@ public enum HomeOfficeConsumer {
 
   private final String value;
 
-  HomeOfficeConsumer(String value) {
+    @JsonCreator
+    HomeOfficeConsumer(String value) {
     this.value = value;
   }
 

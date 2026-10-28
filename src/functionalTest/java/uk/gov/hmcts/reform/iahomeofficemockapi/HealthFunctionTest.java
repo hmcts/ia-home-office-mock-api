@@ -11,7 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.context.ActiveProfiles;
@@ -24,7 +24,7 @@ import org.springframework.test.context.ActiveProfiles;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class HealthFunctionTest {
 
-    private static final String MEDIA_TYPE_APPLICATION_SPRING_BOOT_ACTUATOR = 
+    private static final String MEDIA_TYPE_APPLICATION_SPRING_BOOT_ACTUATOR =
             "application/vnd.spring-boot.actuator.v3+json";
 
     @Value("${targetInstance}") private String targetInstance;
