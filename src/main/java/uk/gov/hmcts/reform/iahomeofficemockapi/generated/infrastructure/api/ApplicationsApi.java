@@ -33,7 +33,7 @@ import java.time.OffsetDateTime;
 import java.util.Optional;
 import java.util.UUID;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-10-07T10:57:38.844876+01:00[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-04T14:08:47.269859Z[Europe/London]", comments = "Generator version: 7.20.0")
 @Validated
 @Tag(name = "applications", description = "the applications API")
 public interface ApplicationsApi {
@@ -98,31 +98,37 @@ public interface ApplicationsApi {
                         for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                         if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
                             String exampleString = "{ \"hoClaimDate\" : \"2017-07-18\", \"uan\" : \"1342-5786-9120-3564\", \"hoDecisionLetterDate\" : \"2017-07-20\", \"appellants\" : [ { \"pp\" : \"01\", \"familyName\" : \"Bachchan\", \"givenNames\" : \"Abhishek Amitabh\", \"dateOfBirth\" : \"1976-02-05\", \"nationality\" : \"IND\", \"roa\" : true, \"asylumSupport\" : false, \"hoFeeWaiver\" : true, \"language\" : \"GUJ\", \"interpreterNeeded\" : false }, { \"pp\" : \"02\", \"familyName\" : \"Rai\", \"givenNames\" : \"Aishwarya\", \"dateOfBirth\" : \"1973-11-01\", \"nationality\" : \"IND\", \"roa\" : false, \"asylumSupport\" : true, \"hoFeeWaiver\" : false, \"language\" : \"HINDI\", \"interpreterNeeded\" : true }, { \"pp\" : \"03\", \"familyName\" : \"Gonzalez\", \"givenNames\" : \"Jose\", \"dateOfBirth\" : \"1989-02-10\", \"nationality\" : \"SPN\" } ], \"hoDecisionDate\" : \"2017-07-19\" }";
+                            if ("GWF123456789".equals(id)) {exampleString = exampleString.replace("1342-5786-9120-3564", "GWF123456789");}
                             ApiUtil.setExampleResponse(request, "application/json", exampleString);
                             break;
                         }
                         if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
                             String exampleString = "{ \"messageHeader\" : { \"eventDateTime\" : \"2017-07-21T17:32:28Z\", \"correlationId\" : \"ABC2344BCED2234EA\", \"consumer\" : { \"code\" : \"HMCTS\", \"description\" : \"HM Courts and Tribunal Service\" } }, \"errorDetail\" : { \"messageText\" : \"Invalid reference format. Format should be either nnnn-nnnn-nnnn-nnnn or 0(0) followed by digits (total length 9 or 10)\", \"success\" : \"false\", \"errorCode\" : \"2000\" } }";
+                            if ("GWF123456789".equals(id)) {exampleString = exampleString.replace("1342-5786-9120-3564", "GWF123456789");}
                             ApiUtil.setExampleResponse(request, "application/json", exampleString);
                             break;
                         }
                         if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
                             String exampleString = "{ \"messageHeader\" : { \"eventDateTime\" : \"2017-07-21T17:32:28Z\", \"correlationId\" : \"ABC2344BCED2234EA\", \"consumer\" : { \"code\" : \"HMCTS\", \"description\" : \"HM Courts and Tribunal Service\" } }, \"errorDetail\" : { \"messageText\" : \"Invalid reference format. Format should be either nnnn-nnnn-nnnn-nnnn or 0(0) followed by digits (total length 9 or 10)\", \"success\" : \"false\", \"errorCode\" : \"2000\" } }";
+                            if ("GWF123456789".equals(id)) {exampleString = exampleString.replace("1342-5786-9120-3564", "GWF123456789");}
                             ApiUtil.setExampleResponse(request, "application/json", exampleString);
                             break;
                         }
                         if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
                             String exampleString = "{ \"messageHeader\" : { \"eventDateTime\" : \"2017-07-21T17:32:28Z\", \"correlationId\" : \"ABC2344BCED2234EA\", \"consumer\" : { \"code\" : \"HMCTS\", \"description\" : \"HM Courts and Tribunal Service\" } }, \"errorDetail\" : { \"messageText\" : \"Invalid reference format. Format should be either nnnn-nnnn-nnnn-nnnn or 0(0) followed by digits (total length 9 or 10)\", \"success\" : \"false\", \"errorCode\" : \"2000\" } }";
+                            if ("GWF123456789".equals(id)) {exampleString = exampleString.replace("1342-5786-9120-3564", "GWF123456789");}
                             ApiUtil.setExampleResponse(request, "application/json", exampleString);
                             break;
                         }
                         if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
                             String exampleString = "{ \"messageHeader\" : { \"eventDateTime\" : \"2017-07-21T17:32:28Z\", \"correlationId\" : \"ABC2344BCED2234EA\", \"consumer\" : { \"code\" : \"HMCTS\", \"description\" : \"HM Courts and Tribunal Service\" } }, \"errorDetail\" : { \"messageText\" : \"Invalid reference format. Format should be either nnnn-nnnn-nnnn-nnnn or 0(0) followed by digits (total length 9 or 10)\", \"success\" : \"false\", \"errorCode\" : \"2000\" } }";
+                            if ("GWF123456789".equals(id)) {exampleString = exampleString.replace("1342-5786-9120-3564", "GWF123456789");}
                             ApiUtil.setExampleResponse(request, "application/json", exampleString);
                             break;
                         }
                         if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
                             String exampleString = "{ \"messageHeader\" : { \"eventDateTime\" : \"2017-07-21T17:32:28Z\", \"correlationId\" : \"ABC2344BCED2234EA\", \"consumer\" : { \"code\" : \"HMCTS\", \"description\" : \"HM Courts and Tribunal Service\" } }, \"errorDetail\" : { \"messageText\" : \"Invalid reference format. Format should be either nnnn-nnnn-nnnn-nnnn or 0(0) followed by digits (total length 9 or 10)\", \"success\" : \"false\", \"errorCode\" : \"2000\" } }";
+                            if ("GWF123456789".equals(id)) {exampleString = exampleString.replace("1342-5786-9120-3564", "GWF123456789");}
                             ApiUtil.setExampleResponse(request, "application/json", exampleString);
                             break;
                         }

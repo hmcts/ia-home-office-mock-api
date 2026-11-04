@@ -26,7 +26,7 @@ import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.Instruc
 
 import java.util.Optional;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-10-07T10:57:38.844876+01:00[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-04T14:08:47.269859Z[Europe/London]", comments = "Generator version: 7.20.0")
 @Validated
 @Tag(name = "applicationInstruct", description = "the applicationInstruct API")
 public interface ApplicationInstructApi {
@@ -68,11 +68,13 @@ public interface ApplicationInstructApi {
                         for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                         if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
                             String exampleString = "{ \"messageHeader\" : { \"eventDateTime\" : \"2017-07-21T17:32:28Z\", \"correlationId\" : \"ABC2344BCED2234EA\", \"consumer\" : { \"code\" : \"HMCTS\", \"description\" : \"HM Courts and Tribunal Service\" } } }";
+
                             ApiUtil.setExampleResponse(request, "application/json", exampleString);
                             break;
                         }
                         if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
                             String exampleString = "{ \"messageHeader\" : { \"eventDateTime\" : \"2017-07-21T17:32:28Z\", \"correlationId\" : \"ABC2344BCED2234EA\", \"consumer\" : { \"code\" : \"HMCTS\", \"description\" : \"HM Courts and Tribunal Service\" } }, \"errorDetail\" : { \"messageText\" : \"Invalid reference format. Format should be either nnnn-nnnn-nnnn-nnnn or 0(0) followed by digits (total length 9 or 10)\", \"success\" : \"false\", \"errorCode\" : \"2000\" } }";
+
                             ApiUtil.setExampleResponse(request, "application/json", exampleString);
                             break;
                         }

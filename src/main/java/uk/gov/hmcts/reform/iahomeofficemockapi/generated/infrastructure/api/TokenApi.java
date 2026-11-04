@@ -24,7 +24,7 @@ import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.TokenRe
 
 import java.util.Optional;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-10-07T10:57:38.844876+01:00[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-04T14:08:47.269859Z[Europe/London]", comments = "Generator version: 7.20.0")
 @Validated
 @Tag(name = "Appeals", description = "Appeals interface")
 public interface TokenApi {
@@ -71,6 +71,7 @@ public interface TokenApi {
                         for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                         if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
                             String exampleString = "{ \"access_token\" : \"some_access_token\", \"scope\" : \"email profile\", \"token_type\" : \"bearer\", \"expires_in\" : 300 }";
+
                             ApiUtil.setExampleResponse(request, "application/json", exampleString);
                             break;
                         }

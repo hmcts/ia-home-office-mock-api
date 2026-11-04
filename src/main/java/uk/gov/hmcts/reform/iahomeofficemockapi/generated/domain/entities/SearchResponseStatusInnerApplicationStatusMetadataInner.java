@@ -18,7 +18,7 @@ import java.util.Objects;
 
 @Schema(name = "SearchResponse_status_inner_applicationStatus_metadata_inner", description = "Metadata item, comprising an item code and one (usually) or more data values that are typed")
 @JsonTypeName("SearchResponse_status_inner_applicationStatus_metadata_inner")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-10-07T10:57:38.844876+01:00[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-04T14:08:47.269859Z[Europe/London]", comments = "Generator version: 7.20.0")
 public class SearchResponseStatusInnerApplicationStatusMetadataInner {
 
   private String code;

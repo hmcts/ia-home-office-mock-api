@@ -9,6 +9,7 @@
         {{/-first}}
         {{#async}}        {{/async}}{{^async}}    {{/async}}            if (mediaType.isCompatibleWith(MediaType.valueOf("{{{contentType}}}"))) {
         {{#async}}        {{/async}}{{^async}}    {{/async}}                String exampleString = {{>exampleString}};
+        {{#async}}        {{/async}}{{^async}}    {{/async}}                {{#vendorExtensions.x-mock-gwf-id}}if ("{{vendorExtensions.x-mock-gwf-id}}".equals(id)) {exampleString = exampleString.replace("1342-5786-9120-3564", "{{vendorExtensions.x-mock-gwf-id}}");}{{/vendorExtensions.x-mock-gwf-id}}
         {{#async}}        {{/async}}{{^async}}    {{/async}}                ApiUtil.setExampleResponse(request, "{{{contentType}}}", exampleString);{{#returnSuccessCode}}
             {{#async}}        {{/async}}{{^async}}    {{/async}}                statusCode.set({{{statusCode}}});{{/returnSuccessCode}}
         {{#async}}        {{/async}}{{^async}}    {{/async}}                break;
