@@ -398,9 +398,9 @@ components:
         messageType: RESPONSE_RIGHT_OF_APPEAL_DETAILS
         status:
         - person:
-            givenName: Capability
+            givenName: Capability-John
             familyName: Smith
-            fullName: Capability Smith
+            fullName: Capability-John Smith
             gender:
               code: M
               description: Male
@@ -439,15 +439,15 @@ components:
               valueDateTime: 2027-07-27T07:17:27Z
               valueBoolean: false
         - person:
-            givenName: Aishwarya
-            familyName: Rai
-            fullName: Aishwarya Rai
+            givenName: Capability-John
+            familyName: Smith
+            fullName: Capability-John Smith
             gender:
               code: F
               description: Female
-            dayOfBirth: 1
-            monthOfBirth: 11
-            yearOfBirth: 1973
+            dayOfBirth: 21
+            monthOfBirth: 4
+            yearOfBirth: 1970
             nationality:
               code: IND
               description: India
@@ -497,9 +497,9 @@ components:
             \ status will be the same for all persons but this format provides flexibility"
           example:
           - person:
-              givenName: Capability
+              givenName: Capability-John
               familyName: Smith
-              fullName: Capability Smith
+              fullName: Capability-John Smith
               gender:
                 code: M
                 description: Male
@@ -538,15 +538,15 @@ components:
                 valueDateTime: 2027-07-27T07:17:27Z
                 valueBoolean: false
           - person:
-              givenName: Aishwarya
-              familyName: Rai
-              fullName: Aishwarya Rai
+              givenName: Capability-John
+              familyName: Smith
+              fullName: Capability-John Smith
               gender:
                 code: F
                 description: Female
-              dayOfBirth: 1
-              monthOfBirth: 11
-              yearOfBirth: 1973
+              dayOfBirth: 21
+              monthOfBirth: 4
+              yearOfBirth: 1970
               nationality:
                 code: IND
                 description: India
@@ -663,9 +663,9 @@ components:
               code: CAN (denoting Canada)
               description: Canada
             dayOfBirth: 21
-            givenName: Capability
+            givenName: Capability-John
             familyName: Smith
-            fullName: Capability Smith
+            fullName: Capability-John Smith
             monthOfBirth: 0
             yearOfBirth: 1970
           - gender:
@@ -675,9 +675,9 @@ components:
               code: CAN (denoting Canada)
               description: Canada
             dayOfBirth: 21
-            givenName: Capability
+            givenName: Capability-John
             familyName: Smith
-            fullName: Capability Smith
+            fullName: Capability-John Smith
             monthOfBirth: 0
             yearOfBirth: 1970
           challengeSubmissionDate: 2017-07-21T17:32:28Z
@@ -815,16 +815,16 @@ components:
           code: CAN (denoting Canada)
           description: Canada
         dayOfBirth: 21
-        givenName: Capability
+        givenName: Capability-John
         familyName: Smith
-        fullName: Capability Smith
+        fullName: Capability-John Smith
         monthOfBirth: 0
         yearOfBirth: 1970
       properties:
         givenName:
           description: Person's given names. Assumed to be a concatenated list of
             names
-          example: Capability
+          example: Capability-John
           type: string
         familyName:
           description: Person's family names. Assumed to be a concatenated list of
@@ -833,7 +833,7 @@ components:
           type: string
         fullName:
           description: Person's full name
-          example: Capability Smith
+          example: Capability-John Smith
           type: string
         gender:
           $ref: "#/components/schemas/Person_gender"
@@ -866,9 +866,9 @@ components:
             code: CAN (denoting Canada)
             description: Canada
           dayOfBirth: 21
-          givenName: Capability
+          givenName: Capability-John
           familyName: Smith
-          fullName: Capability Smith
+          fullName: Capability-John Smith
           monthOfBirth: 0
           yearOfBirth: 1970
         - gender:
@@ -878,9 +878,9 @@ components:
             code: CAN (denoting Canada)
             description: Canada
           dayOfBirth: 21
-          givenName: Capability
+          givenName: Capability-John
           familyName: Smith
-          fullName: Capability Smith
+          fullName: Capability-John Smith
           monthOfBirth: 0
           yearOfBirth: 1970
         challengeSubmissionDate: 2017-07-21T17:32:28Z

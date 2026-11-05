@@ -501,9 +501,9 @@ components:
                       valueBoolean: false
           example:
             - person:
-                givenName: "Capability"
+                givenName: "Capability-John"
                 familyName: "Smith"
-                fullName: "Capability Smith"
+                fullName: "Capability-John Smith"
                 gender:
                   code: "M"
                   description: "Male"
@@ -542,15 +542,15 @@ components:
                     valueDateTime: "2027-07-27T07:17:27Z"
                     valueBoolean: false
             - person:
-                givenName: "Aishwarya"
-                familyName: "Rai"
-                fullName: "Aishwarya Rai"
+                givenName: "Capability-John"
+                familyName: "Smith"
+                fullName: "Capability-John Smith"
                 gender:
                   code: "F"
                   description: "Female"
-                dayOfBirth: 1
-                monthOfBirth: 11
-                yearOfBirth: 1973
+                dayOfBirth: 21
+                monthOfBirth: 4
+                yearOfBirth: 1970
                 nationality:
                   code: "IND"
                   description: "India"
@@ -717,7 +717,7 @@ components:
         givenName:
           description: "Person's given names. Assumed to be a concatenated list of names"
           type: "string"
-          example: "Capability"
+          example: "Capability-John"
         familyName:
           description: "Person's family names. Assumed to be a concatenated list of names"
           type: "string"
@@ -725,7 +725,7 @@ components:
         fullName:
           description: "Person's full name"
           type: "string"
-          example: "Capability Smith"
+          example: "Capability-John Smith"
         gender:
           type: "object"
           properties:

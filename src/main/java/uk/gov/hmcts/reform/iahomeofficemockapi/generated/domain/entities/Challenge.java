@@ -20,7 +20,7 @@ import java.util.Objects;
  */
 
 @Schema(name = "Challenge", description = "Details of a challenge (initially, all appeal related).")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-04T14:08:47.269859Z[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-06T12:04:20.324778Z[Europe/London]", comments = "Generator version: 7.20.0")
 public class Challenge {
 
   /**
