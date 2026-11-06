@@ -439,15 +439,15 @@ components:
               valueDateTime: 2027-07-27T07:17:27Z
               valueBoolean: false
         - person:
-            givenName: Aishwarya
-            familyName: Rai
-            fullName: Aishwarya Rai
+            givenName: Capability
+            familyName: Smith
+            fullName: Capability Smith
             gender:
               code: F
               description: Female
-            dayOfBirth: 1
-            monthOfBirth: 11
-            yearOfBirth: 1973
+            dayOfBirth: 21
+            monthOfBirth: 4
+            yearOfBirth: 1970
             nationality:
               code: IND
               description: India
@@ -538,15 +538,15 @@ components:
                 valueDateTime: 2027-07-27T07:17:27Z
                 valueBoolean: false
           - person:
-              givenName: Aishwarya
-              familyName: Rai
-              fullName: Aishwarya Rai
+              givenName: Capability
+              familyName: Smith
+              fullName: Capability Smith
               gender:
                 code: F
                 description: Female
-              dayOfBirth: 1
-              monthOfBirth: 11
-              yearOfBirth: 1973
+              dayOfBirth: 21
+              monthOfBirth: 4
+              yearOfBirth: 1970
               nationality:
                 code: IND
                 description: India
