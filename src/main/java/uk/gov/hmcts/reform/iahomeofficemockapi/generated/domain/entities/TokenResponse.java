@@ -11,7 +11,7 @@ import java.util.Objects;
  * TokenResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-06T11:05:22.086685Z[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-06T12:04:20.324778Z[Europe/London]", comments = "Generator version: 7.20.0")
 public class TokenResponse {
 
   private @Nullable String accessToken;
