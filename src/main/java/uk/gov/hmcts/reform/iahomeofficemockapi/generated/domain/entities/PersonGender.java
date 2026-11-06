@@ -13,7 +13,7 @@ import java.util.Objects;
  */
 
 @JsonTypeName("Person_gender")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-04T14:08:47.269859Z[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-06T12:04:20.324778Z[Europe/London]", comments = "Generator version: 7.20.0")
 public class PersonGender {
 
   private @Nullable String code;

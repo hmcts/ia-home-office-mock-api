@@ -16,7 +16,7 @@ import java.util.Objects;
  */
 
 @Schema(name = "MessageHeader", description = "Message parameters (not business oriented).")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-04T14:08:47.269859Z[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-06T12:04:20.324778Z[Europe/London]", comments = "Generator version: 7.20.0")
 public class MessageHeader {
 
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)

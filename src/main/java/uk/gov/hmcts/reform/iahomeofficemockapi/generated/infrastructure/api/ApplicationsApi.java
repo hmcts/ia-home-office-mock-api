@@ -33,7 +33,7 @@ import java.time.OffsetDateTime;
 import java.util.Optional;
 import java.util.UUID;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-04T14:08:47.269859Z[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-06T12:04:20.324778Z[Europe/London]", comments = "Generator version: 7.20.0")
 @Validated
 @Tag(name = "applications", description = "the applications API")
 public interface ApplicationsApi {
