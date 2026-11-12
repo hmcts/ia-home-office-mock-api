@@ -26,7 +26,7 @@ import uk.gov.hmcts.reform.iahomeofficemockapi.generated.domain.entities.Instruc
 
 import java.util.Optional;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-06T14:36:49.947397Z[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-12T15:58:01.915961Z[Europe/London]", comments = "Generator version: 7.20.0")
 @Validated
 @Tag(name = "applicationInstruct", description = "the applicationInstruct API")
 public interface ApplicationInstructApi {
@@ -80,7 +80,8 @@ public interface ApplicationInstructApi {
                         }
                         }
                     });
-                                  if ("1234-5678-9101-1121".equals(instructMessage.getHoReference())) {
+
+              if ("1234-5678-9101-1121".equals(instructMessage.getHoReference())) {
               return ResponseEntity.notFound().build();
               }
 

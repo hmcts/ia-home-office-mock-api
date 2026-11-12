@@ -124,6 +124,7 @@ paths:
           description: Internal server error
       summary: Gets the appellants' details of an application for immigration or asylum
         from the Home Office.
+      x-mock-has-delay: "400"
       x-mock-400-id: 1234-5678-9101-1121
       x-mock-401-id: 1234-5678-9101-1122
       x-mock-403-id: 1234-5678-9101-1123

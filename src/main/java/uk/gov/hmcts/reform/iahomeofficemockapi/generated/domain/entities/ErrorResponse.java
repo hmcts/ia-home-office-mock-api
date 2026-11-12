@@ -13,7 +13,7 @@ import java.util.Objects;
  * ErrorResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-06T14:36:49.947397Z[Europe/London]", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-12T15:58:01.915961Z[Europe/London]", comments = "Generator version: 7.20.0")
 public class ErrorResponse {
 
   /**

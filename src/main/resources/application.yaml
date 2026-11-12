@@ -20,3 +20,6 @@ spring:
 springdoc:
   swagger-ui:
     url: /openapi.yaml
+
+getApplication:
+  delay: ${IA_HOMEOFFICE_DELAY:0}
