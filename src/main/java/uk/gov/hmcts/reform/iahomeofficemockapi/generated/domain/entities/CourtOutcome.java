@@ -6,9 +6,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.constraints.NotNull;
-import org.springframework.lang.Nullable;
 
 import java.util.Objects;
+import org.jspecify.annotations.Nullable;
 
 /**
  * Court type and outcome of the appeal.
@@ -30,7 +30,8 @@ public class CourtOutcome {
 
     private final String value;
 
-    CourtTypeEnum(String value) {
+      @JsonCreator
+      CourtTypeEnum(String value) {
       this.value = value;
     }
 
@@ -75,7 +76,8 @@ public class CourtOutcome {
 
     private final String value;
 
-    OutcomeEnum(String value) {
+      @JsonCreator
+      OutcomeEnum(String value) {
       this.value = value;
     }
 

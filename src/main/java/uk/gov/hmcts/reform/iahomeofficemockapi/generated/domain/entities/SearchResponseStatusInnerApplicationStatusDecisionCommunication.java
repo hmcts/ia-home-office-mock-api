@@ -7,8 +7,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
+import org.jspecify.annotations.Nullable;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.lang.Nullable;
 
 import java.time.OffsetDateTime;
 import java.util.Objects;
@@ -32,7 +32,8 @@ public class SearchResponseStatusInnerApplicationStatusDecisionCommunication {
 
     private final String value;
 
-    TypeEnum(String value) {
+      @JsonCreator
+      TypeEnum(String value) {
       this.value = value;
     }
 
