@@ -17,11 +17,19 @@
         {{#-last}}
             {{#async}}        {{/async}}{{^async}}    {{/async}}        }
             {{#async}}    {{/async}}        });
-            {{#async}}    {{/async}}        {{#useResponseEntity}}{{#vendorExtensions.x-mock-400-id}}
+            {{#async}}    {{/async}}        {{#useResponseEntity}}
+              {{#vendorExtensions.x-mock-has-delay}}
+                try {
+                  Thread.sleep(Integer.parseInt("{{vendorExtensions.x-mock-has-delay}}"));
+                } catch (InterruptedException e) {
+                  Thread.currentThread().interrupt();
+                }
+            {{/vendorExtensions.x-mock-has-delay}}
+              {{#vendorExtensions.x-mock-400-id}}
                 if ("{{vendorExtensions.x-mock-400-id}}".equals(id)) {
                 return ResponseEntity.notFound().build();
                 }
-            {{/vendorExtensions.x-mock-400-id}}
+              {{/vendorExtensions.x-mock-400-id}}
             {{#vendorExtensions.x-mock-400-instruct-hoReference}}
               if ("{{vendorExtensions.x-mock-400-instruct-hoReference}}".equals(instructMessage.getHoReference())) {
               return ResponseEntity.notFound().build();
